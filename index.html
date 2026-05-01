@@ -794,7 +794,7 @@ function renderEkipeGrid() {
   // Prikaži vse "stalne" + tiste ki so bili vsaj 2x
   const prikazani = [...new Set([
     ...igralci,
-    ...Object.keys(stats).filter(p => stats[p].tekme >= 2)
+    ...Object.keys(stats)
   ])].sort();
   
   prikazani.forEach(ime => {
@@ -815,7 +815,7 @@ function renderEkipeGrid() {
 
 function selectAllPlayers() {
   const stats = izracunajStatistiko();
-  const prikazani = [...new Set([...igralci, ...Object.keys(stats).filter(p => stats[p].tekme >= 2)])];
+  const prikazani = [...new Set([...igralci, ...Object.keys(stats)])];
   prikazani.forEach(p => selectedForEkipe.add(p));
   renderEkipeGrid();
 }
@@ -931,7 +931,8 @@ function renderTekme() {
 let editIndex = -1;
 
 function renderVnos(beli = new Set(), crni = new Set()) {
-  const vsiIgralci = [...new Set([...igralci])].sort();
+  const stats = izracunajStatistiko();
+  const vsiIgralci = [...new Set([...igralci, ...Object.keys(stats)])].sort();
 
   ['vnos-beli-grid', 'vnos-crni-grid'].forEach((gridId, idx) => {
     const grid = document.getElementById(gridId);
