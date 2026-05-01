@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ledina FC</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2ECC71">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ledina FC">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2ECC71;
+    --green-dark: #1a7a42;
+    --green-dim: rgba(46,204,113,0.12);
+    --red: #E74C3C;
+    --red-dim: rgba(231,76,60,0.12);
+    --amber: #F39C12;
+    --amber-dim: rgba(243,156,18,0.12);
+    --bg: #0d0f0d;
+    --bg2: #141714;
+    --bg3: #1a1e1a;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8ede8;
+    --muted: #6b7d6b;
+    --card-radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+
+  /* Safe area za iPhone */
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  header { padding-top: env(safe-area-inset-top); height: calc(60px + env(safe-area-inset-top)); }
+
+  /* Header */
+  header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--green);
+  }
+  .logo span { color: var(--text); }
+
+  /* Nav */
+  nav { display: flex; gap: 4px; }
+  nav button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  nav button:hover { background: var(--bg3); color: var(--text); }
+  nav button.active { background: var(--green-dim); color: var(--green); }
+
+  /* Pages */
+  .page { display: none; padding: 28px 24px; max-width: 900px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  /* Section title */
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .section-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+  /* Cards */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* Lestvica table */
+  .lestvica-table { width: 100%; border-collapse: collapse; }
+  .lestvica-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .lestvica-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .lestvica-table tr:last-child td { border-bottom: none; }
+  .lestvica-table tr:hover td { background: var(--bg3); }
+
+  .rank-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--muted);
+    width: 28px;
+    display: inline-block;
+  }
+  .rank-badge.gold { color: #f1c40f; }
+  .rank-badge.silver { color: #bdc3c7; }
+  .rank-badge.bronze { color: #cd7f32; }
+
+  .player-name { font-weight: 500; font-size: 15px; }
+
+  /* Forma dots */
+  .forma { display: flex; gap: 4px; align-items: center; }
+  .forma-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .forma-dot.W { background: var(--green); }
+  .forma-dot.D { background: var(--amber); }
+  .forma-dot.L { background: var(--red); }
+  .forma-dot.empty { background: var(--bg3); border: 1px solid var(--border); }
+
+  .stat-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .stat-pill.green { background: var(--green-dim); color: var(--green); }
+  .stat-pill.red { background: var(--red-dim); color: var(--red); }
+  .stat-pill.amber { background: var(--amber-dim); color: var(--amber); }
+
+  /* Score bar */
+  .score-bar {
+    display: flex;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bg3);
+    overflow: hidden;
+    margin-top: 4px;
+    width: 80px;
+  }
+  .score-bar-fill { background: var(--green); transition: width .5s; }
+
+  /* Tekme form */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1/-1; }
+  label { font-size: 12px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); }
+  input[type=text], input[type=date], select, textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--green); }
+
+  .player-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .player-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: 13px;
+    user-select: none;
+  }
+  .player-check:hover { border-color: var(--green); }
+  .player-check.selected { border-color: var(--green); background: var(--green-dim); color: var(--green); }
+  .player-check input { display: none; }
+
+  /* Ekipe generator */
+  .team-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .team-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+  }
+  .team-header {
+    padding: 14px 18px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .team-header.white { background: rgba(255,255,255,0.05); color: #fff; border-bottom: 2px solid rgba(255,255,255,0.3); }
+  .team-header.black { background: rgba(0,0,0,0.4); color: #aaa; border-bottom: 2px solid rgba(150,150,150,0.3); }
+  .team-rating {
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .team-player {
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .team-player:last-child { border-bottom: none; }
+  .player-rating-small {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* Buttons */
+  .btn {
+    background: var(--green);
+    color: #0d0f0d;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn:hover { background: #27ae60; transform: translateY(-1px); }
+  .btn.secondary {
+    background: var(--bg3);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn.secondary:hover { border-color: var(--green); color: var(--green); transform: none; }
+  .btn-row { display: flex; gap: 10px; margin-top: 20px; align-items: center; }
+
+  /* Tekme list */
+  .tekma-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tekma-date { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .tekma-result {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  .tekma-result.zmaga { color: var(--green); }
+  .tekma-result.poraz { color: var(--red); }
+  .tekma-result.neodloceno { color: var(--amber); }
+  .tekma-teams { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* Stat numbers */
+  .big-stat {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--green);
+  }
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .stat-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-box .label { font-size: 11px; color: var(--muted); letter-spacing: .8px; text-transform: uppercase; margin-top: 4px; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--green);
+    color: #0d0f0d;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all .3s;
+    z-index: 999;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .team-cards { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    nav button { padding: 8px 10px; font-size: 13px; }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--muted);
+  }
+  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+  .filter-btn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .filter-btn:hover { border-color: var(--green); color: var(--text); }
+  .filter-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+
+  .info-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">LEDINA <span>FC</span></div>
+  <nav>
+    <button class="active" onclick="showPage('lestvica')">Lestvica</button>
+    <button onclick="showPage('ekipe')">Ekipe</button>
+    <button onclick="showPage('tekme')">Tekme</button>
+    <button onclick="showPage('vnos')">+ Vnos</button>
+  </nav>
+</header>
+
+<div id="page-lestvica" class="page active">
+  <div class="section-title">LESTVICA</div>
+  <div class="section-sub">Razvrščeno po oceni (zmage/neodločeno/porazi + forma zadnjih 5 tekem)</div>
+  <div id="lestvica-stats" class="stat-grid"></div>
+  <div style="display:flex;gap:6px;margin-bottom:14px;">
+    <button id="filter-vsi" class="filter-btn active" onclick="setFilter('vsi')">Vsi</button>
+    <button id="filter-5plus" class="filter-btn" onclick="setFilter('5plus')">Vsaj 5 tekem</button>
+  </div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <table class="lestvica-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Igralec</th>
+          <th>T</th>
+          <th>Z</th>
+          <th>N</th>
+          <th>P</th>
+          <th>%</th>
+          <th>Forma (zadnjih 5)</th>
+          <th>Ocena</th>
+        </tr>
+      </thead>
+      <tbody id="lestvica-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="page-ekipe" class="page">
+  <div class="section-title">GENERIRANJE EKIP</div>
+  <div class="section-sub">Izberi prisotne igralce — algoritem bo naredil čim bolj enakovredni ekipi</div>
+  <div class="card">
+    <label>Kdo igra danes?</label>
+    <div id="ekipe-player-grid" class="player-grid"></div>
+    <div class="divider"></div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="btn" onclick="generirajEkipe()">⚡ Generiraj ekipe</button>
+      <button class="btn secondary" onclick="selectAllPlayers()">Vsi</button>
+      <button class="btn secondary" onclick="deselectAllPlayers()">Počisti</button>
+      <span id="selected-count" class="info-chip">0 izbranih</span>
+    </div>
+  </div>
+  <div id="ekipe-result"></div>
+</div>
+
+<div id="page-tekme" class="page">
+  <div class="section-title">TEKME</div>
+  <div class="section-sub">Vse odigrane tekme</div>
+  <div id="tekme-list"></div>
+</div>
+
+<div id="page-vnos" class="page">
+  <div class="section-title">VNOS TEKME</div>
+  <div class="section-sub">Dodaj novo odigrano tekmo</div>
+  <div class="card">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Datum</label>
+        <input type="date" id="vnos-datum">
+      </div>
+      <div class="form-group">
+        <label>Rezultat</label>
+        <select id="vnos-rezultat">
+          <option value="zmaga_beli">Beli zmagajo</option>
+          <option value="zmaga_crni">Črni zmagajo</option>
+          <option value="neodloceno">Neodločeno</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Ekipa Beli</label>
+        <div id="vnos-beli-grid" class="player-grid"></div>
+      </div>
+      <div class="form-group full">
+        <label>Ekipa Črni</label>
+        <div id="vnos-crni-grid" class="player-grid"></div>
+      </div>
+      <div class="form-group full">
+        <label>Opomba (neobvezno)</label>
+        <input type="text" id="vnos-opomba" placeholder="npr. 3 ekipe, random gostje...">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="shraniTekmo()">Shrani tekmo</button>
+      <button class="btn secondary" onclick="pocistiVnos()">Počisti</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+// ============================================================
+// PODATKI — uvoženi iz Excel priponke
+// ============================================================
+const IGRALCI_DEFAULT = [
+  'Janez','Jaka','Luka','Lenart','Jenko','Krišpin','Lev','Miki',
+  'Anže Zalaznik','Žiberna','Jereb','Fišer','Emsad','Črtanc',
+  'Franci','Kris','Svit','Tijam','Domen','Tomaž','Škarabot',
+  'Žan Strehar','Žan Zalar','Matic','Rigler'
+  // Opomba: Domen = Fišer (ista oseba, združeno pod "Domen")
+];
+
+// Tekme iz Excel — normalizirane
+// Domen = Fišer (ista oseba, povsod zapisano kot "Domen")
+// 2:0 = 2 zmagi iste ekipe tisti dan → 2 ločeni tekmi
+// format: { datum, rezultat: 'zmaga_beli'|'zmaga_crni'|'neodloceno', beli:[], crni:[], opomba }
+const TEKME_DEFAULT = [
+  // 27.9. — 2:0 za bele → 2 tekmi
+  { datum:'2025-09-27', rezultat:'zmaga_beli', beli:['Janez','Škarabot','Miki','Vito','Jereb'], crni:['Lev','Luka','Anže Zalaznik','Krišpin','Žan Strehar'], opomba:'Tekma 1/2' },
+  { datum:'2025-09-27', rezultat:'zmaga_beli', beli:['Janez','Škarabot','Miki','Vito','Jereb'], crni:['Lev','Luka','Anže Zalaznik','Krišpin','Žan Strehar'], opomba:'Tekma 2/2' },
+  // 11.10.
+  { datum:'2025-10-11', rezultat:'neodloceno', beli:['Jereb','Miki','Emsad','Janez','Kristjan'], crni:['Krišpin','Lev','Luka','Škarabot','Jenko'], opomba:'' },
+  // 25.10. — Fišer → Domen
+  { datum:'2025-10-25', rezultat:'neodloceno', beli:['Žiberna','Janez','Kristjan','Jereb','Domen','Luka','Škarabot'], crni:['Lev','Gobec','Jaka','Miki','Črtanc','Krišpin','Žan Strehar'], opomba:'' },
+  // 1.11. — Fišer → Domen
+  { datum:'2025-11-01', rezultat:'zmaga_beli', beli:['Žiberna','Žan Zalar','Kmetič','Škarabot','Luka','Jerak'], crni:['Jaka','Emsad','Tijam','Domen','Lenart','Jereb'], opomba:'' },
+  // 8.11.
+  { datum:'2025-11-08', rezultat:'zmaga_beli', beli:['Lenart','Domen','Miki','Črtanc','Krišpin'], crni:['Jaka','Janez','Škarabot','Jenko','Jereb'], opomba:'' },
+  // 15.11.
+  { datum:'2025-11-15', rezultat:'neodloceno', beli:['Jaka','Janez','Krišpin','Žan Strehar'], crni:['Škarabot','Gaps','Matic','Lenart'], opomba:'' },
+  // 22.11. — 2:0 za bele → 2 tekmi
+  { datum:'2025-11-22', rezultat:'zmaga_beli', beli:['Jaka','Luka','Janez','Kamšek','Jereb'], crni:['Jenko','Krišpin','Lenart','Emsad','Anže Zalaznik'], opomba:'Tekma 1/2' },
+  { datum:'2025-11-22', rezultat:'zmaga_beli', beli:['Jaka','Luka','Janez','Kamšek','Jereb'], crni:['Jenko','Krišpin','Lenart','Emsad','Anže Zalaznik'], opomba:'Tekma 2/2' },
+  // 6.12. — 3 ekipe: Pisani 1:0 Črni, Pisani 1:1 Beli → Pisani zmagali 1, Beli 0, Črni 0 (poenostavljeno)
+  { datum:'2025-12-06', rezultat:'zmaga_crni', beli:['Škarabot','Gobec','Janez','Lev','Emsad'], crni:['Jaka','Žiberna','Krišpin','Jenko','Florjan'], opomba:'3 ekipe — Pisani (črni) zmagali' },
+  // 20.12.
+  { datum:'2025-12-22', rezultat:'zmaga_beli', beli:['Miki','Anže Zalaznik','Janez','Škarabot'], crni:['rnd','rnd','rnd','rnd'], opomba:'' },
+  // 27.12.
+  { datum:'2025-12-27', rezultat:'zmaga_beli', beli:['Jaka','Žan Zalar','Jan Šuligoj','Krišpin','Žiga Kališnik'], crni:['Žiberna','Aleš Ljoljo','Žiga Štempihar','Anže Zalaznik','Janez'], opomba:'' },
+  // 3.1.
+  { datum:'2026-01-03', rezultat:'zmaga_beli', beli:['Janez','Zahič','Lev','Lenart','Žan Strehar','Luka'], crni:['Jaka','Svit','Tijam','Žan Zalar','Franci','Kris'], opomba:'' },
+  // 10.1.
+  { datum:'2026-01-10', rezultat:'neodloceno', beli:['Lenart','Lev','Anže Zalaznik','Franci','Janez','Kris','Jenko','Svit'], crni:['Jaka','Žiberna','Tijam','Leon'], opomba:'3 ekipe — izenačen' },
+  // 17.1.
+  { datum:'2026-01-17', rezultat:'neodloceno', beli:['Jaka','Miki','Anže Zalaznik','Emsad','Franci','Janez','Kris','Luka'], crni:['Jenko','Brvar','Žan Zalar'], opomba:'Izenačen rezultat' },
+  // 24.1.
+  { datum:'2026-01-24', rezultat:'zmaga_crni', beli:['Jaka','Črtanc','Anže Zalaznik','Luka','Jenko'], crni:['Tomaž','Lenart','rnd','rnd','rnd'], opomba:'' },
+  // 31.1. — 3 ekipe, Pisani zmagali obe → Pisani 2 zmagi, ostali po 0
+  { datum:'2026-01-31', rezultat:'zmaga_crni', beli:['Lev','Kris','Tomaž','Maks','Svit'], crni:['Franci','Zahič','Luka','Rigler','Tijam'], opomba:'3 ekipe — Pisani (črni) zmagali obe tekmi, 1/2' },
+  { datum:'2026-01-31', rezultat:'zmaga_crni', beli:['Jenko','Emsad','Janez','Zalaznik','Jole'], crni:['Franci','Zahič','Luka','Rigler','Tijam'], opomba:'3 ekipe — Pisani (črni) zmagali obe tekmi, 2/2' },
+  // 7.2.
+  { datum:'2026-02-07', rezultat:'zmaga_beli', beli:['Tijam','Franci','Jenko','Žiberna','Jereb'], crni:['Žan Strehar','Lev','Krišpin','Jereb','rnd'], opomba:'' },
+  // 21.2.
+  { datum:'2026-02-21', rezultat:'zmaga_beli', beli:['Franci','Jaka','Luka','Lev','Žan Strehar','Tomaž'], crni:['Škarabot','Lenart','Anže Zalaznik','Janez','rnd'], opomba:'' },
+  // 28.2.
+  { datum:'2026-02-28', rezultat:'neodloceno', beli:['Jaka','Lev','Janez','Jaka Gerič','Anže Zalaznik'], crni:['Lenart','Maks','Štempihar','Jerak','Krišpin'], opomba:'' },
+  // 7.3.
+  { datum:'2026-03-07', rezultat:'zmaga_beli', beli:['Jaka','Črtanc','Jenko','Lenart','Anže Zalaznik','Janez'], crni:['Lev','Luka','Arne','Krišpin','Kris'], opomba:'' },
+  // 14.3.
+  { datum:'2026-03-14', rezultat:'zmaga_beli', beli:['Domen','Kris','Krišpin','Tomaž','Anže Zalaznik'], crni:['Jenko','Janez','Luka','Lev','Jereb'], opomba:'' },
+  // 21.3.
+  { datum:'2026-03-21', rezultat:'zmaga_beli', beli:['Anže Zalaznik','Janez','Lenart','Jenko','Luka'], crni:['Jaka','Tomaž','Emsad','Krišpin','Lev'], opomba:'' },
+  // 4.4.
+  { datum:'2026-04-04', rezultat:'zmaga_crni', beli:['Jaka','Domen','Emsad','Luka','Krišpin'], crni:['Anže Zalaznik','Janez','Lenart','Lev','Jenko','Franci'], opomba:'' },
+  // 11.4.
+  { datum:'2026-04-11', rezultat:'zmaga_beli', beli:['Jaka','Janez','Emsad','Brin Smole','Krišpin'], crni:['Jenko','Domen','Jereb','Kris','Lev'], opomba:'' },
+  // 18.4.
+  { datum:'2026-04-18', rezultat:'neodloceno', beli:['Jaka','Lev','Črtanc','Janez','Emsad','Domen'], crni:['Miki','Krišpin','Jenko','Luka','Lenart','Anže Zalaznik','Jereb'], opomba:'' },
+];
+
+// ============================================================
+// STANJE APLIKACIJE
+// ============================================================
+const DATA_VERSION = 'v3';
+if (localStorage.getItem('ledina_version') !== DATA_VERSION) {
+  localStorage.removeItem('ledina_tekme');
+  localStorage.removeItem('ledina_igralci');
+  localStorage.setItem('ledina_version', DATA_VERSION);
+}
+let tekme = JSON.parse(localStorage.getItem('ledina_tekme') || 'null') || [...TEKME_DEFAULT];
+let igralci = JSON.parse(localStorage.getItem('ledina_igralci') || 'null') || [...IGRALCI_DEFAULT];
+let selectedForEkipe = new Set();
+let selectedBeli = new Set();
+let selectedCrni = new Set();
+
+function save() {
+  localStorage.setItem('ledina_tekme', JSON.stringify(tekme));
+  localStorage.setItem('ledina_igralci', JSON.stringify(igralci));
+}
+
+// ============================================================
+// STATISTIKA
+// ============================================================
+function izracunajStatistiko() {
+  const stats = {};
+  
+  // Filtriraj tekme z random igralci
+  const validTekme = tekme.filter(t => true); // vse
+  
+  validTekme.forEach(tekma => {
+    const { rezultat, beli, crni } = tekma;
+    
+    const vsiBeli = (beli || []).filter(p => !p.startsWith('rnd') && p !== 'Golman' && p !== 'rnd');
+    const vsiCrni = (crni || []).filter(p => !p.startsWith('rnd') && p !== 'Golman' && p !== 'rnd');
+    
+    const vseSti = [...new Set([...vsiBeli, ...vsiCrni])];
+    
+    vseSti.forEach(p => {
+      if (!stats[p]) stats[p] = { tekme: 0, zmage: 0, neodloceno: 0, porazi: 0, rezultati: [] };
+    });
+    
+    let beliRez, crniRez;
+    if (rezultat === 'zmaga_beli') { beliRez = 'W'; crniRez = 'L'; }
+    else if (rezultat === 'zmaga_crni') { beliRez = 'L'; crniRez = 'W'; }
+    else { beliRez = 'D'; crniRez = 'D'; }
+    
+    vsiBeli.forEach(p => {
+      if (!stats[p]) stats[p] = { tekme: 0, zmage: 0, neodloceno: 0, porazi: 0, rezultati: [] };
+      stats[p].tekme++;
+      stats[p].rezultati.push({ datum: tekma.datum, r: beliRez });
+      if (beliRez === 'W') stats[p].zmage++;
+      else if (beliRez === 'D') stats[p].neodloceno++;
+      else stats[p].porazi++;
+    });
+    
+    vsiCrni.forEach(p => {
+      if (!stats[p]) stats[p] = { tekme: 0, zmage: 0, neodloceno: 0, porazi: 0, rezultati: [] };
+      stats[p].tekme++;
+      stats[p].rezultati.push({ datum: tekma.datum, r: crniRez });
+      if (crniRez === 'W') stats[p].zmage++;
+      else if (crniRez === 'D') stats[p].neodloceno++;
+      else stats[p].porazi++;
+    });
+  });
+  
+  // Sortiraj rezultate po datumu
+  Object.values(stats).forEach(s => {
+    s.rezultati.sort((a, b) => a.datum.localeCompare(b.datum));
+  });
+  
+  return stats;
+}
+
+function ocenaIgralca(st) {
+  if (st.tekme === 0) return 0;
+  const winRate = st.zmage / st.tekme;
+  const drawRate = st.neodloceno / st.tekme;
+  
+  // Forma: zadnjih 5
+  const zadnjih5 = st.rezultati.slice(-5);
+  let formaBonus = 0;
+  zadnjih5.forEach((r, i) => {
+    const weight = (i + 1) / 5; // novejše teže
+    if (r.r === 'W') formaBonus += weight * 0.3;
+    else if (r.r === 'D') formaBonus += weight * 0.1;
+  });
+  
+  return winRate * 100 + drawRate * 30 + formaBonus * 100;
+}
+
+// ============================================================
+// LESTVICA
+// ============================================================
+let activeFilter = 'vsi';
+
+function setFilter(filter) {
+  activeFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('filter-' + filter).classList.add('active');
+  renderLestvica();
+}
+
+function renderLestvica() {
+  const stats = izracunajStatistiko();
+  const minTekme = activeFilter === '5plus' ? 5 : 2;
+  
+  const list = Object.entries(stats)
+    .filter(([,s]) => s.tekme >= minTekme)
+    .map(([ime, s]) => ({ ime, ...s, ocena: ocenaIgralca(s) }))
+    .sort((a, b) => b.ocena - a.ocena);
+  
+  // Stats overview
+  const totalTekme = tekme.length;
+  const totalIgralci = list.length;
+  
+  document.getElementById('lestvica-stats').innerHTML = `
+    <div class="stat-box"><div class="big-stat">${totalTekme}</div><div class="label">Odigranih tekem</div></div>
+    <div class="stat-box"><div class="big-stat">${totalIgralci}</div><div class="label">${activeFilter === '5plus' ? 'Vsaj 5 tekem' : 'Vsi igralci'}</div></div>
+    <div class="stat-box"><div class="big-stat">${list[0]?.ime.split(' ')[0] || '-'}</div><div class="label">Trenutno #1</div></div>
+  `;
+  
+  const maxOcena = list[0]?.ocena || 1;
+  const tbody = document.getElementById('lestvica-body');
+  tbody.innerHTML = '';
+  
+  list.forEach((p, i) => {
+    const winPct = p.tekme > 0 ? Math.round((p.zmage / p.tekme) * 100) : 0;
+    const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+    
+    const slice = p.rezultati.slice(-5);
+    let formaDots = '';
+    for (let f = 0; f < 5; f++) {
+      formaDots += f < slice.length
+        ? `<div class="forma-dot ${slice[f].r}"></div>`
+        : `<div class="forma-dot empty"></div>`;
+    }
+    
+    const pillClass = winPct >= 55 ? 'green' : winPct >= 40 ? 'amber' : 'red';
+    
+    tbody.innerHTML += `
+      <tr>
+        <td><span class="rank-badge ${rankClass}">${i + 1}</span></td>
+        <td><span class="player-name">${p.ime}</span></td>
+        <td>${p.tekme}</td>
+        <td style="color:var(--green);font-weight:600">${p.zmage}</td>
+        <td style="color:var(--amber);font-weight:600">${p.neodloceno}</td>
+        <td style="color:var(--red);font-weight:600">${p.porazi}</td>
+        <td><span class="stat-pill ${pillClass}">${winPct}%</span></td>
+        <td><div class="forma">${formaDots}</div></td>
+        <td>
+          <div style="font-size:12px;font-weight:600;color:var(--muted)">${Math.round(p.ocena)}</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width:${(p.ocena/maxOcena)*100}%"></div></div>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+// ============================================================
+// GENERIRANJE EKIP
+// ============================================================
+function renderEkipeGrid() {
+  const grid = document.getElementById('ekipe-player-grid');
+  grid.innerHTML = '';
+  const stats = izracunajStatistiko();
+  
+  // Prikaži vse "stalne" + tiste ki so bili vsaj 2x
+  const prikazani = [...new Set([
+    ...igralci,
+    ...Object.keys(stats).filter(p => stats[p].tekme >= 2)
+  ])].sort();
+  
+  prikazani.forEach(ime => {
+    const div = document.createElement('div');
+    div.className = 'player-check' + (selectedForEkipe.has(ime) ? ' selected' : '');
+    div.textContent = ime;
+    div.onclick = () => {
+      if (selectedForEkipe.has(ime)) selectedForEkipe.delete(ime);
+      else selectedForEkipe.add(ime);
+      div.classList.toggle('selected');
+      document.getElementById('selected-count').textContent = selectedForEkipe.size + ' izbranih';
+    };
+    grid.appendChild(div);
+  });
+  
+  document.getElementById('selected-count').textContent = selectedForEkipe.size + ' izbranih';
+}
+
+function selectAllPlayers() {
+  const stats = izracunajStatistiko();
+  const prikazani = [...new Set([...igralci, ...Object.keys(stats).filter(p => stats[p].tekme >= 2)])];
+  prikazani.forEach(p => selectedForEkipe.add(p));
+  renderEkipeGrid();
+}
+
+function deselectAllPlayers() {
+  selectedForEkipe.clear();
+  renderEkipeGrid();
+}
+
+function generirajEkipe() {
+  const stats = izracunajStatistiko();
+  const prisotni = [...selectedForEkipe];
+  
+  if (prisotni.length < 4) {
+    showToast('Izberi vsaj 4 igralce!');
+    return;
+  }
+  
+  // Ocena za vsakega
+  const ocenjeni = prisotni.map(ime => ({
+    ime,
+    ocena: stats[ime] ? ocenaIgralca(stats[ime]) : 50, // default 50 za neznane
+    tekme: stats[ime]?.tekme || 0
+  })).sort((a, b) => b.ocena - a.ocena);
+  
+  // Serpentinsko razporejanje (1→beli, 2→crni, 3→crni, 4→beli, ...)
+  const beli = [], crni = [];
+  ocenjeni.forEach((p, i) => {
+    const par = Math.floor(i / 2);
+    if (par % 2 === 0) {
+      if (i % 2 === 0) beli.push(p); else crni.push(p);
+    } else {
+      if (i % 2 === 0) crni.push(p); else beli.push(p);
+    }
+  });
+  
+  const vsotaBeli = beli.reduce((s, p) => s + p.ocena, 0);
+  const vsotaCrni = crni.reduce((s, p) => s + p.ocena, 0);
+  const maxOcena = Math.max(...ocenjeni.map(p => p.ocena), 1);
+  
+  const diff = Math.abs(vsotaBeli - vsotaCrni).toFixed(1);
+  
+  let html = `
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <span class="info-chip">Razlika v moči: <strong style="color:var(--green);margin-left:4px">${diff}</strong></span>
+      <button class="btn secondary" onclick="generirajEkipe()" style="padding:6px 14px;font-size:13px">↻ Premešaj</button>
+    </div>
+    <div class="team-cards">
+      <div class="team-card">
+        <div class="team-header white">
+          BELI
+          <span class="team-rating">moč: ${vsotaBeli.toFixed(0)}</span>
+        </div>
+        ${beli.map(p => `
+          <div class="team-player">
+            <span>${p.ime}</span>
+            <span class="player-rating-small">${Math.round(p.ocena)}</span>
+          </div>`).join('')}
+      </div>
+      <div class="team-card">
+        <div class="team-header black">
+          ČRNI
+          <span class="team-rating">moč: ${vsotaCrni.toFixed(0)}</span>
+        </div>
+        ${crni.map(p => `
+          <div class="team-player">
+            <span>${p.ime}</span>
+            <span class="player-rating-small">${Math.round(p.ocena)}</span>
+          </div>`).join('')}
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('ekipe-result').innerHTML = html;
+}
+
+// ============================================================
+// TEKME
+// ============================================================
+function renderTekme() {
+  const sorted = [...tekme].sort((a, b) => b.datum.localeCompare(a.datum));
+  const list = document.getElementById('tekme-list');
+  
+  list.innerHTML = sorted.map(t => {
+    const d = new Date(t.datum);
+    const dateStr = d.toLocaleDateString('sl-SI', { day: 'numeric', month: 'long', year: 'numeric' });
+    let rezClass, rezText;
+    if (t.rezultat === 'zmaga_beli') { rezClass = 'zmaga'; rezText = 'BELI ZMAGAJO'; }
+    else if (t.rezultat === 'zmaga_crni') { rezClass = 'poraz'; rezText = 'ČRNI ZMAGAJO'; }
+    else { rezClass = 'neodloceno'; rezText = 'NEODLOČENO'; }
+    
+    const beliNames = (t.beli||[]).filter(p=>!p.startsWith('rnd')).join(', ');
+    const crniNames = (t.crni||[]).filter(p=>!p.startsWith('rnd')).join(', ');
+    
+    return `
+      <div class="tekma-item">
+        <div>
+          <div class="tekma-date">${dateStr}</div>
+          <div class="tekma-result ${rezClass}">${rezText}</div>
+          <div class="tekma-teams">Beli: ${beliNames || '—'}</div>
+          <div class="tekma-teams">Črni: ${crniNames || '—'}</div>
+          ${t.opomba ? `<div class="tekma-teams" style="margin-top:4px;font-style:italic">${t.opomba}</div>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ============================================================
+// VNOS
+// ============================================================
+function renderVnos() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('vnos-datum').value = today;
+  
+  const vsiIgralci = [...new Set([...igralci])].sort();
+  
+  ['vnos-beli-grid', 'vnos-crni-grid'].forEach((gridId, idx) => {
+    const grid = document.getElementById(gridId);
+    const sel = idx === 0 ? selectedBeli : selectedCrni;
+    grid.innerHTML = '';
+    vsiIgralci.forEach(ime => {
+      const div = document.createElement('div');
+      div.className = 'player-check' + (sel.has(ime) ? ' selected' : '');
+      div.textContent = ime;
+      div.onclick = () => {
+        if (sel.has(ime)) sel.delete(ime);
+        else sel.add(ime);
+        div.classList.toggle('selected');
+      };
+      grid.appendChild(div);
+    });
+  });
+}
+
+function shraniTekmo() {
+  const datum = document.getElementById('vnos-datum').value;
+  const rezultat = document.getElementById('vnos-rezultat').value;
+  const opomba = document.getElementById('vnos-opomba').value;
+  
+  if (!datum) { showToast('Izberi datum!'); return; }
+  if (selectedBeli.size === 0 && selectedCrni.size === 0) { showToast('Dodaj vsaj enega igralca!'); return; }
+  
+  tekme.push({
+    datum,
+    rezultat,
+    beli: [...selectedBeli],
+    crni: [...selectedCrni],
+    opomba
+  });
+  
+  save();
+  selectedBeli.clear();
+  selectedCrni.clear();
+  renderVnos();
+  showToast('Tekma shranjena! ⚽');
+  
+  setTimeout(() => showPage('lestvica'), 800);
+}
+
+function pocistiVnos() {
+  selectedBeli.clear();
+  selectedCrni.clear();
+  renderVnos();
+}
+
+// ============================================================
+// NAVIGACIJA
+// ============================================================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  
+  const btns = document.querySelectorAll('nav button');
+  const idx = ['lestvica','ekipe','tekme','vnos'].indexOf(id);
+  if (btns[idx]) btns[idx].classList.add('active');
+  
+  if (id === 'lestvica') renderLestvica();
+  else if (id === 'ekipe') renderEkipeGrid();
+  else if (id === 'tekme') renderTekme();
+  else if (id === 'vnos') renderVnos();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Init
+renderLestvica();
+
+// PWA: Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+
+// PWA: Install prompt (Android)
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Pokaži install banner po 3s če še ni nameščena
+  setTimeout(() => {
+    if (deferredPrompt) showInstallBanner();
+  }, 3000);
+});
+
+function showInstallBanner() {
+  const banner = document.getElementById('install-banner');
+  if (banner) banner.style.display = 'flex';
+}
+
+function installApp() {
+  const banner = document.getElementById('install-banner');
+  if (banner) banner.style.display = 'none';
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  }
+}
+
+function dismissInstall() {
+  const banner = document.getElementById('install-banner');
+  if (banner) banner.style.display = 'none';
+}
+</script>
+<!-- Install banner (Android) -->
+<div id="install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);padding:14px 20px calc(14px + env(safe-area-inset-bottom));align-items:center;justify-content:space-between;gap:12px;z-index:200;">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="icon-192.png" style="width:40px;height:40px;border-radius:10px;">
+    <div>
+      <div style="font-weight:600;font-size:14px;">Ledina FC</div>
+      <div style="font-size:12px;color:var(--muted);">Namesti na domači zaslon</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <button class="btn secondary" onclick="dismissInstall()" style="padding:8px 14px;font-size:13px;">Ne zdaj</button>
+    <button class="btn" onclick="installApp()" style="padding:8px 14px;font-size:13px;">Namesti</button>
+  </div>
+</div>
+
+</body>
+</html>
