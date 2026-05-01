@@ -541,10 +541,9 @@
 // ============================================================
 const IGRALCI_DEFAULT = [
   'Janez','Jaka','Luka','Lenart','Jenko','Krišpin','Lev','Miki',
-  'Anže Zalaznik','Žiberna','Jereb','Fišer','Emsad','Črtanc',
+  'Anže Zalaznik','Žiberna','Jereb','Emsad','Črtanc',
   'Franci','Kris','Svit','Tijam','Domen','Tomaž','Škarabot',
   'Žan Strehar','Žan Zalar','Matic','Rigler'
-  // Opomba: Domen = Fišer (ista oseba, združeno pod "Domen")
 ];
 
 // Tekme iz Excel — normalizirane
@@ -573,7 +572,7 @@ const TEKME_DEFAULT = [
   // 20.12.
   { datum:'2025-12-22', rezultat:'zmaga_beli', beli:['Miki','Anže Zalaznik','Janez','Škarabot'], crni:['rnd','rnd','rnd','rnd'], opomba:'' },
   // 27.12.
-  { datum:'2025-12-27', rezultat:'zmaga_beli', beli:['Jaka','Žan Zalar','Jan Šuligoj','Krišpin','Žiga Kališnik'], crni:['Žiberna','Aleš Ljoljo','Žiga Štempihar','Anže Zalaznik','Janez'], opomba:'' },
+  { datum:'2025-12-27', rezultat:'zmaga_beli', beli:['Jaka','Žan Zalar','Jan Šuligoj','Krišpin','Žiga Kališnik'], crni:['Žiberna','Aleš Ljoljo','Žiga Štempihar','Anže Zalaznik','Janez'], opomba:'' }, // Štempihar = Žiga Štempihar
   // 3.1.
   { datum:'2026-01-03', rezultat:'zmaga_beli', beli:['Janez','Zahič','Lev','Lenart','Žan Strehar','Luka'], crni:['Jaka','Svit','Tijam','Žan Zalar','Franci','Kris'], opomba:'' },
   // 10.1.
@@ -616,6 +615,27 @@ if (localStorage.getItem('ledina_version') !== DATA_VERSION) {
 }
 let tekme = JSON.parse(localStorage.getItem('ledina_tekme') || 'null') || [...TEKME_DEFAULT];
 let igralci = JSON.parse(localStorage.getItem('ledina_igralci') || 'null') || [...IGRALCI_DEFAULT];
+
+// Migracija: združi dvojnike imen
+const MERGE_MAP = {
+  'Brvar': 'Svit',
+  'Štempihar': 'Žiga Štempihar',
+  'Zalaznik': 'Anže Zalaznik',
+  'Fišer': 'Domen',
+};
+const MERGE_VERSION = 'merge-v1';
+if (localStorage.getItem('ledina_merge') !== MERGE_VERSION) {
+  const zamenjaj = ime => MERGE_MAP[ime] || ime;
+  tekme = tekme.map(t => ({
+    ...t,
+    beli: (t.beli || []).map(zamenjaj),
+    crni: (t.crni || []).map(zamenjaj),
+  }));
+  igralci = [...new Set(igralci.map(zamenjaj))];
+  localStorage.setItem('ledina_tekme', JSON.stringify(tekme));
+  localStorage.setItem('ledina_igralci', JSON.stringify(igralci));
+  localStorage.setItem('ledina_merge', MERGE_VERSION);
+}
 let selectedForEkipe = new Set();
 let selectedBeli = new Set();
 let selectedCrni = new Set();
