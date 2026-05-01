@@ -375,6 +375,31 @@
     font-size: 12px;
     color: var(--muted);
   }
+
+  /* Igralci management */
+  .igralec-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    transition: background .15s;
+  }
+  .igralec-row:last-child { border-bottom: none; }
+  .igralec-row:hover { background: var(--bg3); }
+  .btn-delete {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 8px;
+    transition: all .2s;
+    line-height: 1;
+  }
+  .btn-delete:hover { border-color: var(--red); color: var(--red); background: var(--red-dim); }
 </style>
 </head>
 <body>
@@ -385,6 +410,7 @@
     <button class="active" onclick="showPage('lestvica')">Lestvica</button>
     <button onclick="showPage('ekipe')">Ekipe</button>
     <button onclick="showPage('tekme')">Tekme</button>
+    <button onclick="showPage('igralci')">Igralci</button>
     <button onclick="showPage('vnos')">+ Vnos</button>
   </nav>
 </header>
@@ -438,6 +464,21 @@
   <div class="section-title">TEKME</div>
   <div class="section-sub">Vse odigrane tekme</div>
   <div id="tekme-list"></div>
+</div>
+
+<div id="page-igralci" class="page">
+  <div class="section-title">UPRAVLJANJE IGRALCEV</div>
+  <div class="section-sub">Dodaj novega ali odstrani obstoječega igralca</div>
+  <div class="card">
+    <label>Dodaj novega igralca</label>
+    <div style="display:flex;gap:10px;margin-top:8px;">
+      <input type="text" id="novi-igralec-ime" placeholder="Ime in priimek..." style="flex:1" onkeydown="if(event.key==='Enter')dodajIgralca()">
+      <button class="btn" onclick="dodajIgralca()">Dodaj</button>
+    </div>
+  </div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div id="igralci-list"></div>
+  </div>
 </div>
 
 <div id="page-vnos" class="page">
@@ -907,20 +948,59 @@ function pocistiVnos() {
 }
 
 // ============================================================
+// UPRAVLJANJE IGRALCEV
+// ============================================================
+function renderIgralci() {
+  const sorted = [...igralci].sort((a, b) => a.localeCompare(b, 'sl'));
+  const list = document.getElementById('igralci-list');
+  if (sorted.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="icon">👥</div>Ni dodanih igralcev</div>';
+    return;
+  }
+  list.innerHTML = sorted.map(ime => `
+    <div class="igralec-row">
+      <span>${ime}</span>
+      <button class="btn-delete" onclick="odstraniIgralca('${ime.replace(/'/g, "\\'")}')" title="Odstrani">✕</button>
+    </div>
+  `).join('');
+}
+
+function dodajIgralca() {
+  const input = document.getElementById('novi-igralec-ime');
+  const ime = input.value.trim();
+  if (!ime) { showToast('Vnesi ime igralca!'); return; }
+  if (igralci.includes(ime)) { showToast('Igralec že obstaja!'); return; }
+  igralci.push(ime);
+  save();
+  input.value = '';
+  renderIgralci();
+  showToast('Igralec ' + ime + ' dodan! ✓');
+}
+
+function odstraniIgralca(ime) {
+  if (!confirm('Odstrani ' + ime + ' s seznama?')) return;
+  igralci = igralci.filter(i => i !== ime);
+  save();
+  renderIgralci();
+  showToast(ime + ' odstranjen.');
+}
+
+// ============================================================
 // NAVIGACIJA
 // ============================================================
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  
+
   const btns = document.querySelectorAll('nav button');
-  const idx = ['lestvica','ekipe','tekme','vnos'].indexOf(id);
+  const idx = ['lestvica','ekipe','tekme','igralci','vnos'].indexOf(id);
   if (btns[idx]) btns[idx].classList.add('active');
-  
+
   if (id === 'lestvica') renderLestvica();
   else if (id === 'ekipe') renderEkipeGrid();
   else if (id === 'tekme') renderTekme();
+  else if (id === 'igralci') renderIgralci();
   else if (id === 'vnos') renderVnos();
 }
 
