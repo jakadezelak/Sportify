@@ -951,18 +951,25 @@ function pocistiVnos() {
 // UPRAVLJANJE IGRALCEV
 // ============================================================
 function renderIgralci() {
-  const sorted = [...igralci].sort((a, b) => a.localeCompare(b, 'sl'));
+  const stats = izracunajStatistiko();
+  const vsi = [...new Set([
+    ...igralci,
+    ...Object.keys(stats)
+  ])].sort((a, b) => a.localeCompare(b, 'sl'));
+
   const list = document.getElementById('igralci-list');
-  if (sorted.length === 0) {
+  if (vsi.length === 0) {
     list.innerHTML = '<div class="empty-state"><div class="icon">👥</div>Ni dodanih igralcev</div>';
     return;
   }
-  list.innerHTML = sorted.map(ime => `
+  list.innerHTML = vsi.map(ime => {
+    const jeStaln = igralci.includes(ime);
+    return `
     <div class="igralec-row">
-      <span>${ime}</span>
+      <span>${ime}${!jeStaln ? ' <span style="font-size:11px;color:var(--muted)">(gost)</span>' : ''}</span>
       <button class="btn-delete" onclick="odstraniIgralca('${ime.replace(/'/g, "\\'")}')" title="Odstrani">✕</button>
     </div>
-  `).join('');
+  `;}).join('');
 }
 
 function dodajIgralca() {
@@ -978,7 +985,12 @@ function dodajIgralca() {
 }
 
 function odstraniIgralca(ime) {
-  if (!confirm('Odstrani ' + ime + ' s seznama?')) return;
+  const jeStaln = igralci.includes(ime);
+  const msg = jeStaln
+    ? 'Odstrani ' + ime + ' s seznama?'
+    : ime + ' je gost iz zgodovine tekem in ga ni mogoče odstraniti.';
+  if (!jeStaln) { showToast(msg); return; }
+  if (!confirm(msg)) return;
   igralci = igralci.filter(i => i !== ime);
   save();
   renderIgralci();
