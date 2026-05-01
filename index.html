@@ -834,10 +834,10 @@ function generirajEkipe() {
     return;
   }
   
-  // Ocena za vsakega
+  // Ocena za vsakega — dodaj majhen naključni jitter da Premešaj da različen rezultat
   const ocenjeni = prisotni.map(ime => ({
     ime,
-    ocena: stats[ime] ? ocenaIgralca(stats[ime]) : 50, // default 50 za neznane
+    ocena: (stats[ime] ? ocenaIgralca(stats[ime]) : 50) + (Math.random() * 10 - 5),
     tekme: stats[ime]?.tekme || 0
   })).sort((a, b) => b.ocena - a.ocena);
   
