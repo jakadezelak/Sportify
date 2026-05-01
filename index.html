@@ -400,6 +400,20 @@
     line-height: 1;
   }
   .btn-delete:hover { border-color: var(--red); color: var(--red); background: var(--red-dim); }
+
+  .btn-edit {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 10px;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+  }
+  .btn-edit:hover { border-color: var(--green); color: var(--green); background: var(--green-dim); }
 </style>
 </head>
 <body>
@@ -482,8 +496,8 @@
 </div>
 
 <div id="page-vnos" class="page">
-  <div class="section-title">VNOS TEKME</div>
-  <div class="section-sub">Dodaj novo odigrano tekmo</div>
+  <div class="section-title" id="vnos-title">VNOS TEKME</div>
+  <div class="section-sub" id="vnos-sub">Dodaj novo odigrano tekmo</div>
   <div class="card">
     <div class="form-grid">
       <div class="form-group">
@@ -512,8 +526,9 @@
       </div>
     </div>
     <div class="btn-row">
-      <button class="btn" onclick="shraniTekmo()">Shrani tekmo</button>
+      <button class="btn" id="vnos-btn-shrani" onclick="shraniTekmo()">Shrani tekmo</button>
       <button class="btn secondary" onclick="pocistiVnos()">Počisti</button>
+      <button class="btn secondary" id="vnos-btn-preklic" style="display:none" onclick="prekliciUredi()">Prekliči urejanje</button>
     </div>
   </div>
 </div>
@@ -861,9 +876,9 @@ function generirajEkipe() {
 // TEKME
 // ============================================================
 function renderTekme() {
-  const sorted = [...tekme].sort((a, b) => b.datum.localeCompare(a.datum));
+  const sorted = [...tekme].map((t, i) => ({ ...t, _i: i })).sort((a, b) => b.datum.localeCompare(a.datum));
   const list = document.getElementById('tekme-list');
-  
+
   list.innerHTML = sorted.map(t => {
     const d = new Date(t.datum);
     const dateStr = d.toLocaleDateString('sl-SI', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -871,10 +886,10 @@ function renderTekme() {
     if (t.rezultat === 'zmaga_beli') { rezClass = 'zmaga'; rezText = 'BELI ZMAGAJO'; }
     else if (t.rezultat === 'zmaga_crni') { rezClass = 'poraz'; rezText = 'ČRNI ZMAGAJO'; }
     else { rezClass = 'neodloceno'; rezText = 'NEODLOČENO'; }
-    
+
     const beliNames = (t.beli||[]).filter(p=>!p.startsWith('rnd')).join(', ');
     const crniNames = (t.crni||[]).filter(p=>!p.startsWith('rnd')).join(', ');
-    
+
     return `
       <div class="tekma-item">
         <div>
@@ -884,6 +899,7 @@ function renderTekme() {
           <div class="tekma-teams">Črni: ${crniNames || '—'}</div>
           ${t.opomba ? `<div class="tekma-teams" style="margin-top:4px;font-style:italic">${t.opomba}</div>` : ''}
         </div>
+        <button class="btn-edit" onclick="urediTekmo(${t._i})">Uredi</button>
       </div>
     `;
   }).join('');
@@ -892,12 +908,11 @@ function renderTekme() {
 // ============================================================
 // VNOS
 // ============================================================
-function renderVnos() {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('vnos-datum').value = today;
-  
+let editIndex = -1;
+
+function renderVnos(beli = new Set(), crni = new Set()) {
   const vsiIgralci = [...new Set([...igralci])].sort();
-  
+
   ['vnos-beli-grid', 'vnos-crni-grid'].forEach((gridId, idx) => {
     const grid = document.getElementById(gridId);
     const sel = idx === 0 ? selectedBeli : selectedCrni;
@@ -916,29 +931,71 @@ function renderVnos() {
   });
 }
 
+function urediTekmo(i) {
+  const t = tekme[i];
+  editIndex = i;
+
+  document.getElementById('vnos-title').textContent = 'UREDI TEKMO';
+  document.getElementById('vnos-sub').textContent = 'Posodobi podatke o tekmi';
+  document.getElementById('vnos-btn-shrani').textContent = 'Shrani spremembe';
+  document.getElementById('vnos-btn-preklic').style.display = '';
+
+  document.getElementById('vnos-datum').value = t.datum;
+  document.getElementById('vnos-rezultat').value = t.rezultat;
+  document.getElementById('vnos-opomba').value = t.opomba || '';
+
+  selectedBeli = new Set((t.beli||[]).filter(p => !p.startsWith('rnd')));
+  selectedCrni = new Set((t.crni||[]).filter(p => !p.startsWith('rnd')));
+
+  renderVnos();
+  showPage('vnos');
+}
+
+function prekliciUredi() {
+  editIndex = -1;
+  selectedBeli.clear();
+  selectedCrni.clear();
+  document.getElementById('vnos-title').textContent = 'VNOS TEKME';
+  document.getElementById('vnos-sub').textContent = 'Dodaj novo odigrano tekmo';
+  document.getElementById('vnos-btn-shrani').textContent = 'Shrani tekmo';
+  document.getElementById('vnos-btn-preklic').style.display = 'none';
+  document.getElementById('vnos-datum').value = new Date().toISOString().split('T')[0];
+  document.getElementById('vnos-opomba').value = '';
+  renderVnos();
+  showPage('tekme');
+}
+
 function shraniTekmo() {
   const datum = document.getElementById('vnos-datum').value;
   const rezultat = document.getElementById('vnos-rezultat').value;
   const opomba = document.getElementById('vnos-opomba').value;
-  
+
   if (!datum) { showToast('Izberi datum!'); return; }
   if (selectedBeli.size === 0 && selectedCrni.size === 0) { showToast('Dodaj vsaj enega igralca!'); return; }
-  
-  tekme.push({
-    datum,
-    rezultat,
-    beli: [...selectedBeli],
-    crni: [...selectedCrni],
-    opomba
-  });
-  
+
+  const tekma = { datum, rezultat, beli: [...selectedBeli], crni: [...selectedCrni], opomba };
+
+  if (editIndex >= 0) {
+    tekme[editIndex] = tekma;
+    editIndex = -1;
+    document.getElementById('vnos-title').textContent = 'VNOS TEKME';
+    document.getElementById('vnos-sub').textContent = 'Dodaj novo odigrano tekmo';
+    document.getElementById('vnos-btn-shrani').textContent = 'Shrani tekmo';
+    document.getElementById('vnos-btn-preklic').style.display = 'none';
+    showToast('Tekma posodobljena! ✓');
+  } else {
+    tekme.push(tekma);
+    showToast('Tekma shranjena! ⚽');
+  }
+
   save();
   selectedBeli.clear();
   selectedCrni.clear();
+  document.getElementById('vnos-datum').value = new Date().toISOString().split('T')[0];
+  document.getElementById('vnos-opomba').value = '';
   renderVnos();
-  showToast('Tekma shranjena! ⚽');
-  
-  setTimeout(() => showPage('lestvica'), 800);
+
+  setTimeout(() => showPage('tekme'), 800);
 }
 
 function pocistiVnos() {
@@ -1013,7 +1070,12 @@ function showPage(id) {
   else if (id === 'ekipe') renderEkipeGrid();
   else if (id === 'tekme') renderTekme();
   else if (id === 'igralci') renderIgralci();
-  else if (id === 'vnos') renderVnos();
+  else if (id === 'vnos') {
+    if (editIndex < 0) {
+      document.getElementById('vnos-datum').value = new Date().toISOString().split('T')[0];
+    }
+    renderVnos();
+  }
 }
 
 function showToast(msg) {
