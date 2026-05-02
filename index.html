@@ -937,7 +937,10 @@ function renderTekme() {
           <div class="tekma-teams">Črni: ${crniNames || '—'}</div>
           ${t.opomba ? `<div class="tekma-teams" style="margin-top:4px;font-style:italic">${t.opomba}</div>` : ''}
         </div>
-        <button class="btn-edit" onclick="urediTekmo(${t._i})">Uredi</button>
+        <div style="display:flex;gap:6px;">
+          <button class="btn-edit" onclick="urediTekmo(${t._i})">Uredi</button>
+          <button class="btn-delete" onclick="izbrisiTekmo(${t._i})" title="Izbriši">✕</button>
+        </div>
       </div>
     `;
   }).join('');
@@ -1082,6 +1085,16 @@ function shraniTekmo() {
   renderVnos();
 
   setTimeout(() => showPage('tekme'), 800);
+}
+
+function izbrisiTekmo(i) {
+  const t = tekme[i];
+  const d = new Date(t.datum).toLocaleDateString('sl-SI', { day: 'numeric', month: 'long', year: 'numeric' });
+  if (!confirm('Izbriši tekmo z dne ' + d + '?')) return;
+  tekme.splice(i, 1);
+  save();
+  renderTekme();
+  showToast('Tekma izbrisana.');
 }
 
 function pocistiVnos() {
