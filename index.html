@@ -436,6 +436,7 @@
   <div style="display:flex;gap:6px;margin-bottom:14px;">
     <button id="filter-vsi" class="filter-btn active" onclick="setFilter('vsi')">Vsi</button>
     <button id="filter-5plus" class="filter-btn" onclick="setFilter('5plus')">Vsaj 5 tekem</button>
+    <button id="filter-10plus" class="filter-btn" onclick="setFilter('10plus')">Vsaj 10 tekem</button>
   </div>
   <div class="card" style="padding:0;overflow:hidden;">
     <table class="lestvica-table">
@@ -744,20 +745,20 @@ function setFilter(filter) {
 
 function renderLestvica() {
   const stats = izracunajStatistiko();
-  const minTekme = activeFilter === '5plus' ? 5 : 2;
-  
+  const minTekme = activeFilter === '10plus' ? 10 : activeFilter === '5plus' ? 5 : 2;
+  const filterLabel = activeFilter === '10plus' ? 'Vsaj 10 tekem' : activeFilter === '5plus' ? 'Vsaj 5 tekem' : 'Vsi igralci';
+
   const list = Object.entries(stats)
     .filter(([,s]) => s.tekme >= minTekme)
     .map(([ime, s]) => ({ ime, ...s, ocena: ocenaIgralca(s) }))
     .sort((a, b) => b.ocena - a.ocena);
-  
-  // Stats overview
+
   const totalTekme = tekme.length;
   const totalIgralci = list.length;
-  
+
   document.getElementById('lestvica-stats').innerHTML = `
     <div class="stat-box"><div class="big-stat">${totalTekme}</div><div class="label">Odigranih tekem</div></div>
-    <div class="stat-box"><div class="big-stat">${totalIgralci}</div><div class="label">${activeFilter === '5plus' ? 'Vsaj 5 tekem' : 'Vsi igralci'}</div></div>
+    <div class="stat-box"><div class="big-stat">${totalIgralci}</div><div class="label">${filterLabel}</div></div>
     <div class="stat-box"><div class="big-stat">${list[0]?.ime.split(' ')[0] || '-'}</div><div class="label">Trenutno #1</div></div>
   `;
   
