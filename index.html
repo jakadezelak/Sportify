@@ -1042,10 +1042,14 @@ function renderIgralci() {
   }
   list.innerHTML = vsi.map(ime => {
     const jeStaln = igralci.includes(ime);
+    const safe = ime.replace(/'/g, "\\'");
     return `
-    <div class="igralec-row">
+    <div class="igralec-row" id="row-${CSS.escape(ime)}">
       <span>${ime}${!jeStaln ? ' <span style="font-size:11px;color:var(--muted)">(gost)</span>' : ''}</span>
-      <button class="btn-delete" onclick="odstraniIgralca('${ime.replace(/'/g, "\\'")}')" title="Odstrani">✕</button>
+      <div style="display:flex;gap:6px;">
+        <button class="btn-edit" onclick="zacniUrediIgralca('${safe}')" title="Preimenuj">✎</button>
+        <button class="btn-delete" onclick="odstraniIgralca('${safe}')" title="Odstrani">✕</button>
+      </div>
     </div>
   `;}).join('');
 }
@@ -1060,6 +1064,43 @@ function dodajIgralca() {
   input.value = '';
   renderIgralci();
   showToast('Igralec ' + ime + ' dodan! ✓');
+}
+
+function zacniUrediIgralca(ime) {
+  const row = document.getElementById('row-' + CSS.escape(ime));
+  if (!row) return;
+  row.innerHTML = `
+    <input type="text" id="edit-input-player" value="${ime}" style="flex:1;margin-right:8px"
+      onkeydown="if(event.key==='Enter')shraniImeIgralca('${ime.replace(/'/g, "\\'")}');if(event.key==='Escape')renderIgralci()">
+    <div style="display:flex;gap:6px;">
+      <button class="btn" style="padding:5px 12px;font-size:13px" onclick="shraniImeIgralca('${ime.replace(/'/g, "\\'")}')">Shrani</button>
+      <button class="btn secondary" style="padding:5px 12px;font-size:13px" onclick="renderIgralci()">Prekliči</button>
+    </div>
+  `;
+  document.getElementById('edit-input-player').focus();
+  document.getElementById('edit-input-player').select();
+}
+
+function shraniImeIgralca(staroIme) {
+  const novoIme = document.getElementById('edit-input-player')?.value.trim();
+  if (!novoIme) { showToast('Ime ne sme biti prazno!'); return; }
+  if (novoIme === staroIme) { renderIgralci(); return; }
+  if (igralci.includes(novoIme)) { showToast('Igralec s tem imenom že obstaja!'); return; }
+
+  // Posodobi v seznamu igralcev
+  const idx = igralci.indexOf(staroIme);
+  if (idx >= 0) igralci[idx] = novoIme;
+
+  // Posodobi v vseh tekmah
+  tekme = tekme.map(t => ({
+    ...t,
+    beli: t.beli.map(p => p === staroIme ? novoIme : p),
+    crni: t.crni.map(p => p === staroIme ? novoIme : p),
+  }));
+
+  save();
+  renderIgralci();
+  showToast(staroIme + ' → ' + novoIme);
 }
 
 function odstraniIgralca(ime) {
