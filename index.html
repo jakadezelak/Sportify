@@ -506,11 +506,19 @@
       </div>
       <div class="form-group">
         <label>Rezultat</label>
-        <select id="vnos-rezultat">
+        <select id="vnos-rezultat" onchange="syncRezultatFromSelect()">
           <option value="zmaga_beli">Beli zmagajo</option>
           <option value="zmaga_crni">Črni zmagajo</option>
           <option value="neodloceno">Neodločeno</option>
         </select>
+      </div>
+      <div class="form-group">
+        <label>Goli Beli</label>
+        <input type="number" id="vnos-goli-beli" min="0" value="" placeholder="—" oninput="syncRezultatFromGoli()">
+      </div>
+      <div class="form-group">
+        <label>Goli Črni</label>
+        <input type="number" id="vnos-goli-crni" min="0" value="" placeholder="—" oninput="syncRezultatFromGoli()">
       </div>
       <div class="form-group full">
         <label>Ekipa Beli</label>
@@ -858,10 +866,15 @@ function generirajEkipe() {
   
   const diff = Math.abs(vsotaBeli - vsotaCrni).toFixed(1);
   
+  // Shrani generirane ekipe za Začni tekmo
+  window._zadnjeBeli = beli.map(p => p.ime);
+  window._zadnjeCrni = crni.map(p => p.ime);
+
   let html = `
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
       <span class="info-chip">Razlika v moči: <strong style="color:var(--green);margin-left:4px">${diff}</strong></span>
       <button class="btn secondary" onclick="generirajEkipe()" style="padding:6px 14px;font-size:13px">↻ Premešaj</button>
+      <button class="btn" onclick="zacniTekmo()" style="padding:6px 14px;font-size:13px">▶ Začni tekmo</button>
     </div>
     <div class="team-cards">
       <div class="team-card">
@@ -907,6 +920,10 @@ function renderTekme() {
     else if (t.rezultat === 'zmaga_crni') { rezClass = 'poraz'; rezText = 'ČRNI ZMAGAJO'; }
     else { rezClass = 'neodloceno'; rezText = 'NEODLOČENO'; }
 
+    const score = (t.goliBeli != null && t.goliCrni != null)
+      ? `<span style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px">${t.goliBeli} : ${t.goliCrni}</span>`
+      : '';
+
     const beliNames = (t.beli||[]).filter(p=>!p.startsWith('rnd')).join(', ');
     const crniNames = (t.crni||[]).filter(p=>!p.startsWith('rnd')).join(', ');
 
@@ -914,7 +931,8 @@ function renderTekme() {
       <div class="tekma-item">
         <div>
           <div class="tekma-date">${dateStr}</div>
-          <div class="tekma-result ${rezClass}">${rezText}</div>
+          <div class="tekma-result ${rezClass}">${score || rezText}</div>
+          ${score ? `<div class="tekma-teams">${rezText}</div>` : ''}
           <div class="tekma-teams">Beli: ${beliNames || '—'}</div>
           <div class="tekma-teams">Črni: ${crniNames || '—'}</div>
           ${t.opomba ? `<div class="tekma-teams" style="margin-top:4px;font-style:italic">${t.opomba}</div>` : ''}
@@ -929,6 +947,40 @@ function renderTekme() {
 // VNOS
 // ============================================================
 let editIndex = -1;
+
+function syncRezultatFromGoli() {
+  const b = parseInt(document.getElementById('vnos-goli-beli').value);
+  const c = parseInt(document.getElementById('vnos-goli-crni').value);
+  if (isNaN(b) || isNaN(c)) return;
+  const sel = document.getElementById('vnos-rezultat');
+  if (b > c) sel.value = 'zmaga_beli';
+  else if (c > b) sel.value = 'zmaga_crni';
+  else sel.value = 'neodloceno';
+}
+
+function syncRezultatFromSelect() {
+  // Počisti gole če ročno spremenimo rezultat
+  document.getElementById('vnos-goli-beli').value = '';
+  document.getElementById('vnos-goli-crni').value = '';
+}
+
+function zacniTekmo() {
+  const beli = window._zadnjeBeli || [];
+  const crni = window._zadnjeCrni || [];
+  selectedBeli = new Set(beli);
+  selectedCrni = new Set(crni);
+  editIndex = -1;
+  document.getElementById('vnos-title').textContent = 'VNOS TEKME';
+  document.getElementById('vnos-sub').textContent = 'Dodaj novo odigrano tekmo';
+  document.getElementById('vnos-btn-shrani').textContent = 'Shrani tekmo';
+  document.getElementById('vnos-btn-preklic').style.display = 'none';
+  document.getElementById('vnos-datum').value = new Date().toISOString().split('T')[0];
+  document.getElementById('vnos-opomba').value = '';
+  document.getElementById('vnos-goli-beli').value = '';
+  document.getElementById('vnos-goli-crni').value = '';
+  renderVnos();
+  showPage('vnos');
+}
 
 function renderVnos(beli = new Set(), crni = new Set()) {
   const stats = izracunajStatistiko();
@@ -964,6 +1016,8 @@ function urediTekmo(i) {
   document.getElementById('vnos-datum').value = t.datum;
   document.getElementById('vnos-rezultat').value = t.rezultat;
   document.getElementById('vnos-opomba').value = t.opomba || '';
+  document.getElementById('vnos-goli-beli').value = t.goliBeli ?? '';
+  document.getElementById('vnos-goli-crni').value = t.goliCrni ?? '';
 
   selectedBeli = new Set((t.beli||[]).filter(p => !p.startsWith('rnd')));
   selectedCrni = new Set((t.crni||[]).filter(p => !p.startsWith('rnd')));
@@ -982,6 +1036,8 @@ function prekliciUredi() {
   document.getElementById('vnos-btn-preklic').style.display = 'none';
   document.getElementById('vnos-datum').value = new Date().toISOString().split('T')[0];
   document.getElementById('vnos-opomba').value = '';
+  document.getElementById('vnos-goli-beli').value = '';
+  document.getElementById('vnos-goli-crni').value = '';
   renderVnos();
   showPage('tekme');
 }
@@ -990,11 +1046,18 @@ function shraniTekmo() {
   const datum = document.getElementById('vnos-datum').value;
   const rezultat = document.getElementById('vnos-rezultat').value;
   const opomba = document.getElementById('vnos-opomba').value;
+  const gb = document.getElementById('vnos-goli-beli').value;
+  const gc = document.getElementById('vnos-goli-crni').value;
 
   if (!datum) { showToast('Izberi datum!'); return; }
   if (selectedBeli.size === 0 && selectedCrni.size === 0) { showToast('Dodaj vsaj enega igralca!'); return; }
 
-  const tekma = { datum, rezultat, beli: [...selectedBeli], crni: [...selectedCrni], opomba };
+  const tekma = {
+    datum, rezultat,
+    beli: [...selectedBeli], crni: [...selectedCrni],
+    opomba,
+    ...(gb !== '' && gc !== '' ? { goliBeli: parseInt(gb), goliCrni: parseInt(gc) } : {})
+  };
 
   if (editIndex >= 0) {
     tekme[editIndex] = tekma;
@@ -1014,6 +1077,8 @@ function shraniTekmo() {
   selectedCrni.clear();
   document.getElementById('vnos-datum').value = new Date().toISOString().split('T')[0];
   document.getElementById('vnos-opomba').value = '';
+  document.getElementById('vnos-goli-beli').value = '';
+  document.getElementById('vnos-goli-crni').value = '';
   renderVnos();
 
   setTimeout(() => showPage('tekme'), 800);
