@@ -495,6 +495,13 @@
   </div>
 </div>
 
+<div id="page-igralec" class="page">
+  <div style="margin-bottom:20px;">
+    <button class="btn secondary" onclick="showPage('igralci')" style="padding:7px 16px;font-size:13px">← Nazaj</button>
+  </div>
+  <div id="igralec-vsebina"></div>
+</div>
+
 <div id="page-vnos" class="page">
   <div class="section-title" id="vnos-title">VNOS TEKME</div>
   <div class="section-sub" id="vnos-sub">Dodaj novo odigrano tekmo</div>
@@ -1123,7 +1130,9 @@ function renderIgralci() {
     const safe = ime.replace(/'/g, "\\'");
     return `
     <div class="igralec-row" id="row-${CSS.escape(ime)}">
-      <span>${ime}${!jeStaln ? ' <span style="font-size:11px;color:var(--muted)">(gost)</span>' : ''}</span>
+      <span style="cursor:pointer;flex:1" onclick="showIgralec('${safe}')">
+        ${ime}${!jeStaln ? ' <span style="font-size:11px;color:var(--muted)">(gost)</span>' : ''}
+      </span>
       <div style="display:flex;gap:6px;">
         <button class="btn-edit" onclick="zacniUrediIgralca('${safe}')" title="Preimenuj">✎</button>
         <button class="btn-delete" onclick="odstraniIgralca('${safe}')" title="Odstrani">✕</button>
@@ -1142,6 +1151,94 @@ function dodajIgralca() {
   input.value = '';
   renderIgralci();
   showToast('Igralec ' + ime + ' dodan! ✓');
+}
+
+function showIgralec(ime) {
+  const stats = izracunajStatistiko();
+  const s = stats[ime];
+  const el = document.getElementById('igralec-vsebina');
+
+  if (!s || s.tekme === 0) {
+    el.innerHTML = `
+      <div class="section-title">${ime}</div>
+      <div class="section-sub">Še ni odigranih tekem</div>
+    `;
+    showPage('igralec');
+    return;
+  }
+
+  const ocena = ocenaIgralca(s);
+  const winPct = Math.round((s.zmage / s.tekme) * 100);
+  const pillClass = winPct >= 55 ? 'green' : winPct >= 40 ? 'amber' : 'red';
+
+  const zadnjih5 = s.rezultati.slice(-5);
+  let formaDots = '';
+  for (let f = 0; f < 5; f++) {
+    formaDots += f < zadnjih5.length
+      ? `<div class="forma-dot ${zadnjih5[f].r}"></div>`
+      : `<div class="forma-dot empty"></div>`;
+  }
+
+  // Tekme tega igralca
+  const mojeТекme = tekme
+    .map((t, i) => ({ ...t, _i: i }))
+    .filter(t => (t.beli||[]).includes(ime) || (t.crni||[]).includes(ime))
+    .sort((a, b) => b.datum.localeCompare(a.datum));
+
+  const historyRows = mojeТекme.map(t => {
+    const jeBeli = (t.beli||[]).includes(ime);
+    const rez = jeBeli
+      ? (t.rezultat === 'zmaga_beli' ? 'W' : t.rezultat === 'zmaga_crni' ? 'L' : 'D')
+      : (t.rezultat === 'zmaga_crni' ? 'W' : t.rezultat === 'zmaga_beli' ? 'L' : 'D');
+    const rezColor = rez === 'W' ? 'var(--green)' : rez === 'L' ? 'var(--red)' : 'var(--amber)';
+    const rezLabel = rez === 'W' ? 'Zmaga' : rez === 'L' ? 'Poraz' : 'Neodločeno';
+    const score = (t.goliBeli != null && t.goliCrni != null)
+      ? (jeBeli ? `${t.goliBeli}:${t.goliCrni}` : `${t.goliCrni}:${t.goliBeli}`)
+      : '';
+    const d = new Date(t.datum).toLocaleDateString('sl-SI', { day: 'numeric', month: 'short', year: 'numeric' });
+    const ekipa = jeBeli ? 'Beli' : 'Črni';
+    return `
+      <tr>
+        <td>${d}</td>
+        <td>${ekipa}</td>
+        <td style="color:${rezColor};font-weight:600">${score || rezLabel}</td>
+      </tr>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="section-title">${ime}</div>
+    <div class="section-sub">Statistika in zgodovina tekem</div>
+
+    <div class="stat-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px">
+      <div class="stat-box"><div class="big-stat">${s.tekme}</div><div class="label">Tekme</div></div>
+      <div class="stat-box"><div class="big-stat" style="color:var(--green)">${s.zmage}</div><div class="label">Zmage</div></div>
+      <div class="stat-box"><div class="big-stat" style="color:var(--amber)">${s.neodloceno}</div><div class="label">Neodl.</div></div>
+      <div class="stat-box"><div class="big-stat" style="color:var(--red)">${s.porazi}</div><div class="label">Porazi</div></div>
+    </div>
+
+    <div class="card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px">Forma (zadnjih 5)</div>
+        <div class="forma">${formaDots}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Ocena</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);line-height:1">${Math.round(ocena)}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Uspešnost</div>
+        <span class="stat-pill ${pillClass}" style="font-size:16px">${winPct}%</span>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="lestvica-table">
+        <thead><tr><th>Datum</th><th>Ekipa</th><th>Rezultat</th></tr></thead>
+        <tbody>${historyRows}</tbody>
+      </table>
+    </div>
+  `;
+  showPage('igralec');
 }
 
 function zacniUrediIgralca(ime) {
@@ -1205,11 +1302,13 @@ function showPage(id) {
   const btns = document.querySelectorAll('nav button');
   const idx = ['lestvica','ekipe','tekme','igralci','vnos'].indexOf(id);
   if (btns[idx]) btns[idx].classList.add('active');
+  if (id === 'igralec') btns[3]?.classList.add('active'); // označi Igralci kot aktiven
 
   if (id === 'lestvica') renderLestvica();
   else if (id === 'ekipe') renderEkipeGrid();
   else if (id === 'tekme') renderTekme();
   else if (id === 'igralci') renderIgralci();
+  else if (id === 'igralec') {} // vsebina nastavljena v showIgralec()
   else if (id === 'vnos') {
     if (editIndex < 0) {
       document.getElementById('vnos-datum').value = new Date().toISOString().split('T')[0];
