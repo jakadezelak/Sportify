@@ -1168,12 +1168,33 @@ function showIgralec(ime) {
     return;
   }
 
-  const ocena = ocenaIgralca(s);
-  const winPct = Math.round((s.zmage / s.tekme) * 100);
+  const winRate = s.zmage / s.tekme;
+  const drawRate = s.neodloceno / s.tekme;
+  const zadnjih5 = s.rezultati.slice(-5);
+  let formaBonus = 0;
+  const formaRazlaga = zadnjih5.map((r, i) => {
+    const weight = (i + 1) / 5;
+    const prispevek = r.r === 'W' ? weight * 0.3 * 100 : r.r === 'D' ? weight * 0.1 * 100 : 0;
+    formaBonus += prispevek;
+    const rezLabel = r.r === 'W' ? 'Zmaga' : r.r === 'D' ? 'Neodl.' : 'Poraz';
+    const rezColor = r.r === 'W' ? 'var(--green)' : r.r === 'D' ? 'var(--amber)' : 'var(--muted)';
+    const d = new Date(r.datum).toLocaleDateString('sl-SI', { day: 'numeric', month: 'short' });
+    return `<tr>
+      <td style="color:var(--muted);font-size:12px">${d}</td>
+      <td style="color:${rezColor};font-size:12px">${rezLabel}</td>
+      <td style="font-size:12px">utež ${weight.toFixed(1)}</td>
+      <td style="color:var(--green);font-size:12px;text-align:right">+${prispevek.toFixed(1)}</td>
+    </tr>`;
+  });
+
+  const osnovaPts = (winRate * 100).toFixed(1);
+  const neodlPts = (drawRate * 30).toFixed(1);
+  const formaPts = formaBonus.toFixed(1);
+  const skupaj = Math.round(parseFloat(osnovaPts) + parseFloat(neodlPts) + formaBonus);
+  const ocena = skupaj;
+  const winPct = Math.round(winRate * 100);
   const pillClass = winPct >= 55 ? 'green' : winPct >= 40 ? 'amber' : 'red';
 
-  const zadnjih5 = s.rezultati.slice(-5);
-  let formaDots = '';
   for (let f = 0; f < 5; f++) {
     formaDots += f < zadnjih5.length
       ? `<div class="forma-dot ${zadnjih5[f].r}"></div>`
@@ -1224,11 +1245,42 @@ function showIgralec(ime) {
       </div>
       <div style="text-align:right">
         <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Ocena</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);line-height:1">${Math.round(ocena)}</div>
+        <div onclick="toggleRazlaga()" style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);line-height:1;cursor:pointer;border-bottom:2px dashed var(--green-dark)" title="Klikni za razlago">${ocena}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px">Klikni za razlago</div>
       </div>
       <div style="text-align:right">
         <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Uspešnost</div>
         <span class="stat-pill ${pillClass}" style="font-size:16px">${winPct}%</span>
+      </div>
+    </div>
+
+    <div id="razlaga-ocena" style="display:none">
+      <div class="card">
+        <div style="font-size:12px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Razlaga izračuna ocene</div>
+        <table style="width:100%;font-size:13px;border-collapse:collapse">
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:8px 0;color:var(--text)">Osnova (zmage)</td>
+            <td style="color:var(--muted);padding:8px 0">${s.zmage} / ${s.tekme} × 100</td>
+            <td style="text-align:right;color:var(--green);font-weight:600;padding:8px 0">${osnovaPts} pt</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:8px 0;color:var(--text)">Neodločeno bonus</td>
+            <td style="color:var(--muted);padding:8px 0">${s.neodloceno} / ${s.tekme} × 30</td>
+            <td style="text-align:right;color:var(--green);font-weight:600;padding:8px 0">${neodlPts} pt</td>
+          </tr>
+        </table>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin:14px 0 8px">Forma bonus (zadnjih 5 tekem)</div>
+        <table style="width:100%;border-collapse:collapse">
+          ${formaRazlaga.join('')}
+          <tr style="border-top:1px solid var(--border)">
+            <td colspan="3" style="padding:8px 0;color:var(--muted);font-size:12px">Forma skupaj</td>
+            <td style="text-align:right;color:var(--green);font-weight:600;font-size:12px;padding:8px 0">${formaPts} pt</td>
+          </tr>
+        </table>
+        <div style="border-top:2px solid var(--border);margin-top:8px;padding-top:10px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-weight:600">Skupaj</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green)">${ocena}</span>
+        </div>
       </div>
     </div>
 
@@ -1240,6 +1292,11 @@ function showIgralec(ime) {
     </div>
   `;
   showPage('igralec');
+}
+
+function toggleRazlaga() {
+  const el = document.getElementById('razlaga-ocena');
+  if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 
 function zacniUrediIgralca(ime) {
