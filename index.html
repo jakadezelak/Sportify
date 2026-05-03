@@ -138,6 +138,7 @@
   .rank-badge.bronze { color: #cd7f32; }
 
   .player-name { font-weight: 500; font-size: 15px; }
+  .player-name:hover { color: var(--green); text-decoration: underline; }
 
   /* Forma dots */
   .forma { display: flex; gap: 4px; align-items: center; }
@@ -783,7 +784,7 @@ function renderLestvica() {
     tbody.innerHTML += `
       <tr>
         <td><span class="rank-badge ${rankClass}">${i + 1}</span></td>
-        <td><span class="player-name">${p.ime}</span></td>
+        <td><span class="player-name" style="cursor:pointer" onclick="showIgralec('${p.ime.replace(/'/g, "\\'")}')">${p.ime}</span></td>
         <td>${p.tekme}</td>
         <td style="color:var(--green);font-weight:600">${p.zmage}</td>
         <td style="color:var(--amber);font-weight:600">${p.neodloceno}</td>
