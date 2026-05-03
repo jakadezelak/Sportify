@@ -1195,6 +1195,7 @@ function showIgralec(ime) {
   const winPct = Math.round(winRate * 100);
   const pillClass = winPct >= 55 ? 'green' : winPct >= 40 ? 'amber' : 'red';
 
+  let formaDots = '';
   for (let f = 0; f < 5; f++) {
     formaDots += f < zadnjih5.length
       ? `<div class="forma-dot ${zadnjih5[f].r}"></div>`
