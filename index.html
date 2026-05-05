@@ -1239,18 +1239,35 @@ function showIgralec(ime) {
       : `<div class="forma-dot empty"></div>`;
   }
 
-  // Najboljši soigralec
-  const soigralciCount = {};
+  // Soigralci — skupne tekme + win rate
+  const soigralciStats = {};
   tekme.forEach(t => {
-    const moja = (t.beli||[]).includes(ime) ? (t.beli||[]) : (t.crni||[]).includes(ime) ? (t.crni||[]) : null;
-    if (!moja) return;
+    const jeBeli = (t.beli||[]).includes(ime);
+    const jeCrni = (t.crni||[]).includes(ime);
+    if (!jeBeli && !jeCrni) return;
+    const moja = jeBeli ? (t.beli||[]) : (t.crni||[]);
+    const rez = jeBeli
+      ? (t.rezultat === 'zmaga_beli' ? 'W' : t.rezultat === 'zmaga_crni' ? 'L' : 'D')
+      : (t.rezultat === 'zmaga_crni' ? 'W' : t.rezultat === 'zmaga_beli' ? 'L' : 'D');
     moja.forEach(p => {
       if (p === ime || p.startsWith('rnd') || p === 'Golman') return;
-      soigralciCount[p] = (soigralciCount[p] || 0) + 1;
+      if (!soigralciStats[p]) soigralciStats[p] = { skupaj: 0, zmage: 0 };
+      soigralciStats[p].skupaj++;
+      if (rez === 'W') soigralciStats[p].zmage++;
     });
   });
+  const MIN_SKUPAJ = 2;
   let najboljsiSoigralec = null, maxSkupaj = 0;
-  Object.entries(soigralciCount).forEach(([p, n]) => { if (n > maxSkupaj) { maxSkupaj = n; najboljsiSoigralec = p; } });
+  let najboljsiWR = null, maxWR = -1, najboljsiWRSkupaj = 0;
+  let najslabsiWR = null, minWR = 2, najslabsiWRSkupaj = 0;
+  Object.entries(soigralciStats).forEach(([p, d]) => {
+    if (d.skupaj > maxSkupaj) { maxSkupaj = d.skupaj; najboljsiSoigralec = p; }
+    if (d.skupaj >= MIN_SKUPAJ) {
+      const wr = d.zmage / d.skupaj;
+      if (wr > maxWR) { maxWR = wr; najboljsiWR = p; najboljsiWRSkupaj = d.skupaj; }
+      if (wr < minWR) { minWR = wr; najslabsiWR = p; najslabsiWRSkupaj = d.skupaj; }
+    }
+  });
 
   // Tekme tega igralca
   const mojeТекme = tekme
@@ -1342,6 +1359,26 @@ function showIgralec(ime) {
         <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Najljubši soigralec</div>
         <div style="font-size:18px;font-weight:600;cursor:pointer;color:var(--green)" onclick="showIgralec('${najboljsiSoigralec.replace(/'/g, "\\'")}')">${najboljsiSoigralec}</div>
         <div style="font-size:12px;color:var(--muted);margin-top:2px">Skupaj ${maxSkupaj} tekem</div>
+      </div>
+    </div>` : ''}
+
+    ${(najboljsiWR && najslabsiWR) ? `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="card" style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="font-size:24px;line-height:1.2">📈</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Največji win rate</div>
+          <div style="font-size:16px;font-weight:600;cursor:pointer;color:var(--green);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onclick="showIgralec('${najboljsiWR.replace(/'/g, "\\'")}')">${najboljsiWR}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">${Math.round(maxWR*100)}% (${soigralciStats[najboljsiWR].zmage}/${najboljsiWRSkupaj})</div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="font-size:24px;line-height:1.2">📉</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Najmanjši win rate</div>
+          <div style="font-size:16px;font-weight:600;cursor:pointer;color:var(--red);white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onclick="showIgralec('${najslabsiWR.replace(/'/g, "\\'")}')">${najslabsiWR}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">${Math.round(minWR*100)}% (${soigralciStats[najslabsiWR].zmage}/${najslabsiWRSkupaj})</div>
+        </div>
       </div>
     </div>` : ''}
 
