@@ -419,8 +419,11 @@
 </head>
 <body>
 
+<div id="loading-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:12px"><div style="color:#fff;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px">NALAGAM...</div></div>
+
 <header>
   <div class="logo">LEDINA <span>FC</span></div>
+  <div style="text-align:center;font-size:11px;padding:2px 0"><span id="sync-status" style="color:var(--green)">● Sinhronizirano</span></div>
   <nav>
     <button class="active" onclick="showPage('lestvica')">Lestvica</button>
     <button onclick="showPage('ekipe')">Ekipe</button>
@@ -622,44 +625,77 @@ const TEKME_DEFAULT = [
 ];
 
 // ============================================================
-// STANJE APLIKACIJE
+// STANJE APLIKACIJE — JSONBin oblak
 // ============================================================
-const DATA_VERSION = 'v3';
-if (localStorage.getItem('ledina_version') !== DATA_VERSION) {
-  localStorage.removeItem('ledina_tekme');
-  localStorage.removeItem('ledina_igralci');
-  localStorage.setItem('ledina_version', DATA_VERSION);
-}
-let tekme = JSON.parse(localStorage.getItem('ledina_tekme') || 'null') || [...TEKME_DEFAULT];
-let igralci = JSON.parse(localStorage.getItem('ledina_igralci') || 'null') || [...IGRALCI_DEFAULT];
+const BIN_ID = '69fa549c856a682189ae0098';
+const BIN_KEY = '$2a$10$ZCLas6ZCsPKMWAyCkEoQA.XetLKEfoHK5qOUXGsYzeHcHAoH35n2e';
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-// Migracija: združi dvojnike imen
-const MERGE_MAP = {
-  'Brvar': 'Svit',
-  'Štempihar': 'Žiga Štempihar',
-  'Zalaznik': 'Anže Zalaznik',
-  'Fišer': 'Domen',
-};
-const MERGE_VERSION = 'merge-v1';
-if (localStorage.getItem('ledina_merge') !== MERGE_VERSION) {
-  const zamenjaj = ime => MERGE_MAP[ime] || ime;
-  tekme = tekme.map(t => ({
-    ...t,
-    beli: (t.beli || []).map(zamenjaj),
-    crni: (t.crni || []).map(zamenjaj),
-  }));
-  igralci = [...new Set(igralci.map(zamenjaj))];
-  localStorage.setItem('ledina_tekme', JSON.stringify(tekme));
-  localStorage.setItem('ledina_igralci', JSON.stringify(igralci));
-  localStorage.setItem('ledina_merge', MERGE_VERSION);
-}
+let tekme = [];
+let igralci = [];
 let selectedForEkipe = new Set();
 let selectedBeli = new Set();
 let selectedCrni = new Set();
+let _saveTimeout = null;
+
+async function nalagajPodatke() {
+  document.getElementById('loading-overlay').style.display = 'flex';
+  try {
+    const res = await fetch(BIN_URL + '/latest', {
+      headers: { 'X-Master-Key': BIN_KEY }
+    });
+    const json = await res.json();
+    const data = json.record;
+    tekme = data.tekme && data.tekme.length ? data.tekme : [...TEKME_DEFAULT];
+    igralci = data.igralci && data.igralci.length ? data.igralci : [...IGRALCI_DEFAULT];
+
+    // Migracija imen
+    const MERGE_MAP = { 'Brvar':'Svit','Štempihar':'Žiga Štempihar','Zalaznik':'Anže Zalaznik','Fišer':'Domen' };
+    const zamenjaj = p => MERGE_MAP[p] || p;
+    const pred = JSON.stringify({ tekme, igralci });
+    tekme = tekme.map(t => ({ ...t, beli:(t.beli||[]).map(zamenjaj), crni:(t.crni||[]).map(zamenjaj) }));
+    igralci = [...new Set(igralci.map(zamenjaj))];
+    if (JSON.stringify({ tekme, igralci }) !== pred) await shraniVOblak();
+
+  } catch(e) {
+    // Fallback na localStorage
+    tekme = JSON.parse(localStorage.getItem('ledina_tekme') || 'null') || [...TEKME_DEFAULT];
+    igralci = JSON.parse(localStorage.getItem('ledina_igralci') || 'null') || [...IGRALCI_DEFAULT];
+    showToast('Ni povezave — lokalni podatki');
+  }
+  document.getElementById('loading-overlay').style.display = 'none';
+  renderLestvica();
+}
+
+async function shraniVOblak() {
+  try {
+    await fetch(BIN_URL, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY },
+      body: JSON.stringify({ tekme, igralci })
+    });
+    localStorage.setItem('ledina_tekme', JSON.stringify(tekme));
+    localStorage.setItem('ledina_igralci', JSON.stringify(igralci));
+    setSyncStatus('ok');
+  } catch(e) {
+    setSyncStatus('napaka');
+  }
+}
 
 function save() {
+  setSyncStatus('shranjujem');
   localStorage.setItem('ledina_tekme', JSON.stringify(tekme));
   localStorage.setItem('ledina_igralci', JSON.stringify(igralci));
+  clearTimeout(_saveTimeout);
+  _saveTimeout = setTimeout(shraniVOblak, 800);
+}
+
+function setSyncStatus(status) {
+  const el = document.getElementById('sync-status');
+  if (!el) return;
+  if (status === 'ok') { el.textContent = '● Sinhronizirano'; el.style.color = 'var(--green)'; }
+  else if (status === 'shranjujem') { el.textContent = '● Shranjujem...'; el.style.color = 'var(--amber)'; }
+  else { el.textContent = '● Napaka pri shranjevanju'; el.style.color = 'var(--red)'; }
 }
 
 // ============================================================
@@ -1385,7 +1421,7 @@ function showToast(msg) {
 }
 
 // Init
-renderLestvica();
+nalagajPodatke();
 
 // PWA: Service Worker
 if ('serviceWorker' in navigator) {

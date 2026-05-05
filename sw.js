@@ -1,4 +1,4 @@
-const CACHE = 'ledina-v4';
+const CACHE = 'ledina-v5';
 const ASSETS = [
   './index.html',
   './manifest.json',
