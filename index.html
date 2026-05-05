@@ -646,8 +646,10 @@ async function nalagajPodatke() {
     });
     const json = await res.json();
     const data = json.record;
-    tekme = data.tekme && data.tekme.length ? data.tekme : [...TEKME_DEFAULT];
-    igralci = data.igralci && data.igralci.length ? data.igralci : [...IGRALCI_DEFAULT];
+    const lsTekme = JSON.parse(localStorage.getItem('ledina_tekme') || 'null');
+    const lsIgralci = JSON.parse(localStorage.getItem('ledina_igralci') || 'null');
+    tekme = data.tekme && data.tekme.length ? data.tekme : (lsTekme && lsTekme.length ? lsTekme : [...TEKME_DEFAULT]);
+    igralci = data.igralci && data.igralci.length ? data.igralci : (lsIgralci && lsIgralci.length ? lsIgralci : [...IGRALCI_DEFAULT]);
 
     // Migracija imen
     const MERGE_MAP = { 'Brvar':'Svit','Štempihar':'Žiga Štempihar','Zalaznik':'Anže Zalaznik','Fišer':'Domen' };
