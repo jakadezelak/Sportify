@@ -1239,6 +1239,19 @@ function showIgralec(ime) {
       : `<div class="forma-dot empty"></div>`;
   }
 
+  // Najboljši soigralec
+  const soigralciCount = {};
+  tekme.forEach(t => {
+    const moja = (t.beli||[]).includes(ime) ? (t.beli||[]) : (t.crni||[]).includes(ime) ? (t.crni||[]) : null;
+    if (!moja) return;
+    moja.forEach(p => {
+      if (p === ime || p.startsWith('rnd') || p === 'Golman') return;
+      soigralciCount[p] = (soigralciCount[p] || 0) + 1;
+    });
+  });
+  let najboljsiSoigralec = null, maxSkupaj = 0;
+  Object.entries(soigralciCount).forEach(([p, n]) => { if (n > maxSkupaj) { maxSkupaj = n; najboljsiSoigralec = p; } });
+
   // Tekme tega igralca
   const mojeТекme = tekme
     .map((t, i) => ({ ...t, _i: i }))
@@ -1321,6 +1334,16 @@ function showIgralec(ime) {
         </div>
       </div>
     </div>
+
+    ${najboljsiSoigralec ? `
+    <div class="card" style="display:flex;align-items:center;gap:16px;">
+      <div style="font-size:28px">🤝</div>
+      <div style="flex:1">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Najljubši soigralec</div>
+        <div style="font-size:18px;font-weight:600;cursor:pointer;color:var(--green)" onclick="showIgralec('${najboljsiSoigralec.replace(/'/g, "\\'")}')">${najboljsiSoigralec}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Skupaj ${maxSkupaj} tekem</div>
+      </div>
+    </div>` : ''}
 
     <div class="card" style="padding:0;overflow:hidden;">
       <table class="lestvica-table">
