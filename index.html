@@ -651,6 +651,14 @@ async function nalagajPodatke() {
     tekme = data.tekme && data.tekme.length ? data.tekme : (lsTekme && lsTekme.length ? lsTekme : [...TEKME_DEFAULT]);
     igralci = data.igralci && data.igralci.length ? data.igralci : (lsIgralci && lsIgralci.length ? lsIgralci : [...IGRALCI_DEFAULT]);
 
+    // Migracija: če localStorage ima več tekem kot JSONBin, prevzemi localStorage podatke
+    if (lsTekme && lsTekme.length > tekme.length) {
+      tekme = lsTekme;
+      if (lsIgralci && lsIgralci.length > igralci.length) igralci = lsIgralci;
+      await shraniVOblak();
+      showToast('Lokalni podatki sinhronizirani v oblak');
+    }
+
     // Migracija imen
     const MERGE_MAP = { 'Brvar':'Svit','Štempihar':'Žiga Štempihar','Zalaznik':'Anže Zalaznik','Fišer':'Domen' };
     const zamenjaj = p => MERGE_MAP[p] || p;
