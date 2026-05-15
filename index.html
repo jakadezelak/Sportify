@@ -622,6 +622,9 @@ const TEKME_DEFAULT = [
   { datum:'2026-04-11', rezultat:'zmaga_beli', beli:['Jaka','Janez','Emsad','Brin Smole','Krišpin'], crni:['Jenko','Domen','Jereb','Kris','Lev'], opomba:'' },
   // 18.4.
   { datum:'2026-04-18', rezultat:'neodloceno', beli:['Jaka','Lev','Črtanc','Janez','Emsad','Domen'], crni:['Miki','Krišpin','Jenko','Luka','Lenart','Anže Zalaznik','Jereb'], opomba:'' },
+  { datum:'2026-04-24', rezultat:'zmaga_crni', goliBeli:16, goliCrni:18, beli:['Jaka','Miki','Domen','Oskar','Krišpin','Lev','Janez'], crni:['Črtanc','Anže Zalaznik','Emsad','Matej','Jenko','Lenart'], opomba:'' },
+  { datum:'2026-05-02', rezultat:'zmaga_beli', goliBeli:16, goliCrni:15, beli:['Miki','Jaka','Luka','Emsad','Lev','Žak'], crni:['Lenart','Janez','Jenko','Domen','Maks'], opomba:'' },
+  { datum:'2026-05-08', rezultat:'zmaga_beli', goliBeli:26, goliCrni:18, beli:['Emsad','Tomaž','Kolega od Tomaža','Maks','Lev'], crni:['Jaka','Žak','Blaž Kadunc','Marko Šalamun','Janez','Krišpin'], opomba:'' },
 ];
 
 // ============================================================
@@ -657,6 +660,14 @@ async function nalagajPodatke() {
       if (lsIgralci && lsIgralci.length > igralci.length) igralci = lsIgralci;
       await shraniVOblak();
       showToast('Lokalni podatki sinhronizirani v oblak');
+    }
+
+    // Dodaj manjkajoče tekme iz TEKME_DEFAULT (npr. ročno dodane v kodi)
+    const obstojeciDatumi = new Set(tekme.map(t => t.datum + '|' + t.rezultat + '|' + (t.opomba||'')));
+    const manjkajoceTekme = TEKME_DEFAULT.filter(t => !obstojeciDatumi.has(t.datum + '|' + t.rezultat + '|' + (t.opomba||'')));
+    if (manjkajoceTekme.length) {
+      tekme = [...tekme, ...manjkajoceTekme].sort((a, b) => a.datum.localeCompare(b.datum));
+      await shraniVOblak();
     }
 
     // Migracija imen
