@@ -1,6 +1,5 @@
-const CACHE = 'ledina-v6';
+const CACHE = 'ledina-v7';
 const ASSETS = [
-  './index.html',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
@@ -24,6 +23,19 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+  // Network-first za HTML — vedno svežo verzijo aplikacije
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request).then(response => {
+        if (!response || response.status !== 200) throw new Error();
+        const clone = response.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+        return response;
+      }).catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+  // Cache-first za ostale resurse (slike, fonti, ...)
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
