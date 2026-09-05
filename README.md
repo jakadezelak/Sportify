@@ -139,6 +139,27 @@ Serpentinsko razporejanje po oceni:
 
 ---
 
+## VVV Liga — konkurenčna lestvica (`konkurenca.html`)
+
+Ločena, samostojna stran v istem repozitoriju (isti dizajn, brez povezave z Ledina podatki). Nogometna lestvica za **VVV Digital** proti 9 konkurentom: TikTok SPACE, Vividista, Envision Collective, Tiktokerija, A.P. Marketing, Ziya Agency, Createable, Katapult Media, We Are TikTok (WATT).
+
+- **Kolo = mesec.** V vsakem kolu vsaka agencija igra proti vsaki po vsaki metriki; večja *relativna* rast zmaga (3 točke), razlika pod 1 odstotno točko je neodločeno (1 točka). Dvoboj se odigra le, če imata obe agenciji podatek v dveh zaporednih mesecih.
+- **Metrike (privzeto):** Instagram, TikTok in LinkedIn sledilci (utež 1), Google ocene (utež 0,5). Uteži in metrike so urejljive.
+- **Zavihki:** Lestvica (točke, Z/N/P, forma zadnjih 5 kol, trend, točke po metrikah), Stanje (surove vrednosti zadnjega snapshota in mesečna sprememba), + Snapshot (mesečni vnos), Agencije (ekipe, ročaji profilov, metrike), Metodologija.
+- **Shramba:** `localStorage` ključ `vvv_konkurenca_v1`; izvoz/uvoz JSON za prenos med napravami in varnostno kopijo.
+- **Začetni snapshot 2026-09** je iz spletnega iskanja (približno) in pokriva le del agencij; pred prvim pravim kolom ga ročno preveri in dopolni.
+
+Struktura podatkov:
+```js
+{
+  agencije: [{ id, ime, opomba, ig, tt, li, web }],
+  metrike:  [{ id, ime, utez }],
+  snapshoti: { 'YYYY-MM': { vir, vrednosti: { [agencijaId]: { [metrikaId]: number } } } }
+}
+```
+
+---
+
 ## Kako nadaljevati z Claudom
 
 1. Odpri nov pogovor na claude.ai
