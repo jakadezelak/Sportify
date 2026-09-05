@@ -148,20 +148,21 @@ Ločena, samostojna stran v istem repozitoriju (isti dizajn, brez povezave z Led
 | Steber | Kolo | Metrike | Primerjava |
 |---|---|---|---|
 | Doseg | mesec | IG, TikTok, LinkedIn sledilci (utež 1), Google ocene (0,5) | relativna rast, prag 1 o.t. za neodločeno |
-| Posel | mesec | novi projekti (utež po velikosti stranke micro 1 / mini 1,5 / mid 2 / big 3, znamka +1), aktivne stranke v 12 m, nagrade in omembe | absolutne vrednosti |
+| Posel | mesec | novi projekti (utež po velikosti stranke micro 1 / mini 1,5 / mid 2 / big 3, znamka +1), projekti skupaj (vse stranke od začetka), aktualni projekti (brez znanega konca), nagrade in omembe | absolutne vrednosti |
 | Finance | leto | prihodki, rast, dobiček, marža, zaposleni, prihodki/zaposlenega (AJPES prek Bizi) | absolutne, rast v % |
 
 **Skupni indeks** = utežena vsota deležev točk po stebrih (privzeto Posel 45 %, Finance 35 %, Doseg 20 %; 100 = prvi v vseh treh). Stebri brez podatkov se preskočijo.
 
 - **Zavihki:** Skupno, Doseg (lestvica + trenutno stanje), Posel (lestvica, portfelj, register projektov), Finance (lestvica, bilanca po letih), + Vnos (snapshot, projekt, nagrada, letne finance, izvoz/uvoz), Agencije, Metodologija.
-- **Shramba:** `localStorage` ključ `vvv_konkurenca_v1` (verzija 2, samodejna migracija iz v1); izvoz/uvoz JSON.
+- **Shramba:** `localStorage` ključ `vvv_konkurenca_v1` (verzija 3, samodejna migracija iz v1/v2); izvoz/uvoz JSON.
+- **Deklarirano število strank** (npr. "100+" na LinkedInu) je pri agenciji zapisano informativno in ni v ligi, ker ga ni mogoče preveriti.
 - **Register VVV** vsebuje javne študije primerov, portfolio 2025 in interne posle iz CRM (označeni `javno: false`); filter "Samo javno vidni projekti" jih izključi za pošteno primerjavo.
 - **Začetni podatki (5. 9. 2026)** so iz spletnega iskanja; viri so zapisani pri vsakem vnosu in v Metodologiji. Instagram/TikTok/LinkedIn/Bizi niso bili neposredno dostopni, zato snapshot dosega pokriva le del agencij.
 
 Struktura podatkov:
 ```js
 {
-  agencije:  [{ id, ime, pravna, opomba, ig, tt, li, web }],
+  agencije:  [{ id, ime, pravna, opomba, ig, tt, li, web, strank }],
   metrike:   [{ id, ime, utez }],
   snapshoti: { 'YYYY-MM': { vir, vrednosti: { [agId]: { [metId]: number } } } },
   projekti:  [{ id, agId, stranka, datum, velikost, znamka, javno, opis, vir, konec }],

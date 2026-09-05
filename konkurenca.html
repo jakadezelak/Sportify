@@ -174,6 +174,7 @@
     <table class="lestvica-table">
       <thead><tr>
         <th>#</th><th>Agencija</th>
+        <th class="num" title="Projekti skupaj (aktualni)">Projekti</th>
         <th class="num" style="color:var(--blue)">Doseg</th>
         <th class="num" style="color:var(--green)">Posel</th>
         <th class="num" style="color:var(--amber)">Finance</th>
@@ -223,7 +224,7 @@
 <!-- ============================ POSEL ============================ -->
 <div id="page-posel" class="page">
   <div class="section-title">POSEL</div>
-  <div class="section-sub">Register projektov: kdo pridobiva več in večje stranke. Mesec je kolo; dvoboji po treh metrikah: <b>novi projekti</b> (uteženi po velikosti stranke), <b>aktivne stranke</b> (v zadnjih 12 mesecih) in <b>nagrade in omembe</b>. Absolutne vrednosti, ne rast.</div>
+  <div class="section-sub">Register projektov: kdo pridobiva več in večje stranke. Mesec je kolo; dvoboji po štirih metrikah: <b>novi projekti</b> (uteženi po velikosti stranke), <b>projekti skupaj</b> (vse stranke od začetka), <b>aktualni projekti</b> (brez znanega konca) in <b>nagrade in omembe</b>. Absolutne vrednosti, ne rast.</div>
   <div id="posel-banner"></div>
   <div id="posel-stats" class="stat-grid"></div>
   <div class="filter-row" id="posel-filters"></div>
@@ -240,10 +241,10 @@
   <div class="section-title sm">PO METRIKAH</div>
   <div id="posel-metrike" class="metric-grid"></div>
   <div class="section-title sm">PORTFELJ</div>
-  <div class="section-sub">Stanje registra: število projektov, aktivne stranke, sestava po velikosti in prepoznavne znamke.</div>
+  <div class="section-sub">Stanje registra: vsi projekti od začetka, aktualni projekti, sestava po velikosti, znamke. "Deklarirano" je število strank, ki ga agencija sama navaja; ni v ligi, ker ga ni mogoče preveriti.</div>
   <div class="card table-wrap">
     <table class="lestvica-table">
-      <thead><tr><th>#</th><th>Agencija</th><th class="num">Projekti</th><th class="num">Aktivne (12 m)</th><th class="num">Utež. vsota</th><th>Velikost strank</th><th class="num">Znamke</th><th class="num">Nagrade</th></tr></thead>
+      <thead><tr><th>#</th><th>Agencija</th><th class="num" title="Vse stranke v registru od začetka">Projekti skupaj</th><th class="num" title="Brez znanega konca sodelovanja">Aktualni</th><th class="num">Utež. vsota</th><th>Velikost strank</th><th class="num">Znamke</th><th class="num">Nagrade</th><th class="num" title="Število strank, ki ga agencija sama navaja (ni v ligi)">Deklarirano</th></tr></thead>
       <tbody id="portfelj-body"></tbody>
     </table>
   </div>
@@ -398,6 +399,7 @@
       <div class="form-group"><label>Instagram handle</label><input type="text" id="nova-ig" placeholder="brez @"></div>
       <div class="form-group"><label>TikTok handle</label><input type="text" id="nova-tt" placeholder="brez @"></div>
       <div class="form-group"><label>LinkedIn slug</label><input type="text" id="nova-li" placeholder="linkedin.com/company/…"></div>
+      <div class="form-group"><label>Deklarirano št. strank</label><input type="text" id="nova-strank" placeholder="npr. 100+ (LinkedIn, feb. 2026)"></div>
     </div>
     <div class="btn-row"><button class="btn" onclick="dodajAgencijo()">Dodaj</button></div>
   </div>
@@ -421,7 +423,7 @@
     <p>Agencije ne igrajo tekem med seboj, zato je tekma umetna. Vsak steber je lastna liga z lastnimi koli in dvoboji, točkovanje je vedno 3 za zmago, 1 za neodločeno, 0 za poraz. Dvoboj se odigra samo, če imata obe agenciji podatek; manjkajoč podatek ni poraz, ampak neodigrana tekma.</p>
     <ul>
       <li><b style="color:var(--blue)">Doseg</b>: kolo je mesec, metrika so sledilci po kanalih, primerja se <i>relativna rast</i> v odstotkih. Razlika pod <code id="met-prag"></code> odstotne točke je neodločeno.</li>
-      <li><b style="color:var(--green)">Posel</b>: kolo je mesec, metrike so novi projekti (utež po velikosti stranke: micro 1, mini 1,5, mid 2, big 3, prepoznavna znamka +1), aktivne stranke v zadnjih 12 mesecih in točke nagrad. Primerjajo se <i>absolutne</i> vrednosti, ker gre za to, kdo ima več in večje. Agencija igra le, če ima v registru vsaj en vnos.</li>
+      <li><b style="color:var(--green)">Posel</b>: kolo je mesec, metrike so novi projekti v mesecu (utež po velikosti stranke: micro 1, mini 1,5, mid 2, big 3, prepoznavna znamka +1), projekti skupaj (vse stranke v registru do tega meseca), aktualni projekti (brez vpisanega konca sodelovanja ali s koncem v prihodnosti) in točke nagrad. Ker konkurenti konca sodelovanja ne objavljajo, se projekt brez vpisanega konca šteje kot aktualen; vpiši konec, ko ga izveš. Primerjajo se <i>absolutne</i> vrednosti, ker gre za to, kdo ima več in večje. Agencija igra le, če ima v registru vsaj en vnos.</li>
       <li><b style="color:var(--amber)">Finance</b>: kolo je poslovno leto, metrike so prihodki, rast prihodkov, dobiček, marža, zaposleni in prihodki na zaposlenega. Vir je AJPES. Primerjajo se absolutne vrednosti razen rasti.</li>
     </ul>
   </div>
@@ -461,18 +463,18 @@ const VELIKOST_IME = { micro: 'Micro', mini: 'Mini', mid: 'Mid', big: 'Big', '':
 // ZAČETNI PODATKI  (vir: spletno iskanje in interni viri VVV, 5. 9. 2026)
 // ============================================================
 const DEFAULT_DATA = {
-  verzija: 2,
+  verzija: 3,
   agencije: [
-    { id: 'vvv',         ime: 'VVV Digital',          pravna: 'VVV DIGITAL, agencija za marketing, d.o.o. (Ljubljana, ust. 2022)', opomba: 'Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar.', ig: 'vvv_digital', tt: 'vvv_digital', li: 'vvv-digital', web: 'vvv-digital.com' },
+    { id: 'vvv',         ime: 'VVV Digital',          pravna: 'VVV DIGITAL, agencija za marketing, d.o.o. (Ljubljana, ust. 2022)', opomba: 'Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar.', ig: 'vvv_digital', tt: 'vvv_digital', li: 'vvv-digital', web: 'vvv-digital.com', strank: '100+ (LinkedIn, 4. obletnica, feb. 2026)' },
     { id: 'tiktokspace', ime: 'TikTok SPACE',         pravna: '"TikTok SPACE d.o.o." (samodeklaracija, v registrih ni najdeno)', opomba: 'Ljubljana, Celovška 69C. TikTok, IG, FB vsebine, foto/video, kampanje.', ig: '', tt: '', li: '', web: 'tiktok-space.si' },
     { id: 'vividista',   ime: 'Vividista',            pravna: '', opomba: 'Agencija za Gen Z. IG/TikTok, influencerji, Meta in TikTok oglasi, splet. Zunaj lastne strani praktično neindeksirana.', ig: '', tt: '', li: '', web: 'vividista.si' },
     { id: 'envision',    ime: 'Envision Collective',  pravna: 'ENVISION COLLECTIVE, Maša Kovač s.p. (Murska Sobota, ust. 8. 1. 2025)', opomba: '"Zunanja ekipa za družbena omrežja", paketi po obsegu. Prvo poslovno leto 2025.', ig: 'envision_collective', tt: '', li: '', web: 'envisioncollective.si' },
-    { id: 'tiktokerija', ime: 'Tiktokerija',          pravna: 'BlendCreative d.o.o. (Dob, ust. 4. 12. 2023)', opomba: 'TikTok in Reels, storytelling. Ust. Rebeka Tomc, ekipa 6 do 8.', ig: '', tt: 'tikt0kerija', li: 'tiktokerija', web: 'tiktokerija.com' },
+    { id: 'tiktokerija', ime: 'Tiktokerija',          pravna: 'BlendCreative d.o.o. (Dob, ust. 4. 12. 2023)', opomba: 'TikTok in Reels, storytelling. Ust. Rebeka Tomc, ekipa 6 do 8.', ig: '', tt: 'tikt0kerija', li: 'tiktokerija', web: 'tiktokerija.com', strank: '50+ znamk (Rebeka Tomc kot ustvarjalka, tiktokerija.com)' },
     { id: 'apmarketing', ime: 'A.P. Marketing',       pravna: 'A.P. marketinške storitve, Andrej Pavličević s.p. (Kamnik, ust. 1. 12. 2022)', opomba: 'Kratki videi, UGC oglasi. Model influencer + agencija, 1 do 3 osebe.', ig: 'a.p.marketing', tt: '', li: '', web: 'ap-marketing.si' },
     { id: 'ziya',        ime: 'Ziya Agency',          pravna: '', opomba: 'Ljubljana. FB/IG/TikTok marketing, "TikTok korenine". Pravna oseba ni najdena.', ig: 'ziya.agency', tt: '', li: 'ziya-agency', web: 'ziya.agency' },
     { id: 'createable',  ime: 'Createable',           pravna: '', opomba: 'Video in UGC agencija, vodenje TikTok profilov. Soust. Laura Mlakar, ekipa 10 (EF UL, dec. 2025).', ig: 'createable.si', tt: 'createable.si', li: '', web: 'createable.si' },
     { id: 'katapult',    ime: 'Katapult Media',       pravna: 'enota KATAPULT d.o.o. (Trbovlje, ust. 2016; Media od 2023)', opomba: 'Foto/video, TikTok, splet, grafika. Ekipa 4 (Žiga Meterc). Finance samo na ravni pospeševalnika.', ig: 'katapult_media', tt: '', li: 'katapult-d.o.o.', web: 'katapult.si/storitve/katapult-media' },
-    { id: 'watt',        ime: 'We Are TikTok (WATT)', pravna: 'Kaching d.o.o. (Ljubljana, ust. 2017), 80 % Primož Oberč', opomba: 'TikTok oglasi za e-trgovce, prvi slovenski TikTok partner. Pod isto družbo tudi znamka Coffee 2.0.', ig: 'watt_agencija', tt: 'wearetiktok.agency', li: 'wearetiktok-agency', web: 'wearetiktok.agency' }
+    { id: 'watt',        ime: 'We Are TikTok (WATT)', pravna: 'Kaching d.o.o. (Ljubljana, ust. 2017), 80 % Primož Oberč', opomba: 'TikTok oglasi za e-trgovce, prvi slovenski TikTok partner. Pod isto družbo tudi znamka Coffee 2.0.', ig: 'watt_agencija', tt: 'wearetiktok.agency', li: 'wearetiktok-agency', web: 'wearetiktok.agency', strank: '30+ (MM 2023), 50+ (LinkedIn)' }
   ],
   metrike: [
     { id: 'ig', ime: 'Instagram sledilci', utez: 1 },
@@ -605,6 +607,10 @@ function naloziPodatke() {
     d.agencije.forEach(a => { const def = DEFAULT_DATA.agencije.find(x => x.id === a.id); if (def) { a.pravna = def.pravna; a.opomba = def.opomba; ['ig', 'tt', 'li', 'web'].forEach(k => { if (!a[k]) a[k] = def[k]; }); } });
     if (d.snapshoti['2026-09']) d.snapshoti['2026-09'] = klon(DEFAULT_DATA.snapshoti['2026-09']);
   }
+  if (d.verzija < 3) {
+    d.verzija = 3;
+    d.agencije.forEach(a => { const def = DEFAULT_DATA.agencije.find(x => x.id === a.id); if (a.strank === undefined) a.strank = def ? def.strank || '' : ''; });
+  }
   d.projekti = d.projekti || []; d.nagrade = d.nagrade || []; d.finance = d.finance || {};
   d.uteziStebrov = d.uteziStebrov || klon(DEFAULT_DATA.uteziStebrov); d.nastavitve = d.nastavitve || {};
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); } catch (e) { /* migracija ostane v pomnilniku */ }
@@ -713,20 +719,24 @@ function kolaPosel() {
   const out = [];
   seznamMesecev(od, mesecKonecPosel()).forEach(m => {
     const kolo = { oznaka: m, dvoboji: [] };
-    const novi = {}, aktivne = {}, nagr = {};
-    const od12 = mesecPlus(m, -11) + '-01', doM = m + '-31';
+    const novi = {}, skupaj = {}, aktualni = {}, nagr = {};
+    const doM = m + '-31';
     data.agencije.forEach(a => {
-      if (!igrajo.has(a.id)) { novi[a.id] = aktivne[a.id] = nagr[a.id] = null; return; }
-      novi[a.id] = P.filter(p => p.agId === a.id && mesecOd(p.datum) === m).reduce((s, p) => s + utezProjekta(p), 0);
-      aktivne[a.id] = P.filter(p => p.agId === a.id && p.datum && p.datum <= doM && p.datum >= od12 && (!p.konec || p.konec >= m + '-01')).length;
+      if (!igrajo.has(a.id)) { novi[a.id] = skupaj[a.id] = aktualni[a.id] = nagr[a.id] = null; return; }
+      const doZdaj = P.filter(p => p.agId === a.id && p.datum && p.datum <= doM);
+      novi[a.id] = doZdaj.filter(p => mesecOd(p.datum) === m).reduce((s, p) => s + utezProjekta(p), 0);
+      skupaj[a.id] = doZdaj.length;
+      aktualni[a.id] = doZdaj.filter(p => jeAktualen(p, m + '-01')).length;
       nagr[a.id] = data.nagrade.filter(n => n.agId === a.id && mesecOd(n.datum) === m).reduce((s, n) => s + Number(n.tocke || 0), 0);
     });
-    kolo.dvoboji.push(...dvoboji(novi, 'novi', 1, 0), ...dvoboji(aktivne, 'aktivne', 1, 0), ...dvoboji(nagr, 'nagrade', 1, 0));
+    kolo.dvoboji.push(...dvoboji(novi, 'novi', 1, 0), ...dvoboji(skupaj, 'skupaj', 1, 0), ...dvoboji(aktualni, 'aktualni', 1, 0), ...dvoboji(nagr, 'nagrade', 1, 0));
     out.push(kolo);
   });
   return out;
 }
-const POSEL_MET = [{ id: 'novi', ime: 'Novi projekti (uteženi)' }, { id: 'aktivne', ime: 'Aktivne stranke (12 m)' }, { id: 'nagrade', ime: 'Nagrade in omembe' }];
+const POSEL_MET = [{ id: 'novi', ime: 'Novi projekti (uteženi)' }, { id: 'skupaj', ime: 'Projekti skupaj' }, { id: 'aktualni', ime: 'Aktualni projekti' }, { id: 'nagrade', ime: 'Nagrade in omembe' }];
+function jeAktualen(p, naDan) { return !p.konec || p.konec >= naDan; }
+function stanjeProjektov(agId, P) { const pr = (P || projektiAktivni()).filter(p => p.agId === agId); return { skupaj: pr.length, aktualni: pr.filter(p => jeAktualen(p, danes())).length }; }
 
 // ============================================================
 // STEBER FINANCE
@@ -781,7 +791,7 @@ function renderSkupno() {
   ['doseg', 'posel', 'finance'].forEach(k => document.getElementById('utez-' + k).value = data.uteziStebrov[k]);
 
   const rows = data.agencije.map(a => {
-    const r = { id: a.id, ime: a.ime, delezi: {}, indeks: 0, opomba: a.opomba };
+    const r = { id: a.id, ime: a.ime, delezi: {}, indeks: 0, opomba: a.opomba, proj: stanjeProjektov(a.id) };
     aktivni.forEach(([k, t]) => {
       const max = Math.max(...t.map(x => x.tocke), 0);
       const row = t.find(x => x.id === a.id);
@@ -813,6 +823,7 @@ function renderSkupno() {
     return `<tr class="${r.id === MI ? 'mi' : ''}">
       <td><span class="rank-badge ${rank}">${aktivni.length ? i + 1 : '–'}</span></td>
       <td><div class="player-name">${esc(r.ime)}</div></td>
+      <td class="num">${r.proj.skupaj ? `${r.proj.skupaj} <span class="muted small">(${r.proj.aktualni})</span>` : '<span class="muted">–</span>'}</td>
       ${cell('doseg')}${cell('posel')}${cell('finance')}
       <td class="num" style="font-weight:600;font-size:16px">${Math.round(r.indeks)}</td>
       <td style="min-width:140px"><div class="steber-bar">${sestava}</div></td>
@@ -921,13 +932,12 @@ function renderPosel() {
   document.getElementById('posel-stats').innerHTML = `
     <div class="stat-box"><div class="big-stat">${k.length}</div><div class="label">Odigranih kol</div></div>
     <div class="stat-box"><div class="big-stat">${mi && k.length ? t.indexOf(mi) + 1 + '.' : '-'}</div><div class="label">Mesto VVV</div></div>
-    <div class="stat-box"><div class="big-stat">${P.filter(p => p.agId === MI).length}</div><div class="label">Projektov VVV v registru</div></div>`;
+    <div class="stat-box"><div class="big-stat">${stanjeProjektov(MI, P).skupaj} <span style="font-size:22px;color:var(--muted)">/ ${stanjeProjektov(MI, P).aktualni}</span></div><div class="label">Projekti VVV skupaj / aktualni</div></div>`;
 
   // portfelj
-  const doM = mesecKonecPosel(), od12 = mesecPlus(doM, -11) + '-01';
   const pf = data.agencije.map(a => {
     const pr = P.filter(p => p.agId === a.id);
-    const akt = pr.filter(p => p.datum && p.datum >= od12 && (!p.konec || p.konec >= doM + '-01')).length;
+    const akt = pr.filter(p => jeAktualen(p, danes())).length;
     const sizes = { micro: 0, mini: 0, mid: 0, big: 0, '': 0 }; pr.forEach(p => sizes[p.velikost || ''] = (sizes[p.velikost || ''] || 0) + 1);
     return { a, n: pr.length, akt, ut: pr.reduce((s, p) => s + utezProjekta(p), 0), sizes, zn: pr.filter(p => p.znamka).length, nag: data.nagrade.filter(n => n.agId === a.id).reduce((s, n) => s + Number(n.tocke || 0), 0) };
   }).sort((x, y) => y.ut - x.ut || y.n - x.n || x.a.ime.localeCompare(y.a.ime, 'sl'));
@@ -938,6 +948,7 @@ function renderPosel() {
       <td class="num">${r.n || '–'}</td><td class="num">${r.n ? r.akt : '–'}</td><td class="num">${r.n ? fmtTocke(r.ut) : '–'}</td>
       <td>${r.n ? ['big', 'mid', 'mini', 'micro', ''].filter(s => r.sizes[s]).map(s => `<span class="tag">${VELIKOST_IME[s]} ${r.sizes[s]}</span>`).join('') : '<span class="muted">–</span>'}</td>
       <td class="num">${r.n ? r.zn : '–'}</td><td class="num">${r.nag || '–'}</td>
+      <td class="num small muted" style="white-space:normal;max-width:200px">${esc(r.a.strank || '–')}</td>
     </tr>`).join('');
 
   // register
@@ -1115,7 +1126,7 @@ function renderAgencije() {
       <div>
         <div class="player-name" style="${a.id === MI ? 'color:var(--green)' : ''}">${esc(a.ime)}</div>
         <div class="handles">${esc(a.pravna || 'pravna oseba ni znana')}</div>
-        <div class="handles">${esc(a.opomba || '')}</div>
+        <div class="handles">${esc(a.opomba || '')}${a.strank ? ` · Deklarirano strank: ${esc(a.strank)}` : ''}</div>
         <div class="handles">${profilLinki(a) || '<span class="muted">ni ročajev</span>'}</div>
       </div>
       <div style="display:flex;gap:6px;">
@@ -1141,8 +1152,8 @@ function dodajAgencijo() {
   let id = slug(ime); while (data.agencije.some(a => a.id === id)) id += '2';
   data.agencije.push({ id, ime, pravna: document.getElementById('nova-pravna').value.trim(), opomba: document.getElementById('nova-opomba').value.trim(),
     ig: cistiHandle(document.getElementById('nova-ig').value), tt: cistiHandle(document.getElementById('nova-tt').value), li: cistiHandle(document.getElementById('nova-li').value),
-    web: cistiWeb(document.getElementById('nova-web').value) });
-  ['nova-ime', 'nova-opomba', 'nova-pravna', 'nova-ig', 'nova-tt', 'nova-li', 'nova-web'].forEach(i => document.getElementById(i).value = '');
+    web: cistiWeb(document.getElementById('nova-web').value), strank: document.getElementById('nova-strank').value.trim() });
+  ['nova-ime', 'nova-opomba', 'nova-pravna', 'nova-ig', 'nova-tt', 'nova-li', 'nova-web', 'nova-strank'].forEach(i => document.getElementById(i).value = '');
   shrani(); renderAgencije(); showToast(`${ime} dodana`);
 }
 function urediAgencijo(id) {
@@ -1154,7 +1165,8 @@ function urediAgencijo(id) {
   const tt = prompt('TikTok handle (brez @)', a.tt || ''); if (tt === null) return;
   const li = prompt('LinkedIn slug', a.li || ''); if (li === null) return;
   const web = prompt('Spletna stran', a.web || ''); if (web === null) return;
-  Object.assign(a, { ime: ime.trim() || a.ime, pravna: pravna.trim(), opomba: opomba.trim(), ig: cistiHandle(ig), tt: cistiHandle(tt), li: cistiHandle(li), web: cistiWeb(web) });
+  const strank = prompt('Deklarirano število strank (z virom)', a.strank || ''); if (strank === null) return;
+  Object.assign(a, { ime: ime.trim() || a.ime, pravna: pravna.trim(), opomba: opomba.trim(), ig: cistiHandle(ig), tt: cistiHandle(tt), li: cistiHandle(li), web: cistiWeb(web), strank: strank.trim() });
   shrani(); renderAgencije(); showToast('Shranjeno');
 }
 function odstraniAgencijo(id) {
