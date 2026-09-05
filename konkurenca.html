@@ -8,187 +8,144 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green: #2ECC71;
-    --green-dark: #1a7a42;
-    --green-dim: rgba(46,204,113,0.12);
-    --red: #E74C3C;
-    --red-dim: rgba(231,76,60,0.12);
-    --amber: #F39C12;
-    --amber-dim: rgba(243,156,18,0.12);
-    --bg: #0d0f0d;
-    --bg2: #141714;
-    --bg3: #1a1e1a;
-    --border: rgba(255,255,255,0.07);
-    --text: #e8ede8;
-    --muted: #6b7d6b;
-    --card-radius: 12px;
+    --green: #2ECC71; --green-dark: #1a7a42; --green-dim: rgba(46,204,113,0.12);
+    --red: #E74C3C; --red-dim: rgba(231,76,60,0.12);
+    --amber: #F39C12; --amber-dim: rgba(243,156,18,0.12);
+    --blue: #3498db; --blue-dim: rgba(52,152,219,0.12);
+    --bg: #0d0f0d; --bg2: #141714; --bg3: #1a1e1a;
+    --border: rgba(255,255,255,0.07); --text: #e8ede8; --muted: #6b7d6b; --card-radius: 12px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    min-height: 100vh;
-    padding-bottom: env(safe-area-inset-bottom);
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; min-height: 100vh; padding-bottom: env(safe-area-inset-bottom); }
   header {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 0 24px;
-    padding-top: env(safe-area-inset-top);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: calc(60px + env(safe-area-inset-top));
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    gap: 12px;
+    background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 24px; padding-top: env(safe-area-inset-top);
+    display: flex; align-items: center; justify-content: space-between; height: calc(60px + env(safe-area-inset-top));
+    position: sticky; top: 0; z-index: 100; gap: 12px;
   }
   .logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--green); white-space: nowrap; }
   .logo span { color: var(--text); }
   nav { display: flex; gap: 4px; overflow-x: auto; }
   nav button {
-    background: none; border: none; color: var(--muted);
-    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-    padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all .2s; white-space: nowrap;
+    background: none; border: none; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    padding: 8px 13px; border-radius: 8px; cursor: pointer; transition: all .2s; white-space: nowrap;
   }
   nav button:hover { background: var(--bg3); color: var(--text); }
   nav button.active { background: var(--green-dim); color: var(--green); }
 
-  .page { display: none; padding: 28px 24px; max-width: 1000px; margin: 0 auto; }
+  .page { display: none; padding: 28px 24px; max-width: 1040px; margin: 0 auto; }
   .page.active { display: block; }
   .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; margin-bottom: 6px; }
-  .section-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+  .section-title.sm { font-size: 22px; margin-top: 26px; }
+  .section-sub { color: var(--muted); font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
   .card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--card-radius); padding: 20px; margin-bottom: 16px; }
-  .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1.5px; margin-bottom: 10px; color: var(--text); }
-  .card p, .card li { font-size: 14px; line-height: 1.6; color: var(--text); }
+  .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1.5px; margin-bottom: 10px; }
+  .card p, .card li { font-size: 14px; line-height: 1.6; }
   .card ul, .card ol { padding-left: 20px; margin: 6px 0 10px; }
-  .muted { color: var(--muted); }
-  .small { font-size: 12px; }
+  .muted { color: var(--muted); } .small { font-size: 12px; }
+  a { color: var(--green); }
 
-  .table-wrap { overflow-x: auto; }
+  .table-wrap { overflow-x: auto; padding: 0 !important; }
   .lestvica-table { width: 100%; border-collapse: collapse; min-width: 640px; }
-  .lestvica-table th {
-    text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
-    color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--border); white-space: nowrap;
-  }
-  .lestvica-table td { padding: 12px 12px; border-bottom: 1px solid var(--border); font-size: 14px; white-space: nowrap; }
+  .lestvica-table th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .lestvica-table td { padding: 11px 12px; border-bottom: 1px solid var(--border); font-size: 14px; white-space: nowrap; }
   .lestvica-table tr:last-child td { border-bottom: none; }
   .lestvica-table tr:hover td { background: var(--bg3); }
   .lestvica-table tr.mi td { background: var(--green-dim); }
   .lestvica-table tr.mi:hover td { background: rgba(46,204,113,0.18); }
-  .lestvica-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  .lestvica-table th.num { text-align: right; }
+  .lestvica-table td.num, .lestvica-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .lestvica-table td.wrap { white-space: normal; min-width: 180px; }
 
   .rank-badge { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--muted); width: 28px; display: inline-block; }
-  .rank-badge.gold { color: #f1c40f; }
-  .rank-badge.silver { color: #bdc3c7; }
-  .rank-badge.bronze { color: #cd7f32; }
+  .rank-badge.gold { color: #f1c40f; } .rank-badge.silver { color: #bdc3c7; } .rank-badge.bronze { color: #cd7f32; }
   .player-name { font-weight: 500; font-size: 15px; }
-  .team-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .team-sub { font-size: 11px; color: var(--muted); margin-top: 2px; white-space: normal; }
 
   .forma { display: flex; gap: 4px; align-items: center; }
   .forma-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .forma-dot.W { background: var(--green); }
-  .forma-dot.D { background: var(--amber); }
-  .forma-dot.L { background: var(--red); }
+  .forma-dot.W { background: var(--green); } .forma-dot.D { background: var(--amber); } .forma-dot.L { background: var(--red); }
   .forma-dot.empty { background: var(--bg3); border: 1px solid var(--border); }
 
   .stat-pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-  .stat-pill.green { background: var(--green-dim); color: var(--green); }
-  .stat-pill.red { background: var(--red-dim); color: var(--red); }
-  .stat-pill.amber { background: var(--amber-dim); color: var(--amber); }
-  .stat-pill.grey { background: var(--bg3); color: var(--muted); }
+  .stat-pill.green { background: var(--green-dim); color: var(--green); } .stat-pill.red { background: var(--red-dim); color: var(--red); }
+  .stat-pill.amber { background: var(--amber-dim); color: var(--amber); } .stat-pill.grey { background: var(--bg3); color: var(--muted); }
+  .stat-pill.blue { background: var(--blue-dim); color: var(--blue); }
+  .trend { font-weight: 600; font-size: 13px; } .trend.up { color: var(--green); } .trend.down { color: var(--red); } .trend.same { color: var(--muted); }
 
-  .trend { font-weight: 600; font-size: 13px; }
-  .trend.up { color: var(--green); }
-  .trend.down { color: var(--red); }
-  .trend.same { color: var(--muted); }
-
-  .score-bar { display: flex; height: 4px; border-radius: 2px; background: var(--bg3); overflow: hidden; margin-top: 4px; width: 80px; }
+  .score-bar { display: flex; height: 4px; border-radius: 2px; background: var(--bg3); overflow: hidden; margin-top: 4px; width: 80px; margin-left: auto; }
   .score-bar-fill { background: var(--green); transition: width .5s; }
+  .steber-bar { display: flex; height: 6px; border-radius: 3px; background: var(--bg3); overflow: hidden; width: 100%; margin-top: 6px; }
+  .steber-bar div { height: 100%; }
+  .steber-bar .doseg { background: var(--blue); } .steber-bar .posel { background: var(--green); } .steber-bar .finance { background: var(--amber); }
 
   .big-stat { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; color: var(--green); }
   .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .stat-grid.four { grid-template-columns: repeat(4, 1fr); }
   .stat-box { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--card-radius); padding: 16px; text-align: center; }
   .stat-box .label { font-size: 11px; color: var(--muted); letter-spacing: .8px; text-transform: uppercase; margin-top: 4px; }
 
   .filter-row { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
-  .filter-btn {
-    background: var(--bg3); border: 1px solid var(--border); color: var(--muted); border-radius: 20px;
-    padding: 6px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .2s;
-  }
+  .filter-btn { background: var(--bg3); border: 1px solid var(--border); color: var(--muted); border-radius: 20px; padding: 6px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .2s; }
   .filter-btn:hover { color: var(--text); border-color: var(--green); }
   .filter-btn.active { background: var(--green-dim); color: var(--green); border-color: var(--green); }
+  .subtabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
 
   label { font-size: 12px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); }
-  input[type=text], input[type=number], input[type=month], select, textarea {
-    background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; color: var(--text);
-    font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 10px 12px; outline: none; transition: border-color .2s; width: 100%;
+  input[type=text], input[type=number], input[type=month], input[type=date], input[type=url], select, textarea {
+    background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 10px 12px; outline: none; transition: border-color .2s; width: 100%;
   }
   input:focus, select:focus, textarea:focus { border-color: var(--green); }
   .vnos-table input[type=number] { width: 110px; padding: 7px 9px; text-align: right; }
   .vnos-table td, .vnos-table th { padding: 8px 10px; }
-  .vnos-table input.changed { border-color: var(--amber); }
+  .check { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text); text-transform: none; letter-spacing: 0; font-weight: 400; cursor: pointer; }
+  .check input { width: auto; }
 
-  .btn {
-    background: var(--green); color: #0d0f0d; border: none; border-radius: 8px; padding: 11px 24px;
-    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .2s;
-  }
+  .btn { background: var(--green); color: #0d0f0d; border: none; border-radius: 8px; padding: 11px 24px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .2s; }
   .btn:hover { background: #27ae60; transform: translateY(-1px); }
   .btn.secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
   .btn.secondary:hover { border-color: var(--green); color: var(--green); transform: none; }
   .btn.danger { background: var(--red-dim); color: var(--red); border: 1px solid rgba(231,76,60,0.3); }
   .btn.danger:hover { background: rgba(231,76,60,0.25); transform: none; }
   .btn.sm { padding: 6px 12px; font-size: 12px; }
-  .btn-row { display: flex; gap: 10px; margin-top: 20px; align-items: center; flex-wrap: wrap; }
+  .btn-row { display: flex; gap: 10px; margin-top: 18px; align-items: center; flex-wrap: wrap; }
 
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
   .form-group { display: flex; flex-direction: column; gap: 6px; }
   .form-group.full { grid-column: 1/-1; }
 
-  .banner {
-    background: var(--amber-dim); border: 1px solid rgba(243,156,18,0.35); color: var(--amber);
-    border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; display: flex; justify-content: space-between; gap: 12px; align-items: center;
-  }
+  .banner { background: var(--amber-dim); border: 1px solid rgba(243,156,18,0.35); color: var(--amber); border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; line-height: 1.5; }
   .banner.green { background: var(--green-dim); border-color: rgba(46,204,113,0.35); color: var(--green); }
+  .banner.blue { background: var(--blue-dim); border-color: rgba(52,152,219,0.35); color: var(--blue); }
 
   .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
   .metric-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--card-radius); padding: 14px 16px; }
   .metric-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1.5px; margin-bottom: 8px; }
-  .metric-row { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .metric-row { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px solid var(--border); gap: 8px; }
   .metric-row:last-child { border-bottom: none; }
   .metric-row.mi { color: var(--green); font-weight: 600; }
-  .metric-row .pts { font-variant-numeric: tabular-nums; color: var(--muted); }
+  .metric-row .pts { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
   .metric-row.mi .pts { color: var(--green); }
 
   .agency-list { display: flex; flex-direction: column; gap: 8px; }
-  .agency-item {
-    display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
-    background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
-  }
-  .agency-item .handles { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .agency-item { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+  .agency-item .handles { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
   .agency-item .handles a { color: var(--muted); text-decoration: none; }
   .agency-item .handles a:hover { color: var(--green); }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 10px; background: var(--bg2); border: 1px solid var(--border); color: var(--muted); margin-right: 4px; }
+  .tag.javno { color: var(--green); border-color: rgba(46,204,113,0.35); }
+  .tag.interno { color: var(--amber); border-color: rgba(243,156,18,0.35); }
 
-  .toast {
-    position: fixed; bottom: 24px; right: 24px; background: var(--green); color: #0d0f0d;
-    padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; opacity: 0; transform: translateY(10px);
-    transition: all .3s; pointer-events: none; z-index: 200;
-  }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--green); color: #0d0f0d; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; opacity: 0; transform: translateY(10px); transition: all .3s; pointer-events: none; z-index: 200; }
   .toast.show { opacity: 1; transform: translateY(0); }
-
   code { background: var(--bg3); padding: 1px 6px; border-radius: 4px; font-size: 13px; }
 
   @media (max-width: 640px) {
     header { padding: 0 14px; height: auto; flex-direction: column; align-items: flex-start; gap: 6px; padding-bottom: 8px; }
     nav { width: 100%; }
     .page { padding: 20px 14px; }
-    .stat-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .stat-grid, .stat-grid.four { grid-template-columns: 1fr 1fr; gap: 8px; }
     .big-stat { font-size: 30px; }
-    .form-grid { grid-template-columns: 1fr; }
+    .form-grid, .form-grid.three { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -197,101 +154,231 @@
 <header>
   <div class="logo">VVV <span>LIGA</span></div>
   <nav>
-    <button class="active" data-page="lestvica" onclick="showPage('lestvica')">Lestvica</button>
-    <button data-page="stanje" onclick="showPage('stanje')">Stanje</button>
-    <button data-page="vnos" onclick="showPage('vnos')">+ Snapshot</button>
+    <button class="active" data-page="skupno" onclick="showPage('skupno')">Skupno</button>
+    <button data-page="doseg" onclick="showPage('doseg')">Doseg</button>
+    <button data-page="posel" onclick="showPage('posel')">Posel</button>
+    <button data-page="finance" onclick="showPage('finance')">Finance</button>
+    <button data-page="vnos" onclick="showPage('vnos')">+ Vnos</button>
     <button data-page="agencije" onclick="showPage('agencije')">Agencije</button>
     <button data-page="metodologija" onclick="showPage('metodologija')">Metodologija</button>
   </nav>
 </header>
 
-<!-- ============================ LESTVICA ============================ -->
-<div id="page-lestvica" class="page active">
-  <div class="section-title">LESTVICA</div>
-  <div class="section-sub">Vsak mesec je eno kolo. V kolu vsaka agencija igra proti vsaki po vsaki metriki: večja relativna rast zmaga (3 točke), izenačenje 1 točka.</div>
-  <div id="lestvica-banner"></div>
-  <div id="lestvica-stats" class="stat-grid"></div>
-  <div class="filter-row" id="lestvica-filters"></div>
-  <div class="card table-wrap" style="padding:0;overflow-x:auto;">
+<!-- ============================ SKUPNO ============================ -->
+<div id="page-skupno" class="page active">
+  <div class="section-title">SKUPNA LESTVICA</div>
+  <div class="section-sub">Trije stebri, vsak s svojo ligo: <b style="color:var(--blue)">Doseg</b> (sledilci), <b style="color:var(--green)">Posel</b> (projekti in stranke), <b style="color:var(--amber)">Finance</b> (AJPES). Skupni indeks je utežen seštevek deležev točk po stebrih, 100 = prvi v vseh treh.</div>
+  <div id="skupno-banner"></div>
+  <div id="skupno-stats" class="stat-grid four"></div>
+  <div class="card table-wrap">
     <table class="lestvica-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Agencija</th>
-          <th class="num" title="Odigrana kola (meseci z vsaj enim dvobojem)">K</th>
-          <th class="num">Z</th>
-          <th class="num">N</th>
-          <th class="num">P</th>
-          <th class="num" title="Delež osvojenih točk">%</th>
-          <th>Forma (zadnjih 5 kol)</th>
-          <th class="num">Točke</th>
-          <th title="Sprememba mesta glede na prejšnje kolo">Trend</th>
-        </tr>
-      </thead>
-      <tbody id="lestvica-body"></tbody>
+      <thead><tr>
+        <th>#</th><th>Agencija</th>
+        <th class="num" style="color:var(--blue)">Doseg</th>
+        <th class="num" style="color:var(--green)">Posel</th>
+        <th class="num" style="color:var(--amber)">Finance</th>
+        <th class="num">Indeks</th><th>Sestava</th>
+      </tr></thead>
+      <tbody id="skupno-body"></tbody>
     </table>
   </div>
-  <div class="section-title" style="font-size:22px;margin-top:24px;">PO METRIKAH</div>
-  <div class="section-sub">Točke po posamezni metriki v izbranem obdobju. Tu vidiš, kje VVV zaostaja in kje vodi.</div>
-  <div id="lestvica-metrike" class="metric-grid"></div>
+  <div class="card">
+    <h3>UTEŽI STEBROV</h3>
+    <div class="form-grid three">
+      <div class="form-group"><label>Doseg (%)</label><input type="number" id="utez-doseg" min="0" max="100" step="5" onchange="setUtezStebra('doseg', this.value)"></div>
+      <div class="form-group"><label>Posel (%)</label><input type="number" id="utez-posel" min="0" max="100" step="5" onchange="setUtezStebra('posel', this.value)"></div>
+      <div class="form-group"><label>Finance (%)</label><input type="number" id="utez-finance" min="0" max="100" step="5" onchange="setUtezStebra('finance', this.value)"></div>
+    </div>
+    <p class="muted small" style="margin-top:10px">Uteži se normalizirajo na 100. Steber brez podatkov se preskoči in njegova utež se razdeli med ostale.</p>
+  </div>
 </div>
 
-<!-- ============================ STANJE ============================ -->
-<div id="page-stanje" class="page">
-  <div class="section-title">TRENUTNO STANJE</div>
-  <div class="section-sub">Surove vrednosti zadnjega snapshota in sprememba glede na prejšnji mesec. Deluje že s prvim snapshotom, ko lestvica še nima odigranih kol.</div>
-  <div class="filter-row" id="stanje-filters"></div>
-  <div class="card table-wrap" style="padding:0;overflow-x:auto;">
+<!-- ============================ DOSEG ============================ -->
+<div id="page-doseg" class="page">
+  <div class="section-title">DOSEG</div>
+  <div class="section-sub">Mesec je kolo. Vsaka agencija igra proti vsaki po vsaki metriki; večja relativna rast zmaga (3 točke), izenačenje 1 točka.</div>
+  <div id="doseg-banner"></div>
+  <div id="doseg-stats" class="stat-grid"></div>
+  <div class="filter-row" id="doseg-filters"></div>
+  <div class="card table-wrap">
     <table class="lestvica-table">
-      <thead id="stanje-head"></thead>
-      <tbody id="stanje-body"></tbody>
+      <thead><tr>
+        <th>#</th><th>Agencija</th>
+        <th class="num" title="Odigrana kola">K</th><th class="num">Z</th><th class="num">N</th><th class="num">P</th>
+        <th class="num" title="Delež osvojenih točk">%</th><th>Forma (zadnjih 5)</th><th class="num">Točke</th><th>Trend</th>
+      </tr></thead>
+      <tbody id="doseg-body"></tbody>
     </table>
+  </div>
+  <div class="section-title sm">PO METRIKAH</div>
+  <div id="doseg-metrike" class="metric-grid"></div>
+  <div class="section-title sm">TRENUTNO STANJE</div>
+  <div class="section-sub">Surove vrednosti zadnjega snapshota in sprememba glede na prejšnji mesec.</div>
+  <div class="card table-wrap">
+    <table class="lestvica-table"><thead id="stanje-head"></thead><tbody id="stanje-body"></tbody></table>
   </div>
   <p class="muted small" id="stanje-opomba"></p>
 </div>
 
-<!-- ============================ VNOS ============================ -->
-<div id="page-vnos" class="page">
-  <div class="section-title">SNAPSHOT</div>
-  <div class="section-sub">Enkrat mesečno, vedno na isti dan, vpiši trenutne javne vrednosti za vsako agencijo. Prazno polje pomeni "ni podatka" in agencija tisti mesec pri tej metriki ne igra.</div>
-  <div class="card">
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Mesec snapshota</label>
-        <input type="month" id="vnos-mesec">
-      </div>
-      <div class="form-group">
-        <label>Obstoječi snapshoti</label>
-        <select id="vnos-obstojeci" onchange="izberiSnapshot(this.value)"></select>
-      </div>
-      <div class="form-group full">
-        <label>Vir / opomba za ta mesec</label>
-        <input type="text" id="vnos-vir" placeholder="npr. ročni odčitek profilov 5. 9. 2026">
-      </div>
-    </div>
-  </div>
-  <div class="card table-wrap" style="padding:0;overflow-x:auto;">
-    <table class="lestvica-table vnos-table">
-      <thead id="vnos-head"></thead>
-      <tbody id="vnos-body"></tbody>
+<!-- ============================ POSEL ============================ -->
+<div id="page-posel" class="page">
+  <div class="section-title">POSEL</div>
+  <div class="section-sub">Register projektov: kdo pridobiva več in večje stranke. Mesec je kolo; dvoboji po treh metrikah: <b>novi projekti</b> (uteženi po velikosti stranke), <b>aktivne stranke</b> (v zadnjih 12 mesecih) in <b>nagrade in omembe</b>. Absolutne vrednosti, ne rast.</div>
+  <div id="posel-banner"></div>
+  <div id="posel-stats" class="stat-grid"></div>
+  <div class="filter-row" id="posel-filters"></div>
+  <div class="card table-wrap">
+    <table class="lestvica-table">
+      <thead><tr>
+        <th>#</th><th>Agencija</th>
+        <th class="num" title="Odigrana kola">K</th><th class="num">Z</th><th class="num">N</th><th class="num">P</th>
+        <th class="num">%</th><th>Forma (zadnjih 5)</th><th class="num">Točke</th><th>Trend</th>
+      </tr></thead>
+      <tbody id="posel-body"></tbody>
     </table>
   </div>
-  <div class="btn-row">
-    <button class="btn" onclick="shraniSnapshot()">Shrani snapshot</button>
-    <button class="btn secondary" onclick="izbrisiSnapshot()">Izbriši ta mesec</button>
-    <span class="muted small" id="vnos-status"></span>
+  <div class="section-title sm">PO METRIKAH</div>
+  <div id="posel-metrike" class="metric-grid"></div>
+  <div class="section-title sm">PORTFELJ</div>
+  <div class="section-sub">Stanje registra: število projektov, aktivne stranke, sestava po velikosti in prepoznavne znamke.</div>
+  <div class="card table-wrap">
+    <table class="lestvica-table">
+      <thead><tr><th>#</th><th>Agencija</th><th class="num">Projekti</th><th class="num">Aktivne (12 m)</th><th class="num">Utež. vsota</th><th>Velikost strank</th><th class="num">Znamke</th><th class="num">Nagrade</th></tr></thead>
+      <tbody id="portfelj-body"></tbody>
+    </table>
+  </div>
+  <div class="section-title sm">REGISTER</div>
+  <div class="filter-row" id="register-filters"></div>
+  <div class="card table-wrap">
+    <table class="lestvica-table">
+      <thead><tr><th>Datum</th><th>Agencija</th><th>Stranka</th><th>Velikost</th><th>Opis</th><th>Vir</th><th></th></tr></thead>
+      <tbody id="register-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================ FINANCE ============================ -->
+<div id="page-finance" class="page">
+  <div class="section-title">FINANCE</div>
+  <div class="section-sub">Letni podatki iz AJPES (prek Bizi, CompanyWall, Ebonitete). Leto je kolo. Dvoboji po metrikah: prihodki, rast prihodkov, dobiček, marža, zaposleni, prihodki na zaposlenega. Pri s.p. je "dobiček" podjetnikov dohodek pred lastnim plačilom in ni povsem primerljiv z d.o.o.</div>
+  <div id="finance-banner"></div>
+  <div class="filter-row" id="finance-filters"></div>
+  <div class="card table-wrap">
+    <table class="lestvica-table">
+      <thead><tr>
+        <th>#</th><th>Agencija</th><th class="num" title="Odigrana leta">L</th><th class="num">Z</th><th class="num">N</th><th class="num">P</th><th class="num">%</th><th class="num">Točke</th>
+      </tr></thead>
+      <tbody id="finance-body"></tbody>
+    </table>
+  </div>
+  <div class="section-title sm">PO METRIKAH</div>
+  <div id="finance-metrike" class="metric-grid"></div>
+  <div class="section-title sm">BILANCA</div>
+  <div class="filter-row" id="bilanca-filters"></div>
+  <div class="card table-wrap">
+    <table class="lestvica-table">
+      <thead><tr><th>#</th><th>Agencija</th><th>Pravna oseba</th><th class="num">Prihodki</th><th class="num">Rast</th><th class="num">Dobiček</th><th class="num">Marža</th><th class="num">Zaposleni</th><th class="num">Prih./zap.</th></tr></thead>
+      <tbody id="bilanca-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================ VNOS ============================ -->
+<div id="page-vnos" class="page">
+  <div class="section-title">VNOS</div>
+  <div class="subtabs">
+    <button class="filter-btn active" data-sub="snapshot" onclick="showSub('snapshot')">Snapshot dosega</button>
+    <button class="filter-btn" data-sub="projekt" onclick="showSub('projekt')">Projekt</button>
+    <button class="filter-btn" data-sub="nagrada" onclick="showSub('nagrada')">Nagrada / omemba</button>
+    <button class="filter-btn" data-sub="finance" onclick="showSub('finance')">Letne finance</button>
+    <button class="filter-btn" data-sub="podatki" onclick="showSub('podatki')">Podatki</button>
   </div>
 
-  <div class="section-title" style="font-size:22px;margin-top:32px;">PODATKI</div>
-  <div class="card">
-    <p>Podatki so shranjeni v brskalniku (localStorage). Za prenos na drug telefon ali računalnik uporabi izvoz in uvoz. JSON lahko shraniš tudi v repozitorij kot varnostno kopijo.</p>
-    <div class="btn-row" style="margin-top:14px;">
-      <button class="btn secondary" onclick="izvoziJSON()">Izvozi JSON</button>
-      <label class="btn secondary" style="cursor:pointer;text-transform:none;letter-spacing:0;font-size:14px;color:var(--text);">
-        Uvozi JSON <input type="file" accept="application/json" style="display:none" onchange="uvoziJSON(this)">
-      </label>
-      <button class="btn secondary" onclick="kopirajJSON()">Kopiraj JSON</button>
-      <button class="btn danger" onclick="ponastavi()">Ponastavi na začetne podatke</button>
+  <div id="sub-snapshot" class="sub">
+    <div class="section-sub">Enkrat mesečno, vedno na isti dan, vpiši trenutne javne vrednosti. Prazno polje = ni podatka, agencija tisti mesec pri tej metriki ne igra.</div>
+    <div class="card">
+      <div class="form-grid">
+        <div class="form-group"><label>Mesec snapshota</label><input type="month" id="vnos-mesec"></div>
+        <div class="form-group"><label>Obstoječi snapshoti</label><select id="vnos-obstojeci" onchange="izberiSnapshot(this.value)"></select></div>
+        <div class="form-group full"><label>Vir / opomba</label><input type="text" id="vnos-vir" placeholder="npr. ročni odčitek profilov 5. 10. 2026"></div>
+      </div>
+    </div>
+    <div class="card table-wrap"><table class="lestvica-table vnos-table"><thead id="vnos-head"></thead><tbody id="vnos-body"></tbody></table></div>
+    <div class="btn-row">
+      <button class="btn" onclick="shraniSnapshot()">Shrani snapshot</button>
+      <button class="btn secondary" onclick="izbrisiSnapshot()">Izbriši ta mesec</button>
+      <span class="muted small" id="vnos-status"></span>
+    </div>
+  </div>
+
+  <div id="sub-projekt" class="sub" style="display:none">
+    <div class="section-sub">Vpiši projekt, ko ga prvič opaziš (objava, portfolio, članek). Datum je prva javna omemba. Če veš, da je sodelovanje končano, vpiši konec.</div>
+    <div class="card">
+      <div class="form-grid three">
+        <div class="form-group"><label>Agencija</label><select id="pr-ag"></select></div>
+        <div class="form-group"><label>Stranka</label><input type="text" id="pr-stranka" placeholder="npr. GLS Slovenija"></div>
+        <div class="form-group"><label>Prva omemba</label><input type="date" id="pr-datum"></div>
+        <div class="form-group"><label>Velikost stranke</label>
+          <select id="pr-velikost">
+            <option value="">neznano (utež 1)</option>
+            <option value="micro">Micro, pod 300 k € (1)</option>
+            <option value="mini">Mini, 300 k do 1 M € (1,5)</option>
+            <option value="mid">Mid, 1 do 10 M € (2)</option>
+            <option value="big">Big, nad 10 M € (3)</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Konec sodelovanja</label><input type="date" id="pr-konec"></div>
+        <div class="form-group"><label>&nbsp;</label>
+          <label class="check"><input type="checkbox" id="pr-znamka"> Prepoznavna znamka (+1)</label>
+          <label class="check"><input type="checkbox" id="pr-javno" checked> Javno vidno</label>
+        </div>
+        <div class="form-group full"><label>Opis</label><input type="text" id="pr-opis" placeholder="kaj je bilo narejeno"></div>
+        <div class="form-group full"><label>Vir (URL ali opis)</label><input type="text" id="pr-vir" placeholder="https://… ali 'portfolio na spletni strani'"></div>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="dodajProjekt()">Dodaj projekt</button><span class="muted small">Register in urejanje sta na strani Posel.</span></div>
+    </div>
+  </div>
+
+  <div id="sub-nagrada" class="sub" style="display:none">
+    <div class="section-sub">Nagrade (SOF, Websi, Diggit, Effie), uvrstitve v finale, članki v strokovnih medijih, podcasti. Točke: nagrada 3, finalist ali članek 1.</div>
+    <div class="card">
+      <div class="form-grid three">
+        <div class="form-group"><label>Agencija</label><select id="na-ag"></select></div>
+        <div class="form-group"><label>Datum</label><input type="date" id="na-datum"></div>
+        <div class="form-group"><label>Točke</label><select id="na-tocke"><option value="3">3 (nagrada)</option><option value="1" selected>1 (finalist, članek, podcast)</option></select></div>
+        <div class="form-group full"><label>Naziv</label><input type="text" id="na-naziv" placeholder="npr. Websi 2026, srebro, kategorija družbena omrežja"></div>
+        <div class="form-group full"><label>Vir</label><input type="text" id="na-vir" placeholder="https://…"></div>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="dodajNagrado()">Dodaj</button></div>
+    </div>
+    <div class="card"><h3>SEZNAM</h3><div id="nagrade-list" class="agency-list"></div></div>
+  </div>
+
+  <div id="sub-finance" class="sub" style="display:none">
+    <div class="section-sub">Podatki iz AJPES (Bizi, CompanyWall, Ebonitete). Vpiši celotne prihodke, čisti dobiček (lahko negativen) in povprečno število zaposlenih. Letna poročila so objavljena aprila ali maja za prejšnje leto.</div>
+    <div class="card">
+      <div class="form-grid three">
+        <div class="form-group"><label>Agencija</label><select id="fi-ag"></select></div>
+        <div class="form-group"><label>Leto</label><input type="number" id="fi-leto" min="2015" max="2100" step="1"></div>
+        <div class="form-group"><label>Vir</label><input type="text" id="fi-vir" placeholder="bizi.si, 5. 9. 2026"></div>
+        <div class="form-group"><label>Prihodki (€)</label><input type="number" id="fi-prihodki" min="0" step="0.01"></div>
+        <div class="form-group"><label>Čisti dobiček (€)</label><input type="number" id="fi-dobicek" step="0.01"></div>
+        <div class="form-group"><label>Zaposleni</label><input type="number" id="fi-zaposleni" min="0" step="0.1"></div>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="shraniFinance()">Shrani</button></div>
+    </div>
+    <div class="card"><h3>VNESENO</h3><div id="finance-list" class="agency-list"></div></div>
+  </div>
+
+  <div id="sub-podatki" class="sub" style="display:none">
+    <div class="card">
+      <p>Podatki so shranjeni v brskalniku (localStorage). Za prenos na drugo napravo uporabi izvoz in uvoz. JSON lahko shraniš tudi v repozitorij kot varnostno kopijo.</p>
+      <div class="btn-row" style="margin-top:14px;">
+        <button class="btn secondary" onclick="izvoziJSON()">Izvozi JSON</button>
+        <label class="btn secondary" style="cursor:pointer;text-transform:none;letter-spacing:0;font-size:14px;color:var(--text);">Uvozi JSON <input type="file" accept="application/json" style="display:none" onchange="uvoziJSON(this)"></label>
+        <button class="btn secondary" onclick="kopirajJSON()">Kopiraj JSON</button>
+        <button class="btn danger" onclick="ponastavi()">Ponastavi na začetne podatke</button>
+      </div>
     </div>
   </div>
 </div>
@@ -299,28 +386,27 @@
 <!-- ============================ AGENCIJE ============================ -->
 <div id="page-agencije" class="page">
   <div class="section-title">AGENCIJE</div>
-  <div class="section-sub">Ekipe v ligi. VVV Digital je vedno označen. Ročaji (handles) so za hitro odpiranje profilov ob mesečnem odčitku.</div>
-  <div class="card">
-    <div id="agencije-list" class="agency-list"></div>
-  </div>
+  <div class="section-sub">Ekipe v ligi. VVV Digital je vedno označen. Ročaji so za hitro odpiranje profilov ob mesečnem odčitku.</div>
+  <div class="card"><div id="agencije-list" class="agency-list"></div></div>
   <div class="card">
     <h3>DODAJ AGENCIJO</h3>
     <div class="form-grid">
-      <div class="form-group"><label>Ime</label><input type="text" id="nova-ime" placeholder="npr. Nova agencija"></div>
-      <div class="form-group"><label>Mesto / opomba</label><input type="text" id="nova-opomba" placeholder="npr. Ljubljana, TikTok fokus"></div>
+      <div class="form-group"><label>Ime</label><input type="text" id="nova-ime"></div>
+      <div class="form-group"><label>Mesto / opomba</label><input type="text" id="nova-opomba"></div>
+      <div class="form-group"><label>Pravna oseba</label><input type="text" id="nova-pravna" placeholder="npr. Nova d.o.o."></div>
+      <div class="form-group"><label>Spletna stran</label><input type="text" id="nova-web" placeholder="domena.si"></div>
       <div class="form-group"><label>Instagram handle</label><input type="text" id="nova-ig" placeholder="brez @"></div>
       <div class="form-group"><label>TikTok handle</label><input type="text" id="nova-tt" placeholder="brez @"></div>
       <div class="form-group"><label>LinkedIn slug</label><input type="text" id="nova-li" placeholder="linkedin.com/company/…"></div>
-      <div class="form-group"><label>Spletna stran</label><input type="text" id="nova-web" placeholder="domena.si"></div>
     </div>
     <div class="btn-row"><button class="btn" onclick="dodajAgencijo()">Dodaj</button></div>
   </div>
   <div class="card">
-    <h3>METRIKE IN UTEŽI</h3>
-    <p class="muted small" style="margin-bottom:10px;">Utež pomnoži točke iz dvobojev pri tej metriki. 1 = enakovredno, 0 = metrika je izključena iz lestvice, ostane pa v Stanju.</p>
+    <h3>METRIKE DOSEGA IN UTEŽI</h3>
+    <p class="muted small" style="margin-bottom:10px;">Utež pomnoži točke iz dvobojev. 0 izključi metriko iz lestvice, ostane pa v Stanju.</p>
     <div id="metrike-list" class="agency-list"></div>
     <div class="form-grid" style="margin-top:14px;">
-      <div class="form-group"><label>Nova metrika</label><input type="text" id="nova-metrika" placeholder="npr. Google ocene (št.)"></div>
+      <div class="form-group"><label>Nova metrika</label><input type="text" id="nova-metrika" placeholder="npr. Povp. ogledi zadnjih 10 TikTokov"></div>
       <div class="form-group"><label>Utež</label><input type="number" id="nova-metrika-utez" value="1" step="0.5" min="0"></div>
     </div>
     <div class="btn-row"><button class="btn secondary" onclick="dodajMetriko()">Dodaj metriko</button></div>
@@ -330,35 +416,32 @@
 <!-- ============================ METODOLOGIJA ============================ -->
 <div id="page-metodologija" class="page">
   <div class="section-title">METODOLOGIJA</div>
-  <div class="section-sub">Zakaj lestvica izgleda tako, kot izgleda, in kaj pomenijo številke.</div>
   <div class="card">
-    <h3>LIGA</h3>
-    <p>Agencije ne igrajo tekem med seboj, zato je tekma umetna: en mesec je eno kolo. V vsakem kolu vsaka agencija igra proti vsaki drugi, ločeno po vsaki metriki. Zmaga tista, ki ima v tem mesecu večjo <strong>relativno rast</strong> (v odstotkih), ne večjo absolutno številko. Tako majhna agencija lahko premaga veliko.</p>
+    <h3>TRIJE STEBRI</h3>
+    <p>Agencije ne igrajo tekem med seboj, zato je tekma umetna. Vsak steber je lastna liga z lastnimi koli in dvoboji, točkovanje je vedno 3 za zmago, 1 za neodločeno, 0 za poraz. Dvoboj se odigra samo, če imata obe agenciji podatek; manjkajoč podatek ni poraz, ampak neodigrana tekma.</p>
     <ul>
-      <li>Zmaga: 3 točke. Neodločeno: 1 točka. Poraz: 0.</li>
-      <li>Neodločeno je, kadar je razlika v rasti manjša od praga <code id="met-prag"></code> odstotne točke.</li>
-      <li>Dvoboj se odigra samo, če imata obe agenciji vrednost v tem in prejšnjem mesecu. Manjkajoč podatek ni poraz, ampak neodigrana tekma.</li>
-      <li>Točke pri metriki se pomnožijo z njeno utežjo (Agencije → Metrike in uteži).</li>
-      <li>Rezultat kola za formo: več zmag kot porazov = Z, manj = P, sicer N.</li>
-      <li>Trend primerja mesto na lestvici z lestvico brez zadnjega kola.</li>
+      <li><b style="color:var(--blue)">Doseg</b>: kolo je mesec, metrika so sledilci po kanalih, primerja se <i>relativna rast</i> v odstotkih. Razlika pod <code id="met-prag"></code> odstotne točke je neodločeno.</li>
+      <li><b style="color:var(--green)">Posel</b>: kolo je mesec, metrike so novi projekti (utež po velikosti stranke: micro 1, mini 1,5, mid 2, big 3, prepoznavna znamka +1), aktivne stranke v zadnjih 12 mesecih in točke nagrad. Primerjajo se <i>absolutne</i> vrednosti, ker gre za to, kdo ima več in večje. Agencija igra le, če ima v registru vsaj en vnos.</li>
+      <li><b style="color:var(--amber)">Finance</b>: kolo je poslovno leto, metrike so prihodki, rast prihodkov, dobiček, marža, zaposleni in prihodki na zaposlenega. Vir je AJPES. Primerjajo se absolutne vrednosti razen rasti.</li>
     </ul>
   </div>
   <div class="card">
-    <h3>ZAKAJ RELATIVNA RAST</h3>
-    <p>Absolutne vrednosti nagrajujejo velikost, ne dela. Če ima We Are TikTok desetkrat več sledilcev, bo po absolutnih številkah vedno prvi in lestvica ne pove ničesar. Rast v odstotkih pove, kdo ta mesec dejansko pridobiva. Slabost: zelo majhni profili imajo volatilno rast. Zato je smiselno metrike, kjer je kdo pod nekaj sto sledilci, brati previdno, ali pa jim dati manjšo utež.</p>
+    <h3>SKUPNI INDEKS</h3>
+    <p>Za vsak steber se izračuna delež točk: točke agencije deljeno z največ točkami v stebru. Skupni indeks je utežena vsota deležev krat 100. Stebri brez podatkov se preskočijo, njihova utež se razdeli med ostale. Agencija, ki je prva v vseh treh stebrih, ima indeks 100.</p>
   </div>
   <div class="card">
-    <h3>KAKO ODČITATI SNAPSHOT</h3>
-    <ol>
-      <li>Vedno isti dan v mesecu (npr. 1. ali 5.), da so kola enako dolga.</li>
-      <li>Odpri profile prek ročajev na strani Agencije in prepiši sledilce. Ne zaokrožuj, če je številka vidna natančno.</li>
-      <li>Če profila ni ali je zaseben, pusti prazno. Ne ugibaj.</li>
-      <li>Shrani, nato izvozi JSON kot varnostno kopijo.</li>
-    </ol>
+    <h3>ZAKAJ TAKO</h3>
+    <p>Doseg meri promocijo agencije, ne posla, zato ima najmanjšo utež. Posel meri javno vidne stranke, ker agencije svojih pogodb ne objavljajo; register zajame tisto, kar same pokažejo, in to enako za vse. Za VVV so v registru tudi interni vnosi iz CRM, označeni kot "interno", ki jih filter <i>samo javno</i> izključi, da je primerjava poštena. Finance pridejo enkrat letno, zato skupno lestvico pretresejo spomladi.</p>
   </div>
   <div class="card">
-    <h3>ZAČETNI PODATKI</h3>
-    <p>Snapshot september 2026 je bil zbran s spletnim iskanjem 5. 9. 2026, ne z neposrednim odčitkom profilov. Vrednosti so označene kot približne in jih je treba pred prvim pravim kolom preveriti. Katapult Media je zabeležen prek profila krovne organizacije Mesto Akrobatov, kar ni čista primerjava. Za TikTok SPACE, Vividisto, Envision Collective, Ziyo in We Are TikTok javnih številk ni bilo mogoče pridobiti, zato so polja prazna.</p>
+    <h3>VIRI ZAČETNIH PODATKOV (5. 9. 2026)</h3>
+    <ul>
+      <li><b>Doseg:</b> spletno iskanje, približno. Instagram, TikTok in LinkedIn niso bili neposredno dostopni.</li>
+      <li><b>Register VVV:</b> študije primerov na vvv-digital.com (E-Študentski servis, Red Eye Monkey, StadionShop, PAA Global, Svet Metraže), portfolio 2025 in interni CRM (pridobljeni posli, označeni "interno").</li>
+      <li><b>Register konkurentov:</b> SOF katalog 2026 (Deichmann Adria), LinkedIn in TikTok objave (Avtošola Šmarca, OrthoM, Trgovine Jager, TCG Park, Laserhouse), Primorski dnevnik in Marketing Magazin 2023 (WATT: Estetika Fabjan, BTC, Wolt, Telekom Slovenija, Lesnina, Terme Čatež). Za TikTok SPACE, Vividisto, Ziyo, Createable, Envision Collective in Katapult Media javno imenovanih strank ni bilo mogoče najti.</li>
+      <li><b>Finance:</b> bizi.si, companywall.si, ebonitete.si. VVV 2023 in WATT 2024 so izpeljani iz objavljene odstotne rasti, ne odčitani. Prihodki Kaching d.o.o. (WATT) vključujejo tudi prodajo lastne znamke Coffee 2.0. Katapult Media je enota pospeševalnika Katapult d.o.o., zato financ ni v ligi.</li>
+      <li><b>Pravne osebe:</b> TikTok SPACE se sam navaja kot d.o.o., v registrih ni najden. Vividista, Ziya in Createable brez najdene pravne osebe.</li>
+    </ul>
   </div>
 </div>
 
@@ -369,25 +452,27 @@
 // KONFIGURACIJA
 // ============================================================
 const STORAGE_KEY = 'vvv_konkurenca_v1';
-const MI = 'vvv';            // id domače agencije
-const PRAG = 1.0;            // odstotne točke razlike v rasti za neodločeno
+const MI = 'vvv';
+const PRAG = 1.0;                       // o.t. razlike v rasti za neodločeno (doseg)
+const VELIKOST_UTEZ = { micro: 1, mini: 1.5, mid: 2, big: 3, '': 1 };
+const VELIKOST_IME = { micro: 'Micro', mini: 'Mini', mid: 'Mid', big: 'Big', '': '?' };
 
 // ============================================================
-// ZAČETNI PODATKI
+// ZAČETNI PODATKI  (vir: spletno iskanje in interni viri VVV, 5. 9. 2026)
 // ============================================================
 const DEFAULT_DATA = {
-  verzija: 1,
+  verzija: 2,
   agencije: [
-    { id: 'vvv',         ime: 'VVV Digital',           opomba: 'Domžale / Ljubljana. Kratki videi, vodenje profilov, paid, splet.', ig: 'vvv_digital', tt: '', li: 'vvv-digital', web: 'vvv-digital.com' },
-    { id: 'tiktokspace', ime: 'TikTok SPACE',          opomba: 'Ljubljana. TikTok, IG, FB vsebine, foto/video, kampanje.', ig: '', tt: '', li: '', web: 'tiktok-space.si' },
-    { id: 'vividista',   ime: 'Vividista',             opomba: 'Agencija za Gen Z. IG/TikTok, influencerji, Meta in TikTok oglasi, splet.', ig: '', tt: '', li: '', web: 'vividista.si' },
-    { id: 'envision',    ime: 'Envision Collective',   opomba: '"Zunanja ekipa za družbena omrežja", paketi po obsegu.', ig: 'envision_collective', tt: '', li: '', web: 'envisioncollective.si' },
-    { id: 'tiktokerija', ime: 'Tiktokerija',           opomba: 'BlendCreative d.o.o. TikTok in Reels, storytelling, gostinski primeri.', ig: '', tt: 'tikt0kerija', li: 'tiktokerija', web: 'tiktokerija.com' },
-    { id: 'apmarketing', ime: 'A.P. Marketing',        opomba: 'Kratki videi, UGC oglasi, 5+ let.', ig: 'a.p.marketing', tt: '', li: '', web: 'ap-marketing.si' },
-    { id: 'ziya',        ime: 'Ziya Agency',           opomba: 'Ljubljana. FB/IG/TikTok marketing, "TikTok korenine".', ig: '', tt: '', li: '', web: 'ziya.agency' },
-    { id: 'createable',  ime: 'Createable',            opomba: 'Video in UGC agencija, vodenje TikTok profilov.', ig: 'createable.si', tt: 'createable.si', li: '', web: 'createable.si' },
-    { id: 'katapult',    ime: 'Katapult Media',        opomba: 'Agencija Katapult d.o.o. (Mesto Akrobatov). Foto/video, TikTok, splet, grafika.', ig: 'katapultsi', tt: '', li: 'katapult-d.o.o.', web: 'katapult.si' },
-    { id: 'watt',        ime: 'We Are TikTok (WATT)',  opomba: 'Prvi slovenski TikTok partner, TikTok oglasi za e-trgovce. "Veliki klub" lige.', ig: '', tt: '', li: '', web: 'wearetiktok.agency' }
+    { id: 'vvv',         ime: 'VVV Digital',          pravna: 'VVV DIGITAL, agencija za marketing, d.o.o. (Ljubljana, ust. 2022)', opomba: 'Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar.', ig: 'vvv_digital', tt: 'vvv_digital', li: 'vvv-digital', web: 'vvv-digital.com' },
+    { id: 'tiktokspace', ime: 'TikTok SPACE',         pravna: '"TikTok SPACE d.o.o." (samodeklaracija, v registrih ni najdeno)', opomba: 'Ljubljana, Celovška 69C. TikTok, IG, FB vsebine, foto/video, kampanje.', ig: '', tt: '', li: '', web: 'tiktok-space.si' },
+    { id: 'vividista',   ime: 'Vividista',            pravna: '', opomba: 'Agencija za Gen Z. IG/TikTok, influencerji, Meta in TikTok oglasi, splet. Zunaj lastne strani praktično neindeksirana.', ig: '', tt: '', li: '', web: 'vividista.si' },
+    { id: 'envision',    ime: 'Envision Collective',  pravna: 'ENVISION COLLECTIVE, Maša Kovač s.p. (Murska Sobota, ust. 8. 1. 2025)', opomba: '"Zunanja ekipa za družbena omrežja", paketi po obsegu. Prvo poslovno leto 2025.', ig: 'envision_collective', tt: '', li: '', web: 'envisioncollective.si' },
+    { id: 'tiktokerija', ime: 'Tiktokerija',          pravna: 'BlendCreative d.o.o. (Dob, ust. 4. 12. 2023)', opomba: 'TikTok in Reels, storytelling. Ust. Rebeka Tomc, ekipa 6 do 8.', ig: '', tt: 'tikt0kerija', li: 'tiktokerija', web: 'tiktokerija.com' },
+    { id: 'apmarketing', ime: 'A.P. Marketing',       pravna: 'A.P. marketinške storitve, Andrej Pavličević s.p. (Kamnik, ust. 1. 12. 2022)', opomba: 'Kratki videi, UGC oglasi. Model influencer + agencija, 1 do 3 osebe.', ig: 'a.p.marketing', tt: '', li: '', web: 'ap-marketing.si' },
+    { id: 'ziya',        ime: 'Ziya Agency',          pravna: '', opomba: 'Ljubljana. FB/IG/TikTok marketing, "TikTok korenine". Pravna oseba ni najdena.', ig: 'ziya.agency', tt: '', li: 'ziya-agency', web: 'ziya.agency' },
+    { id: 'createable',  ime: 'Createable',           pravna: '', opomba: 'Video in UGC agencija, vodenje TikTok profilov. Soust. Laura Mlakar, ekipa 10 (EF UL, dec. 2025).', ig: 'createable.si', tt: 'createable.si', li: '', web: 'createable.si' },
+    { id: 'katapult',    ime: 'Katapult Media',       pravna: 'enota KATAPULT d.o.o. (Trbovlje, ust. 2016; Media od 2023)', opomba: 'Foto/video, TikTok, splet, grafika. Ekipa 4 (Žiga Meterc). Finance samo na ravni pospeševalnika.', ig: 'katapult_media', tt: '', li: 'katapult-d.o.o.', web: 'katapult.si/storitve/katapult-media' },
+    { id: 'watt',        ime: 'We Are TikTok (WATT)', pravna: 'Kaching d.o.o. (Ljubljana, ust. 2017), 80 % Primož Oberč', opomba: 'TikTok oglasi za e-trgovce, prvi slovenski TikTok partner. Pod isto družbo tudi znamka Coffee 2.0.', ig: 'watt_agencija', tt: 'wearetiktok.agency', li: 'wearetiktok-agency', web: 'wearetiktok.agency' }
   ],
   metrike: [
     { id: 'ig', ime: 'Instagram sledilci', utez: 1 },
@@ -399,332 +484,627 @@ const DEFAULT_DATA = {
     '2026-09': {
       vir: 'Spletno iskanje 5. 9. 2026 (približno, preveri ročno)',
       vrednosti: {
-        vvv:         { ig: 525,  li: 397 },
-        apmarketing: { ig: 1417 },
-        createable:  { ig: 737 },
-        tiktokerija: { tt: 2738 },
-        katapult:    { ig: 1908 }
+        vvv: { ig: 525, li: 397 }, apmarketing: { ig: 1417 }, createable: { ig: 737 },
+        tiktokerija: { tt: 2738, li: 164 }, watt: { ig: 78 }
       }
     }
-  }
+  },
+  projekti: [],   // napolni se v seedProjekti()
+  nagrade: [
+    { id: 'n1', agId: 'tiktokerija', datum: '2026-03-01', naziv: 'SOF 2026: prijavljeno delo tiktok.com/@deichmann_slo (Deichmann Adria), katalog del', tocke: 1, vir: 'https://sof.si/katalog-del/V4007S26-tiktokcomdeichmannslo' },
+    { id: 'n2', agId: 'watt', datum: '2023-01-14', naziv: 'Primorski dnevnik: "V TikToku je velik potencial" (intervju, stranke Estetika Fabjan, BTC, Wolt)', tocke: 1, vir: 'https://www.primorski.eu/trzaska/v-tiktoku-je-velik-potencial-LN1285094' },
+    { id: 'n3', agId: 'watt', datum: '2023-06-29', naziv: 'Marketing Magazin: "Agencija We Are TikTok na dobri poti do uradnega partnerstva s TikTokom"', tocke: 1, vir: 'https://www.marketingmagazin.si/intervju/agencija-we-are-tiktok-na-dobri-poti-do-uradnega-partnerstva-s-tiktokom' },
+    { id: 'n4', agId: 'watt', datum: '2024-11-01', naziv: 'Product Hub podcast #22: Kaj je dober biznis? (Primož Oberč)', tocke: 1, vir: 'https://open.spotify.com/episode/7MYJHS7t0agJu8Z6n0TiUr' },
+    { id: 'n5', agId: 'createable', datum: '2025-12-09', naziv: 'EF UL Alumni story: Laura Mlakar (Createable)', tocke: 1, vir: 'https://www.ef.uni-lj.si/en/news/latest-news/2025-12-09-alumni-story-laura-mlakar' },
+    { id: 'n6', agId: 'tiktokerija', datum: '2024-03-01', naziv: 'Etiketa Magazin: Rebeka Tomc in Galaxy S24 Ultra (Samsung Slovenija)', tocke: 1, vir: 'https://etiketamagazin.com/lifestyle/rebeka-tomc-razkriva-kako-galaxy-s24-ultra-poganja-kreativnost/' }
+  ],
+  finance: {
+    vvv: {
+      2023: { prihodki: 84700, dobicek: null, zaposleni: null, vir: 'izpeljano: ebonitete.si navaja +73,47 % v 2024; EBIT 2023 1.436 €' },
+      2024: { prihodki: 147001.73, dobicek: 6275.91, zaposleni: null, vir: 'bizi.si, companywall.si, 5. 9. 2026' }
+    },
+    tiktokerija: { 2024: { prihodki: 81839.75, dobicek: 4854.68, zaposleni: null, vir: 'bizi.si, companywall.si, 5. 9. 2026 (prvo polno leto)' } },
+    apmarketing: { 2025: { prihodki: 281475.42, dobicek: 20702.48, zaposleni: null, vir: 'bizi.si, companywall.si (s.p., dobiček = EBIT podjetnika)' } },
+    watt: {
+      2024: { prihodki: 560000, dobicek: null, zaposleni: null, vir: 'izpeljano: ebonitete.si navaja +565,54 % v 2025; EBIT 2024 18.453 €' },
+      2025: { prihodki: 3726284.68, dobicek: 126914.11, zaposleni: 3.18, vir: 'ebonitete.si, companywall.si (Kaching d.o.o., vključuje Coffee 2.0)' }
+    }
+  },
+  uteziStebrov: { doseg: 20, posel: 45, finance: 35 },
+  nastavitve: { samoJavno: true }
 };
+
+// Register projektov. Datum = prva javna omemba (kjer ni znana, datum vira).
+function seedProjekti() {
+  const P = [];
+  let n = 0;
+  const add = (agId, stranka, datum, o = {}) => P.push({ id: 'p' + (++n), agId, stranka, datum, velikost: o.v || '', znamka: !!o.z, javno: o.javno !== false, opis: o.opis || '', vir: o.vir || '', konec: o.konec || null });
+
+  // --- VVV: študije primerov na spletni strani (javno, potrjeno)
+  add('vvv', 'E-Študentski servis', '2022-09-01', { v: 'mid', z: true, opis: 'TikTok kampanja 2022 do danes, poletno snemanje z ustvarjalci 2026', vir: 'https://vvv-digital.com/en/e-student-servis/' });
+  add('vvv', 'Red Eye Monkey', '2024-01-01', { v: 'micro', opis: 'TikTok jan.–jun. 2024: 230 videov, 5,5 mio ogledov, sledilci 342 → 6.287', vir: 'https://vvv-digital.com/en/red-eye-monkey-2/', konec: '2024-06-30' });
+  add('vvv', 'StadionShop (NK Olimpija)', '2024-03-01', { v: 'mini', z: true, opis: 'TikTok 2024, vsebine za športne navdušence', vir: 'https://vvv-digital.com/stadionshop/' });
+  add('vvv', 'PAA Global', '2024-05-01', { v: 'mini', opis: 'TikTok + Instagram 2024, lead-gen kampanje', vir: 'https://vvv-digital.com/en/paa-global/' });
+  add('vvv', 'Svet Metraže', '2025-01-01', { v: 'micro', opis: 'TikTok + Facebook, več kot 1,19 mio ogledov', vir: 'https://vvv-digital.com/en/svet-metraze/' });
+  add('vvv', 'Gourmet klub Skaručna', '2025-05-01', { v: 'micro', opis: 'Referenca na spletni strani in v portfoliu', vir: 'https://vvv-digital.com/en/home-english/' });
+
+  // --- VVV: portfolio 2025 (prodajni dokument, javno predstavljen strankam)
+  const PF = 'Portfolio VVV Digital 2025 (dokument)';
+  add('vvv', 'GLS Slovenija (Paketomat)', '2025-05-01', { v: 'big', z: true, opis: 'TikTok profil Paketomata, 250k dosega prvi mesec', vir: PF });
+  add('vvv', 'Georgie Bistro', '2024-01-01', { v: 'micro', opis: 'IG/TT, 2M dosega v 6 mesecih, polne rezervacije', vir: PF });
+  add('vvv', 'Burek Gourmet', '2025-03-01', { v: 'micro', opis: 'Kampanja, 1M+ dosega, razprodano v dveh urah', vir: PF });
+  add('vvv', 'The Smartest Way', '2025-04-01', { v: 'micro', opis: 'Facebook oglasi, širitev v tujino', vir: PF });
+  ['SENS', "Men's Second Skin", 'IGLS', 'Racegasmic', 'Drift Poligons', '4P Fitness Club Stegne', 'eDine', 'Thirsty Game', 'Gostilna National', 'Balkan Žar', 'Bolero', 'Piro spletna trgovina', 'Booty Sole', 'JP Trgofina', 'X Boutique Catering', 'GORR prevajalski center', 'HOX Market', 'Sladka Kaščina', 'Gostilna Euro Gurman', 'Palačinke Takoj', 'Laguna Rondo', 'Akademija uspeha', 'Mini cafe golf', 'Oxy Vita', 'Always Active', 'Plato']
+    .forEach(s => add('vvv', s, '2025-05-01', { v: 'micro', opis: 'Logotip v portfoliu', vir: PF }));
+  add('vvv', 'Emporium', '2025-05-01', { v: 'mid', z: true, opis: 'Logotip v portfoliu', vir: PF });
+  add('vvv', 'FUDŠ', '2025-05-01', { v: 'mini', opis: 'Logotip v portfoliu', vir: PF });
+  add('vvv', 'City Taxi', '2025-05-01', { v: 'mini', opis: 'Logotip v portfoliu', vir: PF });
+
+  // --- VVV: CRM, pridobljeni posli (status Closed ali accepted). Interno.
+  const CRM = 'Notion Sales CRM (interno)';
+  const crm = [
+    ['Ellebana', '2024-09-18', 'mid'], ['Barjan line', '2024-10-13', ''], ['Euroton', '2024-10-15', ''],
+    ['Diplomska.si', '2025-01-28', 'mini'], ['Kriptomat', '2025-01-30', ''],
+    ['Kitajska restavracija Sonce', '2025-04-01', ''], ['AA Spletna cvetličarna', '2025-04-04', ''], ['Kreja', '2025-04-14', ''],
+    ['Jelovica hiše in okna', '2025-04-16', 'mid'], ['Fina Vina', '2025-05-22', 'micro'], ['NLB', '2025-05-26', 'big'],
+    ['Jumper', '2025-05-27', ''], ['Špas teater', '2025-06-11', ''], ['Revital 33', '2025-06-20', ''], ['Pharma Hemp', '2025-06-23', ''],
+    ['Actinia avto', '2025-06-27', ''], ['Unikatoy', '2025-07-02', ''], ['Avenija okusov', '2025-07-23', ''], ['Go Auto (Google)', '2025-08-08', ''],
+    ['Zavarovalnica Triglav', '2025-08-27', 'big'], ['Hitra Kava', '2025-09-30', ''], ['Arttehnika', '2025-11-02', ''], ['E Hrana', '2025-11-04', ''],
+    ['Kakadu shop', '2025-11-14', 'mid'], ['Svet zdravja', '2025-12-04', ''], ['Dvokorak Podcast', '2025-12-11', ''], ['Sportmedia Fokus', '2025-12-11', ''],
+    ['Preis Sevnica', '2026-01-28', ''], ['Reborn', '2026-01-28', ''], ['Burger Projekt', '2026-01-28', ''], ['Felnar.si', '2026-02-06', ''],
+    ['VIA - Škerlep app', '2026-02-25', ''], ['iHunt', '2026-03-14', ''], ['Primus.si', '2026-03-26', ''], ['Mediterra.si', '2026-04-02', ''],
+    ['Založba Primus', '2026-04-08', ''], ['Senčila Svarog', '2026-07-02', ''], ['Eventim SI', '2026-07-01', 'mid'], ['Kakadu', '2026-07-20', 'mid'],
+    ['Italijanska restavracija Mirje', '2026-07-20', 'micro']
+  ];
+  const znamke = new Set(['NLB', 'Zavarovalnica Triglav', 'Eventim SI', 'Jelovica hiše in okna', 'Kriptomat']);
+  crm.forEach(([s, d, v]) => add('vvv', s, d, { v, z: znamke.has(s), javno: false, opis: 'Pridobljen posel (CRM)', vir: CRM }));
+
+  // --- Tiktokerija (javno)
+  add('tiktokerija', 'Avtošola Šmarca', '2023-10-01', { v: 'mini', opis: 'TikTok, 6 mesecev: 3,2 mio ogledov, 6.700 sledilcev', vir: 'https://www.linkedin.com/posts/rebeka-tomc-ab80431b1_%C5%A1marca-on-tiktok-activity-7116800565363290112-9ab5' });
+  add('tiktokerija', 'OrthoM', '2023-12-01', { v: 'micro', opis: 'TikTok profil ortodontske ordinacije', vir: 'https://www.linkedin.com/posts/rebeka-tomc-ab80431b1_tiktok-orthom-activity-7145722524331417600-k8OQ' });
+  add('tiktokerija', 'Deichmann Adria', '2025-05-01', { v: 'big', z: true, opis: 'TikTok content hub @deichmann_slo, interni ambasadorji, 1 do 2 snemalna dneva mesečno (SOF 2026)', vir: 'https://sof.si/katalog-del/V4007S26-tiktokcomdeichmannslo' });
+
+  // --- A.P. Marketing (javno, prek #apmarketing na profilih strank)
+  add('apmarketing', 'Trgovine Jager', '2024-10-01', { v: 'mid', z: true, opis: 'TikTok video "Katera peč si ti?" (#apmarketing)', vir: 'https://www.tiktok.com/@trgovinejager/video/7425990786413595936' });
+  add('apmarketing', 'TCG Park', '2024-12-01', { v: 'micro', opis: 'TikTok z ustvarjalko Alenko Trogrlič (#apmarketing)', vir: 'https://www.tiktok.com/@tcgpark_/video/7452671405436505366' });
+  add('apmarketing', 'Laserhouse Ljubljana', '2024-11-01', { v: 'micro', opis: 'Več TikTok videov (#apmarketing)', vir: 'https://www.tiktok.com/discover/laserhouse-ljubljana' });
+
+  // --- We Are TikTok / WATT (javno, intervjuji 2023)
+  const PD = 'https://www.primorski.eu/trzaska/v-tiktoku-je-velik-potencial-LN1285094';
+  const MM = 'https://www.marketingmagazin.si/intervju/agencija-we-are-tiktok-na-dobri-poti-do-uradnega-partnerstva-s-tiktokom';
+  add('watt', 'Estetika Fabjan', '2023-01-14', { v: 'mini', opis: 'Prva večja stranka, predstavitev kirurških storitev na TikToku', vir: PD });
+  add('watt', 'BTC', '2023-01-14', { v: 'big', z: true, opis: 'TikTok', vir: PD });
+  add('watt', 'Wolt', '2023-01-14', { v: 'big', z: true, opis: 'TikTok', vir: PD });
+  add('watt', 'Telekom Slovenije', '2023-06-29', { v: 'big', z: true, opis: 'TikTok oglaševanje', vir: MM });
+  add('watt', 'Lesnina', '2023-06-29', { v: 'big', z: true, opis: 'TikTok oglaševanje', vir: MM });
+  add('watt', 'Terme Čatež', '2023-06-29', { v: 'big', z: true, opis: 'TikTok oglaševanje', vir: MM });
+
+  return P;
+}
+DEFAULT_DATA.projekti = seedProjekti();
 
 // ============================================================
 // STANJE
 // ============================================================
 let data = naloziPodatke();
-let obdobje = 'vse';       // 'vse' | '3' | '6' | '12' (št. zadnjih kol)
-let stanjeMetrika = 'skupno';
-let activePage = 'lestvica';
+let obdobjeDoseg = 'vse', obdobjePosel = 'vse', obdobjeFinance = 'vse';
+let registerFilter = 'vse', bilancaLeto = null, vnosMesec = null, activeSub = 'snapshot';
 
 function naloziPodatke() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const d = JSON.parse(raw);
-      if (d && d.agencije && d.metrike && d.snapshoti) return d;
-    }
-  } catch (e) { /* ignoriraj, uporabi default */ }
-  return JSON.parse(JSON.stringify(DEFAULT_DATA));
+  let d = null;
+  try { const raw = localStorage.getItem(STORAGE_KEY); if (raw) d = JSON.parse(raw); } catch (e) { d = null; }
+  if (!d || !d.agencije || !d.metrike || !d.snapshoti) return klon(DEFAULT_DATA);
+  // migracija v1 -> v2: v1 je imela samo doseg; prevzemi nove začetne podatke za ostalo
+  if (!d.verzija || d.verzija < 2) {
+    d.verzija = 2;
+    d.projekti = klon(DEFAULT_DATA.projekti);
+    d.nagrade = klon(DEFAULT_DATA.nagrade);
+    d.finance = klon(DEFAULT_DATA.finance);
+    d.uteziStebrov = klon(DEFAULT_DATA.uteziStebrov);
+    d.nastavitve = klon(DEFAULT_DATA.nastavitve);
+    d.agencije.forEach(a => { const def = DEFAULT_DATA.agencije.find(x => x.id === a.id); if (def) { a.pravna = def.pravna; a.opomba = def.opomba; ['ig', 'tt', 'li', 'web'].forEach(k => { if (!a[k]) a[k] = def[k]; }); } });
+    if (d.snapshoti['2026-09']) d.snapshoti['2026-09'] = klon(DEFAULT_DATA.snapshoti['2026-09']);
+  }
+  d.projekti = d.projekti || []; d.nagrade = d.nagrade || []; d.finance = d.finance || {};
+  d.uteziStebrov = d.uteziStebrov || klon(DEFAULT_DATA.uteziStebrov); d.nastavitve = d.nastavitve || {};
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); } catch (e) { /* migracija ostane v pomnilniku */ }
+  return d;
 }
-
-function shrani() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
-  catch (e) { showToast('Shranjevanje v brskalnik ni uspelo'); }
-}
+function klon(x) { return JSON.parse(JSON.stringify(x)); }
+function shrani() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) { showToast('Shranjevanje v brskalnik ni uspelo'); } }
 
 // ============================================================
-// IZRAČUN LIGE
+// SKUPNO JEDRO LIGE
 // ============================================================
-function meseci() {
-  return Object.keys(data.snapshoti).sort();
+function nasprotni(r) { return r === 'W' ? 'L' : r === 'L' ? 'W' : 'D'; }
+function tocke(r) { return r === 'W' ? 3 : r === 'D' ? 1 : 0; }
+
+// Dvoboji iz vrednosti: vals = {agId: number|null}; prag = absolutna razlika za neodločeno
+function dvoboji(vals, met, utez, prag) {
+  const ids = Object.keys(vals).filter(id => vals[id] !== null && vals[id] !== undefined && !isNaN(vals[id]));
+  const out = [];
+  for (let x = 0; x < ids.length; x++) for (let y = x + 1; y < ids.length; y++) {
+    const a = vals[ids[x]], b = vals[ids[y]];
+    let rezA = 'D';
+    if (a - b > prag) rezA = 'W'; else if (b - a > prag) rezA = 'L';
+    out.push({ a: ids[x], b: ids[y], met, utez, rezA });
+  }
+  return out;
 }
 
+// Tabela iz seznama kol [{oznaka, dvoboji}]
+function tabela(kolaList, metIds) {
+  const t = {};
+  data.agencije.forEach(a => {
+    t[a.id] = { id: a.id, ime: a.ime, kola: 0, z: 0, n: 0, p: 0, tocke: 0, maxTocke: 0, forma: [], poMetriki: {} };
+    metIds.forEach(m => t[a.id].poMetriki[m] = 0);
+  });
+  kolaList.forEach(k => {
+    const vKolu = {};
+    k.dvoboji.forEach(d => {
+      [[d.a, d.rezA], [d.b, nasprotni(d.rezA)]].forEach(([id, r]) => {
+        const row = t[id]; if (!row) return;
+        if (r === 'W') row.z++; else if (r === 'D') row.n++; else row.p++;
+        row.tocke += tocke(r) * d.utez; row.maxTocke += 3 * d.utez;
+        row.poMetriki[d.met] = (row.poMetriki[d.met] || 0) + tocke(r) * d.utez;
+        vKolu[id] = vKolu[id] || { z: 0, p: 0 };
+        if (r === 'W') vKolu[id].z++; else if (r === 'L') vKolu[id].p++;
+      });
+    });
+    Object.entries(vKolu).forEach(([id, s]) => { t[id].kola++; t[id].forma.push(s.z > s.p ? 'W' : s.z < s.p ? 'L' : 'D'); });
+  });
+  return Object.values(t).sort((a, b) => b.tocke - a.tocke || (b.z - b.p) - (a.z - a.p) || b.z - a.z || a.ime.localeCompare(b.ime, 'sl'));
+}
+
+function rezi(kola, obdobje) { return obdobje === 'vse' ? kola : kola.slice(-Number(obdobje)); }
+
+// ============================================================
+// STEBER DOSEG
+// ============================================================
+function meseci() { return Object.keys(data.snapshoti).sort(); }
 function vrednost(mesec, agId, metId) {
-  const s = data.snapshoti[mesec];
-  if (!s || !s.vrednosti[agId]) return null;
+  const s = data.snapshoti[mesec]; if (!s || !s.vrednosti[agId]) return null;
   const v = s.vrednosti[agId][metId];
   return (v === undefined || v === null || v === '' || isNaN(v)) ? null : Number(v);
 }
-
 function rast(mesec, prejsnji, agId, metId) {
-  const zdaj = vrednost(mesec, agId, metId);
-  const prej = vrednost(prejsnji, agId, metId);
-  if (zdaj === null || prej === null || prej <= 0) return null;
-  return (zdaj - prej) / prej * 100;
+  const z = vrednost(mesec, agId, metId), p = vrednost(prejsnji, agId, metId);
+  if (z === null || p === null || p <= 0) return null;
+  return (z - p) / p * 100;
 }
-
-// Vsa kola: [{mesec, prejsnji, dvoboji:[{a,b,met,rezA}]}]
-function kola() {
-  const m = meseci();
-  const out = [];
+function kolaDoseg() {
+  const m = meseci(), out = [];
   for (let i = 1; i < m.length; i++) {
-    const kolo = { mesec: m[i], prejsnji: m[i - 1], dvoboji: [] };
+    const kolo = { oznaka: m[i], dvoboji: [] };
     data.metrike.forEach(met => {
       if (!met.utez || met.utez <= 0) return;
-      const ags = data.agencije;
-      for (let x = 0; x < ags.length; x++) for (let y = x + 1; y < ags.length; y++) {
-        const ra = rast(m[i], m[i - 1], ags[x].id, met.id);
-        const rb = rast(m[i], m[i - 1], ags[y].id, met.id);
-        if (ra === null || rb === null) continue;
-        let rezA = 'D';
-        if (ra - rb > PRAG) rezA = 'W';
-        else if (rb - ra > PRAG) rezA = 'L';
-        kolo.dvoboji.push({ a: ags[x].id, b: ags[y].id, met: met.id, utez: met.utez, rezA });
-      }
+      const vals = {}; data.agencije.forEach(a => vals[a.id] = rast(m[i], m[i - 1], a.id, met.id));
+      kolo.dvoboji.push(...dvoboji(vals, met.id, met.utez, PRAG));
     });
     out.push(kolo);
   }
   return out;
 }
 
-function nasprotni(r) { return r === 'W' ? 'L' : r === 'L' ? 'W' : 'D'; }
-function tocke(r) { return r === 'W' ? 3 : r === 'D' ? 1 : 0; }
+// ============================================================
+// STEBER POSEL
+// ============================================================
+function projektiAktivni() { return data.projekti.filter(p => !data.nastavitve.samoJavno || p.javno !== false); }
+function utezProjekta(p) { return (VELIKOST_UTEZ[p.velikost || ''] || 1) + (p.znamka ? 1 : 0); }
+function agencijeVPoslu() { const s = new Set(projektiAktivni().map(p => p.agId)); data.nagrade.forEach(n => s.add(n.agId)); return s; }
+function mesecOd(d) { return (d || '').slice(0, 7); }
+function danes() { return new Date().toISOString().slice(0, 10); }
+function mesecPlus(m, k) { const [y, mo] = m.split('-').map(Number); const d = new Date(y, mo - 1 + k, 1); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; }
+function seznamMesecev(od, doM) { const out = []; let m = od; while (m <= doM && out.length < 240) { out.push(m); m = mesecPlus(m, 1); } return out; }
 
-// Tabela iz seznama kol
-function tabela(kolaList) {
-  const t = {};
-  data.agencije.forEach(a => {
-    t[a.id] = { id: a.id, ime: a.ime, kola: 0, z: 0, n: 0, p: 0, tocke: 0, forma: [], poMetriki: {} };
-    data.metrike.forEach(m => t[a.id].poMetriki[m.id] = 0);
-  });
-  kolaList.forEach(k => {
-    const vKolu = {};
-    k.dvoboji.forEach(d => {
-      const rb = nasprotni(d.rezA);
-      [[d.a, d.rezA], [d.b, rb]].forEach(([id, r]) => {
-        const row = t[id]; if (!row) return;
-        if (r === 'W') row.z++; else if (r === 'D') row.n++; else row.p++;
-        row.tocke += tocke(r) * d.utez;
-        row.poMetriki[d.met] += tocke(r) * d.utez;
-        vKolu[id] = vKolu[id] || { z: 0, p: 0 };
-        if (r === 'W') vKolu[id].z++; else if (r === 'L') vKolu[id].p++;
-      });
-    });
-    Object.entries(vKolu).forEach(([id, s]) => {
-      t[id].kola++;
-      t[id].forma.push(s.z > s.p ? 'W' : s.z < s.p ? 'L' : 'D');
-    });
-  });
-  return Object.values(t).sort((a, b) =>
-    b.tocke - a.tocke || (b.z - b.p) - (a.z - a.p) || b.z - a.z || a.ime.localeCompare(b.ime, 'sl')
-  );
+function mesecKonecPosel() {
+  const m = meseci();
+  const zad = m.length ? m[m.length - 1] : null;
+  const t = danes().slice(0, 7);
+  return zad && zad > t ? zad : t;
 }
+function kolaPosel() {
+  const P = projektiAktivni();
+  const igrajo = agencijeVPoslu();
+  if (igrajo.size < 2) return [];
+  const datumi = P.map(p => p.datum).concat(data.nagrade.map(n => n.datum)).filter(Boolean).sort();
+  if (!datumi.length) return [];
+  const od = mesecOd(datumi[0]);
+  const out = [];
+  seznamMesecev(od, mesecKonecPosel()).forEach(m => {
+    const kolo = { oznaka: m, dvoboji: [] };
+    const novi = {}, aktivne = {}, nagr = {};
+    const od12 = mesecPlus(m, -11) + '-01', doM = m + '-31';
+    data.agencije.forEach(a => {
+      if (!igrajo.has(a.id)) { novi[a.id] = aktivne[a.id] = nagr[a.id] = null; return; }
+      novi[a.id] = P.filter(p => p.agId === a.id && mesecOd(p.datum) === m).reduce((s, p) => s + utezProjekta(p), 0);
+      aktivne[a.id] = P.filter(p => p.agId === a.id && p.datum && p.datum <= doM && p.datum >= od12 && (!p.konec || p.konec >= m + '-01')).length;
+      nagr[a.id] = data.nagrade.filter(n => n.agId === a.id && mesecOd(n.datum) === m).reduce((s, n) => s + Number(n.tocke || 0), 0);
+    });
+    kolo.dvoboji.push(...dvoboji(novi, 'novi', 1, 0), ...dvoboji(aktivne, 'aktivne', 1, 0), ...dvoboji(nagr, 'nagrade', 1, 0));
+    out.push(kolo);
+  });
+  return out;
+}
+const POSEL_MET = [{ id: 'novi', ime: 'Novi projekti (uteženi)' }, { id: 'aktivne', ime: 'Aktivne stranke (12 m)' }, { id: 'nagrade', ime: 'Nagrade in omembe' }];
 
-function izbranaKola() {
-  const vsa = kola();
-  if (obdobje === 'vse') return vsa;
-  return vsa.slice(-Number(obdobje));
+// ============================================================
+// STEBER FINANCE
+// ============================================================
+const FIN_MET = [
+  { id: 'prihodki', ime: 'Prihodki', fmt: v => fmtEur(v) },
+  { id: 'rast',     ime: 'Rast prihodkov', fmt: v => fmtPct(v) },
+  { id: 'dobicek',  ime: 'Čisti dobiček', fmt: v => fmtEur(v) },
+  { id: 'marza',    ime: 'Marža', fmt: v => fmtPct(v) },
+  { id: 'zaposleni', ime: 'Zaposleni', fmt: v => fmtNum(v) },
+  { id: 'prihZap',  ime: 'Prihodki na zaposlenega', fmt: v => fmtEur(v) }
+];
+function leta() { const s = new Set(); Object.values(data.finance).forEach(f => Object.keys(f).forEach(l => s.add(l))); return [...s].sort(); }
+function fin(agId, leto) { return (data.finance[agId] || {})[leto] || null; }
+function finMetrika(agId, leto, met) {
+  const f = fin(agId, leto); if (!f) return null;
+  const num = v => (v === undefined || v === null || v === '' || isNaN(v)) ? null : Number(v);
+  const pr = num(f.prihodki), db = num(f.dobicek), za = num(f.zaposleni);
+  switch (met) {
+    case 'prihodki': return pr;
+    case 'dobicek': return db;
+    case 'zaposleni': return za;
+    case 'marza': return pr && db !== null ? db / pr * 100 : null;
+    case 'prihZap': return pr !== null && za ? pr / za : null;
+    case 'rast': { const p = fin(agId, String(Number(leto) - 1)); const pp = p ? num(p.prihodki) : null; return pr !== null && pp ? (pr - pp) / pp * 100 : null; }
+  }
+  return null;
+}
+function kolaFinance() {
+  return leta().map(l => {
+    const kolo = { oznaka: l, dvoboji: [] };
+    FIN_MET.forEach(met => {
+      const vals = {}; data.agencije.forEach(a => vals[a.id] = finMetrika(a.id, l, met.id));
+      const prag = met.id === 'rast' || met.id === 'marza' ? 1 : 0;
+      kolo.dvoboji.push(...dvoboji(vals, met.id, 1, prag));
+    });
+    return kolo;
+  });
 }
 
 // ============================================================
-// RENDER: LESTVICA
+// RENDER: SKUPNO
 // ============================================================
-function renderLestvica() {
-  const vsaKola = kola();
-  const k = izbranaKola();
-  const t = tabela(k);
-  const prej = tabela(k.slice(0, -1));
+function renderSkupno() {
+  const tD = tabela(kolaDoseg(), data.metrike.map(m => m.id));
+  const tP = tabela(kolaPosel(), POSEL_MET.map(m => m.id));
+  const tF = tabela(kolaFinance(), FIN_MET.map(m => m.id));
+  const stebri = [['doseg', tD], ['posel', tP], ['finance', tF]];
+  const aktivni = stebri.filter(([, t]) => t.some(r => r.maxTocke > 0));
+  const utezSum = aktivni.reduce((s, [k]) => s + (Number(data.uteziStebrov[k]) || 0), 0) || 1;
+
+  ['doseg', 'posel', 'finance'].forEach(k => document.getElementById('utez-' + k).value = data.uteziStebrov[k]);
+
+  const rows = data.agencije.map(a => {
+    const r = { id: a.id, ime: a.ime, delezi: {}, indeks: 0, opomba: a.opomba };
+    aktivni.forEach(([k, t]) => {
+      const max = Math.max(...t.map(x => x.tocke), 0);
+      const row = t.find(x => x.id === a.id);
+      const delez = max > 0 && row ? row.tocke / max : 0;
+      r.delezi[k] = { delez, tocke: row ? row.tocke : 0, igra: row && row.maxTocke > 0 };
+      r.indeks += delez * (Number(data.uteziStebrov[k]) || 0) / utezSum * 100;
+    });
+    return r;
+  }).sort((a, b) => b.indeks - a.indeks || a.ime.localeCompare(b.ime, 'sl'));
+
+  const banner = document.getElementById('skupno-banner');
+  const manjka = stebri.filter(([k]) => !aktivni.find(([kk]) => kk === k)).map(([k]) => k);
+  banner.innerHTML = aktivni.length === 0
+    ? `<div class="banner">Noben steber še nima odigranih kol. Doseg rabi dva meseca snapshotov, Posel vsaj dve agenciji v registru, Finance vsaj dve agenciji z letnimi podatki.</div>`
+    : manjka.length ? `<div class="banner blue">Brez podatkov: ${manjka.map(imeStebra).join(', ')}. Utež je razdeljena med ostale stebre.</div>` : '';
+
+  const mi = rows.find(r => r.id === MI), miPoz = rows.indexOf(mi) + 1;
+  const nProj = projektiAktivni().length;
+  document.getElementById('skupno-stats').innerHTML = `
+    <div class="stat-box"><div class="big-stat">${aktivni.length ? miPoz + '.' : '-'}</div><div class="label">Mesto VVV</div></div>
+    <div class="stat-box"><div class="big-stat">${mi ? Math.round(mi.indeks) : 0}</div><div class="label">Indeks VVV</div></div>
+    <div class="stat-box"><div class="big-stat">${aktivni.length}/3</div><div class="label">Aktivni stebri</div></div>
+    <div class="stat-box"><div class="big-stat">${nProj}</div><div class="label">Projektov v registru</div></div>`;
+
+  document.getElementById('skupno-body').innerHTML = rows.map((r, i) => {
+    const rank = !aktivni.length ? '' : i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+    const cell = k => { const d = r.delezi[k]; if (!d) return `<td class="num muted">–</td>`; if (!d.igra) return `<td class="num muted" title="ni podatka">–</td>`; return `<td class="num">${Math.round(d.delez * 100)}<span class="muted small"> (${fmtTocke(d.tocke)})</span></td>`; };
+    const sestava = aktivni.map(([k]) => { const d = r.delezi[k]; const w = d ? d.delez * (Number(data.uteziStebrov[k]) || 0) / utezSum * 100 : 0; return `<div class="${k}" style="width:${w}%" title="${imeStebra(k)}"></div>`; }).join('');
+    return `<tr class="${r.id === MI ? 'mi' : ''}">
+      <td><span class="rank-badge ${rank}">${aktivni.length ? i + 1 : '–'}</span></td>
+      <td><div class="player-name">${esc(r.ime)}</div></td>
+      ${cell('doseg')}${cell('posel')}${cell('finance')}
+      <td class="num" style="font-weight:600;font-size:16px">${Math.round(r.indeks)}</td>
+      <td style="min-width:140px"><div class="steber-bar">${sestava}</div></td>
+    </tr>`;
+  }).join('');
+}
+function imeStebra(k) { return { doseg: 'Doseg', posel: 'Posel', finance: 'Finance' }[k]; }
+function setUtezStebra(k, v) { const n = Number(v); data.uteziStebrov[k] = isNaN(n) || n < 0 ? 0 : n; shrani(); renderSkupno(); }
+
+// ============================================================
+// RENDER: LESTVICA STEBRA (skupna funkcija)
+// ============================================================
+function renderLigaTabelo(bodyId, kolaVsa, kolaIzb, metIds, metOpisi, gridId, opts = {}) {
+  const t = tabela(kolaIzb, metIds), prej = tabela(kolaIzb.slice(0, -1), metIds);
   const prejPoz = {}; prej.forEach((r, i) => prejPoz[r.id] = i);
-
-  const nMes = meseci().length;
-  const banner = document.getElementById('lestvica-banner');
-  if (nMes === 0) {
-    banner.innerHTML = `<div class="banner">Ni snapshotov. Dodaj prvi na strani + Snapshot.</div>`;
-  } else if (vsaKola.length === 0) {
-    banner.innerHTML = `<div class="banner">Zaenkrat je en snapshot (${fmtMesec(meseci()[0])}). Prvo kolo se odigra, ko vpišeš naslednji mesec. Do takrat glej zavihek Stanje.</div>`;
-  } else if (k.some(kk => kk.dvoboji.length === 0)) {
-    banner.innerHTML = `<div class="banner">Nekatera kola nimajo dvobojev, ker manjkajo podatki za dva zaporedna meseca.</div>`;
-  } else banner.innerHTML = '';
-
-  const mi = t.find(r => r.id === MI);
-  const miPoz = t.indexOf(mi) + 1;
-  document.getElementById('lestvica-stats').innerHTML = `
-    <div class="stat-box"><div class="big-stat">${k.length}</div><div class="label">Odigranih kol</div></div>
-    <div class="stat-box"><div class="big-stat">${mi && k.length ? miPoz + '.' : '-'}</div><div class="label">Mesto VVV</div></div>
-    <div class="stat-box"><div class="big-stat">${t[0] && k.length ? kratkoIme(t[0].ime) : '-'}</div><div class="label">Trenutno #1</div></div>
-  `;
-
-  const filt = document.getElementById('lestvica-filters');
-  filt.innerHTML = [['vse', 'Celotna sezona'], ['3', 'Zadnja 3 kola'], ['6', 'Zadnjih 6'], ['12', 'Zadnjih 12']]
-    .map(([v, l]) => `<button class="filter-btn ${obdobje === v ? 'active' : ''}" onclick="setObdobje('${v}')">${l}</button>`).join('')
-    + `<span class="muted small" style="margin-left:auto">Prag za neodločeno: ${PRAG} o.t.</span>`;
-
   const maxT = t[0]?.tocke || 1;
-  const tbody = document.getElementById('lestvica-body');
-  tbody.innerHTML = t.map((r, i) => {
+  document.getElementById(bodyId).innerHTML = t.map((r, i) => {
     const igrano = r.z + r.n + r.p;
-    const pct = igrano ? Math.round(r.tocke / (igrano * 3 * povprUtez(r)) * 100) : 0;
+    const pct = r.maxTocke ? Math.round(r.tocke / r.maxTocke * 100) : 0;
     const pill = !igrano ? 'grey' : pct >= 55 ? 'green' : pct >= 40 ? 'amber' : 'red';
-    const rank = !k.length ? '' : i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
-    const slice = r.forma.slice(-5);
-    let dots = '';
+    const rank = !kolaIzb.length ? '' : i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+    let dots = ''; const slice = r.forma.slice(-5);
     for (let f = 0; f < 5; f++) dots += f < slice.length ? `<div class="forma-dot ${slice[f]}"></div>` : `<div class="forma-dot empty"></div>`;
     let trend = '<span class="trend same">–</span>';
-    if (k.length > 1 && prejPoz[r.id] !== undefined) {
-      const diff = prejPoz[r.id] - i;
-      if (diff > 0) trend = `<span class="trend up">▲ ${diff}</span>`;
-      else if (diff < 0) trend = `<span class="trend down">▼ ${-diff}</span>`;
-    }
-    return `
-      <tr class="${r.id === MI ? 'mi' : ''}">
-        <td><span class="rank-badge ${rank}">${k.length ? i + 1 : '–'}</span></td>
-        <td><div class="player-name">${esc(r.ime)}</div></td>
-        <td class="num">${r.kola}</td>
-        <td class="num" style="color:var(--green);font-weight:600">${r.z}</td>
-        <td class="num" style="color:var(--amber);font-weight:600">${r.n}</td>
-        <td class="num" style="color:var(--red);font-weight:600">${r.p}</td>
-        <td class="num"><span class="stat-pill ${pill}">${igrano ? pct + '%' : '–'}</span></td>
-        <td><div class="forma">${dots}</div></td>
-        <td class="num">
-          <div style="font-weight:600">${fmtTocke(r.tocke)}</div>
-          <div class="score-bar" style="margin-left:auto"><div class="score-bar-fill" style="width:${(r.tocke / maxT) * 100}%"></div></div>
-        </td>
-        <td>${trend}</td>
-      </tr>`;
+    if (kolaIzb.length > 1 && prejPoz[r.id] !== undefined) { const diff = prejPoz[r.id] - i; if (diff > 0) trend = `<span class="trend up">▲ ${diff}</span>`; else if (diff < 0) trend = `<span class="trend down">▼ ${-diff}</span>`; }
+    return `<tr class="${r.id === MI ? 'mi' : ''}">
+      <td><span class="rank-badge ${rank}">${kolaIzb.length ? i + 1 : '–'}</span></td>
+      <td><div class="player-name">${esc(r.ime)}</div>${igrano ? '' : '<div class="team-sub">ni podatka</div>'}</td>
+      <td class="num">${r.kola}</td>
+      <td class="num" style="color:var(--green);font-weight:600">${r.z}</td>
+      <td class="num" style="color:var(--amber);font-weight:600">${r.n}</td>
+      <td class="num" style="color:var(--red);font-weight:600">${r.p}</td>
+      <td class="num"><span class="stat-pill ${pill}">${igrano ? pct + '%' : '–'}</span></td>
+      ${opts.brezForme ? '' : `<td><div class="forma">${dots}</div></td>`}
+      <td class="num"><div style="font-weight:600">${fmtTocke(r.tocke)}</div><div class="score-bar"><div class="score-bar-fill" style="width:${(r.tocke / maxT) * 100}%"></div></div></td>
+      ${opts.brezForme ? '' : `<td>${trend}</td>`}
+    </tr>`;
   }).join('');
-
-  // po metrikah
-  const mg = document.getElementById('lestvica-metrike');
-  mg.innerHTML = data.metrike.filter(m => m.utez > 0).map(m => {
-    const sorted = [...t].sort((a, b) => b.poMetriki[m.id] - a.poMetriki[m.id] || a.ime.localeCompare(b.ime, 'sl'));
-    return `<div class="metric-card"><h4>${esc(m.ime)} <span class="muted" style="font-size:12px;font-family:'DM Sans'">utež ${m.utez}</span></h4>
-      ${sorted.map((r, i) => `<div class="metric-row ${r.id === MI ? 'mi' : ''}"><span>${i + 1}. ${esc(r.ime)}</span><span class="pts">${fmtTocke(r.poMetriki[m.id])}</span></div>`).join('')}
-    </div>`;
+  document.getElementById(gridId).innerHTML = metOpisi.map(m => {
+    const sorted = [...t].sort((a, b) => (b.poMetriki[m.id] || 0) - (a.poMetriki[m.id] || 0) || a.ime.localeCompare(b.ime, 'sl'));
+    return `<div class="metric-card"><h4>${esc(m.ime)}${m.utez !== undefined ? ` <span class="muted" style="font-size:12px;font-family:'DM Sans'">utež ${m.utez}</span>` : ''}</h4>
+      ${sorted.map((r, i) => `<div class="metric-row ${r.id === MI ? 'mi' : ''}"><span>${i + 1}. ${esc(r.ime)}</span><span class="pts">${fmtTocke(r.poMetriki[m.id] || 0)}</span></div>`).join('')}</div>`;
   }).join('') || '<p class="muted">Ni aktivnih metrik.</p>';
+  return t;
+}
+function filtriObdobja(id, trenutno, fn, dodatno = '') {
+  document.getElementById(id).innerHTML = [['vse', 'Celotna sezona'], ['3', 'Zadnja 3 kola'], ['6', 'Zadnjih 6'], ['12', 'Zadnjih 12']]
+    .map(([v, l]) => `<button class="filter-btn ${trenutno === v ? 'active' : ''}" onclick="${fn}('${v}')">${l}</button>`).join('') + dodatno;
 }
 
-function povprUtez(row) {
-  // za % osvojenih točk: povprečna utež dvobojev te agencije (približek: povprečje aktivnih uteži)
-  const akt = data.metrike.filter(m => m.utez > 0);
-  if (!akt.length) return 1;
-  return akt.reduce((s, m) => s + m.utez, 0) / akt.length;
+// ---------------- DOSEG ----------------
+function renderDoseg() {
+  const vsa = kolaDoseg(), k = rezi(vsa, obdobjeDoseg);
+  const nMes = meseci().length, banner = document.getElementById('doseg-banner');
+  banner.innerHTML = nMes === 0 ? `<div class="banner">Ni snapshotov. Dodaj prvi pod + Vnos.</div>`
+    : vsa.length === 0 ? `<div class="banner">En snapshot (${fmtMesec(meseci()[0])}). Prvo kolo se odigra, ko vpišeš naslednji mesec. Do takrat glej Trenutno stanje spodaj.</div>`
+    : k.some(kk => kk.dvoboji.length === 0) ? `<div class="banner">Nekatera kola nimajo dvobojev, ker manjkajo podatki za dva zaporedna meseca.</div>` : '';
+  filtriObdobja('doseg-filters', obdobjeDoseg, 'setObdobjeDoseg', `<span class="muted small" style="margin-left:auto">Prag za neodločeno: ${PRAG} o.t.</span>`);
+  const t = renderLigaTabelo('doseg-body', vsa, k, data.metrike.map(m => m.id), data.metrike.filter(m => m.utez > 0), 'doseg-metrike');
+  const mi = t.find(r => r.id === MI);
+  document.getElementById('doseg-stats').innerHTML = `
+    <div class="stat-box"><div class="big-stat">${k.length}</div><div class="label">Odigranih kol</div></div>
+    <div class="stat-box"><div class="big-stat">${mi && k.length ? t.indexOf(mi) + 1 + '.' : '-'}</div><div class="label">Mesto VVV</div></div>
+    <div class="stat-box"><div class="big-stat">${t[0] && k.length ? kratkoIme(t[0].ime) : '-'}</div><div class="label">Trenutno #1</div></div>`;
+  renderStanje();
 }
+function setObdobjeDoseg(v) { obdobjeDoseg = v; renderDoseg(); }
 
-function setObdobje(v) { obdobje = v; renderLestvica(); }
-
-// ============================================================
-// RENDER: STANJE
-// ============================================================
 function renderStanje() {
-  const m = meseci();
-  const filt = document.getElementById('stanje-filters');
-  const head = document.getElementById('stanje-head');
-  const body = document.getElementById('stanje-body');
-  const op = document.getElementById('stanje-opomba');
-  if (!m.length) {
-    filt.innerHTML = ''; head.innerHTML = ''; body.innerHTML = '<tr><td class="muted">Ni snapshotov.</td></tr>'; op.textContent = ''; return;
-  }
-  const zadnji = m[m.length - 1], prejsnji = m.length > 1 ? m[m.length - 2] : null;
-
-  filt.innerHTML = `<button class="filter-btn ${stanjeMetrika === 'skupno' ? 'active' : ''}" onclick="setStanjeMetrika('skupno')">Vse metrike</button>`
-    + data.metrike.map(mm => `<button class="filter-btn ${stanjeMetrika === mm.id ? 'active' : ''}" onclick="setStanjeMetrika('${mm.id}')">${esc(mm.ime)}</button>`).join('');
-
-  const mets = stanjeMetrika === 'skupno' ? data.metrike : data.metrike.filter(x => x.id === stanjeMetrika);
-
-  // rang po vsaki metriki (1 = največ), povprečni rang za skupno razvrstitev
+  const m = meseci(), head = document.getElementById('stanje-head'), body = document.getElementById('stanje-body'), op = document.getElementById('stanje-opomba');
+  if (!m.length) { head.innerHTML = ''; body.innerHTML = '<tr><td class="muted">Ni snapshotov.</td></tr>'; op.textContent = ''; return; }
+  const zadnji = m[m.length - 1], prejsnji = m.length > 1 ? m[m.length - 2] : null, mets = data.metrike;
   const rangi = {};
-  data.metrike.forEach(mm => {
+  mets.forEach(mm => {
     const list = data.agencije.map(a => ({ id: a.id, v: vrednost(zadnji, a.id, mm.id) })).filter(x => x.v !== null).sort((a, b) => b.v - a.v);
     list.forEach((x, i) => { rangi[x.id] = rangi[x.id] || {}; rangi[x.id][mm.id] = i + 1; });
   });
-  const rows = data.agencije.map(a => {
-    const r = rangi[a.id] || {};
-    const vals = mets.map(mm => r[mm.id]).filter(x => x !== undefined);
-    const avg = vals.length ? vals.reduce((s, x) => s + x, 0) / vals.length : Infinity;
-    return { a, avg, n: vals.length };
-  }).sort((x, y) => x.avg - y.avg || y.n - x.n || x.a.ime.localeCompare(y.a.ime, 'sl'));
-
-  head.innerHTML = `<tr><th>#</th><th>Agencija</th>${mets.map(mm => `<th class="num">${esc(mm.ime)}</th>`).join('')}${stanjeMetrika === 'skupno' ? '<th class="num" title="Povprečni rang po metrikah s podatkom">Povp. rang</th>' : ''}</tr>`;
+  const rows = data.agencije.map(a => { const r = rangi[a.id] || {}; const vals = mets.map(mm => r[mm.id]).filter(x => x !== undefined); return { a, n: vals.length, avg: vals.length ? vals.reduce((s, x) => s + x, 0) / vals.length : Infinity }; })
+    .sort((x, y) => x.avg - y.avg || y.n - x.n || x.a.ime.localeCompare(y.a.ime, 'sl'));
+  head.innerHTML = `<tr><th>#</th><th>Agencija</th>${mets.map(mm => `<th class="num">${esc(mm.ime)}</th>`).join('')}<th class="num" title="Povprečni rang po metrikah s podatkom">Povp. rang</th></tr>`;
   body.innerHTML = rows.map((row, i) => {
-    const rank = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
     const cells = mets.map(mm => {
-      const v = vrednost(zadnji, row.a.id, mm.id);
-      if (v === null) return `<td class="num muted">–</td>`;
+      const v = vrednost(zadnji, row.a.id, mm.id); if (v === null) return `<td class="num muted">–</td>`;
       const g = prejsnji ? rast(zadnji, prejsnji, row.a.id, mm.id) : null;
       const gTxt = g === null ? '' : `<div class="small ${g > 0 ? 'trend up' : g < 0 ? 'trend down' : 'muted'}">${g > 0 ? '+' : ''}${g.toFixed(1)}%</div>`;
-      const rg = rangi[row.a.id]?.[mm.id];
-      return `<td class="num"><div>${fmtNum(v)} <span class="muted small">#${rg}</span></div>${gTxt}</td>`;
+      return `<td class="num"><div>${fmtNum(v)} <span class="muted small">#${rangi[row.a.id]?.[mm.id]}</span></div>${gTxt}</td>`;
     }).join('');
-    return `<tr class="${row.a.id === MI ? 'mi' : ''}">
-      <td><span class="rank-badge ${rank}">${row.n ? i + 1 : '–'}</span></td>
-      <td><div class="player-name">${esc(row.a.ime)}</div><div class="team-sub">${esc(row.a.opomba || '')}</div></td>
-      ${cells}
-      ${stanjeMetrika === 'skupno' ? `<td class="num">${row.n ? `${row.avg.toFixed(1)} <span class="muted small">(${row.n}/${mets.length} metrik)</span>` : '–'}</td>` : ''}
-    </tr>`;
+    return `<tr class="${row.a.id === MI ? 'mi' : ''}"><td><span class="rank-badge">${row.n ? i + 1 : '–'}</span></td><td><div class="player-name">${esc(row.a.ime)}</div></td>${cells}<td class="num">${row.n ? `${row.avg.toFixed(1)} <span class="muted small">(${row.n}/${mets.length})</span>` : '–'}</td></tr>`;
   }).join('');
-
   const s = data.snapshoti[zadnji];
-  op.textContent = `Snapshot ${fmtMesec(zadnji)}${prejsnji ? ', sprememba glede na ' + fmtMesec(prejsnji) : ''}. ${s.vir ? 'Vir: ' + s.vir + '.' : ''} Agencije brez podatka za izbrane metrike so na dnu.`;
+  op.textContent = `Snapshot ${fmtMesec(zadnji)}${prejsnji ? ', sprememba glede na ' + fmtMesec(prejsnji) : ''}. ${s.vir ? 'Vir: ' + s.vir + '.' : ''}`;
 }
-function setStanjeMetrika(v) { stanjeMetrika = v; renderStanje(); }
+
+// ---------------- POSEL ----------------
+function renderPosel() {
+  const vsa = kolaPosel(), k = rezi(vsa, obdobjePosel);
+  const igrajo = agencijeVPoslu(), P = projektiAktivni();
+  const banner = document.getElementById('posel-banner');
+  banner.innerHTML = igrajo.size < 2
+    ? `<div class="banner">V registru ${igrajo.size === 1 ? 'je samo ena agencija' : 'ni nobene agencije'}${data.nastavitve.samoJavno ? ' z javno vidnimi projekti' : ''}. Liga Posel se začne, ko imata podatke vsaj dve. Dodaj projekte konkurentov pod + Vnos → Projekt.</div>`
+    : `<div class="banner green">Igra ${igrajo.size} od ${data.agencije.length} agencij. Agencije brez vnosa v registru ne igrajo (ni podatka, ne poraz).</div>`;
+  filtriObdobja('posel-filters', obdobjePosel, 'setObdobjePosel',
+    `<label class="check" style="margin-left:auto"><input type="checkbox" ${data.nastavitve.samoJavno ? 'checked' : ''} onchange="setSamoJavno(this.checked)"> Samo javno vidni projekti</label>`);
+  const t = renderLigaTabelo('posel-body', vsa, k, POSEL_MET.map(m => m.id), POSEL_MET, 'posel-metrike');
+  const mi = t.find(r => r.id === MI);
+  document.getElementById('posel-stats').innerHTML = `
+    <div class="stat-box"><div class="big-stat">${k.length}</div><div class="label">Odigranih kol</div></div>
+    <div class="stat-box"><div class="big-stat">${mi && k.length ? t.indexOf(mi) + 1 + '.' : '-'}</div><div class="label">Mesto VVV</div></div>
+    <div class="stat-box"><div class="big-stat">${P.filter(p => p.agId === MI).length}</div><div class="label">Projektov VVV v registru</div></div>`;
+
+  // portfelj
+  const doM = mesecKonecPosel(), od12 = mesecPlus(doM, -11) + '-01';
+  const pf = data.agencije.map(a => {
+    const pr = P.filter(p => p.agId === a.id);
+    const akt = pr.filter(p => p.datum && p.datum >= od12 && (!p.konec || p.konec >= doM + '-01')).length;
+    const sizes = { micro: 0, mini: 0, mid: 0, big: 0, '': 0 }; pr.forEach(p => sizes[p.velikost || ''] = (sizes[p.velikost || ''] || 0) + 1);
+    return { a, n: pr.length, akt, ut: pr.reduce((s, p) => s + utezProjekta(p), 0), sizes, zn: pr.filter(p => p.znamka).length, nag: data.nagrade.filter(n => n.agId === a.id).reduce((s, n) => s + Number(n.tocke || 0), 0) };
+  }).sort((x, y) => y.ut - x.ut || y.n - x.n || x.a.ime.localeCompare(y.a.ime, 'sl'));
+  document.getElementById('portfelj-body').innerHTML = pf.map((r, i) => `
+    <tr class="${r.a.id === MI ? 'mi' : ''}">
+      <td><span class="rank-badge">${r.n ? i + 1 : '–'}</span></td>
+      <td><div class="player-name">${esc(r.a.ime)}</div></td>
+      <td class="num">${r.n || '–'}</td><td class="num">${r.n ? r.akt : '–'}</td><td class="num">${r.n ? fmtTocke(r.ut) : '–'}</td>
+      <td>${r.n ? ['big', 'mid', 'mini', 'micro', ''].filter(s => r.sizes[s]).map(s => `<span class="tag">${VELIKOST_IME[s]} ${r.sizes[s]}</span>`).join('') : '<span class="muted">–</span>'}</td>
+      <td class="num">${r.n ? r.zn : '–'}</td><td class="num">${r.nag || '–'}</td>
+    </tr>`).join('');
+
+  // register
+  document.getElementById('register-filters').innerHTML = `<button class="filter-btn ${registerFilter === 'vse' ? 'active' : ''}" onclick="setRegisterFilter('vse')">Vse</button>`
+    + data.agencije.filter(a => data.projekti.some(p => p.agId === a.id)).map(a => `<button class="filter-btn ${registerFilter === a.id ? 'active' : ''}" onclick="setRegisterFilter('${a.id}')">${esc(a.ime)}</button>`).join('');
+  const reg = [...data.projekti].filter(p => registerFilter === 'vse' || p.agId === registerFilter).sort((a, b) => (b.datum || '').localeCompare(a.datum || ''));
+  document.getElementById('register-body').innerHTML = reg.length ? reg.map(p => {
+    const a = data.agencije.find(x => x.id === p.agId);
+    const vir = /^https?:\/\//.test(p.vir || '') ? `<a href="${esc(p.vir)}" target="_blank" rel="noopener">povezava</a>` : esc(p.vir || '');
+    return `<tr class="${p.agId === MI ? 'mi' : ''}">
+      <td>${esc(p.datum || '')}${p.konec ? `<div class="team-sub">do ${esc(p.konec)}</div>` : ''}</td>
+      <td>${esc(a ? a.ime : p.agId)}</td>
+      <td><div class="player-name" style="font-size:14px">${esc(p.stranka)}</div><div class="team-sub"><span class="tag ${p.javno === false ? 'interno' : 'javno'}">${p.javno === false ? 'interno' : 'javno'}</span>${p.znamka ? '<span class="tag">znamka</span>' : ''}</div></td>
+      <td>${VELIKOST_IME[p.velikost || '']}</td>
+      <td class="wrap muted small">${esc(p.opis || '')}</td>
+      <td class="small">${vir}</td>
+      <td><button class="btn secondary sm" onclick="urediProjekt('${p.id}')">Uredi</button> <button class="btn danger sm" onclick="izbrisiProjekt('${p.id}')">×</button></td>
+    </tr>`;
+  }).join('') : '<tr><td colspan="7" class="muted">Register je prazen.</td></tr>';
+}
+function setObdobjePosel(v) { obdobjePosel = v; renderPosel(); }
+function setRegisterFilter(v) { registerFilter = v; renderPosel(); }
+function setSamoJavno(v) { data.nastavitve.samoJavno = !!v; shrani(); renderPosel(); }
+
+// ---------------- FINANCE ----------------
+function renderFinance() {
+  const vsa = kolaFinance(), k = rezi(vsa, obdobjeFinance), L = leta();
+  const zAg = data.agencije.filter(a => Object.keys(data.finance[a.id] || {}).length).length;
+  document.getElementById('finance-banner').innerHTML = zAg < 2
+    ? `<div class="banner">Finančne podatke ima ${zAg} agencija. Liga Finance se začne pri dveh. Vnesi jih pod + Vnos → Letne finance (vir: bizi.si ali companywall.si).</div>`
+    : `<div class="banner blue">Podatke ima ${zAg} od ${data.agencije.length} agencij. Dvoboj v letu se odigra le med agencijami, ki imata obe podatek za to leto.</div>`;
+  filtriObdobja('finance-filters', obdobjeFinance, 'setObdobjeFinance');
+  renderLigaTabelo('finance-body', vsa, k, FIN_MET.map(m => m.id), FIN_MET, 'finance-metrike', { brezForme: true });
+
+  if (!bilancaLeto || !L.includes(bilancaLeto)) bilancaLeto = L[L.length - 1] || null;
+  document.getElementById('bilanca-filters').innerHTML = L.map(l => `<button class="filter-btn ${bilancaLeto === l ? 'active' : ''}" onclick="setBilancaLeto('${l}')">${l}</button>`).join('') || '<span class="muted small">Ni letnih podatkov.</span>';
+  const rows = data.agencije.map(a => ({ a, f: fin(a.id, bilancaLeto), m: Object.fromEntries(FIN_MET.map(x => [x.id, finMetrika(a.id, bilancaLeto, x.id)])) }))
+    .sort((x, y) => (y.m.prihodki ?? -1) - (x.m.prihodki ?? -1) || x.a.ime.localeCompare(y.a.ime, 'sl'));
+  document.getElementById('bilanca-body').innerHTML = rows.map((r, i) => `
+    <tr class="${r.a.id === MI ? 'mi' : ''}">
+      <td><span class="rank-badge">${r.f ? i + 1 : '–'}</span></td>
+      <td><div class="player-name">${esc(r.a.ime)}</div>${r.f?.vir ? `<div class="team-sub">${esc(r.f.vir)}</div>` : ''}</td>
+      <td class="small muted wrap">${esc(r.a.pravna || '–')}</td>
+      ${FIN_MET.map(x => `<td class="num">${r.m[x.id] === null || r.m[x.id] === undefined ? '<span class="muted">–</span>' : x.fmt(r.m[x.id])}</td>`).join('')}
+    </tr>`).join('');
+}
+function setObdobjeFinance(v) { obdobjeFinance = v; renderFinance(); }
+function setBilancaLeto(v) { bilancaLeto = v; renderFinance(); }
 
 // ============================================================
 // RENDER: VNOS
 // ============================================================
-let vnosMesec = null;
+function showSub(id) {
+  activeSub = id;
+  document.querySelectorAll('.sub').forEach(s => s.style.display = s.id === 'sub-' + id ? '' : 'none');
+  document.querySelectorAll('.subtabs .filter-btn').forEach(b => b.classList.toggle('active', b.dataset.sub === id));
+}
+function agencijeOptions() { return data.agencije.map(a => `<option value="${a.id}">${esc(a.ime)}</option>`).join(''); }
 
 function renderVnos() {
-  const m = meseci();
-  const sel = document.getElementById('vnos-obstojeci');
+  const m = meseci(), sel = document.getElementById('vnos-obstojeci');
   sel.innerHTML = `<option value="">— nov mesec —</option>` + m.map(x => `<option value="${x}">${fmtMesec(x)}</option>`).join('');
-  if (!vnosMesec) vnosMesec = m.length ? m[m.length - 1] : trenutniMesec();
+  if (!vnosMesec) vnosMesec = m.length ? m[m.length - 1] : danes().slice(0, 7);
   document.getElementById('vnos-mesec').value = vnosMesec;
   sel.value = data.snapshoti[vnosMesec] ? vnosMesec : '';
   document.getElementById('vnos-vir').value = data.snapshoti[vnosMesec]?.vir || '';
-
   document.getElementById('vnos-head').innerHTML = `<tr><th>Agencija</th>${data.metrike.map(mm => `<th class="num">${esc(mm.ime)}</th>`).join('')}</tr>`;
-  document.getElementById('vnos-body').innerHTML = data.agencije.map(a => `
-    <tr class="${a.id === MI ? 'mi' : ''}">
-      <td><div class="player-name">${esc(a.ime)}</div><div class="team-sub">${profilLinki(a)}</div></td>
-      ${data.metrike.map(mm => {
-        const v = vrednost(vnosMesec, a.id, mm.id);
-        return `<td class="num"><input type="number" min="0" step="1" data-ag="${a.id}" data-met="${mm.id}" value="${v === null ? '' : v}" placeholder="–" oninput="this.classList.add('changed')"></td>`;
-      }).join('')}
-    </tr>`).join('');
+  document.getElementById('vnos-body').innerHTML = data.agencije.map(a => `<tr class="${a.id === MI ? 'mi' : ''}">
+    <td><div class="player-name">${esc(a.ime)}</div><div class="team-sub">${profilLinki(a)}</div></td>
+    ${data.metrike.map(mm => { const v = vrednost(vnosMesec, a.id, mm.id); return `<td class="num"><input type="number" min="0" step="1" data-ag="${a.id}" data-met="${mm.id}" value="${v === null ? '' : v}" placeholder="–"></td>`; }).join('')}
+  </tr>`).join('');
   document.getElementById('vnos-status').textContent = data.snapshoti[vnosMesec] ? 'Urejaš obstoječi snapshot.' : 'Nov snapshot.';
-}
 
-function izberiSnapshot(v) {
-  vnosMesec = v || trenutniMesec();
-  renderVnos();
+  ['pr-ag', 'na-ag', 'fi-ag'].forEach(id => { const s = document.getElementById(id); const cur = s.value; s.innerHTML = agencijeOptions(); if (cur) s.value = cur; });
+  if (!document.getElementById('pr-datum').value) document.getElementById('pr-datum').value = danes();
+  if (!document.getElementById('na-datum').value) document.getElementById('na-datum').value = danes();
+  if (!document.getElementById('fi-leto').value) document.getElementById('fi-leto').value = new Date().getFullYear() - 1;
+
+  document.getElementById('nagrade-list').innerHTML = data.nagrade.length ? [...data.nagrade].sort((a, b) => (b.datum || '').localeCompare(a.datum || '')).map(n => {
+    const a = data.agencije.find(x => x.id === n.agId);
+    return `<div class="agency-item"><div><div class="player-name" style="font-size:14px">${esc(a ? a.ime : n.agId)}: ${esc(n.naziv)}</div><div class="handles">${esc(n.datum)} · ${n.tocke} t. ${n.vir ? '· ' + (/^https?:\/\//.test(n.vir) ? `<a href="${esc(n.vir)}" target="_blank" rel="noopener">vir</a>` : esc(n.vir)) : ''}</div></div>
+      <button class="btn danger sm" onclick="izbrisiNagrado('${n.id}')">×</button></div>`;
+  }).join('') : '<p class="muted small">Ni vnosov.</p>';
+
+  const finRows = [];
+  data.agencije.forEach(a => Object.entries(data.finance[a.id] || {}).sort((x, y) => y[0].localeCompare(x[0])).forEach(([l, f]) => finRows.push({ a, l, f })));
+  document.getElementById('finance-list').innerHTML = finRows.length ? finRows.map(r => `<div class="agency-item"><div><div class="player-name" style="font-size:14px">${esc(r.a.ime)} · ${r.l}</div>
+      <div class="handles">Prihodki ${fmtEur(r.f.prihodki)} · dobiček ${r.f.dobicek !== undefined && r.f.dobicek !== null && r.f.dobicek !== '' ? fmtEur(r.f.dobicek) : '–'} · zaposleni ${r.f.zaposleni ?? '–'}${r.f.vir ? ' · ' + esc(r.f.vir) : ''}</div></div>
+      <div style="display:flex;gap:6px"><button class="btn secondary sm" onclick="naloziFinance('${r.a.id}','${r.l}')">Uredi</button><button class="btn danger sm" onclick="izbrisiFinance('${r.a.id}','${r.l}')">×</button></div></div>`).join('') : '<p class="muted small">Ni vnosov.</p>';
 }
-document.addEventListener('change', e => {
-  if (e.target && e.target.id === 'vnos-mesec' && e.target.value) { vnosMesec = e.target.value; renderVnos(); }
-});
+function izberiSnapshot(v) { vnosMesec = v || danes().slice(0, 7); renderVnos(); }
+document.addEventListener('change', e => { if (e.target && e.target.id === 'vnos-mesec' && e.target.value) { vnosMesec = e.target.value; renderVnos(); } });
 
 function shraniSnapshot() {
   const mesec = document.getElementById('vnos-mesec').value;
   if (!/^\d{4}-\d{2}$/.test(mesec)) { showToast('Izberi mesec'); return; }
-  const vrednosti = {};
-  let n = 0;
+  const vrednosti = {}; let n = 0;
   document.querySelectorAll('#vnos-body input[type=number]').forEach(inp => {
-    const raw = inp.value.trim();
-    if (raw === '') return;
-    const v = Number(raw);
-    if (isNaN(v) || v < 0) return;
-    vrednosti[inp.dataset.ag] = vrednosti[inp.dataset.ag] || {};
-    vrednosti[inp.dataset.ag][inp.dataset.met] = v;
-    n++;
+    const raw = inp.value.trim(); if (raw === '') return; const v = Number(raw); if (isNaN(v) || v < 0) return;
+    vrednosti[inp.dataset.ag] = vrednosti[inp.dataset.ag] || {}; vrednosti[inp.dataset.ag][inp.dataset.met] = v; n++;
   });
   if (!n) { showToast('Ni vpisanih vrednosti'); return; }
   data.snapshoti[mesec] = { vir: document.getElementById('vnos-vir').value.trim(), vrednosti };
-  shrani();
-  vnosMesec = mesec;
-  renderVnos();
-  showToast(`Snapshot ${fmtMesec(mesec)} shranjen (${n} vrednosti)`);
+  shrani(); vnosMesec = mesec; renderVnos(); showToast(`Snapshot ${fmtMesec(mesec)} shranjen (${n} vrednosti)`);
 }
-
 function izbrisiSnapshot() {
   const mesec = document.getElementById('vnos-mesec').value;
   if (!data.snapshoti[mesec]) { showToast('Ta mesec še ni shranjen'); return; }
   if (!confirm(`Izbrišem snapshot ${fmtMesec(mesec)}?`)) return;
-  delete data.snapshoti[mesec];
-  shrani();
-  vnosMesec = null;
-  renderVnos();
-  showToast('Snapshot izbrisan');
+  delete data.snapshoti[mesec]; shrani(); vnosMesec = null; renderVnos(); showToast('Snapshot izbrisan');
 }
+
+function dodajProjekt() {
+  const stranka = document.getElementById('pr-stranka').value.trim(), datum = document.getElementById('pr-datum').value;
+  if (!stranka) { showToast('Vpiši stranko'); return; }
+  if (!datum) { showToast('Vpiši datum'); return; }
+  data.projekti.push({
+    id: 'p' + Date.now().toString(36), agId: document.getElementById('pr-ag').value, stranka, datum,
+    velikost: document.getElementById('pr-velikost').value, znamka: document.getElementById('pr-znamka').checked, javno: document.getElementById('pr-javno').checked,
+    opis: document.getElementById('pr-opis').value.trim(), vir: document.getElementById('pr-vir').value.trim(), konec: document.getElementById('pr-konec').value || null
+  });
+  ['pr-stranka', 'pr-opis', 'pr-vir', 'pr-konec'].forEach(i => document.getElementById(i).value = '');
+  document.getElementById('pr-znamka').checked = false; document.getElementById('pr-velikost').value = '';
+  shrani(); showToast(`${stranka} dodana v register`);
+}
+function urediProjekt(id) {
+  const p = data.projekti.find(x => x.id === id); if (!p) return;
+  const stranka = prompt('Stranka', p.stranka); if (stranka === null) return;
+  const datum = prompt('Prva omemba (YYYY-MM-DD)', p.datum || ''); if (datum === null) return;
+  const velikost = prompt('Velikost: micro / mini / mid / big / prazno', p.velikost || ''); if (velikost === null) return;
+  const znamka = confirm('Prepoznavna znamka? (OK = da)');
+  const konec = prompt('Konec sodelovanja (YYYY-MM-DD) ali prazno', p.konec || ''); if (konec === null) return;
+  const opis = prompt('Opis', p.opis || ''); if (opis === null) return;
+  const vir = prompt('Vir', p.vir || ''); if (vir === null) return;
+  Object.assign(p, { stranka: stranka.trim() || p.stranka, datum: /^\d{4}-\d{2}-\d{2}$/.test(datum) ? datum : p.datum, velikost: VELIKOST_UTEZ[velikost.trim()] !== undefined ? velikost.trim() : p.velikost, znamka, konec: /^\d{4}-\d{2}-\d{2}$/.test(konec) ? konec : null, opis: opis.trim(), vir: vir.trim() });
+  shrani(); renderPosel(); showToast('Projekt posodobljen');
+}
+function izbrisiProjekt(id) {
+  const p = data.projekti.find(x => x.id === id); if (!p) return;
+  if (!confirm(`Izbrišem projekt "${p.stranka}"?`)) return;
+  data.projekti = data.projekti.filter(x => x.id !== id); shrani(); renderPosel(); showToast('Projekt izbrisan');
+}
+function dodajNagrado() {
+  const naziv = document.getElementById('na-naziv').value.trim(), datum = document.getElementById('na-datum').value;
+  if (!naziv || !datum) { showToast('Vpiši naziv in datum'); return; }
+  data.nagrade.push({ id: 'n' + Date.now().toString(36), agId: document.getElementById('na-ag').value, datum, naziv, tocke: Number(document.getElementById('na-tocke').value) || 1, vir: document.getElementById('na-vir').value.trim() });
+  document.getElementById('na-naziv').value = ''; document.getElementById('na-vir').value = '';
+  shrani(); renderVnos(); showToast('Dodano');
+}
+function izbrisiNagrado(id) { data.nagrade = data.nagrade.filter(x => x.id !== id); shrani(); renderVnos(); }
+function shraniFinance() {
+  const ag = document.getElementById('fi-ag').value, leto = String(parseInt(document.getElementById('fi-leto').value, 10));
+  if (!/^\d{4}$/.test(leto)) { showToast('Vpiši leto'); return; }
+  const num = id => { const v = document.getElementById(id).value.trim(); return v === '' ? null : Number(v); };
+  const prihodki = num('fi-prihodki'); if (prihodki === null || isNaN(prihodki)) { showToast('Vpiši prihodke'); return; }
+  data.finance[ag] = data.finance[ag] || {};
+  data.finance[ag][leto] = { prihodki, dobicek: num('fi-dobicek'), zaposleni: num('fi-zaposleni'), vir: document.getElementById('fi-vir').value.trim() };
+  ['fi-prihodki', 'fi-dobicek', 'fi-zaposleni'].forEach(i => document.getElementById(i).value = '');
+  shrani(); renderVnos(); showToast(`Finance ${leto} shranjene`);
+}
+function naloziFinance(ag, leto) {
+  const f = fin(ag, leto); if (!f) return;
+  document.getElementById('fi-ag').value = ag; document.getElementById('fi-leto').value = leto;
+  document.getElementById('fi-prihodki').value = f.prihodki ?? ''; document.getElementById('fi-dobicek').value = f.dobicek ?? ''; document.getElementById('fi-zaposleni').value = f.zaposleni ?? ''; document.getElementById('fi-vir').value = f.vir || '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function izbrisiFinance(ag, leto) { if (!confirm(`Izbrišem finance ${leto}?`)) return; delete data.finance[ag][leto]; shrani(); renderVnos(); }
 
 // ============================================================
 // RENDER: AGENCIJE IN METRIKE
@@ -734,6 +1114,7 @@ function renderAgencije() {
     <div class="agency-item" style="${a.id === MI ? 'border-color:var(--green)' : ''}">
       <div>
         <div class="player-name" style="${a.id === MI ? 'color:var(--green)' : ''}">${esc(a.ime)}</div>
+        <div class="handles">${esc(a.pravna || 'pravna oseba ni znana')}</div>
         <div class="handles">${esc(a.opomba || '')}</div>
         <div class="handles">${profilLinki(a) || '<span class="muted">ni ročajev</span>'}</div>
       </div>
@@ -742,20 +1123,11 @@ function renderAgencije() {
         ${a.id === MI ? '' : `<button class="btn danger sm" onclick="odstraniAgencijo('${a.id}')">Odstrani</button>`}
       </div>
     </div>`).join('');
-
   document.getElementById('metrike-list').innerHTML = data.metrike.map(m => `
-    <div class="agency-item">
-      <div>
-        <div class="player-name">${esc(m.ime)}</div>
-        <div class="handles">id: ${m.id}</div>
-      </div>
-      <div style="display:flex;gap:6px;align-items:center;">
-        <input type="number" step="0.5" min="0" value="${m.utez}" style="width:80px;padding:6px 8px;" onchange="setUtez('${m.id}', this.value)" title="Utež">
-        <button class="btn danger sm" onclick="odstraniMetriko('${m.id}')">Odstrani</button>
-      </div>
+    <div class="agency-item"><div><div class="player-name">${esc(m.ime)}</div><div class="handles">id: ${m.id}</div></div>
+      <div style="display:flex;gap:6px;align-items:center;"><input type="number" step="0.5" min="0" value="${m.utez}" style="width:80px;padding:6px 8px;" onchange="setUtez('${m.id}', this.value)" title="Utež"><button class="btn danger sm" onclick="odstraniMetriko('${m.id}')">Odstrani</button></div>
     </div>`).join('');
 }
-
 function profilLinki(a) {
   const l = [];
   if (a.ig) l.push(`<a href="https://www.instagram.com/${encodeURIComponent(a.ig)}/" target="_blank" rel="noopener">IG @${esc(a.ig)}</a>`);
@@ -764,63 +1136,44 @@ function profilLinki(a) {
   if (a.web) l.push(`<a href="https://${esc(a.web)}" target="_blank" rel="noopener">${esc(a.web)}</a>`);
   return l.join(' · ');
 }
-
 function dodajAgencijo() {
-  const ime = document.getElementById('nova-ime').value.trim();
-  if (!ime) { showToast('Vpiši ime'); return; }
-  let id = slug(ime);
-  while (data.agencije.some(a => a.id === id)) id += '2';
-  data.agencije.push({
-    id, ime,
-    opomba: document.getElementById('nova-opomba').value.trim(),
-    ig: cistiHandle(document.getElementById('nova-ig').value),
-    tt: cistiHandle(document.getElementById('nova-tt').value),
-    li: cistiHandle(document.getElementById('nova-li').value),
-    web: document.getElementById('nova-web').value.trim().replace(/^https?:\/\//, '').replace(/\/$/, '')
-  });
-  ['nova-ime', 'nova-opomba', 'nova-ig', 'nova-tt', 'nova-li', 'nova-web'].forEach(i => document.getElementById(i).value = '');
+  const ime = document.getElementById('nova-ime').value.trim(); if (!ime) { showToast('Vpiši ime'); return; }
+  let id = slug(ime); while (data.agencije.some(a => a.id === id)) id += '2';
+  data.agencije.push({ id, ime, pravna: document.getElementById('nova-pravna').value.trim(), opomba: document.getElementById('nova-opomba').value.trim(),
+    ig: cistiHandle(document.getElementById('nova-ig').value), tt: cistiHandle(document.getElementById('nova-tt').value), li: cistiHandle(document.getElementById('nova-li').value),
+    web: cistiWeb(document.getElementById('nova-web').value) });
+  ['nova-ime', 'nova-opomba', 'nova-pravna', 'nova-ig', 'nova-tt', 'nova-li', 'nova-web'].forEach(i => document.getElementById(i).value = '');
   shrani(); renderAgencije(); showToast(`${ime} dodana`);
 }
-
 function urediAgencijo(id) {
   const a = data.agencije.find(x => x.id === id); if (!a) return;
   const ime = prompt('Ime agencije', a.ime); if (ime === null) return;
+  const pravna = prompt('Pravna oseba (npr. X d.o.o. ali Ime Priimek s.p.)', a.pravna || ''); if (pravna === null) return;
   const opomba = prompt('Mesto / opomba', a.opomba || ''); if (opomba === null) return;
   const ig = prompt('Instagram handle (brez @)', a.ig || ''); if (ig === null) return;
   const tt = prompt('TikTok handle (brez @)', a.tt || ''); if (tt === null) return;
-  const li = prompt('LinkedIn slug (linkedin.com/company/…)', a.li || ''); if (li === null) return;
+  const li = prompt('LinkedIn slug', a.li || ''); if (li === null) return;
   const web = prompt('Spletna stran', a.web || ''); if (web === null) return;
-  Object.assign(a, { ime: ime.trim() || a.ime, opomba: opomba.trim(), ig: cistiHandle(ig), tt: cistiHandle(tt), li: cistiHandle(li), web: web.trim().replace(/^https?:\/\//, '').replace(/\/$/, '') });
+  Object.assign(a, { ime: ime.trim() || a.ime, pravna: pravna.trim(), opomba: opomba.trim(), ig: cistiHandle(ig), tt: cistiHandle(tt), li: cistiHandle(li), web: cistiWeb(web) });
   shrani(); renderAgencije(); showToast('Shranjeno');
 }
-
 function odstraniAgencijo(id) {
   const a = data.agencije.find(x => x.id === id); if (!a) return;
-  if (!confirm(`Odstranim ${a.ime} iz lige? Njeni podatki v snapshotih ostanejo, a se ne prikazujejo.`)) return;
-  data.agencije = data.agencije.filter(x => x.id !== id);
-  shrani(); renderAgencije(); showToast(`${a.ime} odstranjena`);
+  if (!confirm(`Odstranim ${a.ime} iz lige? Podatki v snapshotih, registru in financah ostanejo, a se ne prikazujejo.`)) return;
+  data.agencije = data.agencije.filter(x => x.id !== id); shrani(); renderAgencije(); showToast(`${a.ime} odstranjena`);
 }
-
 function dodajMetriko() {
-  const ime = document.getElementById('nova-metrika').value.trim();
-  const utez = Number(document.getElementById('nova-metrika-utez').value);
+  const ime = document.getElementById('nova-metrika').value.trim(), utez = Number(document.getElementById('nova-metrika-utez').value);
   if (!ime) { showToast('Vpiši ime metrike'); return; }
-  let id = slug(ime).slice(0, 12) || 'm';
-  while (data.metrike.some(m => m.id === id)) id += '2';
+  let id = slug(ime).slice(0, 12) || 'm'; while (data.metrike.some(m => m.id === id)) id += '2';
   data.metrike.push({ id, ime, utez: isNaN(utez) || utez < 0 ? 1 : utez });
-  document.getElementById('nova-metrika').value = '';
-  shrani(); renderAgencije(); showToast('Metrika dodana');
+  document.getElementById('nova-metrika').value = ''; shrani(); renderAgencije(); showToast('Metrika dodana');
 }
-function setUtez(id, v) {
-  const m = data.metrike.find(x => x.id === id); if (!m) return;
-  const n = Number(v); m.utez = isNaN(n) || n < 0 ? 0 : n;
-  shrani(); showToast('Utež shranjena');
-}
+function setUtez(id, v) { const m = data.metrike.find(x => x.id === id); if (!m) return; const n = Number(v); m.utez = isNaN(n) || n < 0 ? 0 : n; shrani(); showToast('Utež shranjena'); }
 function odstraniMetriko(id) {
   const m = data.metrike.find(x => x.id === id); if (!m) return;
-  if (!confirm(`Odstranim metriko "${m.ime}"? Vrednosti v snapshotih ostanejo, a se ne uporabljajo.`)) return;
-  data.metrike = data.metrike.filter(x => x.id !== id);
-  shrani(); renderAgencije(); showToast('Metrika odstranjena');
+  if (!confirm(`Odstranim metriko "${m.ime}"?`)) return;
+  data.metrike = data.metrike.filter(x => x.id !== id); shrani(); renderAgencije(); showToast('Metrika odstranjena');
 }
 
 // ============================================================
@@ -828,17 +1181,10 @@ function odstraniMetriko(id) {
 // ============================================================
 function izvoziJSON() {
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `vvv-liga-${new Date().toISOString().slice(0, 10)}.json`;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `vvv-liga-${danes()}.json`;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
-function kopirajJSON() {
-  navigator.clipboard?.writeText(JSON.stringify(data, null, 2))
-    .then(() => showToast('JSON kopiran'))
-    .catch(() => showToast('Kopiranje ni uspelo'));
-}
+function kopirajJSON() { navigator.clipboard?.writeText(JSON.stringify(data, null, 2)).then(() => showToast('JSON kopiran')).catch(() => showToast('Kopiranje ni uspelo')); }
 function uvoziJSON(input) {
   const f = input.files?.[0]; if (!f) return;
   const r = new FileReader();
@@ -847,7 +1193,7 @@ function uvoziJSON(input) {
       const d = JSON.parse(r.result);
       if (!d.agencije || !d.metrike || !d.snapshoti) throw new Error('napačna struktura');
       if (!confirm('Uvoz zamenja vse trenutne podatke. Nadaljujem?')) return;
-      data = d; shrani(); renderAll(); showToast('Uvoz uspel');
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); data = naloziPodatke(); shrani(); renderAll(); showToast('Uvoz uspel');
     } catch (e) { showToast('Datoteka ni veljaven izvoz'); }
     input.value = '';
   };
@@ -855,8 +1201,7 @@ function uvoziJSON(input) {
 }
 function ponastavi() {
   if (!confirm('Vsi vnosi se izbrišejo in nadomestijo z začetnimi podatki. Nadaljujem?')) return;
-  data = JSON.parse(JSON.stringify(DEFAULT_DATA));
-  shrani(); vnosMesec = null; renderAll(); showToast('Ponastavljeno');
+  data = klon(DEFAULT_DATA); shrani(); vnosMesec = null; renderAll(); showToast('Ponastavljeno');
 }
 
 // ============================================================
@@ -865,38 +1210,25 @@ function ponastavi() {
 function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 function slug(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '').slice(0, 20) || 'ag'; }
 function cistiHandle(s) { return String(s || '').trim().replace(/^@/, '').replace(/^https?:\/\/[^/]+\/(company\/)?/, '').replace(/^@/, '').replace(/\/$/, ''); }
-function fmtNum(n) { return Number(n).toLocaleString('sl-SI'); }
-function fmtTocke(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
-function fmtMesec(m) {
-  const [y, mo] = m.split('-');
-  const imena = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec'];
-  return `${imena[Number(mo) - 1] || mo} ${y}`;
-}
-function trenutniMesec() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; }
+function cistiWeb(s) { return String(s || '').trim().replace(/^https?:\/\//, '').replace(/\/$/, ''); }
+function fmtNum(n) { return Number(n).toLocaleString('sl-SI', { maximumFractionDigits: 1 }); }
+function fmtEur(n) { return n === null || n === undefined || isNaN(n) ? '–' : Number(n).toLocaleString('sl-SI', { maximumFractionDigits: 0 }) + ' €'; }
+function fmtPct(n) { return n === null || n === undefined || isNaN(n) ? '–' : (n > 0 ? '+' : '') + Number(n).toFixed(1) + ' %'; }
+function fmtTocke(n) { return Number.isInteger(n) ? String(n) : Number(n).toFixed(1); }
+function fmtMesec(m) { const [y, mo] = m.split('-'); const imena = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'avg', 'sep', 'okt', 'nov', 'dec']; return `${imena[Number(mo) - 1] || mo} ${y}`; }
 function kratkoIme(s) { return s.split(' (')[0].split(' ').slice(0, 2).join(' '); }
-
 let toastTimer;
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
-}
+function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2200); }
 
 function showPage(id) {
-  activePage = id;
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'page-' + id));
   document.querySelectorAll('nav button').forEach(b => b.classList.toggle('active', b.dataset.page === id));
-  if (id === 'lestvica') renderLestvica();
-  if (id === 'stanje') renderStanje();
-  if (id === 'vnos') renderVnos();
-  if (id === 'agencije') renderAgencije();
+  ({ skupno: renderSkupno, doseg: renderDoseg, posel: renderPosel, finance: renderFinance, vnos: renderVnos, agencije: renderAgencije })[id]?.();
 }
-
 function renderAll() {
   document.getElementById('met-prag').textContent = PRAG;
-  renderLestvica(); renderStanje(); renderVnos(); renderAgencije();
+  renderSkupno(); renderDoseg(); renderPosel(); renderFinance(); renderVnos(); renderAgencije(); showSub(activeSub);
 }
-
 renderAll();
 </script>
 </body>

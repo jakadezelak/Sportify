@@ -143,18 +143,32 @@ Serpentinsko razporejanje po oceni:
 
 Ločena, samostojna stran v istem repozitoriju (isti dizajn, brez povezave z Ledina podatki). Nogometna lestvica za **VVV Digital** proti 9 konkurentom: TikTok SPACE, Vividista, Envision Collective, Tiktokerija, A.P. Marketing, Ziya Agency, Createable, Katapult Media, We Are TikTok (WATT).
 
-- **Kolo = mesec.** V vsakem kolu vsaka agencija igra proti vsaki po vsaki metriki; večja *relativna* rast zmaga (3 točke), razlika pod 1 odstotno točko je neodločeno (1 točka). Dvoboj se odigra le, če imata obe agenciji podatek v dveh zaporednih mesecih.
-- **Metrike (privzeto):** Instagram, TikTok in LinkedIn sledilci (utež 1), Google ocene (utež 0,5). Uteži in metrike so urejljive.
-- **Zavihki:** Lestvica (točke, Z/N/P, forma zadnjih 5 kol, trend, točke po metrikah), Stanje (surove vrednosti zadnjega snapshota in mesečna sprememba), + Snapshot (mesečni vnos), Agencije (ekipe, ročaji profilov, metrike), Metodologija.
-- **Shramba:** `localStorage` ključ `vvv_konkurenca_v1`; izvoz/uvoz JSON za prenos med napravami in varnostno kopijo.
-- **Začetni snapshot 2026-09** je iz spletnega iskanja (približno) in pokriva le del agencij; pred prvim pravim kolom ga ročno preveri in dopolni.
+**Trije stebri**, vsak lastna liga s točkovanjem 3/1/0 in dvoboji vsak proti vsakemu po metriki. Dvoboj se odigra le, če imata obe agenciji podatek (manjkajoč podatek ni poraz).
+
+| Steber | Kolo | Metrike | Primerjava |
+|---|---|---|---|
+| Doseg | mesec | IG, TikTok, LinkedIn sledilci (utež 1), Google ocene (0,5) | relativna rast, prag 1 o.t. za neodločeno |
+| Posel | mesec | novi projekti (utež po velikosti stranke micro 1 / mini 1,5 / mid 2 / big 3, znamka +1), aktivne stranke v 12 m, nagrade in omembe | absolutne vrednosti |
+| Finance | leto | prihodki, rast, dobiček, marža, zaposleni, prihodki/zaposlenega (AJPES prek Bizi) | absolutne, rast v % |
+
+**Skupni indeks** = utežena vsota deležev točk po stebrih (privzeto Posel 45 %, Finance 35 %, Doseg 20 %; 100 = prvi v vseh treh). Stebri brez podatkov se preskočijo.
+
+- **Zavihki:** Skupno, Doseg (lestvica + trenutno stanje), Posel (lestvica, portfelj, register projektov), Finance (lestvica, bilanca po letih), + Vnos (snapshot, projekt, nagrada, letne finance, izvoz/uvoz), Agencije, Metodologija.
+- **Shramba:** `localStorage` ključ `vvv_konkurenca_v1` (verzija 2, samodejna migracija iz v1); izvoz/uvoz JSON.
+- **Register VVV** vsebuje javne študije primerov, portfolio 2025 in interne posle iz CRM (označeni `javno: false`); filter "Samo javno vidni projekti" jih izključi za pošteno primerjavo.
+- **Začetni podatki (5. 9. 2026)** so iz spletnega iskanja; viri so zapisani pri vsakem vnosu in v Metodologiji. Instagram/TikTok/LinkedIn/Bizi niso bili neposredno dostopni, zato snapshot dosega pokriva le del agencij.
 
 Struktura podatkov:
 ```js
 {
-  agencije: [{ id, ime, opomba, ig, tt, li, web }],
-  metrike:  [{ id, ime, utez }],
-  snapshoti: { 'YYYY-MM': { vir, vrednosti: { [agencijaId]: { [metrikaId]: number } } } }
+  agencije:  [{ id, ime, pravna, opomba, ig, tt, li, web }],
+  metrike:   [{ id, ime, utez }],
+  snapshoti: { 'YYYY-MM': { vir, vrednosti: { [agId]: { [metId]: number } } } },
+  projekti:  [{ id, agId, stranka, datum, velikost, znamka, javno, opis, vir, konec }],
+  nagrade:   [{ id, agId, datum, naziv, tocke, vir }],
+  finance:   { [agId]: { [leto]: { prihodki, dobicek, zaposleni, vir } } },
+  uteziStebrov: { doseg, posel, finance },
+  nastavitve: { samoJavno }
 }
 ```
 
