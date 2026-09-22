@@ -1,7 +1,7 @@
 {
   "datum": "2026-09-21",
   "dostop": "ok",
-  "opombe": "DOPOLNITEV 2026-09-21 (lokalna seja, poln omrežni dostop; curl https://www.bizi.si/ = 200). NEPOSREDNO PREBRANO: noge, politike zasebnosti, reference in ekipe na straneh agencij (tiktok-space.si, vividista.si, envisioncollective.si, ap-marketing.si, katapult.si, vvv-digital.com vključno z WP REST API, createable.si prek JS svežnja, outpaceagency.com); registri companywall.si (finance 2023-2025, lastniki), bizi.si (samo registrski podatki, finance zaklenjene), ebonitete.si (zadnje leto), delno bilance.si in stop-neplacniki.si; Instagram (meta opis v brskalniku brez prijave), TikTok (followerCount v JSON strani), LinkedIn (javna stran podjetja), Google Maps/iskanje (ocene); katalog SOF 2019-2026, Marketing magazin, Diggit, Websi, Effie. IZ ARHIVA (web.archive.org), ker izvirnik ni več dosegljiv: tiktokerija.com (posnetek 2026-05-18), wearetiktok.agency /projekti in /ekipa (2025-01-24, 2024-06-14), slovenska ziya.agency (2025-05-20). OSTAJA IZ ISKALNIH IZVLEČKOV prve raziskave: LinkedIn/TikTok objave posameznikov s približnimi datumi, podcasti, nekatere omembe in števila ekip, kjer je ohranjena stara vrednost. NI DOSEGLJIVO: finance 2022 (companywall brezplačno kaže le zadnja 3 leta, AJPES zahteva prijavo), finance A.P. 2023-2024 (niso objavljene), datumi prve omembe strank razen pri VVV (tam so datumi objave WP zapisov, ne začetek sodelovanja), zadnjih ~20 objav na IG/TT/LI posamezne agencije ni bilo sistematično pregledanih (brez prijave so objave omejeno vidne), Diggit/Websi/Effie imajo le delne arhive. || PRVOTNA OPOMBA: Vsi podatki so iz izvlečkov spletnega iskanja (WebSearch); neposredni dostop do strani (curl/WebFetch) je bil blokiran s proxyjem (HTTP 403 na CONNECT). Številke sledilcev so iz indeksiranih meta opisov profilov in so lahko zastarele. Preverjeni gostitelji z 403: www.bizi.si, www.companywall.si, www.ajpes.si, vvv-digital.com, www.instagram.com, www.google.com. Playwright ni bil uporabljen, ker gre ves izhodni promet skozi isti proxy. Google ocene niso bile dosegljive za nobeno agencijo. Datumi objav na LinkedInu/TikToku so približki, izračunani iz ID-jev objav.",
+  "opombe": "DOPOLNITEV 2026-09-22: dodane tri agencije iz zipa VVV_Competitor_Research_Repo (BuzzTik = CLUEKIT d.o.o., 3A Media = Lev Glumac s.p., XOD = XOD Group d.o.o.) z istimi viri kot 21.9. (companywall/bizi/ebonitete, IG meta opis v brskalniku, TikTok JSON, LinkedIn javna stran, Google Maps, strani agencij, SOF/MM/Diggit/Websi/Effie). Baza 47 povezav konkurent-stranka iz zipa je v research/competitor-clients/ s fact-checkom v data/client_database_factcheck.csv in data/watt_outpace_factcheck.json. || DOPOLNITEV 2026-09-21 (lokalna seja, poln omrežni dostop; curl https://www.bizi.si/ = 200). NEPOSREDNO PREBRANO: noge, politike zasebnosti, reference in ekipe na straneh agencij (tiktok-space.si, vividista.si, envisioncollective.si, ap-marketing.si, katapult.si, vvv-digital.com vključno z WP REST API, createable.si prek JS svežnja, outpaceagency.com); registri companywall.si (finance 2023-2025, lastniki), bizi.si (samo registrski podatki, finance zaklenjene), ebonitete.si (zadnje leto), delno bilance.si in stop-neplacniki.si; Instagram (meta opis v brskalniku brez prijave), TikTok (followerCount v JSON strani), LinkedIn (javna stran podjetja), Google Maps/iskanje (ocene); katalog SOF 2019-2026, Marketing magazin, Diggit, Websi, Effie. IZ ARHIVA (web.archive.org), ker izvirnik ni več dosegljiv: tiktokerija.com (posnetek 2026-05-18), wearetiktok.agency /projekti in /ekipa (2025-01-24, 2024-06-14), slovenska ziya.agency (2025-05-20). OSTAJA IZ ISKALNIH IZVLEČKOV prve raziskave: LinkedIn/TikTok objave posameznikov s približnimi datumi, podcasti, nekatere omembe in števila ekip, kjer je ohranjena stara vrednost. NI DOSEGLJIVO: finance 2022 (companywall brezplačno kaže le zadnja 3 leta, AJPES zahteva prijavo), finance A.P. 2023-2024 (niso objavljene), datumi prve omembe strank razen pri VVV (tam so datumi objave WP zapisov, ne začetek sodelovanja), zadnjih ~20 objav na IG/TT/LI posamezne agencije ni bilo sistematično pregledanih (brez prijave so objave omejeno vidne), Diggit/Websi/Effie imajo le delne arhive. || PRVOTNA OPOMBA: Vsi podatki so iz izvlečkov spletnega iskanja (WebSearch); neposredni dostop do strani (curl/WebFetch) je bil blokiran s proxyjem (HTTP 403 na CONNECT). Številke sledilcev so iz indeksiranih meta opisov profilov in so lahko zastarele. Preverjeni gostitelji z 403: www.bizi.si, www.companywall.si, www.ajpes.si, vvv-digital.com, www.instagram.com, www.google.com. Playwright ni bil uporabljen, ker gre ves izhodni promet skozi isti proxy. Google ocene niso bile dosegljive za nobeno agencijo. Datumi objav na LinkedInu/TikToku so približki, izračunani iz ID-jev objav.",
   "agencije": {
     "vvv": {
       "pravna": {
@@ -544,7 +544,7 @@
         "n": null,
         "vir": null
       },
-      "opombe": "Pravne osebe ni bilo mogoče določiti: iskanje po 'TikTok SPACE d.o.o.' in po naslovu Celovška cesta 69C v bizi/companywall ni vrnilo zadetka; noge strani ni bilo mogoče prebrati (dostop blokiran). Stran ima zrcalo tiktokspace.webflow.io. Reference, sledilci in ekipa niso v izvlečkih. || DOPOLNITEV 2026-09-21 (primarni viri): Finance manjkajo za 2022, 2023: podjetje še ni obstajalo; podjetje še ni obstajalo (vpis 25.1.2024). Pravna oseba določena iz noge strani (APPOLO PRO d.o.o.); politika zasebnosti pa nedosledno navaja 'TikTok SPACE s.p.' in 'TikTok SPACE d.o.o.', ki ju v registrih ni. Registrirani sedež je Brezina 7, Brežice; Celovške 69C registri ne navajajo. Ni zavezanec za DDV. Družbena omrežja/Google: Google profil obstaja, brez ocen. TT @tiktokspace (100 sledilcev, regija SI, 1 video) se ujema po imenu, a ga nobena povezava s strani ne potrjuje, zato je označen 'nepotrjeno'. IG ročaja ni bilo mogoče določiti (noga kaže na instagram.com/). Reference/ekipa/nagrade: O nas opisuje 'butično agencijo, multinacionalna ekipa, 20–45 let', brez števila in drugih imen. Nosilec APPOLO PRO d.o.o., Celovška 69C, Ljubljana. Sitemap ima 5 URL-jev, datumov ni. Nagradni viri: 0 zadetkov. Ekipa po strani https://www.tiktok-space.si/o-nas/ (2026-09-21): Rimma (ustanoviteljica in vodja; priimek ni naveden) (n=None); obstoječa vrednost n=None ohranjena. Ekipa: n ostaja null, ker stran /o-nas imenuje le 'Rimma' in 'multinacionalno ekipo' brez števila."
+      "opombe": "Pravne osebe ni bilo mogoče določiti: iskanje po 'TikTok SPACE d.o.o.' in po naslovu Celovška cesta 69C v bizi/companywall ni vrnilo zadetka; noge strani ni bilo mogoče prebrati (dostop blokiran). Stran ima zrcalo tiktokspace.webflow.io. Reference, sledilci in ekipa niso v izvlečkih. || DOPOLNITEV 2026-09-21 (primarni viri): Finance manjkajo za 2022, 2023: podjetje še ni obstajalo; podjetje še ni obstajalo (vpis 25.1.2024). Pravna oseba določena iz noge strani (APPOLO PRO d.o.o.); politika zasebnosti pa nedosledno navaja 'TikTok SPACE s.p.' in 'TikTok SPACE d.o.o.', ki ju v registrih ni. Registrirani sedež je Brezina 7, Brežice; Celovške 69C registri ne navajajo. Ni zavezanec za DDV. Družbena omrežja/Google: Google profil obstaja, brez ocen. TT @tiktokspace (100 sledilcev, regija SI, 1 video) se ujema po imenu, a ga nobena povezava s strani ne potrjuje, zato je označen 'nepotrjeno'. IG ročaja ni bilo mogoče določiti (noga kaže na instagram.com/). Reference/ekipa/nagrade: O nas opisuje 'butično agencijo, multinacionalna ekipa, 20–45 let', brez števila in drugih imen. Nosilec APPOLO PRO d.o.o., Celovška 69C, Ljubljana. Sitemap ima 5 URL-jev, datumov ni. Nagradni viri: 0 zadetkov. Ekipa po strani https://www.tiktok-space.si/o-nas/ (2026-09-21): Rimma (ustanoviteljica in vodja; priimek ni naveden) (n=None); obstoječa vrednost n=None ohranjena. Ekipa: n ostaja null, ker stran /o-nas imenuje le 'Rimma' in 'multinacionalno ekipo' brez števila. || 2026-09-22: fact-check zipa: stranke na tiktok-space.si so le v alt atributih slik; ime je 'Faris' (ne Fari's) in gre za Instagram profil."
     },
     "vividista": {
       "pravna": {
@@ -1301,7 +1301,7 @@
         "n": 10,
         "vir": "https://www.ef.uni-lj.si/novice/seznam-novic/2025-12-09-alumni-zgodba-laura-mlakar ('desetčlanska ekipa')"
       },
-      "opombe": "Pravna oseba: iskanje 'Createable d.o.o.' v bizi ni dalo zadetka. IG @createable.si: 737 sledilcev, 129 objav. TT sledilci niso v izvlečku. Trditev '50+ podjetij v 3 letih'; imena strank niso v izvlečkih (stran createable.si ni dosegljiva). Obstaja rezervacijska stran cal.com/createable. || DOPOLNITEV 2026-09-21 (primarni viri): Finance manjkajo za 2022: companywall brezplačno kaže le zadnja 3 leta; bizi finance za plačilom; AJPES JOLP zahteva prijavo. Pravna oseba prebrana iz politike zasebnosti in pogojev na createable.si (BondBeyond d.o.o. posluje pod znamko Agencija Createable; do 2024 znamka TikTokable). Prejšnji zapis vodstva: 'Laura Mlakar (soustanoviteljica; EF UL 2020–2023) + neimenovana soustanoviteljica'; neimenovana soustanoviteljica je Sara Tič. Sledilci IG: stara vrednost 737 (iskalni izvleček), nova 1013 (odčitano neposredno 2026-09-21). Družbena omrežja/Google: IG 737 -> 1013. company/bondbeyond na LI je egiptovsko podjetje (Cairo, 156), ne nosilec BondBeyond d.o.o. Reference/ekipa/nagrade: Vse je iz lokalne kopije svežnja (%TEMP%\\liga\\cre.js). Časovnica: 2022 začneta Laura in Sara; 2024 preimenovanje iz TikTokable v Createable, 5-članska ekipa; 2025 'ekipa se podvoji'; 2026 polna ponudba. Drugje v svežnju piše '80+ znamk' in '50 milijonov ogledov'. Nekateri portfolio vnosi imajo v polju 'znamka' temo in ne stranke (Pretežke torbe, Dental, Železo, Hook, Katalog), zato so izpuščeni. Ročajev družbenih omrežij v svežnju ni: nobenega instagram/tiktok/linkedin URL-ja, samo info@createable.si in telefon +386 70 674 731. Nosilec je BondBeyond podjetje za digitalni marketing, d.o.o., Ulica Ambrožiča Novljana 5, Ljubljana, matična 8897883000. Poti v aplikaciji: /ekipa, /galerija, /storitve, /tecaji. SOF (tudi 'TikTokable'), Marketing magazin, Diggit, Websi, Effie: 0 zadetkov. Ekipa po strani https://createable.si/assets/index-DN4AW_8G.js (2026-09-21): Laura Mlakar (vodja poslovnega razvoja, soustanoviteljica); Sara Tič (vodja kreative, soustanoviteljica); Uroš Bitenc (vodja produkcije); Nik Lavtižar (scenariji in postprodukcija); Čarna Bukovšek (scenariji in produkcija); Emanuela Čerček (scenariji in postprodukcija); Jan Reven (postprodukcija); Žiga Žibert (vodja montaže) (n=8); obstoječa vrednost n=10 ohranjena."
+      "opombe": "Pravna oseba: iskanje 'Createable d.o.o.' v bizi ni dalo zadetka. IG @createable.si: 737 sledilcev, 129 objav. TT sledilci niso v izvlečku. Trditev '50+ podjetij v 3 letih'; imena strank niso v izvlečkih (stran createable.si ni dosegljiva). Obstaja rezervacijska stran cal.com/createable. || DOPOLNITEV 2026-09-21 (primarni viri): Finance manjkajo za 2022: companywall brezplačno kaže le zadnja 3 leta; bizi finance za plačilom; AJPES JOLP zahteva prijavo. Pravna oseba prebrana iz politike zasebnosti in pogojev na createable.si (BondBeyond d.o.o. posluje pod znamko Agencija Createable; do 2024 znamka TikTokable). Prejšnji zapis vodstva: 'Laura Mlakar (soustanoviteljica; EF UL 2020–2023) + neimenovana soustanoviteljica'; neimenovana soustanoviteljica je Sara Tič. Sledilci IG: stara vrednost 737 (iskalni izvleček), nova 1013 (odčitano neposredno 2026-09-21). Družbena omrežja/Google: IG 737 -> 1013. company/bondbeyond na LI je egiptovsko podjetje (Cairo, 156), ne nosilec BondBeyond d.o.o. Reference/ekipa/nagrade: Vse je iz lokalne kopije svežnja (%TEMP%\\liga\\cre.js). Časovnica: 2022 začneta Laura in Sara; 2024 preimenovanje iz TikTokable v Createable, 5-članska ekipa; 2025 'ekipa se podvoji'; 2026 polna ponudba. Drugje v svežnju piše '80+ znamk' in '50 milijonov ogledov'. Nekateri portfolio vnosi imajo v polju 'znamka' temo in ne stranke (Pretežke torbe, Dental, Železo, Hook, Katalog), zato so izpuščeni. Ročajev družbenih omrežij v svežnju ni: nobenega instagram/tiktok/linkedin URL-ja, samo info@createable.si in telefon +386 70 674 731. Nosilec je BondBeyond podjetje za digitalni marketing, d.o.o., Ulica Ambrožiča Novljana 5, Ljubljana, matična 8897883000. Poti v aplikaciji: /ekipa, /galerija, /storitve, /tecaji. SOF (tudi 'TikTokable'), Marketing magazin, Diggit, Websi, Effie: 0 zadetkov. Ekipa po strani https://createable.si/assets/index-DN4AW_8G.js (2026-09-21): Laura Mlakar (vodja poslovnega razvoja, soustanoviteljica); Sara Tič (vodja kreative, soustanoviteljica); Uroš Bitenc (vodja produkcije); Nik Lavtižar (scenariji in postprodukcija); Čarna Bukovšek (scenariji in produkcija); Emanuela Čerček (scenariji in postprodukcija); Jan Reven (postprodukcija); Žiga Žibert (vodja montaže) (n=8); obstoječa vrednost n=10 ohranjena. || 2026-09-22: fact-check zipa: 'Zaupajo nam Gorenje, Terme Snovik, Ljubljanske mlekarne, NLB Skladi' je besedilo v JS sveznju /ekipa (casovnica 2026); Terme Snovik in Ljubljanske mlekarne imajo tudi logotip in portfolio, Gorenje in NLB Skladi le besedilo."
     },
     "katapult": {
       "pravna": {
@@ -1557,6 +1557,96 @@
           "opis": "mnenje (Filip Uranc, CEO)",
           "datum": null,
           "vir": "https://outpaceagency.com/"
+        },
+        {
+          "ime": "Red Bull",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "Poli",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "Bird Buddy",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026 ; Outpace 2026: kreative v portfoliu",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "Speech Blubs",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "Dormeo",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "Afrodita",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026 ; na CDN Outpace v mapi 'STARI CLIENTI' (pretekla stranka)",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "Visit Ljubljana",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "HS+",
+          "opis": "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 ; https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519"
+        },
+        {
+          "ime": "Esstera / Essterra",
+          "opis": "Outpace (2026): CDN mapa IMG ADS/ESSTERA [portfolio kreative]",
+          "datum": null,
+          "vir": "https://outpaceagency.com/"
+        },
+        {
+          "ime": "Bach",
+          "opis": "Outpace (2026): CDN mapa IMG ADS/BACH [portfolio kreative]",
+          "datum": null,
+          "vir": "https://outpaceagency.com/"
+        },
+        {
+          "ime": "Proteini",
+          "opis": "Outpace (2026): CDN mapa IMG ADS/PROTEINI [portfolio kreative]",
+          "datum": null,
+          "vir": "https://outpaceagency.com/"
+        },
+        {
+          "ime": "Artisana",
+          "opis": "Outpace (2026): CDN mapa UGC/ARTISANA [portfolio kreative]",
+          "datum": null,
+          "vir": "https://outpaceagency.com/"
+        },
+        {
+          "ime": "Dines",
+          "opis": "Outpace (2026): CDN mapa UGC/STARI CLIENTI/DINES [STARI CLIENTI — pretekli]",
+          "datum": null,
+          "vir": "https://outpaceagency.com/"
+        },
+        {
+          "ime": "Float Center Ljubljana",
+          "opis": "Outpace (2026): CDN mapa UGC/STARI CLIENTI/FLOAT CENTER LJUBLJANA [STARI CLIENTI — pretekli]",
+          "datum": null,
+          "vir": "https://outpaceagency.com/"
+        },
+        {
+          "ime": "Kriptomat",
+          "opis": "Outpace (2026): CDN mapa UGC/STARI CLIENTI/KRIPTOMAT [STARI CLIENTI — pretekli]",
+          "datum": null,
+          "vir": "https://outpaceagency.com/"
         }
       ],
       "omembe": [
@@ -1599,13 +1689,486 @@
           "naziv": "Marketing magazin, zaposlitveni oglas: 'Zaposlujejo Pipistrel, PRO PLUS, WeAreTikTok in drugi'",
           "datum": "2023-12-22",
           "vir": "https://www.marketingmagazin.si/dmt/delovna-mesta-tedna/9930/zaposlujejo-pipistrel-pro-plus-wearetiktok-in-drugi/novice"
+        },
+        {
+          "naziv": "LinkedIn zaposlitveni oglas 'Managing Director WATT Agency (m/ž) — delodajalec na LinkedInu: Outpace': 30+ aktivnih naročnikov; 100.000 € mesečnega ponavljajočega prihodka; promet lani 600k, letos cilj 1.000.000 €, prihodnje leto 1,5–2 mio €; 15-članska full-time ekipa; cilj širitve iz 15 na 30+ (drugje v oglasu: »voditi ekipo (20+ ljudi)«); narocniki: Red Bull, Telekom Slovenije, Poli, Argeta, Lesnina, BTC City, Bird Buddy, Speech Blubs, Golden Tree, Dormeo, Afrodita",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411 (LinkedIn prikaže samo relativno »1 year ago« (ob preverjanju 22.9.2026 ⇒ ≈ 2025); absolutnega datuma ni v HTML-ju; oglas)"
+        },
+        {
+          "naziv": "LinkedIn zaposlitveni oglas 'Projektni vodja — delodajalec na LinkedInu: Outpace': ni navedeno; plača 2.000–3.000 € bruto + bonusi; ni navedeno; narocniki: Telekom, BTC City, Visit Ljubljana, Lesnina, Afrodita, HS+, Bird Buddy",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/projektni-vodja-at-watt-agency-4338395519 (LinkedIn prikaže »10 months ago« (22.9.2026 ⇒ ≈ nov. 2025); oglas: »Začetek dela December 2025«)"
+        },
+        {
+          "naziv": "LinkedIn zaposlitveni oglas 'Agency Project Manager / Vodja Kreativne Agencije — Outpace': nasprotujoče: »več kot 30 vrhunskimi naročniki« in »Upravljanje obstoječih strank (20 aktivnih strank)«; ni navedeno; cilj 1 mio € prometa 2024; 12 članov (cilj 20); narocniki: Telekom Slovenija, Argeta, Afrodita, Red Bull, Nivea, Podravka, Vigo Shop, Golden Tree, Vitapur",
+          "datum": null,
+          "vir": "https://si.linkedin.com/jobs/view/agency-project-manager-at-watt-agency-3931567139 (LinkedIn prikaže »2 years ago« (⇒ ≈ 2024); oglas: »1 milijon evrov prometa v letu 2024«)"
         }
       ],
       "ekipa": {
         "n": 4,
         "vir": "https://www.wearetiktok.agency/ekipa (Primož Oberč, Patricija Zorko, Hana Pačnik, Ian Rožac); LinkedIn navaja 7 zaposlenih"
       },
-      "opombe": "Sledilci TT/IG/LI niso v izvlečkih. Trditve: '30+ zadovoljnih strank', na LinkedInu '50+ strank, tudi večji spletni trgovci', '150 ustvarjalcev'. Obstaja ločena stran za tujino wearetiktok.my.canva.site. Skok prihodkov 2025 (3,7 mio €) je iz povzetka companywall/bilance in ni preverjen na primarnem viru. Diggit/SOF nagrade niso najdene (Diggit 2025 zmagovalec v kategoriji profilov: 916 HUB za Merkur). || DOPOLNITEV 2026-09-21 (primarni viri): Finance 2024 prihodki: stara vrednost 559881, nova 559886 (companywall.si, prebrano neposredno). Finance 2025 prihodki: stara vrednost 3726284, nova 3726285 (companywall.si, prebrano neposredno). Finance manjkajo za 2022: companywall kaže le 2023–2025; bilance.si ima en sam stolpec (2024); stop-neplacniki vrnil 403. Vodstvo: staro 'Jani Pravdič (zastopnik); Primož Oberč (ustanovitelj in direktor agencije WATT)', novo po companywall. Prihodki 2025 (3,7 mio EUR) POTRJENI na companywall in ebonitete (oba iz letnih poročil AJPES). Družbena omrežja/Google: ni Google profila. REBRAND: wearetiktok.agency preusmeri na outpaceagency.com (Outpace, nosilec Kaching d.o.o., Mirje 33, Ljubljana). Zdaj je performance/UGC ad agencija za ZDA, UK in EU, ne več klasična SMM. Stari TT račun je izbrisan, novi ima 6 sledilcev. LI company/outpace-agency (12) je druga, tuja stran. TT @outpaceagency (24, 'strong people & strong businesses') ni potrjeno njihov. Reference/ekipa/nagrade: www.wearetiktok.agency (tudi /projekti in /ekipa) zdaj s 301 preusmeri na https://outpaceagency.com. Agencija se je preimenovala v Outpace in se preusmerila v performance kreative; noga: Kaching d.o.o., Mirje 33, Ljubljana; LinkedIn ostaja company/wearetiktok-agency. Stara ekipa (Wayback 2024-06-14, /ekipa) je imela 11 oseb: Primož Oberč (CEO in ustanovitelj), Patricija Zorko, Alenka Bajc, Ian Rožac, Iztok Podpečan, Saša Šibilja, Jaša Stojimirovič, Hana Zadnikar, Luka Jerebica, Miha Turk, Jani Pravdič (strateški partner). Primož Oberč je danes na Outpace strani naveden kot CEO stranke Tasty Dose. V SOF 2024 kreditih: Ian Polak Rožac (izvršni kreativni direktor, vodja projekta) in Vid Pavlica (direktor projekta). BTC City je potrjen samo v arhivu /projekti (2025-01-24), v SOF, Diggit in Marketing magazinu ga ni. Diggit, Websi, Effie: 0 zadetkov. Ekipa po strani https://outpaceagency.com/ (2026-09-21): Gaja (Head of Agency and Performance); Ema (Head of Content); Saša (Head of Organic); Hana (Performance Project Manager) (n=4); obstoječa vrednost n=4 ohranjena. REBRAND: WATT / We Are TikTok je zdaj Outpace (outpaceagency.com), performance/UGC agencija; nosilec ostaja Kaching d.o.o."
+      "opombe": "Sledilci TT/IG/LI niso v izvlečkih. Trditve: '30+ zadovoljnih strank', na LinkedInu '50+ strank, tudi večji spletni trgovci', '150 ustvarjalcev'. Obstaja ločena stran za tujino wearetiktok.my.canva.site. Skok prihodkov 2025 (3,7 mio €) je iz povzetka companywall/bilance in ni preverjen na primarnem viru. Diggit/SOF nagrade niso najdene (Diggit 2025 zmagovalec v kategoriji profilov: 916 HUB za Merkur). || DOPOLNITEV 2026-09-21 (primarni viri): Finance 2024 prihodki: stara vrednost 559881, nova 559886 (companywall.si, prebrano neposredno). Finance 2025 prihodki: stara vrednost 3726284, nova 3726285 (companywall.si, prebrano neposredno). Finance manjkajo za 2022: companywall kaže le 2023–2025; bilance.si ima en sam stolpec (2024); stop-neplacniki vrnil 403. Vodstvo: staro 'Jani Pravdič (zastopnik); Primož Oberč (ustanovitelj in direktor agencije WATT)', novo po companywall. Prihodki 2025 (3,7 mio EUR) POTRJENI na companywall in ebonitete (oba iz letnih poročil AJPES). Družbena omrežja/Google: ni Google profila. REBRAND: wearetiktok.agency preusmeri na outpaceagency.com (Outpace, nosilec Kaching d.o.o., Mirje 33, Ljubljana). Zdaj je performance/UGC ad agencija za ZDA, UK in EU, ne več klasična SMM. Stari TT račun je izbrisan, novi ima 6 sledilcev. LI company/outpace-agency (12) je druga, tuja stran. TT @outpaceagency (24, 'strong people & strong businesses') ni potrjeno njihov. Reference/ekipa/nagrade: www.wearetiktok.agency (tudi /projekti in /ekipa) zdaj s 301 preusmeri na https://outpaceagency.com. Agencija se je preimenovala v Outpace in se preusmerila v performance kreative; noga: Kaching d.o.o., Mirje 33, Ljubljana; LinkedIn ostaja company/wearetiktok-agency. Stara ekipa (Wayback 2024-06-14, /ekipa) je imela 11 oseb: Primož Oberč (CEO in ustanovitelj), Patricija Zorko, Alenka Bajc, Ian Rožac, Iztok Podpečan, Saša Šibilja, Jaša Stojimirovič, Hana Zadnikar, Luka Jerebica, Miha Turk, Jani Pravdič (strateški partner). Primož Oberč je danes na Outpace strani naveden kot CEO stranke Tasty Dose. V SOF 2024 kreditih: Ian Polak Rožac (izvršni kreativni direktor, vodja projekta) in Vid Pavlica (direktor projekta). BTC City je potrjen samo v arhivu /projekti (2025-01-24), v SOF, Diggit in Marketing magazinu ga ni. Diggit, Websi, Effie: 0 zadetkov. Ekipa po strani https://outpaceagency.com/ (2026-09-21): Gaja (Head of Agency and Performance); Ema (Head of Content); Saša (Head of Organic); Hana (Performance Project Manager) (n=4); obstoječa vrednost n=4 ohranjena. REBRAND: WATT / We Are TikTok je zdaj Outpace (outpaceagency.com), performance/UGC agencija; nosilec ostaja Kaching d.o.o. || DOPOLNITEV 2026-09-22: LinkedIn oglasa (2025) navajata 30+ aktivnih narocnikov, 15 FTE in 100.000 EUR MRR (promet 'lani' 600k, cilj 1 mio). Stran /projekti je bila od 2025-01-24 zamrznjena (posnetek 2026-06-09 identicen), zato slovenske korpo stranke (Telekom, Lesnina, BTC City, Argeta, Red Bull, Poli) po rebrandu v Outpace niso potrjene kot aktivne; Afrodita, Dines, Float Center, Kriptomat so na Outpace CDN oznaceni 'STARI CLIENTI'. Aktivne po outpaceagency.com: Golden Tree, Tasty Dose (lastna znamka Oberca), Homeso, MeetMinded, Fitocanin, Bird Buddy."
+    },
+    "buzztik": {
+      "pravna": {
+        "ime": "CLUEKIT, digitalni marketing, d.o.o.",
+        "naslov": "Podbreznik 13, 8000 Novo mesto (Registri (companywall, bizi, ebonitete) navajajo Podbreznik 13; Buzztik PDF pogoji/obvestilo o obdelavi podatkov in arhivirana noga strani 2023 navajajo Podbreznik 15.)",
+        "maticna": "9084614000",
+        "davcna": "92929699",
+        "ustanovitev": "2022-03-10",
+        "vodstvo": "Irena Žagar, direktorica; lastniki: Irena Žagar 100,00 %",
+        "skd": "73.110 Dejavnost oglaševalskih agencij",
+        "vir": "https://buzztik.com/ (živa stran 2026-09-22: noga brez pravne osebe, samo '© 2026 BuzzTik', info@buzztik.com; PDF povezave v nogi vračajo 404) ; https://web.archive.org/web/20250323053546/https://buzztik.com/wp-content/uploads/2025/01/Buzztik-Data-Processing-Notice-v.-1.0.-December-2022.pdf ; https://web.archive.org/web/20250323050500/https://buzztik.com/wp-content/uploads/2025/01/Buzztik-Creator-Terms-of-Service-v.-1.0.-December-2022_osnutek-1.pdf ; https://web.archive.org/web/20231129043100/https://buzztik.com/ ; https://www.startup.si/en-us/startup-map/startups-scaleups/buzztik ; https://www.companywall.si/podjetje/cluekit-doo/MMB3z4gD ; https://www.bizi.si/CLUEKIT-D-O-O/ ; https://www.ebonitete.si/iskalnik/?q=cluekit"
+      },
+      "finance": {
+        "2023": {
+          "prihodki": 310007,
+          "dobicek": 67641,
+          "zaposleni": 1,
+          "vir": "https://www.companywall.si/podjetje/cluekit-doo/MMB3z4gD (companywall (AJPES): prihodki 310.006,51; čisti poslovni izid 67.640,95; št. zaposlenih 1,00; celotni odhodki 228.126,00; kapital 104.345,11; EBITDA 83.719,70)"
+        },
+        "2024": {
+          "prihodki": 317102,
+          "dobicek": 9139,
+          "zaposleni": 1,
+          "vir": "https://www.companywall.si/podjetje/cluekit-doo/MMB3z4gD (companywall (AJPES): prihodki 317.101,93; čisti poslovni izid 9.139,19; št. zaposlenih 1,00; celotni odhodki 304.154,59; kapital 93.484,30; EBITDA 18.116,98)"
+        },
+        "2025": {
+          "prihodki": 282872,
+          "dobicek": 8033,
+          "zaposleni": 1,
+          "vir": "https://www.companywall.si/podjetje/cluekit-doo/MMB3z4gD (companywall (AJPES): prihodki 282.872,42; čisti poslovni izid 8.032,89; št. zaposlenih 1,00; povprečna bruto plača 1.665,50; celotni odhodki 272.565,66; kapital 78.517,19; EBITDA 17.325,98)"
+        }
+      },
+      "sledilci": {
+        "ig": {
+          "handle": "buzztik_official",
+          "n": 641,
+          "datum": "2026-09-22",
+          "vir": "https://www.instagram.com/buzztik_official/"
+        },
+        "tt": {
+          "handle": "buzztik_slovenija",
+          "n": 5297,
+          "datum": "2026-09-22",
+          "vir": "https://www.tiktok.com/@buzztik_slovenija"
+        },
+        "li": {
+          "handle": "buzztik-content-creator-management",
+          "n": 144,
+          "datum": "2026-09-22",
+          "vir": "https://www.linkedin.com/company/buzztik-content-creator-management"
+        },
+        "google": {
+          "n": 0,
+          "ocena": null,
+          "datum": "2026-09-22",
+          "vir": "https://www.google.com/maps/place/Buzztik+-+video+vsebine,+TikTok/ (Podbreznik 15, 8000 Novo mesto, buzztik.com) ; Google Business Profile obstaja, a brez mnenj (prikaz 'Št. zvezdic:' prazen, samo gumb 'Napišite mnenje')"
+        }
+      },
+      "stranke": [
+        {
+          "ime": "Mömax Slovenija",
+          "opis": "logotip 'Zaupajo nam' + TikTok profil @moemax.si (upravljanje družbenih omrežij)",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Fibran Slovenija",
+          "opis": "logotip + TikTok profil @fibranslovenia",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Gorenje Slovenija",
+          "opis": "logotip + TikTok profil @gorenje_slovenija",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Hisense Slovenija",
+          "opis": "logotip + TikTok profil @hisense_slovenija",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Bravia Mobil",
+          "opis": "TikTok profil @bravia.mobil (družbeni mediji strank)",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Eucerin Slovenija",
+          "opis": "logotip + TikTok hashtag #eucerinslovenija",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "LELOSI",
+          "opis": "logotip v pasu 'Zaupajo nam' (alt='LELOSI')",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "LUX-FACTOR",
+          "opis": "logotip v pasu 'Zaupajo nam' (alt='LUX-FACTOR')",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Adria",
+          "opis": "logotip v pasu 'Zaupajo nam' (alt='Adria')",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Mesec oblikovanja",
+          "opis": "testimonial: TikTok kampanja ob prejemu nagrade in odprtju Meseca oblikovanja v Ljubljani, 250.000 ogledov v nekaj dneh; omenjena 'Irena s svojo ekipo'",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Treecelet",
+          "opis": "testimonial: vzorčni videi ustvarjalcev, izbor najprimernejših (UGC kampanja)",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "KingsBox",
+          "opis": "testimonial: baza ustvarjalcev, agencija prevzame logistiko (UGC/creator kampanja)",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        },
+        {
+          "ime": "Drinkopoly",
+          "opis": "testimonial: 'Z BuzzTik sodelujemo od njihovih začetkov' (dolgoročno sodelovanje)",
+          "datum": null,
+          "vir": "https://buzztik.com/"
+        }
+      ],
+      "omembe": [
+        {
+          "naziv": "Marketing Magazin (PR): 'Buzztik, prva slovenska platforma za vsebine na Tiktoku' – skupnost 500+ ustvarjalcev, UGC tiktoki za podjetja",
+          "datum": "2022-05-11",
+          "vir": "https://www.marketingmagazin.si/aktualno/pr/5156/buzztik-prva-slovenska-platforma-za-vsebine-na-tiktoku/novice"
+        }
+      ],
+      "ekipa": {
+        "n": null,
+        "vir": "https://buzztik.com/ (Irena (samo ime, iz testimoniala Mesec oblikovanja: 'Irena s svojo ekipo'))"
+      },
+      "opombe": "DODANO 2026-09-22 (iz zipa VVV_Competitor_Research_Repo, dopolnjeno s primarnimi viri). Prebrano neposredno: registrski podatki in finance 2023-2025 na companywall.si (brezplačni pogled), MŠ/DŠ/datum vpisa na bizi.si in ebonitete.si, pravna oseba iz arhiviranih PDF dokumentov buzztik.com. Nedosegljivo/nepotrjeno: živa stran buzztik.com (nova SPA, 2026) ne navaja nobene pravne osebe; PDF pogoji, na katere kaže noga, vračajo 404 - pravna oseba je potrjena samo prek Wayback kopij (marec 2025) in arhivirane strani 2023. Ni mogoče izključiti, da se je blagovna znamka BuzzTik po 2025 prenesla na drug subjekt; v registrih ni podjetja z imenom 'buzztik' (companywall in bizi iskanje: 0 zadetkov). Buzzverse d.o.o. (Ljubljana, Jure Laharnar) NI povezan z BuzzTik - samo podobno ime. Finance so za celotno podjetje CLUEKIT (ki ima po startup.si tri produkte, med njimi Buzztik in Aboutbuzz), ne za BuzzTik posebej. Noga buzztik.com ima IG in TT povezavi (TT poleg profilov strank: bravia.mobil, fibranslovenia, gorenje_slovenija, hisense_slovenija, moemax.si). LinkedIn povezave na strani ni; /company/buzztik in /company/buzztik-slovenija vrneta 404. Enostranska Lovable/React stran (sitemap.xml ima samo /), brez strani Ekipa/Reference. Samopredstavitev: 'zanesljivo že od leta 2014', 140+ zadovoljnih znamk, 2.500+ ustvarjalcev (drugje 1200+), storitve: video produkcija, montaža, objavljanje, oglasi TikTok/Meta, creator/influencer kampanje. Logotip z alt='Slovenija' ni identificiran (verjetno del imena '... Slovenija'). MM članek 2022 omenja znamke Postani vojak, Wolt, Gizzmo.si, Champion, Fruc, Dormeo, Sola Slovenija le kot znamke, prisotne na TikToku – NE kot stranke BuzzTika. sof.si katalog 2019–2026: BuzzTik ni v seznamu agencij (2024 je 'WeAreTikTok', 2026 'Tiktokerija' – povezava z BuzzTik ni razvidna). diggit.si (zmagovalci 2025, novice), websi.si (nagrade/prvaki 2026, aktualno), effie.si (2020, 2023, 2025): brez omembe. LinkedIn: /company/buzztik, buzztik-official, buzztik-si, buzztik-slovenia -> 404. Instagram @buzztik_official, TikTok @buzztik_slovenija (nista prebrana). Finance veljajo za celotno CLUEKIT d.o.o. (BuzzTik je ena od znamk). Ekipa: n=null, stran ne navaja ekipe; LinkedIn strani z zaposlenimi ni; edino ime 'Irena' (direktorica Irena Zagar)."
+    },
+    "3amedia": {
+      "pravna": {
+        "ime": "3A MEDIA digitalni marketing, Lev Glumac s.p.",
+        "naslov": "Krumperška ulica 15, Zaboršt, 1230 Domžale",
+        "maticna": "9928596000",
+        "davcna": "81796544",
+        "ustanovitev": "2025-05-22",
+        "vodstvo": "Lev Glumac (nosilec s.p.); companywall: 'ZASTOPNIK NI VPISAN'; lastniki: Lev Glumac nosilec s.p.",
+        "skd": "73.110 Dejavnost oglaševalskih agencij",
+        "vir": "https://3a-media.com/ (živa stran 2026-09-22 + Framer JS sveženj: brez d.o.o./s.p./matične/davčne) ; https://www.companywall.si/podjetje/3a-media-lev-glumac-sp/MMF6bVcY ; https://www.bizi.si/3A-MEDIA-LEV-GLUMAC-S-P/ ; https://www.ebonitete.si/iskalnik/?q=9928596000"
+      },
+      "finance": {},
+      "sledilci": {
+        "ig": {
+          "handle": null,
+          "n": null,
+          "datum": null,
+          "opomba": "3a-media.com (Framer) in booking.3a-media.com nimata nobene povezave na družbena omrežja (v HTML in .mjs skriptah samo Calendly + FB pixel). Google/DDG iskanje ('3A Media' Slovenija instagram, site:instagram.com) ni vrnilo profila agencije. Kandidat instagram.com/3a.media je prazen račun (0 sledilcev, 0 objav, brez bia) in ni preverljivo njihov."
+        },
+        "tt": {
+          "handle": null,
+          "n": null,
+          "datum": null,
+          "opomba": "curl preizkušenih ročajev: @3amedia, @3amedia.si, @3a.media.si, @3amediasi, @3amedia_ ne obstajajo; @3a_media (5 sledilcev) je arabska agencija; @3a.media ima 37 sledilcev, ime 'Ahmed Abdulamir', region SI, brez bia/povezave na 3a-media.com – povezava z agencijo ni potrjena, zato null."
+        },
+        "li": {
+          "handle": "3a-media",
+          "n": 10,
+          "datum": "2026-09-22",
+          "vir": "https://www.linkedin.com/company/3a-media"
+        },
+        "google": {
+          "n": null,
+          "ocena": null,
+          "datum": "2026-09-22",
+          "vir": "ni Google profila ; Maps iskanja '3A Media digitalni marketing Ljubljana', 'Karlovška cesta 1e Ljubljana' (naslov z booking strani) in 'Krumperška ulica 15 Domžale' (registrirani sedež s.p.) ne vrnejo profila agencije; 'Karlovška' zadetek je napačno podjetje 3 A Servis d.o.o."
+        }
+      },
+      "stranke": [
+        {
+          "ime": "Borut Pahor",
+          "opis": "personal brand, 'Od predsednika države do TikTok fenomena' – strateška vsebinska prisotnost na družbenih omrežjih; testimonial: 'Če se boste odločili za sodelovanje z ekipo 3A Media, boste sprejeli pravo odločitev.' Logotip tudi na 3a-media.com",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Vitapur",
+          "opis": "retail brand, 'Kampanja, o kateri je govorila Slovenija' – celovita kampanja za dvig prepoznavnosti in prodaje; logotip",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Autobroker.si",
+          "opis": "automotive, performance funnel za pridobivanje kupcev, '555.000+ ogledov v 14 dneh'; logotip tudi na 3a-media.com",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Zavod Varna Pot (ZVP)",
+          "opis": "družbeni vpliv, 'Nacionalna pokritost' – kampanja, ki je odmevala v vseh večjih medijih; logotip tudi na 3a-media.com",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Javna agencija RS za varnost prometa (AVP)",
+          "opis": "logotip v pasu 'Od lokalnih podjetij do nacionalnih blagovnih znamk' (na 3a-media.com pas 'Zaupanja vredni v različnih panogah'); storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Mestna občina Ljubljana",
+          "opis": "logotip v pasu strank; storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Slovenska filharmonija",
+          "opis": "logotip v pasu strank; storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "FEVR — European Federation of Road Traffic Victims",
+          "opis": "logotip v pasu strank; storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Moji Štruklji",
+          "opis": "logotip v pasu strank; storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Table by Living Room",
+          "opis": "logotip v pasu strank; storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "Magnifico",
+          "opis": "logotip v pasu strank; storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "ARIH",
+          "opis": "logotip v pasu strank; storitev ni opisana",
+          "datum": null,
+          "vir": "https://booking.3a-media.com/"
+        },
+        {
+          "ime": "TokyoTreat",
+          "opis": "logotip (framer name 'tokyotreat') v pasu 'Zaupanja vredni'; storitev ni opisana",
+          "datum": null,
+          "vir": "https://3a-media.com/"
+        },
+        {
+          "ime": "Sakuraco",
+          "opis": "logotip (framer name 'sakuraco') v pasu 'Zaupanja vredni'; storitev ni opisana",
+          "datum": null,
+          "vir": "https://3a-media.com/"
+        }
+      ],
+      "omembe": [],
+      "ekipa": {
+        "n": null,
+        "vir": "https://www.linkedin.com/company/3a-media (LinkedIn: 3 zaposleni, razpon 2-10; imena se ne ujemajo z nosilcem, zato n ostaja null)"
+      },
+      "opombe": "DODANO 2026-09-22. Prebrano neposredno: registrski podatki na companywall, bizi in ebonitete. Companywall dodatno: 'Ni v blokadi', a 'Obstaja zgodovina blokad 2026'; ni zavezanec za DDV; 'redni predlagatelj REK obrazcev'. Nedosegljivo: finance za katerokoli leto (s.p., ustanovljen maja 2025; brezplačni viri ne kažejo letnega poročila 2025). Št. zaposlenih ni objavljeno; SKIS 'samozaposleni delodajalci' nakazuje vsaj nosilca. Finance manjkajo za vsa leta: s.p. vpisan 2025-05-22, brezplacni registri ne kazejo podatkov. Pravna oseba: 3A MEDIA digitalni marketing, Lev Glumac s.p., Krumperška ulica 15, 1230 Domžale (od 22.5.2025); operativni naslov Karlovška cesta 1e, Ljubljana; tel. +386 70 810 080. Agencija za kratke videe (TikTok za Boruta Pahorja, april 2025). Nobena od IG/TT strani ni javno objavljena – najverjetneje sploh nimajo lastnih profilov ali pa so pod imenom, ki ga ni mogoče najti. 3a-media.com je Framer predloga (v kodi še 'A Framer template', 'Trusted by 40+ worldwide clients'); sitemap ima samo / in /404. Meni 'Portfolio 2025' vodi na Canva predstavitev https://www.canva.com/design/DAFuimeksbg/qTfYhj3POld2-bn22jQlHA/view?embed (naslov '3A Media Portfolio', 'designed by Mark Kovalenko') – vsebina se brez brskalnika ne da prebrati. Dve ikoni v pasu logotipov nista identificirani (framer imeni 'Pasted_20231008_201302', 'Bez_imeni_2'). POP TV in RTV Slovenija se pojavita tako v pasu strank kot v pasu medijev – verjetno medijske omembe, ne stranki. booking.3a-media.com trdi 'Kampanje predstavljene v največjih slovenskih medijih' z logotipi POP TV, RTV SLO, 24ur, Siol, Planet TV, Delo, Dnevnik, Nova24TV, Marketing Magazin, Index.hr, Aktualne.cz, CTK, Pravda, iDNES.cz, Media24.cz – brez povezav; iskanje na marketingmagazin.si za '3A Media' in '3A-Media' vrne 0 rezultatov (HTTP 404), zato trditev o MM ni potrjena. Kontakt: Karlovška cesta 1e, Ljubljana, +386 70 810 080; 'Q3 2026: omejeno število novih partnerstev'. sof.si 2019–2026, diggit, websi, effie: brez omembe. LinkedIn /company/3amedia je nepovezano ameriško podjetje (Williamsburg, VA)."
+    },
+    "xod": {
+      "pravna": {
+        "ime": "XOD Group, medijska produkcija in marketing, d.o.o.",
+        "naslov": "Tržaška cesta 132, 1000 Ljubljana",
+        "maticna": "9953671000",
+        "davcna": "41225716",
+        "ustanovitev": "2025-07-01",
+        "vodstvo": "Marko Pleterski, direktor; lastniki: Marko Pleterski 33,33 %, Dominik Uršič 33,33 %, Andraž Dimc 33,33 %",
+        "skd": "59.110 Produkcija filmov, videofilmov, televizijskih oddaj",
+        "vir": "https://www.xodagency.com/ (noga: firma + VAT + naslov) ; https://www.xodagency.com/contact ; https://www.xodagency.com/team ; https://www.companywall.si/podjetje/xod-group-doo/MMFVfTND ; https://www.bizi.si/XOD-GROUP-D-O-O/ ; https://www.ebonitete.si/iskalnik/?q=9953671000"
+      },
+      "finance": {
+        "2025": {
+          "prihodki": 42866,
+          "dobicek": 10580,
+          "zaposleni": 0,
+          "vir": "https://www.companywall.si/podjetje/xod-group-doo/MMFVfTND (companywall (AJPES), poslovno leto 01.07.-31.12.2025: celotni prihodki 42.866,25; celotni odhodki 31.290,86; čisti poslovni izid 10.579,57; kapital 18.079,57; sredstva 36.846,86; št. zaposlenih 0,00; EBITDA 12.431,42)"
+        }
+      },
+      "sledilci": {
+        "ig": {
+          "handle": "xod.agency",
+          "n": 511,
+          "datum": "2026-09-22",
+          "vir": "https://www.instagram.com/xod.agency/"
+        },
+        "tt": {
+          "handle": null,
+          "n": null,
+          "datum": null,
+          "opomba": "xodagency.com nima TikTok povezave (noga: IG, LinkedIn, FB, YouTube). curl @xod.agency, @xodagency, @xod_agency, @xod.agency.si, @xodagency.si – računa ni. Google iskanje 'XOD Agency tiktok' ne vrne profila."
+        },
+        "li": {
+          "handle": "xodagency",
+          "n": 521,
+          "datum": "2026-09-22",
+          "vir": "https://www.linkedin.com/company/xodagency"
+        },
+        "google": {
+          "n": 2,
+          "ocena": 5.0,
+          "datum": "2026-09-22",
+          "vir": "https://www.google.com/maps/search/XOD+Agency+Ljubljana → 'XOD Group d.o.o.', Tržaška c. 132, 1000 Ljubljana, xodagency.com, 041 493 377 ; Profil je pod pravnim imenom XOD Group d.o.o. (VAT SI41225716, kot v nogi xodagency.com); 5,0 iz 2 mnenj"
+        }
+      },
+      "stranke": [
+        {
+          "ime": "SPAR Slovenija – Naravnost od pridelovalca",
+          "opis": "event video produkcija dogodka v Europarku Maribor: aftermovie + vertikalni Reel; 'in collaboration with Herman&Partnerji' -> podizvajalstvo/sodelovanje z agencijo; leto 2026; enkraten dogodek",
+          "datum": "2026-01-01",
+          "vir": "https://www.xodagency.com/our-work/spar-slovenija-naravnost-od-pridelovalca"
+        },
+        {
+          "ime": "Zavarovalnica Triglav – Client Testimonials",
+          "opis": "serija dokumentarnih testimonialov (zdravje, nesreče, Zobje/Zobje+, hišni ljubljenčki, dom); 'in collaboration with Herman&Partnerji' -> podizvajalstvo; 2025–2026; ponavljajoče ('growing collection', LinkedIn: drugi snemalni dan, nadaljevanje serije)",
+          "datum": "2025-01-01",
+          "vir": "https://www.xodagency.com/our-work/triglav-insurance-company-client-testimonials"
+        },
+        {
+          "ime": "Škerjanc",
+          "opis": "'ongoing' produkcija vertikalnih videov za družbena omrežja po treh salonih (Materija, Ljubljana, Maribor) + poslovni portreti + foto otvoritve salona v Materiji; neposredna stranka; 2026; ponavljajoče sodelovanje",
+          "datum": "2026-01-01",
+          "vir": "https://www.xodagency.com/our-work/skerjanc"
+        },
+        {
+          "ime": "Biotehniška fakulteta UL",
+          "opis": "serija kratkih dokumentarnih filmov; 'in collaboration with InHouse Marketing agency' -> podizvajalstvo/sodelovanje; 2025; enkraten projekt",
+          "datum": "2025-01-01",
+          "vir": "https://www.xodagency.com/our-work/kratki-dokumentarni-fiilmi-za-biotehnisko-fakulteto"
+        },
+        {
+          "ime": "TEDx University of Ljubljana",
+          "opis": "večkamerna produkcija govorov (tema 'Nelagodje resnice'), samostojni videi govorcev; neposredno; 2026; enkraten dogodek",
+          "datum": "2026-01-01",
+          "vir": "https://www.xodagency.com/our-work/tedx-university-of-ljubljana"
+        },
+        {
+          "ime": "Podcast Zadnji meter (Darko Đurić)",
+          "opis": "produkcija video podcasta (multicam, studio, montaža, kratki klipi); neposredno; 2026; ponavljajoče (serija epizod)",
+          "datum": "2026-01-01",
+          "vir": "https://www.xodagency.com/our-work/podcast-zadnji-meter"
+        },
+        {
+          "ime": "Taverneta Estate & Bužinel Estate",
+          "opis": "serija vertikalnih videov (Reels/TikTok) za posestvi v Goriških brdih; neposredno; 2026; enkraten paket vsebin ('content series'), namenjen nadaljnji komunikaciji",
+          "datum": "2026-01-01",
+          "vir": "https://www.xodagency.com/our-work/taverneta-buzinel-estate"
+        },
+        {
+          "ime": "Istrski kolesarski maraton 2025",
+          "opis": "65-dnevna FB/IG kampanja (25.8.–28.10.2025, doseg 743.530, CTR 1,17 %, 14.781 obiskov, 1.200+ kolesarjev) + foto/video/live Stories na dogodku 11.–12.10.2025 v Kopru; neposredno; enkratno z gradnjo knjižnice vsebin za 2026",
+          "datum": "2025-10-31",
+          "vir": "https://www.xodagency.com/our-work/istrski-kolesarski-maraton-2025"
+        },
+        {
+          "ime": "Šalomat – 'Sam prjatla' & 'Brata'",
+          "opis": "3-mesečno upravljanje družbenih omrežij (IG/FB/TikTok) + FB/IG oglasi + grafika za gledališke produkcije, okt–dec 2025 (1,9M+ ogledov, +1.636 sledilcev); neposredno; časovno omejeno (enkratno)",
+          "datum": "2025-10-01",
+          "vir": "https://www.xodagency.com/our-work/alomat-sam-prjatla-brata"
+        },
+        {
+          "ime": "Highlander Adventure Slovenia",
+          "opis": "event coverage dveh ultra trail tekem (Julijske Alpe, Kamniško-Savinjske Alpe) 2025: foto, video, Reels, live Stories; blog: 'We will be handling the full social media campaign next year' (2026) -> ponavljajoče; neposredno",
+          "datum": "2025-11-21",
+          "vir": "https://www.xodagency.com/our-work/highlander-adventure-slovenia"
+        },
+        {
+          "ime": "Podcast 'Kdo, če ne mi?' (naročnik KdoJeOskar)",
+          "opis": "produkcijski partner: 12 epizod, 8 snemalnih dni na Gradu Kodeljevo, 3 kamere, 36 Reelov; naročnik vodi vsebino; neposredno (produkcija za naročnika, ne agencijsko podizvajalstvo); 2025; enkraten projekt",
+          "datum": "2025-11-21",
+          "vir": "https://www.xodagency.com/our-work/podcast-kdo-ce-ne-mi"
+        },
+        {
+          "ime": "Mapetrol",
+          "opis": "več fotografiranj za kataloge in družbena omrežja (lažna trgovina v baru, garaže, Trst, Izola); neposredno; blog 2025-05-07; enkraten projekt",
+          "datum": "2025-05-07",
+          "vir": "https://www.xodagency.com/our-work-2/mapetrol-making-motor-oil-look-good"
+        },
+        {
+          "ime": "HSE (Holding Slovenske elektrarne)",
+          "opis": "serija petih reelov z društvi iz Šoštanja, 'z herman & partnerji' -> podizvajalstvo; LinkedIn objava ~2 tedna pred 2026-09-22",
+          "datum": "2026-09-01",
+          "vir": "https://www.linkedin.com/company/xodagency"
+        },
+        {
+          "ime": "Gospodarska zbornica Slovenije – kampanja 'Povezani ustvarjamo prihodnost'",
+          "opis": "video vsebine v podjetjih (Danfoss Trata, Skupina Pivka Delamaris, M SORA ...) skupaj s herman & partnerji -> podizvajalstvo; LinkedIn ~2 meseca pred 2026-09-22",
+          "datum": "2026-07-01",
+          "vir": "https://www.linkedin.com/company/xodagency"
+        },
+        {
+          "ime": "Samsung (Galaxy Z Creative Challenge)",
+          "opis": "partnerski izziv/test telefonov Galaxy Z Fold8/Flip8 (#SamsungPartner), vsebine na IG; LinkedIn ~4 dni pred 2026-09-22",
+          "datum": "2026-09-18",
+          "vir": "https://www.linkedin.com/company/xodagency"
+        },
+        {
+          "ime": "Kosovelova domačija, Tomaj",
+          "opis": "fotografiranje prenovljene domačije ob ponovnem odprtju; LinkedIn ~1 mesec pred 2026-09-22",
+          "datum": "2026-08-01",
+          "vir": "https://www.linkedin.com/company/xodagency"
+        },
+        {
+          "ime": "Pošta Slovenije / forum 'Umetnost črnega laboda' (ISR, SPIRIT)",
+          "opis": "foto: Marko Pleterski, XOD Agency – fotografska pokritost foruma (repost Pošte Slovenije, ~2 meseca pred 2026-09-22); naročnik ni razviden",
+          "datum": "2026-07-01",
+          "vir": "https://www.linkedin.com/company/xodagency"
+        }
+      ],
+      "omembe": [
+        {
+          "naziv": "SOF 2026 katalog del: 'Direkt Drive-In', šifra MK020S26, agencija XOD, skupina MK, avtorji Andraž Dimc, Marko Pleterski (prijavljeno delo; nagrada/ožji izbor ni označen)",
+          "datum": "2026-01-01",
+          "vir": "https://sof.si/katalog-del/MK020S26-direkt-drive-in"
+        },
+        {
+          "naziv": "MUVIT 6x60: film 'Rad bi ti povedal' uvrščen med 'Top 12', na voljo tudi na VOYO (LinkedIn objava ~3 tedne pred 2026-09-22)",
+          "datum": "2026-09-01",
+          "vir": "https://www.linkedin.com/company/xodagency"
+        },
+        {
+          "naziv": "Novica: XOD Agency se je pridružila GZS",
+          "datum": "2026-01-27",
+          "vir": "https://www.xodagency.com/news/xod-agency-joins-gzs"
+        },
+        {
+          "naziv": "Novica: XOD Agency se je pridružila SBC Mladi",
+          "datum": "2026-01-04",
+          "vir": "https://www.xodagency.com/news/xod-agency-joins-sbc-mladi"
+        }
+      ],
+      "ekipa": {
+        "n": 14,
+        "vir": "https://www.xodagency.com/team (Marko Pleterski – Co-Founder & Head of Business Development; Dominik Uršič – Co-Founder & Head of Operations; Andraž Dimc – Co-Founder & Head of Creative; Maja Rodica – Visual & Design Specialist; Nik Bračun – Video Specialist; Blaž Šumlak – Video Editor; Manca Vidmar – Designer; Anastasija Stojanoska – Designer; Aljaž Kerlatec – Photo editor; Aljaž Balažic – Video Editor; Jan Gantar – Video Editor; Vito Novak – Video Editor; Eva Korenjak – Photography; Olga Sazdoska – Visual Content Assistant)"
+      },
+      "opombe": "DODANO 2026-09-22. Prebrano neposredno: pravna oseba, DŠ in naslov iz noge spletne strani; registrski podatki, lastniki, direktor in finance 2025 iz companywall (brezplačni pogled); MŠ/DŠ/datum vpisa potrjeni na bizi in ebonitete. Finance 2025 pokrivajo le pol leta (podjetje ustanovljeno 1.7.2025). Podjetje brez zaposlenih (0,00) - trije družbeniki-soustanovitelji očitno niso zaposleni v družbi. Finance 2025 pokrivajo le 1.7.-31.12.2025 (vpis 2025-07-01); LinkedIn navaja ustanovitev 2023 (verjetno prej kot skupina brez d.o.o.). Noga xodagency.com: instagram.com/xod.agency, linkedin.com/company/xodagency, facebook.com/people/XOD-Agency/61578854590410/, youtube.com/@XODAgency. TikTok profila ni. Vseh 11 podstrani /our-work + 4 blog zapisi /our-work-2 prebrani; 12 projektov skupaj z Mapetrolom. Datumi projektov: /our-work strani nimajo datePublished, leto je iz podnaslova (zapisano kot YYYY-01-01); /our-work-2 blogi imajo datePublished (Mapetrol 2025-05-07, IKM 2025-10-31, Highlander in KČNM 2025-11-21). Podizvajalstvo/sodelovanje z agencijami razvidno pri SPAR, Triglav, HSE, GZS (Herman & partnerji) in Biotehniška fakulteta (InHouse Marketing). Ponavljajoče: Škerjanc, Triglav, Zadnji meter, Highlander (2026 kampanja napovedana); enkratno: SPAR dogodek, TEDx, BF, Taverneta, IKM, Šalomat, KČNM, Mapetrol. Home 'Brands and clients we worked with': prepoznana le logotipa SPAR in Škerjanc, 3 slike 'LandingLogo' brez alt-a niso identificirane. Stran /about je nedokončana Squarespace predloga (lorem 'Alex Agaro', 'Chase Nevins-Agaro' – ignorirati). LinkedIn: ustanovljeno 2023, 2–10 zaposlenih ('View all 8 employees'), 521 sledilcev; datumi objav so relativni (4d/1w/2w/3w/1mo/2mo) -> navedeni približki. Firma XOD Group d.o.o., SI41225716, Tržaška c. 132, Ljubljana. Trditev '200+ projects/clients' je samopredstavitev. sof.si 2019–2025: XOD ni v seznamu agencij; 2026 da (1 delo). diggit.si, websi.si, effie.si: brez omembe. marketingmagazin.si: iskanja 'XOD', 'XOD Agency', 'XOD Group' -> 0 rezultatov (HTTP 404). XOD je produkcijsko in projektno usmerjen (5 od 12 projektov je podizvajalstvo za Herman & Partnerji ali InHouse Marketing), zato ni neposredno primerljiv z retainer SMM agencijami."
     }
   }
 }

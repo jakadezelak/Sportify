@@ -1,0 +1,9 @@
+README.md
+data/client_database.csv
+data/dashboard.csv
+data/navodila.csv
+data/sources.csv
+data/watchlist.csv
+docs/PROMPT_FOR_CLAUDE.md
+docs/RESEARCH_NOTES.md
+source/VVV_Competitor_Client_Database.xlsx
