@@ -463,18 +463,22 @@ const VELIKOST_IME = { micro: 'Micro', mini: 'Mini', mid: 'Mid', big: 'Big', '':
 // ZAČETNI PODATKI  (vir: spletno iskanje in interni viri VVV, 5. 9. 2026)
 // ============================================================
 const DEFAULT_DATA = {
-  verzija: 3,
+  verzija: 4,
+  // Generirano s research/build-liga-data.py iz research/konkurenca-2026-09.json (2026-09-22); ročno ne urejaj, popravi JSON in ponovno zaženi.
   agencije: [
-    { id: 'vvv',         ime: 'VVV Digital',          pravna: 'VVV DIGITAL, agencija za marketing, d.o.o. (Ljubljana, ust. 2022)', opomba: 'Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar.', ig: 'vvv_digital', tt: 'vvv_digital', li: 'vvv-digital', web: 'vvv-digital.com', strank: '100+ (LinkedIn, 4. obletnica, feb. 2026)' },
-    { id: 'tiktokspace', ime: 'TikTok SPACE',         pravna: '"TikTok SPACE d.o.o." (samodeklaracija, v registrih ni najdeno)', opomba: 'Ljubljana, Celovška 69C. TikTok, IG, FB vsebine, foto/video, kampanje.', ig: '', tt: '', li: '', web: 'tiktok-space.si' },
-    { id: 'vividista',   ime: 'Vividista',            pravna: '', opomba: 'Agencija za Gen Z. IG/TikTok, influencerji, Meta in TikTok oglasi, splet. Zunaj lastne strani praktično neindeksirana.', ig: '', tt: '', li: '', web: 'vividista.si' },
-    { id: 'envision',    ime: 'Envision Collective',  pravna: 'ENVISION COLLECTIVE, Maša Kovač s.p. (Murska Sobota, ust. 8. 1. 2025)', opomba: '"Zunanja ekipa za družbena omrežja", paketi po obsegu. Prvo poslovno leto 2025.', ig: 'envision_collective', tt: '', li: '', web: 'envisioncollective.si' },
-    { id: 'tiktokerija', ime: 'Tiktokerija',          pravna: 'BlendCreative d.o.o. (Dob, ust. 4. 12. 2023)', opomba: 'TikTok in Reels, storytelling. Ust. Rebeka Tomc, ekipa 6 do 8.', ig: '', tt: 'tikt0kerija', li: 'tiktokerija', web: 'tiktokerija.com', strank: '50+ znamk (Rebeka Tomc kot ustvarjalka, tiktokerija.com)' },
-    { id: 'apmarketing', ime: 'A.P. Marketing',       pravna: 'A.P. marketinške storitve, Andrej Pavličević s.p. (Kamnik, ust. 1. 12. 2022)', opomba: 'Kratki videi, UGC oglasi. Model influencer + agencija, 1 do 3 osebe.', ig: 'a.p.marketing', tt: '', li: '', web: 'ap-marketing.si' },
-    { id: 'ziya',        ime: 'Ziya Agency',          pravna: '', opomba: 'Ljubljana. FB/IG/TikTok marketing, "TikTok korenine". Pravna oseba ni najdena.', ig: 'ziya.agency', tt: '', li: 'ziya-agency', web: 'ziya.agency' },
-    { id: 'createable',  ime: 'Createable',           pravna: '', opomba: 'Video in UGC agencija, vodenje TikTok profilov. Soust. Laura Mlakar, ekipa 10 (EF UL, dec. 2025).', ig: 'createable.si', tt: 'createable.si', li: '', web: 'createable.si' },
-    { id: 'katapult',    ime: 'Katapult Media',       pravna: 'enota KATAPULT d.o.o. (Trbovlje, ust. 2016; Media od 2023)', opomba: 'Foto/video, TikTok, splet, grafika. Ekipa 4 (Žiga Meterc). Finance samo na ravni pospeševalnika.', ig: 'katapult_media', tt: '', li: 'katapult-d.o.o.', web: 'katapult.si/storitve/katapult-media' },
-    { id: 'watt',        ime: 'We Are TikTok (WATT)', pravna: 'Kaching d.o.o. (Ljubljana, ust. 2017), 80 % Primož Oberč', opomba: 'TikTok oglasi za e-trgovce, prvi slovenski TikTok partner. Pod isto družbo tudi znamka Coffee 2.0.', ig: 'watt_agencija', tt: 'wearetiktok.agency', li: 'wearetiktok-agency', web: 'wearetiktok.agency', strank: '30+ (MM 2023), 50+ (LinkedIn)' }
+    { id: "vvv", ime: "VVV Digital", pravna: "VVV DIGITAL, agencija za marketing, d.o.o. (Ljubljana; ust. 2022-02-23)", opomba: "Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar. Ekipa 12 (LinkedIn).", ig: "vvv_digital", tt: "vvv_digital", li: "vvv-digital", web: "vvv-digital.com", strank: "100+ (LinkedIn, 4. obletnica, feb. 2026); 48 znamk (about-us)" },
+    { id: "tiktokspace", ime: "TikTok SPACE", pravna: "APPOLO PRO poslovne storitve d.o.o. (Ljubljana; ust. 2024-01-25)", opomba: "Butična SMM agencija (TikTok, IG, FB). Nosilec APPOLO PRO d.o.o. (reg. sedež Brežice, posl. Celovška 69C). Edina znana oseba Rimma Arshinova, zaposlitev po LinkedInu končana jun. 2026; IG/TT računa agencije ni.", ig: "", tt: "", li: "tiktok-space", web: "tiktok-space.si", strank: "" },
+    { id: "vividista", ime: "Vividista", pravna: "Marketing in svetovanje, Rok Ileršič s.p. (Rakek; ust. 2026-06-01)", opomba: "Agencija za Gen Z. s.p. vpisan 1. 6. 2026, profili skoraj prazni (IG 4, TT 3 sledilcev).", ig: "vividista.marketing", tt: "vividista.marketing", li: "vividista", web: "vividista.si", strank: "" },
+    { id: "envision", ime: "Envision Collective", pravna: "ENVISION COLLECTIVE, marketinške storitve, Maša Kovač s.p. (Murska Sobota; ust. 2025-01-08)", opomba: "Zunanja ekipa za družbena omrežja, Murska Sobota. Ekipa 5 (stran /ekipa). Google 5,0 (10 mnenj).", ig: "envision_collective", tt: "envision_collective", li: "", web: "envisioncollective.si", strank: "35+ naročnikov, 10M+ ogledov (envisioncollective.si)" },
+    { id: "tiktokerija", ime: "Tiktokerija", pravna: "BlendCreative, podjetje za digitalni marketing, d.o.o. (Dob; ust. 2023-12-04)", opomba: "TikTok in Reels, storytelling. Ust. Rebeka Tomc, ekipa 3–4. Največji doseg na TT (povp. 6,9k ogledov/video), objave ~2/mesec.", ig: "tikt0kerija", tt: "tikt0kerija", li: "tiktokerija", web: "tiktokerija.com", strank: "50+ znamk (tiktokerija.com), 30+ projektov (arhiv 2026)" },
+    { id: "apmarketing", ime: "A.P. Marketing", pravna: "A.P. marketinške storitve, Andrej Pavličević s.p. (Kamnik; ust. 2022-12-01)", opomba: "Kratki videi, UGC oglasi. Model influencer + agencija (Andrej Pavličević TT 112k, Gaja Hribernik TT 90k). IG neaktiven od apr. 2026; AJPES: poročilo samo za 2025.", ig: "a.p.marketing", tt: "", li: "", web: "ap-marketing.si", strank: "5 let+ ustvarjanja (ap-marketing.si)" },
+    { id: "ziya", ime: "Ziya Agency", pravna: "brez pravne osebe (Ljubljana; Founder Tia Uršič, maj 2023 – mar. 2025)", opomba: "Butična TikTok agencija, Ljubljana, Founder Tia Uršič (maj 2023 – mar. 2025). UGASNILA 2025; domena ziya.agency je danes jordansko AI podjetje. Pravne osebe ni bilo.", ig: "ziya.agency", tt: "", li: "ziya-agency", web: "ziya.agency (domena od 2025 v tujih rokah)", strank: "" },
+    { id: "createable", ime: "Createable", pravna: "BondBeyond podjetje za digitalni marketing, d.o.o. (Ljubljana; ust. 2021-06-18)", opomba: "Video in UGC agencija (do 2024 TikTokable). Nosilec BondBeyond d.o.o. Ekipa 8–10. Objavlja dnevno, a prodaja lasten tečaj; Google 5,0 (14).", ig: "createable.si", tt: "createable.si", li: "createable", web: "createable.si", strank: "80+ znamk, 50 mio ogledov (createable.si)" },
+    { id: "katapult", ime: "Katapult Media", pravna: "KATAPULT, družba za spodbujanje podjetništva, d.o.o. (enota Katapult MEDIA, Gabrsko 14) (Trbovlje; ust. 2016-03-31)", opomba: "Enota pospeševalnika Katapult (Trbovlje). Ekipa 2–4. IG mrtev od sredine 2024. Finance = celotna družba Katapult d.o.o. (2024–25 v izgubi).", ig: "katapult_media", tt: "", li: "katapult-media", web: "katapult.si/storitve/katapult-media", strank: "" },
+    { id: "watt", ime: "Outpace (prej We Are TikTok / WATT)", pravna: "Kaching storitve, d.o.o. (Ljubljana; ust. 2017-10-18)", opomba: "Preimenovan v Outpace (performance/UGC oglasi za tuje trge, Kaching d.o.o.). Slovenske korpo stranke iz 2023–25 niso več potrjene. Prihodki 2025 (3,7 mio €) so večinoma pretočni oglasni proračuni; 2022 podjetje praktično neaktivno.", ig: "watt_agencija", tt: "outpace.agency", li: "outpace-growth-engine", web: "outpaceagency.com", strank: "30+ aktivnih naročnikov, 15 FTE, 100k € MRR (LinkedIn oglas 2025)" },
+    { id: "buzztik", ime: "BuzzTik", pravna: "CLUEKIT, digitalni marketing, d.o.o. (Novo mesto; ust. 2022-03-10)", opomba: "Platforma mikro-ustvarjalcev + SMM (CLUEKIT d.o.o., Novo mesto, Irena Žagar). Finance = celo podjetje (3 produkti). TT 5,3k, a od jun. 2026 tiho.", ig: "buzztik_official", tt: "buzztik_slovenija", li: "buzztik-content-creator-management", web: "buzztik.com", strank: "140+ znamk, 2.500+ ustvarjalcev (buzztik.com)" },
+    { id: "3amedia", ime: "3A Media", pravna: "3A MEDIA digitalni marketing, Lev Glumac s.p. (Domžale; ust. 2025-05-22)", opomba: "Lev Glumac s.p. (Domžale, vpis maj 2025), ekipa 3 (19 let). Brez agencijskih IG/TT računov in brez financ. Reference: Borut Pahor, Vitapur, AVP.", ig: "", tt: "", li: "3a-media", web: "3a-media.com", strank: "" },
+    { id: "xod", ime: "XOD Agency", pravna: "XOD Group, medijska produkcija in marketing, d.o.o. (Ljubljana; ust. 2025-07-01)", opomba: "Video in foto produkcija dogodkov (XOD Group d.o.o., vpis jul. 2025, prej skupina od 2023). Ekipa 14. 5 od 12 projektov podizvajalstvo za Herman & partnerji. Edina z živim LinkedInom.", ig: "xod.agency", tt: "", li: "xodagency", web: "xodagency.com", strank: "" }
   ],
   metrike: [
     { id: 'ig', ime: 'Instagram sledilci', utez: 1 },
@@ -484,10 +488,21 @@ const DEFAULT_DATA = {
   ],
   snapshoti: {
     '2026-09': {
-      vir: 'Spletno iskanje 5. 9. 2026 (približno, preveri ročno)',
+      vir: "Neposredni odčitek 21.–22. 9. 2026 (IG meta opis, TikTok JSON, LinkedIn prijavljen pogled, Google Maps); research/konkurenca-2026-09.json",
       vrednosti: {
-        vvv: { ig: 525, li: 397 }, apmarketing: { ig: 1417 }, createable: { ig: 737 },
-        tiktokerija: { tt: 2738, li: 164 }, watt: { ig: 78 }
+        "vvv": {"ig": 618, "tt": 1252, "li": 572},
+        "tiktokspace": {"li": 9, "gr": 0},
+        "vividista": {"ig": 4, "tt": 3, "li": 0},
+        "envision": {"ig": 353, "tt": 228, "gr": 10},
+        "tiktokerija": {"ig": 641, "tt": 2764, "li": 314, "gr": 0},
+        "apmarketing": {"ig": 1386},
+        "ziya": {"ig": 69, "li": 64},
+        "createable": {"ig": 1013, "tt": 2299, "li": 241, "gr": 14},
+        "katapult": {"ig": 135, "li": 21, "gr": 0},
+        "watt": {"ig": 77, "tt": 6, "li": 611},
+        "buzztik": {"ig": 641, "tt": 5297, "li": 144, "gr": 0},
+        "3amedia": {"li": 10},
+        "xod": {"ig": 511, "li": 521, "gr": 2}
       }
     }
   },
@@ -498,18 +513,77 @@ const DEFAULT_DATA = {
     { id: 'n3', agId: 'watt', datum: '2023-06-29', naziv: 'Marketing Magazin: "Agencija We Are TikTok na dobri poti do uradnega partnerstva s TikTokom"', tocke: 1, vir: 'https://www.marketingmagazin.si/intervju/agencija-we-are-tiktok-na-dobri-poti-do-uradnega-partnerstva-s-tiktokom' },
     { id: 'n4', agId: 'watt', datum: '2024-11-01', naziv: 'Product Hub podcast #22: Kaj je dober biznis? (Primož Oberč)', tocke: 1, vir: 'https://open.spotify.com/episode/7MYJHS7t0agJu8Z6n0TiUr' },
     { id: 'n5', agId: 'createable', datum: '2025-12-09', naziv: 'EF UL Alumni story: Laura Mlakar (Createable)', tocke: 1, vir: 'https://www.ef.uni-lj.si/en/news/latest-news/2025-12-09-alumni-story-laura-mlakar' },
-    { id: 'n6', agId: 'tiktokerija', datum: '2024-03-01', naziv: 'Etiketa Magazin: Rebeka Tomc in Galaxy S24 Ultra (Samsung Slovenija)', tocke: 1, vir: 'https://etiketamagazin.com/lifestyle/rebeka-tomc-razkriva-kako-galaxy-s24-ultra-poganja-kreativnost/' }
+    { id: 'n6', agId: 'tiktokerija', datum: '2024-03-01', naziv: 'Etiketa Magazin: Rebeka Tomc in Galaxy S24 Ultra (Samsung Slovenija)', tocke: 1, vir: 'https://etiketamagazin.com/lifestyle/rebeka-tomc-razkriva-kako-galaxy-s24-ultra-poganja-kreativnost/' },
+    { id: 'n7', agId: "vvv", datum: "2026-09-22", naziv: "Udeležba ekipe (Žiberna, Zalar, Deželak, Breskvar) na konferenci SEMPL, Bernardin (LinkedIn objava)", tocke: 1, vir: "https://si.linkedin.com/company/vvv-digital" },
+    { id: 'n8', agId: "envision", datum: "2026-09-22", naziv: "ProjectMe – lastna serija dogodkov za osebni razvoj in povezovanje podjetnikov", tocke: 1, vir: "https://projectme.envisioncollective.si/" },
+    { id: 'n9', agId: "tiktokerija", datum: "2026-09-22", naziv: "Podcast Brez Filtra #106: Kreativnost, kariera in ravnotežje – Rebeka Tomc, Nik Snoj", tocke: 1, vir: "https://www.youtube.com/watch?v=w42DxbFzJCM" },
+    { id: 'n10', agId: "tiktokerija", datum: "2025-06-02", naziv: "TikTok: poziv za sodelovanje ustvarjalcev (@tikt0kerija)", tocke: 1, vir: "https://www.tiktok.com/@tikt0kerija/video/7511339393467174166" },
+    { id: 'n11', agId: "createable", datum: "2024-11-08", naziv: "Marketing Magazin – delavnica 'Tips & Tricks: Videovsebine od A do Ž' (Laura Mlakar, Sara Tič)", tocke: 1, vir: "https://www.marketingmagazin.si/dogodki/tips-tricks-videovsebine-od-do-z" },
+    { id: 'n12', agId: "createable", datum: "2025-12-09", naziv: "EF UL – Alumni zgodba: Laura Mlakar", tocke: 1, vir: "https://www.ef.uni-lj.si/novice/seznam-novic/2025-12-09-alumni-zgodba-laura-mlakar" },
+    { id: 'n13', agId: "createable", datum: "2026-09-22", naziv: "Marketing Magazin – 'Prizadevajte si, da bodo vaše vsebine vredne pozornosti'", tocke: 1, vir: "https://www.marketingmagazin.si/aktualno/prizadevajte-si-da-bodo-vase-vsebine-vredne-pozornosti" },
+    { id: 'n14', agId: "createable", datum: "2025-12-09", naziv: "LinkedIn (Laura Mlakar): 'AI + video vsebine? Pri Createable že dolgo uporabljamo AI'", tocke: 1, vir: "https://www.linkedin.com/posts/laura-mlakar-93ba6721b_ai-video-vsebine-pri-createable-%C5%BEe-dolgo-activity-7404121406948519936--hHS" },
+    { id: 'n15', agId: "katapult", datum: "2026-09-22", naziv: "Katapult Marketing Boot Camp za podjetja s fizičnim produktom (8.–15. oktober)", tocke: 1, vir: "https://katapult.si/novice/katapult-marketing-boot-camp" },
+    { id: 'n16', agId: "katapult", datum: "2026-09-22", naziv: "Vpis 'Katapult Media – fotografski studio Trbovlje' na mojastoritev.si", tocke: 1, vir: "https://www.mojastoritev.si/fotografski%20studio/katapult-media-fotografski-studio/object_119489" },
+    { id: 'n17', agId: "watt", datum: "2024-11-06", naziv: "Podcast ProductHub #22 (Ervin Prislan): 'Kaj je dober biznis?' – Primož Oberč", tocke: 1, vir: "https://www.youtube.com/watch?v=_HnkXa8Mnks" },
+    { id: 'n18', agId: "watt", datum: "2025-06-04", naziv: "LinkedIn (Jani Pravdič): 'S Primož Oberč iščeva šefa v WATT AGENCY'", tocke: 1, vir: "https://www.linkedin.com/posts/janipravdic_s-primo%C5%BE-ober%C4%8D-i%C5%A1%C4%8Deva-%C5%A1efa-v-watt-agency-activity-7335980117979992064-OoYu" },
+    { id: 'n19', agId: "watt", datum: "2026-09-22", naziv: "SOF 2024: 3 prijave 'SUPR: PRIDI, ZGRABI, ZMAGAJ!' za Telekom Slovenije (E5.2009S24, V2.2002S24, V2.3002S24), vse brez ožjega izbora in brez nagrade", tocke: 1, vir: "https://sof.si/katalog-del/E5.2009S24-supr-pridi-zgrabi-zmagaj" },
+    { id: 'n20', agId: "watt", datum: "2023-06-29", naziv: "Marketing magazin, intervju: 'Agencija We Are TikTok na dobri poti do uradnega partnerstva s TikTokom' (Primož Oberč)", tocke: 1, vir: "https://www.marketingmagazin.si/kolummne-intervjuji/intervjuji/10459/agencija-we-are-tiktok-na-dobri-poti-do-uradnega-partnerstva-s-tiktokom/novice" },
+    { id: 'n21', agId: "watt", datum: "2023-07-14", naziv: "Marketing magazin, zaposlitveni oglas: 'Zaposlujejo Merkur, Media bus, Finance, WeAreTikTok, ...'", tocke: 1, vir: "https://www.marketingmagazin.si/dmt/razpisi/10181/zaposlujejo-merkur-media-bus-finance-wearetiktok/novice" },
+    { id: 'n22', agId: "watt", datum: "2023-12-22", naziv: "Marketing magazin, zaposlitveni oglas: 'Zaposlujejo Pipistrel, PRO PLUS, WeAreTikTok in drugi'", tocke: 1, vir: "https://www.marketingmagazin.si/dmt/delovna-mesta-tedna/9930/zaposlujejo-pipistrel-pro-plus-wearetiktok-in-drugi/novice" },
+    { id: 'n23', agId: "buzztik", datum: "2022-05-11", naziv: "Marketing Magazin (PR): 'Buzztik, prva slovenska platforma za vsebine na Tiktoku' – skupnost 500+ ustvarjalcev, UGC tiktoki za podjetja", tocke: 1, vir: "https://www.marketingmagazin.si/aktualno/pr/5156/buzztik-prva-slovenska-platforma-za-vsebine-na-tiktoku/novice" },
+    { id: 'n24', agId: "xod", datum: "2026-01-01", naziv: "SOF 2026 katalog del: 'Direkt Drive-In', šifra MK020S26, agencija XOD, skupina MK, avtorji Andraž Dimc, Marko Pleterski (prijavljeno delo; nagrada/ožji izbor ni označen)", tocke: 1, vir: "https://sof.si/katalog-del/MK020S26-direkt-drive-in" },
+    { id: 'n25', agId: "xod", datum: "2026-09-01", naziv: "MUVIT 6x60: film 'Rad bi ti povedal' uvrščen med 'Top 12', na voljo tudi na VOYO (LinkedIn objava ~3 tedne pred 2026-09-22)", tocke: 1, vir: "https://www.linkedin.com/company/xodagency" },
+    { id: 'n26', agId: "xod", datum: "2026-01-27", naziv: "Novica: XOD Agency se je pridružila GZS", tocke: 1, vir: "https://www.xodagency.com/news/xod-agency-joins-gzs" },
+    { id: 'n27', agId: "xod", datum: "2026-01-04", naziv: "Novica: XOD Agency se je pridružila SBC Mladi", tocke: 1, vir: "https://www.xodagency.com/news/xod-agency-joins-sbc-mladi" }
   ],
   finance: {
-    vvv: {
-      2023: { prihodki: 84700, dobicek: null, zaposleni: null, vir: 'izpeljano: ebonitete.si navaja +73,47 % v 2024; EBIT 2023 1.436 €' },
-      2024: { prihodki: 147001.73, dobicek: 6275.91, zaposleni: null, vir: 'bizi.si, companywall.si, 5. 9. 2026' }
+    "vvv": {
+      2022: { prihodki: 39018, dobicek: 3485, zaposleni: 0, vir: "AJPES JOLP, 2026-09-22" },
+      2023: { prihodki: 84744, dobicek: 951, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2024: { prihodki: 147002, dobicek: 6276, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 205061, dobicek: 8385, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
     },
-    tiktokerija: { 2024: { prihodki: 81839.75, dobicek: 4854.68, zaposleni: null, vir: 'bizi.si, companywall.si, 5. 9. 2026 (prvo polno leto)' } },
-    apmarketing: { 2025: { prihodki: 281475.42, dobicek: 20702.48, zaposleni: null, vir: 'bizi.si, companywall.si (s.p., dobiček = EBIT podjetnika)' } },
-    watt: {
-      2024: { prihodki: 560000, dobicek: null, zaposleni: null, vir: 'izpeljano: ebonitete.si navaja +565,54 % v 2025; EBIT 2024 18.453 €' },
-      2025: { prihodki: 3726284.68, dobicek: 126914.11, zaposleni: 3.18, vir: 'ebonitete.si, companywall.si (Kaching d.o.o., vključuje Coffee 2.0)' }
+    "tiktokspace": {
+      2024: { prihodki: 7860, dobicek: 417, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 32425, dobicek: 1092, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "tiktokerija": {
+      2023: { prihodki: 10160, dobicek: 204, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2024: { prihodki: 81840, dobicek: 4855, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 289118, dobicek: 30622, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "apmarketing": {
+      2025: { prihodki: 281475, dobicek: 20702, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "createable": {
+      2021: { prihodki: 3125, dobicek: 316, zaposleni: 0, vir: "AJPES JOLP, 2026-09-22" },
+      2022: { prihodki: 11900, dobicek: 4884, zaposleni: 0, vir: "AJPES JOLP, 2026-09-22" },
+      2023: { prihodki: 56077, dobicek: 3248, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2024: { prihodki: 97965, dobicek: 1799, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 206274, dobicek: 8857, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "katapult": {
+      2021: { prihodki: 397575, dobicek: 8614, zaposleni: 3, vir: "AJPES JOLP, 2026-09-22" },
+      2022: { prihodki: 695215, dobicek: 7826, zaposleni: 5, vir: "AJPES JOLP, 2026-09-22" },
+      2023: { prihodki: 878431, dobicek: 845, zaposleni: 7, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2024: { prihodki: 991919, dobicek: -76613, zaposleni: 9, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 937250, dobicek: -34306, zaposleni: 11, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "watt": {
+      2021: { prihodki: 9611, dobicek: -7752, zaposleni: 1, vir: "AJPES JOLP, 2026-09-22" },
+      2022: { prihodki: 9, dobicek: -10618, zaposleni: 1, vir: "AJPES JOLP, 2026-09-22" },
+      2023: { prihodki: 305026, dobicek: 80034, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2024: { prihodki: 559886, dobicek: 15178, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 3726285, dobicek: 126914, zaposleni: 3, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "buzztik": {
+      2022: { prihodki: 112458, dobicek: 13694, zaposleni: 1, vir: "AJPES JOLP, 2026-09-22" },
+      2023: { prihodki: 310007, dobicek: 67641, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2024: { prihodki: 317102, dobicek: 9139, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 282872, dobicek: 8033, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "xod": {
+      2025: { prihodki: 42866, dobicek: 10580, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
     }
   },
   uteziStebrov: { doseg: 20, posel: 45, finance: 35 },
@@ -581,6 +655,222 @@ function seedProjekti() {
   add('watt', 'Lesnina', '2023-06-29', { v: 'big', z: true, opis: 'TikTok oglaševanje', vir: MM });
   add('watt', 'Terme Čatež', '2023-06-29', { v: 'big', z: true, opis: 'TikTok oglaševanje', vir: MM });
 
+
+  // ===== Dopolnitev iz raziskave 2026-09-22 (research/konkurenca-2026-09.json). Velikost strank je presoja po prepoznavnosti znamke.
+  // --- VVV: javne reference na vvv-digital.com (WP REST API, 22. 9. 2026); datum = objava zapisa
+  add("vvv", "DINE d.o.o.", "2026-09-22", { v: "micro", opis: "Zagon TikTok profila v 17 dneh: 1000+ sledilcev, 290k+ ogledov, povprečno 41,6k ogledov/video, 7 objav (case study)", vir: "https://vvv-digital.com/en/home-english/" });
+  add("vvv", "Avtodomar.si", "2025-01-28", { v: "mid", opis: "TikTok/FB/IG, prodaja in najem avtodomov, kampanja jun 2024–dec 2025", vir: "https://vvv-digital.com/referenca-1/" });
+  add("vvv", "Adizes", "2025-01-28", { v: "mid", opis: "IG/FB, pridobivanje leadov po Evropi", vir: "https://vvv-digital.com/referenca-3/" });
+  add("vvv", "Balkan Beats", "2025-03-19", { v: "micro", opis: "TikTok promocija dogodka, 13.2.–16.3.2024", vir: "https://vvv-digital.com/balkan-beats/" });
+  add("vvv", "Wrumer", "2025-03-19", { v: "micro", opis: "IG/TikTok/YouTube/FB, glasbena produkcija", vir: "https://vvv-digital.com/wrumer/" });
+  add("vvv", "Burek Olimpija", "2025-03-19", { v: "micro", opis: "TikTok/IG/FB, 14.2.–30.5.2024 [zadnja omemba 2024-09-04]", vir: "https://vvv-digital.com/burek-olimpija/" });
+  add("vvv", "Vitalno telo", "2025-03-19", { v: "micro", opis: "Meta oglaševanje, spletna trgovina, 2023", vir: "https://vvv-digital.com/vitalno-telo/" });
+  add("vvv", "Vilinski Simboli", "2025-03-19", { v: "micro", opis: "Meta oglaševanje, nakit, 2023–2024", vir: "https://vvv-digital.com/vilinski-simboli/" });
+  add("vvv", "Dine (DINE d.o.o.)", "2025-03-19", { v: "micro", opis: "TikTok, kulinarika, 2024", vir: "https://vvv-digital.com/dine/" });
+  add("vvv", "Vezenine", "2025-03-19", { v: "micro", opis: "TikTok/IG, vezenje in darila, 2024", vir: "https://vvv-digital.com/vezenine/" });
+  add("vvv", "Silky Dog", "2025-03-19", { v: "micro", opis: "TikTok/IG, 2024", vir: "https://vvv-digital.com/silky-dog/" });
+  add("vvv", "Pustolovski park Geoss", "2025-03-19", { v: "micro", opis: "TikTok/IG/FB, 2024–danes [zadnja omemba 2024-05-29]", vir: "https://vvv-digital.com/pustolovski-park-geoss/" });
+  add("vvv", "GLS (Pošljipaket.si)", "2025-03-19", { v: "big", z: true, opis: "TikTok, okt 2024–danes", vir: "https://vvv-digital.com/gls/" });
+  add("vvv", "Hiša ortopedske obutve", "2025-03-19", { v: "micro", opis: "TikTok/IG, jul 2024–jan 2025", vir: "https://vvv-digital.com/hisa-ortopedske-obutve/" });
+  add("vvv", "JH Studio", "2025-03-19", { v: "micro", opis: "TikTok, avg–dec 2024", vir: "https://vvv-digital.com/jh-studio/" });
+  add("vvv", "Klub Gurmanov Skaručna", "2025-03-19", { v: "micro", opis: "TikTok, jan–jun 2024", vir: "https://vvv-digital.com/klub-gurmanov-skarucna/" });
+  add("vvv", "Munchies", "2025-03-19", { v: "micro", opis: "TikTok, okt 2024– [zadnja omemba 2026-09-18]", vir: "https://vvv-digital.com/munchies/" });
+  add("vvv", "Piro", "2025-03-19", { v: "micro", opis: "Meta oglaševanje, 2023", vir: "https://vvv-digital.com/piro/" });
+  add("vvv", "Music Max", "2025-03-19", { v: "micro", opis: "TikTok, prodaja glasbil, 2024", vir: "https://vvv-digital.com/music-max/" });
+  add("vvv", "Perk Mandlc", "2025-03-19", { v: "micro", opis: "TikTok/IG, košarka, 2024", vir: "https://vvv-digital.com/perk-mandeljc/" });
+  add("vvv", "Optika Rihtar", "2025-03-19", { v: "micro", opis: "TikTok/IG, 2024–danes", vir: "https://vvv-digital.com/optika-rihtar-2/" });
+  add("vvv", "NK Domžale", "2025-03-19", { v: "mid", opis: "FB/IG/TikTok, okt 2024–danes", vir: "https://vvv-digital.com/nk-domzale-2/" });
+  add("vvv", "Ljubljanska borza (LJSE)", "2026-07-22", { v: "big", z: true, opis: "video produkcija, 2026–", vir: "https://vvv-digital.com/ljubljanska-borza/" });
+  add("vvv", "Filaplast", "2026-07-27", { v: "mid", opis: "Meta Ads, 3D filamenti, 2024", vir: "https://vvv-digital.com/filaplast/" });
+  add("vvv", "Rocky the Roofer", "2026-07-27", { v: "micro", opis: "oglasne kreative za trg ZDA, 2024", vir: "https://vvv-digital.com/rocky-the-roofer/" });
+  add("vvv", "Trgofina", "2026-07-27", { v: "mid", opis: "Meta Ads, gurmanska spletna trgovina, 2024", vir: "https://vvv-digital.com/trgofina/" });
+  add("vvv", "NK Triglav", "2026-07-31", { v: "big", z: true, opis: "video produkcija, snemanje tekem, družbena omrežja", vir: "https://vvv-digital.com/nk-triglav/" });
+  add("vvv", "Umag Trophy", "2026-07-31", { v: "mid", opis: "video produkcija mladinskega nogometnega turnirja [zadnja omemba 2026-03-09]", vir: "https://vvv-digital.com/umag-trophy/" });
+  add("vvv", "Plesna šola Bolero", "2025-07-11", { v: "micro", opis: "TT objava: opis: 'CASE STUDY: Plesna šola Bolero 🕺💃 @Studio27' [zadnja omemba 2025-07-11]", vir: "https://www.tiktok.com/@vvv_digital/video/7525787748331080982" });
+  add("vvv", "Studio27", "2025-05-27", { v: "micro", opis: "TT objava: opis: '📸 Rabiš profi fotke? Skoč na spletno in si rezerviri termin. @Studio27' (promocijski video za studio) [zadnja omemba 2025-05-27]", vir: "https://www.tiktok.com/@vvv_digital/video/7509115053380046102" });
+  add("vvv", "Merkur zavarovalnica L'Étape Slovenia by Tour de France", "2026-09-06", { v: "big", z: true, opis: "IG objava: 5 collab reelov na @letapeslovenia z VVV Digital kot soavtorjem (05.–06.09.2026): Dc8TItPAdN3, Dc6k3NDA5nB, Dc6WWwaA5-g, Dc6QmZlxffD, Dc6C7rAgRoa", vir: "https://www.instagram.com/letapeslovenia/reel/Dc8TItPAdN3/" });
+  add("vvv", "Samsung", "2026-09-18", { v: "big", z: true, opis: "IG objava: hashtagi: '#GalaxyZFlip8 #ExploreGalaxy #SamsungPartner #withgalaxy' [zadnja omemba 2026-09-18]", vir: "https://www.instagram.com/vvv_digital/reel/DdbVUFtozYz/" });
+  add("vvv", "L'Étape Slovenia by Tour de France", "2026-09-06", { v: "big", z: true, opis: "IG objava (prijavljen pogled): 5 collab reelov z @letapeslovenia (dogodek 5.–6. 9. 2026: business ride, Union K0.0lesarim challenge) [zadnja omemba 2026-09-06]", vir: "https://www.instagram.com/reel/Dc8TItPAdN3/" });
+  // --- TikTok SPACE (research/konkurenca-2026-09.json, 2026-09-22)
+  add("tiktokspace", "Mobistekla", "2024-11-19", { v: "micro", opis: "case study: TikTok servisni videi, 270.000+ ogledov, 1.500+ sledilcev", vir: "https://www.tiktok-space.si/vodenje-druzbenih-medijev-za-podjetja/" });
+  add("tiktokspace", "Apinature", "2024-11-19", { v: "micro", opis: "case study: TikTok nagradna igra, 200+ kvalificiranih e-naslovov", vir: "https://www.tiktok-space.si/vodenje-druzbenih-medijev-za-podjetja/" });
+  add("tiktokspace", "Fari's", "2024-11-19", { v: "micro", opis: "case study: otvoritev druge lokacije v Plečnikovih arkadah, teaser kampanja", vir: "https://www.tiktok-space.si/digitalno-trzenje-za-restavracije/" });
+  add("tiktokspace", "Al Yasmin", "2026-09-22", { v: "micro", opis: "case study: rebranding restavracije (logo, embalaža, foto stil, digitalna strategija)", vir: "https://www.tiktok-space.si/digitalno-trzenje-za-restavracije/" });
+  add("tiktokspace", "Hanoi restavracija", "2026-09-22", { v: "micro", opis: "logotip v 'Zaupali so nam že'", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "Green emotion", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "Polleo Sport", "2024-11-19", { v: "mid", opis: "logotip (spletna trgovina)", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "Rimske Terme", "2026-09-22", { v: "mid", opis: "logotip", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "Smartus", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "FNC", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "B2B Izobraževanje", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "Integral Avto", "2024-11-19", { v: "micro", opis: "logotip", vir: "https://www.tiktok-space.si/" });
+  add("tiktokspace", "Chorchyp", "2024-11-19", { v: "micro", opis: "primer TikTok profila v 'Primeri profilov'", vir: "https://www.tiktok-space.si/" });
+  // --- Vividista (research/konkurenca-2026-09.json, 2026-09-22)
+  add("vividista", "fern", "2026-09-22", { v: "mid", opis: "referenca spletne strani (kozmetika, spletna trgovina); iz JSX v svežnju strani", vir: "https://vividista.si/spletne-strani.html" });
+  add("vividista", "ORSA", "2026-09-22", { v: "mid", opis: "referenca spletne strani (moda, predstavitvena stran); iz JSX v svežnju", vir: "https://vividista.si/spletne-strani.html" });
+  // --- Envision Collective (research/konkurenca-2026-09.json, 2026-09-22)
+  add("envision", "HS Plus", "2026-09-22", { v: "mid", opis: "e-commerce; celotna organizacija produkcije in knjižnica materiala", vir: "https://envisioncollective.si/delo/hs-plus" });
+  add("envision", "Amour Parfums", "2026-09-22", { v: "mid", opis: "TikTok vsebine; '+200 % prodaje po podatkih naročnika'; tudi Google mnenje (Wayback 2024-12-16: logotip sponzorja dogodka ProjectMe, ne nujno stranka) [zadnja omemba 2026-08-24]", vir: "https://envisioncollective.si/delo/amour-parfums" });
+  add("envision", "STOP SHOP Slovenija", "2026-09-22", { v: "big", z: true, opis: "TikTok vsebine za nakupovalne parke; 500K+ ogledov [zadnja omemba 2026-03-09]", vir: "https://envisioncollective.si/delo/stop-shop-slovenija" });
+  add("envision", "Visit Pomurje", "2026-09-22", { v: "mid", opis: "promocija zelenih ponudnikov; 2.000.000 ogledov v 7 mesecih", vir: "https://envisioncollective.si/delo/visit-pomurje" });
+  add("envision", "Kavarna Niki", "2026-09-22", { v: "mid", opis: "vodenje IG profila, food fotografija; +4,2k sledilcev v 90 dneh", vir: "https://envisioncollective.si/delo/kavarna-niki" });
+  add("envision", "Moji Mediji novice", "2026-09-22", { v: "mid", opis: "TikTok kampanja za novičarski portal; 1,2M+ ogledov v 4 mesecih (Wayback 2024-12-16: logotip sponzorja dogodka ProjectMe, ne nujno stranka)", vir: "https://envisioncollective.si/delo/moji-mediji-novice" });
+  add("envision", "Expano", "2026-09-22", { v: "mid", opis: "logotip v 'Znamke, ki so nam že zaupale' (Wayback 2024-12-16: logotip sponzorja dogodka ProjectMe, ne nujno stranka)", vir: "https://envisioncollective.si/" });
+  add("envision", "Eaua", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://envisioncollective.si/" });
+  add("envision", "Krups", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://envisioncollective.si/" });
+  add("envision", "Rowenta", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://envisioncollective.si/" });
+  add("envision", "Tefal", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://envisioncollective.si/" });
+  add("envision", "Samsung", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://envisioncollective.si/" });
+  add("envision", "Posestvo Passero", "2026-09-22", { v: "micro", opis: "logotip in Google mnenje", vir: "https://envisioncollective.si/" });
+  add("envision", "TRS Renkovci (Hiša gibanice)", "2026-09-22", { v: "micro", opis: "Google mnenje: objava o delavnici peke gibanice", vir: "https://envisioncollective.si/" });
+  add("envision", "Sladoled Niki", "2026-03-12", { v: "mid", opis: "TT objava: opis: 'To snemanje je bilo za @Sladoled Niki' [zadnja omemba 2026-03-12]", vir: "https://www.tiktok.com/@envision_collective/video/7616347552861916438" });
+  add("envision", "AgriNextGen", "2026-08-26", { v: "mid", opis: "IG objava (prijavljen pogled): 'Z AgriNextGen sva s Tilnom prvič sodelovala že pred dvema letoma... TikTok vsebine... Septembra se projekt nadaljuje, Envision p [zadnja omemba 2026-08-26]", vir: "https://www.instagram.com/p/DcgpTWOjFzG/" });
+  add("envision", "ŠIK nakit", "2026-08-25", { v: "micro", opis: "IG objava (prijavljen pogled): 'Pri projektu za @siknakit smo pomagali zastaviti način snemanja, nato pa vsebine tudi posneli' [zadnja omemba 2026-08-25]", vir: "https://www.instagram.com/p/DcdjlT0jOs-/" });
+  add("envision", "Varstvo psov pri Ani", "2026-08-20", { v: "micro", opis: "IG objava (prijavljen pogled): 'Pri @anaspaninger_varstvopsovpriani cilj ni bil samo posneti nekaj lepih kadrov... v enem snemalnem dnevu ustvarili različne vse [zadnja omemba 2026-08-20]", vir: "https://www.instagram.com/reel/DcQLTWls4yM/" });
+  // --- Tiktokerija (research/konkurenca-2026-09.json, 2026-09-22)
+  add("tiktokerija", "OrthoM (Invisalign Diamond provider, Ljubljana)", "2023-12-27", { v: "micro", opis: "TikTok vsebine (LinkedIn objava Rebeke Tomc)", vir: "https://www.linkedin.com/posts/rebeka-tomc-ab80431b1_tiktok-orthom-activity-7145722524331417600-k8OQ" });
+  add("tiktokerija", "Borotalco ('120 let Borotalca', #borotalcohuggie)", "2024-06-09", { v: "big", z: true, opis: "Kampanjski TikTok video na profilu Rebeke Tomc z oznako #tiktokerija", vir: "https://www.tiktok.com/@rebekatomc/video/7378412753888857377" });
+  add("tiktokerija", "Equa", "2026-09-22", { v: "mid", opis: "logotip in mnenje (Stella Korošec, Co-Founder)", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "Štartaj Slovenija (Formitas Group)", "2026-09-22", { v: "mid", opis: "logotip in mnenje (Ika Dujić Vrtačnik). Neimenovan case study '420.000 ogledov, rekordna gledanost oddaje' verjetno pripada temu projektu", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "Mimovrste", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "Zavarovalnica Triglav", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "Sava Resort", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "Sport Vision", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "Pivovarna Pelicon", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "ilBilaterale", "2026-09-22", { v: "micro", opis: "logotip. Neimenovan case study restavracije ob italijanski meji (486.000 ogledov v 1 mesecu) je verjetno ta stranka", vir: "https://web.archive.org/web/20260518235442/https://tiktokerija.com/" });
+  add("tiktokerija", "NEST nepremičnine", "2026-07-14", { v: "mid", opis: "TT objava: opis: 'BTS snemanja za naročnika @NESTnepremicnine 🫶🏻🎥' [zadnja omemba 2026-07-14]", vir: "https://www.tiktok.com/@tikt0kerija/video/7662345319107120406" });
+  // --- A.P. Marketing (research/konkurenca-2026-09.json, 2026-09-22)
+  add("apmarketing", "Proteini.si", "2024-07-21", { v: "mid", opis: "Kratki videi za TikTok in Instagram (prehrana, fitnes, humor)", vir: "https://ap-marketing.si/kdo-nam-zaupa/" });
+  add("apmarketing", "Anni.si (Anni d.o.o.)", "2024-07-21", { v: "micro", opis: "video formati (@anni.si); mnenje naročnika", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "T-2 d.o.o.", "2024-07-21", { v: "big", z: true, opis: "mnenje naročnika in logotip", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "Curaprox", "2024-07-21", { v: "big", z: true, opis: "mnenje naročnika", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "SPAR Slovenija", "2026-06-07", { v: "big", z: true, opis: "mnenje ('več projektov') in logotip Spar.si", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "VBO", "2026-06-07", { v: "micro", opis: "logotip partnerja", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "Leanpay", "2026-06-07", { v: "mid", opis: "logotip partnerja", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "Cineplexx", "2026-02-09", { v: "big", z: true, opis: "logotip partnerja", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "Champ kampanja", "2026-09-22", { v: "micro", opis: "'Ostali projekti', dokumentarni format", vir: "https://ap-marketing.si/" });
+  add("apmarketing", "Pink Mess", "2026-09-22", { v: "micro", opis: "'Ostali projekti', podcast", vir: "https://ap-marketing.si/" });
+  // --- Ziya Agency (research/konkurenca-2026-09.json, 2026-09-22)
+  add("ziya", "Čokoladnica Ljubljana", "2026-09-22", { v: "micro", opis: "mnenje Špele Jenko (lastnica): Ziya je prevzela upravljanje digitalnega marketinga", vir: "https://web.archive.org/web/20250520071721/https://ziya.agency/", konec: "2025-03-31" });
+  add("ziya", "Medilase", "2026-09-22", { v: "micro", opis: "mnenje Manje Blaha (lastnica): družbena omrežja in oblikovanje", vir: "https://web.archive.org/web/20250520071721/https://ziya.agency/", konec: "2025-03-31" });
+  // --- Createable (research/konkurenca-2026-09.json, 2026-09-22)
+  add("createable", "Študentski servis Maribor", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "INTERSPORT Slovenija", "2026-09-22", { v: "big", z: true, opis: "logotip; portfolio 'Plavalna sponka' (video); mnenje Ajde Perkovič (Marketing)", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Ljubljanske mlekarne", "2026-09-22", { v: "big", z: true, opis: "logotip; portfolio 'Lifestyle post' (statika) [zadnja omemba 2026-09-15]", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Terme Snovik", "2026-09-22", { v: "mid", opis: "logotip; portfolio 'Kneipp Espresso' (video) in 'Wellness post' (statika) [zadnja omemba 2026-09-15]", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Mladinska knjiga", "2026-09-22", { v: "big", z: true, opis: "logotip ('Logotip Mladinske knjige')", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "AEON Athletics", "2026-09-22", { v: "micro", opis: "logotip", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "MITA (Trgovina Mita)", "2026-09-22", { v: "micro", opis: "logotip; portfolio 'Brand post'; mnenje Luke Horvata (CEO)", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Mercator", "2026-09-22", { v: "big", z: true, opis: "logotip", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Mjob", "2026-09-22", { v: "mid", opis: "logotip", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Naturavit", "2026-09-22", { v: "mid", opis: "logotip", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "SNUGI", "2026-09-22", { v: "micro", opis: "logotip; portfolio 'Nastanek copata' (video)", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "pixlprint / Pixel Print", "2026-09-22", { v: "micro", opis: "logotip; mnenje Valerije Spielman", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Turizem Ljubljana", "2026-09-22", { v: "big", z: true, opis: "mnenje stranke", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Malinca", "2026-09-22", { v: "mid", opis: "mnenje Nastje Kramer", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Gorenje", "2026-09-22", { v: "big", z: true, opis: "navedeno v besedilu 'Zaupajo nam' (časovnica 2026, opis tečajev) [zadnja omemba 2026-09-15]", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "NLB Skladi", "2026-09-22", { v: "big", z: true, opis: "navedeno v besedilu 'Zaupajo nam' [zadnja omemba 2026-09-15]", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Od-do arhitektura", "2026-09-22", { v: "micro", opis: "portfolio 'Krajinska arhitektura' (video)", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Konstill", "2026-09-22", { v: "micro", opis: "portfolio 'Avtomobilski post' (statika) in 'Oglas - dating tips'", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "FZS", "2026-09-22", { v: "micro", opis: "portfolio 'Oglas - kettlebell'", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "NU Akademija", "2026-09-22", { v: "micro", opis: "portfolio 'Oglas - črna ovca'", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "SpinaliS", "2026-09-22", { v: "mid", opis: "portfolio 'Oglas - stol za poklic'", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  add("createable", "Flumediks", "2026-09-22", { v: "micro", opis: "portfolio 'Oglas - iskrene reklame'", vir: "https://createable.si/assets/index-DN4AW_8G.js" });
+  // --- Katapult Media (research/konkurenca-2026-09.json, 2026-09-22)
+  add("katapult", "Byrokko", "2024-04-17", { v: "mid", opis: "mnenje (Barbara): videi", vir: "https://katapult.si/storitve/katapult-media" });
+  add("katapult", "Založba 5KA", "2026-09-22", { v: "mid", opis: "mnenje Petre Škarja: marketing in TikTok za knjige", vir: "https://katapult.si/storitve/katapult-media" });
+  add("katapult", "Katapult Robotika", "2026-09-22", { v: "micro", opis: "mnenje Maše Jazbec; vdelan video 'DEUS MACHINA THEATER' [zadnja omemba 2024-12-06]", vir: "https://katapult.si/storitve/katapult-media" });
+  add("katapult", "PGD Trbovlje-mesto", "2026-09-22", { v: "micro", opis: "vdelan video 'Voščilnica PGD Trbovlje-mesto 2024'", vir: "https://katapult.si/storitve/katapult-media" });
+  add("katapult", "ITbox", "2026-09-22", { v: "micro", opis: "vdelan video 'ITbox - Beginning' (YouTube kanal Žige Meterca)", vir: "https://katapult.si/storitve/katapult-media" });
+  add("katapult", "Chainbrake", "2026-09-22", { v: "micro", opis: "vdelan video 'Chainbrake - Katastrofa Zagorje 2019'", vir: "https://katapult.si/storitve/katapult-media" });
+  add("katapult", "Street Workout Slovenija", "2024-08-17", { v: "micro", opis: "IG objava: collab reel; opis: 'Balkan open streetlifting [AFTERMOVIE]' (+ collab foto C8t77zAIW6T 2024-06-27)", vir: "https://www.instagram.com/streetworkoutslovenija/reel/C-w24Uso3s9/" });
+  add("katapult", "Abel von Rust", "2024-06-10", { v: "micro", opis: "IG objava (prijavljen pogled): 'Stranka: @abelvonrust / Produkcija: katapult_media / Scenografija: @mancahrastovec / DOP: @zigameterc...' [zadnja omemba 2024-06-10]", vir: "https://www.instagram.com/p/C8BxdYxJ6b1/" });
+  // --- Outpace (prej We Are TikTok / WATT) (research/konkurenca-2026-09.json, 2026-09-22)
+  add("watt", "BTC City", "2025-01-24", { v: "big", z: true, opis: "Lifestyle vplivneži predstavijo nakupovalno središče (lokacije trgovin, prevoz)", vir: "https://www.wearetiktok.agency/projekti" });
+  add("watt", "Neimenovan telekomunikacijski naročnik", "2026-09-22", { v: "big", z: true, opis: "Vplivneži iz telekomunikacijske niše in športniki", vir: "https://www.wearetiktok.agency/projekti" });
+  add("watt", "Lesnina Slovenija", "2025-01-24", { v: "big", z: true, opis: "organski TikTok, 7+ vplivnežev, nagradne igre; mnenje Katarine Bukovec", vir: "https://web.archive.org/web/20250124230059/https://www.wearetiktok.agency/projekti" });
+  add("watt", "Argeta", "2025-01-24", { v: "big", z: true, opis: "večjezični TikTok profil, zakulisje proizvodnje; 178.600+ všečkov", vir: "https://web.archive.org/web/20250124230059/https://www.wearetiktok.agency/projekti" });
+  add("watt", "Avant2Go", "2025-01-24", { v: "mid", opis: "organski profil s skeči o souporabi e-vozil", vir: "https://web.archive.org/web/20250124230059/https://www.wearetiktok.agency/projekti" });
+  add("watt", "TCG Park", "2025-01-24", { v: "micro", opis: "TikTok z vplivnežem; 162.400+", vir: "https://web.archive.org/web/20250124230059/https://www.wearetiktok.agency/projekti" });
+  add("watt", "Tasty Dose", "2026-09-22", { v: "mid", opis: "Outpace case (Coffee 2.0): 0 → 1,5 mio €/mesec v <12 mesecih, 50.000+ Meta kreativ; mnenje Primoža Oberča, CEO Tasty Dose", vir: "https://outpaceagency.com/" });
+  add("watt", "Homeso", "2026-09-22", { v: "mid", opis: "Outpace case: 1 → 10 trgov v 6 mesecih, 2,3k oglasov", vir: "https://outpaceagency.com/" });
+  add("watt", "Golden Tree", "2025-01-24", { v: "mid", opis: "Outpace case: 400+ video oglasov/teden v 11 državah; mnenje Harisa Begiča, CEO", vir: "https://outpaceagency.com/" });
+  add("watt", "MeetMinded", "2026-09-22", { v: "mid", opis: "mnenje (Matic Jesenovec, CEO)", vir: "https://outpaceagency.com/" });
+  add("watt", "Fitocanin", "2026-09-22", { v: "mid", opis: "mnenje (Filip Uranc, CEO)", vir: "https://outpaceagency.com/" });
+  add("watt", "Red Bull", "2026-09-22", { v: "big", z: true, opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411" });
+  add("watt", "Poli", "2026-09-22", { v: "big", z: true, opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411" });
+  add("watt", "Bird Buddy", "2026-09-22", { v: "mid", opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026 ; Outpace 2026: kreative v portfoliu", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411" });
+  add("watt", "Speech Blubs", "2026-09-22", { v: "mid", opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411" });
+  add("watt", "Dormeo", "2026-09-22", { v: "big", z: true, opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411" });
+  add("watt", "Afrodita", "2026-09-22", { v: "big", z: true, opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026 ; na CDN Outpace v mapi 'STARI CLIENTI' (pretekla s [zadnja omemba 2024-03-01]", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411", konec: "2025-12-31" });
+  add("watt", "Visit Ljubljana", "2026-09-22", { v: "big", z: true, opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411" });
+  add("watt", "HS+", "2026-09-22", { v: "mid", opis: "naveden med narocniki v LinkedIn zaposlitvenih oglasih WATT (2025); brez potrditve na outpaceagency.com 2026", vir: "https://si.linkedin.com/jobs/view/managing-director-watt-agency-at-watt-agency-4243885411" });
+  add("watt", "Esstera / Essterra", "2026-09-22", { v: "mid", opis: "Outpace (2026): CDN mapa IMG ADS/ESSTERA [portfolio kreative]", vir: "https://outpaceagency.com/" });
+  add("watt", "Bach", "2026-09-22", { v: "mid", opis: "Outpace (2026): CDN mapa IMG ADS/BACH [portfolio kreative]", vir: "https://outpaceagency.com/" });
+  add("watt", "Proteini", "2026-09-22", { v: "mid", opis: "Outpace (2026): CDN mapa IMG ADS/PROTEINI [portfolio kreative]", vir: "https://outpaceagency.com/" });
+  add("watt", "Artisana", "2026-09-22", { v: "mid", opis: "Outpace (2026): CDN mapa UGC/ARTISANA [portfolio kreative]", vir: "https://outpaceagency.com/" });
+  add("watt", "Dines", "2026-09-22", { v: "mid", opis: "Outpace (2026): CDN mapa UGC/STARI CLIENTI/DINES [STARI CLIENTI — pretekli]", vir: "https://outpaceagency.com/", konec: "2025-12-31" });
+  add("watt", "Float Center Ljubljana", "2026-09-22", { v: "mid", opis: "Outpace (2026): CDN mapa UGC/STARI CLIENTI/FLOAT CENTER LJUBLJANA [STARI CLIENTI — pretekli]", vir: "https://outpaceagency.com/", konec: "2025-12-31" });
+  add("watt", "Kriptomat", "2026-09-22", { v: "mid", opis: "Outpace (2026): CDN mapa UGC/STARI CLIENTI/KRIPTOMAT [STARI CLIENTI — pretekli]", vir: "https://outpaceagency.com/", konec: "2025-12-31" });
+  // --- BuzzTik (research/konkurenca-2026-09.json, 2026-09-22)
+  add("buzztik", "Mömax Slovenija", "2023-06-02", { v: "big", z: true, opis: "logotip 'Zaupajo nam' + TikTok profil @moemax.si (upravljanje družbenih omrežij) [zadnja omemba 2026-05-11]", vir: "https://buzztik.com/" });
+  add("buzztik", "Fibran Slovenija", "2026-09-22", { v: "mid", opis: "logotip + TikTok profil @fibranslovenia", vir: "https://buzztik.com/" });
+  add("buzztik", "Gorenje Slovenija", "2023-06-02", { v: "big", z: true, opis: "logotip + TikTok profil @gorenje_slovenija [zadnja omemba 2025-11-25]", vir: "https://buzztik.com/" });
+  add("buzztik", "Hisense Slovenija", "2026-09-22", { v: "big", z: true, opis: "logotip + TikTok profil @hisense_slovenija [zadnja omemba 2025-11-25]", vir: "https://buzztik.com/" });
+  add("buzztik", "Bravia Mobil", "2026-09-22", { v: "mid", opis: "TikTok profil @bravia.mobil (družbeni mediji strank)", vir: "https://buzztik.com/" });
+  add("buzztik", "Eucerin Slovenija", "2022-11-09", { v: "big", z: true, opis: "logotip + TikTok hashtag #eucerinslovenija [zadnja omemba 2025-06-11]", vir: "https://buzztik.com/" });
+  add("buzztik", "LELOSI", "2022-11-09", { v: "mid", opis: "logotip v pasu 'Zaupajo nam' (alt='LELOSI')", vir: "https://buzztik.com/" });
+  add("buzztik", "LUX-FACTOR", "2022-11-09", { v: "mid", opis: "logotip v pasu 'Zaupajo nam' (alt='LUX-FACTOR')", vir: "https://buzztik.com/" });
+  add("buzztik", "Adria", "2022-11-09", { v: "big", z: true, opis: "logotip v pasu 'Zaupajo nam' (alt='Adria')", vir: "https://buzztik.com/" });
+  add("buzztik", "Mesec oblikovanja", "2026-09-22", { v: "micro", opis: "testimonial: TikTok kampanja ob prejemu nagrade in odprtju Meseca oblikovanja v Ljubljani, 250.000 ogledov v nekaj dneh; omenjena 'Irena s svojo ekipo'", vir: "https://buzztik.com/" });
+  add("buzztik", "Treecelet", "2022-11-09", { v: "mid", opis: "testimonial: vzorčni videi ustvarjalcev, izbor najprimernejših (UGC kampanja)", vir: "https://buzztik.com/" });
+  add("buzztik", "KingsBox", "2022-11-09", { v: "mid", opis: "testimonial: baza ustvarjalcev, agencija prevzame logistiko (UGC/creator kampanja)", vir: "https://buzztik.com/" });
+  add("buzztik", "Drinkopoly", "2023-06-02", { v: "mid", opis: "testimonial: 'Z BuzzTik sodelujemo od njihovih začetkov' (dolgoročno sodelovanje)", vir: "https://buzztik.com/" });
+  add("buzztik", "Sivili (otroška oblačila)", "2026-03-13", { v: "mid", opis: "IG objava: opis: 'JOB ALERT: Iščemo Sivili ambasadorko! Slovenska blagovna znamka Sivili išče mamico ambasadorko … #buzztik #influencers' [zadnja omemba 2026-03-13]", vir: "https://www.instagram.com/buzztik_official/p/DV0XOsKDKkM/" });
+  // --- 3A Media (research/konkurenca-2026-09.json, 2026-09-22)
+  add("3amedia", "Borut Pahor", "2025-09-17", { v: "micro", opis: "personal brand, 'Od predsednika države do TikTok fenomena' – strateška vsebinska prisotnost na družbenih omrežjih; testimonial: 'Če se boste odločili za sodelov", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Vitapur", "2026-09-22", { v: "mid", opis: "retail brand, 'Kampanja, o kateri je govorila Slovenija' – celovita kampanja za dvig prepoznavnosti in prodaje; logotip", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Autobroker.si", "2025-02-12", { v: "mid", opis: "automotive, performance funnel za pridobivanje kupcev, '555.000+ ogledov v 14 dneh'; logotip tudi na 3a-media.com", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Zavod Varna Pot (ZVP)", "2026-09-22", { v: "micro", opis: "družbeni vpliv, 'Nacionalna pokritost' – kampanja, ki je odmevala v vseh večjih medijih; logotip tudi na 3a-media.com", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Javna agencija RS za varnost prometa (AVP)", "2025-02-12", { v: "big", z: true, opis: "logotip v pasu 'Od lokalnih podjetij do nacionalnih blagovnih znamk' (na 3a-media.com pas 'Zaupanja vredni v različnih panogah'); storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Mestna občina Ljubljana", "2026-09-22", { v: "big", z: true, opis: "logotip v pasu strank; storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Slovenska filharmonija", "2026-09-22", { v: "big", z: true, opis: "logotip v pasu strank; storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "FEVR — European Federation of Road Traffic Victims", "2026-09-22", { v: "micro", opis: "logotip v pasu strank; storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Moji Štruklji", "2026-09-22", { v: "micro", opis: "logotip v pasu strank; storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Table by Living Room", "2026-09-22", { v: "micro", opis: "logotip v pasu strank; storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "Magnifico", "2026-09-22", { v: "micro", opis: "logotip v pasu strank; storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "ARIH", "2026-09-22", { v: "micro", opis: "logotip v pasu strank; storitev ni opisana", vir: "https://booking.3a-media.com/" });
+  add("3amedia", "TokyoTreat", "2025-02-12", { v: "micro", opis: "logotip (framer name 'tokyotreat') v pasu 'Zaupanja vredni'; storitev ni opisana", vir: "https://3a-media.com/" });
+  add("3amedia", "Sakuraco", "2025-02-12", { v: "micro", opis: "logotip (framer name 'sakuraco') v pasu 'Zaupanja vredni'; storitev ni opisana", vir: "https://3a-media.com/" });
+  // --- XOD Agency (research/konkurenca-2026-09.json, 2026-09-22)
+  add("xod", "SPAR Slovenija – Naravnost od pridelovalca", "2026-01-01", { v: "big", z: true, opis: "event video produkcija dogodka v Europarku Maribor: aftermovie + vertikalni Reel; 'in collaboration with Herman&Partnerji' -> podizvajalstvo/sodelovanje z agenc", vir: "https://www.xodagency.com/our-work/spar-slovenija-naravnost-od-pridelovalca" });
+  add("xod", "Zavarovalnica Triglav – Client Testimonials", "2025-01-01", { v: "big", z: true, opis: "serija dokumentarnih testimonialov (zdravje, nesreče, Zobje/Zobje+, hišni ljubljenčki, dom); 'in collaboration with Herman&Partnerji' -> podizvajalstvo; 2025–20 [zadnja omemba 2026-09-15]", vir: "https://www.xodagency.com/our-work/triglav-insurance-company-client-testimonials" });
+  add("xod", "Škerjanc", "2026-01-01", { v: "mid", opis: "'ongoing' produkcija vertikalnih videov za družbena omrežja po treh salonih (Materija, Ljubljana, Maribor) + poslovni portreti + foto otvoritve salona v Materij [zadnja omemba 2026-07-24]", vir: "https://www.xodagency.com/our-work/skerjanc" });
+  add("xod", "Biotehniška fakulteta UL", "2025-01-01", { v: "mid", opis: "serija kratkih dokumentarnih filmov; 'in collaboration with InHouse Marketing agency' -> podizvajalstvo/sodelovanje; 2025; enkraten projekt", vir: "https://www.xodagency.com/our-work/kratki-dokumentarni-fiilmi-za-biotehnisko-fakulteto" });
+  add("xod", "TEDx University of Ljubljana", "2026-01-01", { v: "mid", opis: "večkamerna produkcija govorov (tema 'Nelagodje resnice'), samostojni videi govorcev; neposredno; 2026; enkraten dogodek [zadnja omemba 2026-07-24]", vir: "https://www.xodagency.com/our-work/tedx-university-of-ljubljana" });
+  add("xod", "Podcast Zadnji meter (Darko Đurić)", "2026-01-01", { v: "micro", opis: "produkcija video podcasta (multicam, studio, montaža, kratki klipi); neposredno; 2026; ponavljajoče (serija epizod)", vir: "https://www.xodagency.com/our-work/podcast-zadnji-meter" });
+  add("xod", "Taverneta Estate & Bužinel Estate", "2026-01-01", { v: "micro", opis: "serija vertikalnih videov (Reels/TikTok) za posestvi v Goriških brdih; neposredno; 2026; enkraten paket vsebin ('content series'), namenjen nadaljnji komunikaci", vir: "https://www.xodagency.com/our-work/taverneta-buzinel-estate" });
+  add("xod", "Istrski kolesarski maraton 2025", "2025-10-31", { v: "micro", opis: "65-dnevna FB/IG kampanja (25.8.–28.10.2025, doseg 743.530, CTR 1,17 %, 14.781 obiskov, 1.200+ kolesarjev) + foto/video/live Stories na dogodku 11.–12.10.2025 v", vir: "https://www.xodagency.com/our-work/istrski-kolesarski-maraton-2025" });
+  add("xod", "Šalomat – 'Sam prjatla' & 'Brata'", "2025-10-01", { v: "micro", opis: "3-mesečno upravljanje družbenih omrežij (IG/FB/TikTok) + FB/IG oglasi + grafika za gledališke produkcije, okt–dec 2025 (1,9M+ ogledov, +1.636 sledilcev); neposr", vir: "https://www.xodagency.com/our-work/alomat-sam-prjatla-brata" });
+  add("xod", "Highlander Adventure Slovenia", "2025-11-21", { v: "micro", opis: "event coverage dveh ultra trail tekem (Julijske Alpe, Kamniško-Savinjske Alpe) 2025: foto, video, Reels, live Stories; blog: 'We will be handling the full socia", vir: "https://www.xodagency.com/our-work/highlander-adventure-slovenia" });
+  add("xod", "Podcast 'Kdo, če ne mi?' (naročnik KdoJeOskar)", "2025-11-21", { v: "micro", opis: "produkcijski partner: 12 epizod, 8 snemalnih dni na Gradu Kodeljevo, 3 kamere, 36 Reelov; naročnik vodi vsebino; neposredno (produkcija za naročnika, ne agencij", vir: "https://www.xodagency.com/our-work/podcast-kdo-ce-ne-mi" });
+  add("xod", "Mapetrol", "2025-05-07", { v: "micro", opis: "več fotografiranj za kataloge in družbena omrežja (lažna trgovina v baru, garaže, Trst, Izola); neposredno; blog 2025-05-07; enkraten projekt", vir: "https://www.xodagency.com/our-work-2/mapetrol-making-motor-oil-look-good" });
+  add("xod", "HSE (Holding Slovenske elektrarne)", "2026-09-01", { v: "big", z: true, opis: "serija petih reelov z društvi iz Šoštanja, 'z herman & partnerji' -> podizvajalstvo; LinkedIn objava ~2 tedna pred 2026-09-22 [zadnja omemba 2026-09-08]", vir: "https://www.linkedin.com/company/xodagency" });
+  add("xod", "Gospodarska zbornica Slovenije – kampanja 'Povezani ustvarjamo prihodn", "2026-07-01", { v: "big", z: true, opis: "video vsebine v podjetjih (Danfoss Trata, Skupina Pivka Delamaris, M SORA ...) skupaj s herman & partnerji -> podizvajalstvo; LinkedIn ~2 meseca pred 2026-09-22 [zadnja omemba 2026-07-24]", vir: "https://www.linkedin.com/company/xodagency" });
+  add("xod", "Samsung (Galaxy Z Creative Challenge)", "2026-09-18", { v: "big", z: true, opis: "partnerski izziv/test telefonov Galaxy Z Fold8/Flip8 (#SamsungPartner), vsebine na IG; LinkedIn ~4 dni pred 2026-09-22 [zadnja omemba 2026-09-18]", vir: "https://www.linkedin.com/company/xodagency" });
+  add("xod", "Kosovelova domačija, Tomaj", "2026-08-01", { v: "micro", opis: "fotografiranje prenovljene domačije ob ponovnem odprtju; LinkedIn ~1 mesec pred 2026-09-22 [zadnja omemba 2026-08-23]", vir: "https://www.linkedin.com/company/xodagency" });
+  add("xod", "Pošta Slovenije / forum 'Umetnost črnega laboda' (ISR, SPIRIT)", "2026-07-01", { v: "big", z: true, opis: "foto: Marko Pleterski, XOD Agency – fotografska pokritost foruma (repost Pošte Slovenije, ~2 meseca pred 2026-09-22); naročnik ni razviden", vir: "https://www.linkedin.com/company/xodagency" });
+  add("xod", "Zvezdosledi / festival Avgustični", "2026-09-18", { v: "micro", opis: "IG objava: collab reel; opis: 'AVGUSTIČNI 2026 - AFTERMOVIE 🎬 … Hvala @xod.agency za vse ujete kadre' [zadnja omemba 2026-09-18]", vir: "https://www.instagram.com/zvezdosledi/reel/DdbK8SXxkIm/" });
+  add("xod", "MUVIT (60-urni filmski maraton, lastni projekt)", "2026-08-29", { v: "micro", opis: "LinkedIn objava: We're back! Za nami je še en MUVIT. Spet smo si vzeli 60 ur, da smo ugotovili, kaj pravzaprav snemamo, kje bomo snemali in zakaj smo si to splo", vir: "https://www.linkedin.com/company/xodagency/posts/" });
+  add("xod", "logistična konferenca (organizator ni naveden v izseku)", "2026-07-11", { v: "micro", opis: "LinkedIn objava: Kako uspešno krmariti skozi 'predvidljivo nepredvidljiv' svet logistike? Nenehni geopolitični pritiski zahtevajo korenito krepitev odpornosti g", vir: "https://www.linkedin.com/company/xodagency/posts/" });
+  add("xod", "V osrčju dežele terana (dogodek, Kras)", "2026-07-03", { v: "micro", opis: "LinkedIn objava: V OSRČJU DEŽELE TERANA 2026. Tudi letos smo poskrbeli za fotografiranje dogodka V osrčju dežele terana, ki je skozi tridnevno dogajanje ponovno [zadnja omemba 2026-07-02]", vir: "https://www.linkedin.com/company/xodagency/posts/" });
+  add("xod", "SKOJ / PRSS (partner dogodka)", "2026-06-22", { v: "micro", opis: "LinkedIn objava: Približno mesec dni nazaj smo se udeležili letošnje Slovenske konference za odnose z javnostmi, bolj znane kot SKOJ. Tokrat ne le kot udeleženc", vir: "https://www.linkedin.com/company/xodagency/posts/" });
+  add("xod", "Zveza tabornikov Slovenije", "2026-05-29", { v: "micro", opis: "LinkedIn objava: 75 let Zveze tabornikov Slovenije. V Ljubljani smo za tabornike snemali in fotografirali slavnostno akademijo ob 75-letnici delovanja organizac [zadnja omemba 2026-05-16]", vir: "https://www.linkedin.com/company/xodagency/posts/" });
+  add("xod", "GZS – Gospodarska zbornica Slovenije", "2026-07-16", { v: "big", z: true, opis: "IG objava (prijavljen pogled): 'V sklopu kampanje Povezani ustvarjamo prihodnost smo skupaj z @lab.herman.lab za @gzs.si snemali video vsebine' (Danfoss Trata,  [zadnja omemba 2026-07-16]", vir: "https://www.instagram.com/p/Da3DuLwDeGx/" });
+  add("xod", "SKOJ – Slovenska konferenca za odnose z javnostmi", "2026-06-19", { v: "micro", opis: "IG objava (prijavljen pogled): 'kot partnerji dogodka, kjer smo poskrbeli za fotografiranje' [zadnja omemba 2026-06-19]", vir: "https://www.instagram.com/p/DZxFpBqjZrV/" });
+  add("xod", "Fejmiči podcast", "2026-09-14", { v: "micro", opis: "IG objava (prijavljen pogled): 'Z @zanpapi snemamo novo serijo videov za @fejmici.podcast' (2026-04-23), priprava seta (2026-09-14) [zadnja omemba 2026-09-14]", vir: "https://www.instagram.com/reel/DdRdlrZtCuM/" });
+  add("xod", "Kdo je Oskar? / projekt 'Kdo, če ne mi?'", "2026-02-16", { v: "micro", opis: "IG objava (prijavljen pogled): 'Za projekt Kdo, če ne mi? smo posneli podcast serijo z 12 epizodami' + highlight 'Oskar' [zadnja omemba 2026-02-16]", vir: "https://www.instagram.com/reel/DU1CRNIDU3m/" });
+
   return P;
 }
 DEFAULT_DATA.projekti = seedProjekti();
@@ -610,6 +900,16 @@ function naloziPodatke() {
   if (d.verzija < 3) {
     d.verzija = 3;
     d.agencije.forEach(a => { const def = DEFAULT_DATA.agencije.find(x => x.id === a.id); if (a.strank === undefined) a.strank = def ? def.strank || '' : ''; });
+  }
+  if (d.verzija < 4) {
+    // v4 (22. 9. 2026): raziskava s primarnimi viri; 13 agencij. Ročno vnesene projekte/nagrade (id z Date.now) ohrani,
+    // začetne (id p<št>/n<št>) zamenja; snapshot 2026-09 zamenja z neposrednim odčitkom; finance in agencije prevzame iz DEFAULT_DATA.
+    d.verzija = 4;
+    DEFAULT_DATA.agencije.forEach(def => { const i = d.agencije.findIndex(x => x.id === def.id); if (i >= 0) d.agencije[i] = klon(def); else d.agencije.push(klon(def)); });
+    d.snapshoti['2026-09'] = klon(DEFAULT_DATA.snapshoti['2026-09']);
+    d.projekti = klon(DEFAULT_DATA.projekti).concat((d.projekti || []).filter(p => !/^p\d+$/.test(p.id)));
+    d.nagrade = klon(DEFAULT_DATA.nagrade).concat((d.nagrade || []).filter(x => !/^n\d+$/.test(x.id)));
+    d.finance = Object.assign({}, d.finance || {}, klon(DEFAULT_DATA.finance));
   }
   d.projekti = d.projekti || []; d.nagrade = d.nagrade || []; d.finance = d.finance || {};
   d.uteziStebrov = d.uteziStebrov || klon(DEFAULT_DATA.uteziStebrov); d.nastavitve = d.nastavitve || {};
