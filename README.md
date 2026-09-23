@@ -151,7 +151,7 @@ Ločena, samostojna stran v istem repozitoriju (isti dizajn, brez povezave z Led
 | Posel | mesec | novi projekti (utež po velikosti stranke micro 1 / mini 1,5 / mid 2 / big 3, znamka +1), projekti skupaj (vse stranke od začetka), aktualni projekti (brez znanega konca), nagrade in omembe | absolutne vrednosti |
 | Finance | leto | prihodki, rast, dobiček, marža, zaposleni, prihodki/zaposlenega (AJPES prek Bizi) | absolutne, rast v % |
 
-**Skupni indeks** = utežena vsota deležev točk po stebrih (privzeto Posel 45 %, Finance 35 %, Doseg 20 %; 100 = prvi v vseh treh). Stebri brez podatkov se preskočijo.
+**Prva stran »Lestvice«** (od 23. 9. 2026) ne uteži in ne sešteva ničesar: vsaka metrika je lastna lestvica z absolutno vrednostjo in mestom 1 → zadnji (4 kanali dosega iz zadnjega snapshota, 5 metrik registra, 6 finančnih metrik zadnjega leta). Matrika + kartica na metriko; agencija brez podatka je na dnu brez mesta. Skupni indeks in uteži stebrov so odstranjeni; ligaški zavihki Doseg/Posel/Finance (točke 3/1/0) ostajajo kot dodaten pogled.
 
 - **Zavihki:** Skupno, Doseg (lestvica + trenutno stanje), Posel (lestvica, portfelj, register projektov), Finance (lestvica, bilanca po letih), + Vnos (snapshot, projekt, nagrada, letne finance, izvoz/uvoz), Agencije, Metodologija.
 - **Shramba:** `localStorage` ključ `vvv_konkurenca_v1` (verzija 3, samodejna migracija iz v1/v2); izvoz/uvoz JSON.

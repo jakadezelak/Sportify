@@ -118,6 +118,12 @@
   .banner.blue { background: var(--blue-dim); border-color: rgba(52,152,219,0.35); color: var(--blue); }
 
   .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .lestvice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .lestvice-grid .metric-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .lestvice-grid .metric-card h4 span { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: .5px; margin-left: 6px; }
+  .matrika th.grp { text-align: center; border-bottom: none; padding-bottom: 0; }
+  .matrika th.grp.doseg { color: var(--blue); } .matrika th.grp.posel { color: var(--green); } .matrika th.grp.finance { color: var(--amber); }
+  .matrika td .r { color: var(--muted); font-size: 11px; margin-left: 4px; } .matrika td .r.top { color: #f1c40f; }
   .metric-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--card-radius); padding: 14px 16px; }
   .metric-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1.5px; margin-bottom: 8px; }
   .metric-row { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px solid var(--border); gap: 8px; }
@@ -154,7 +160,7 @@
 <header>
   <div class="logo">VVV <span>LIGA</span></div>
   <nav>
-    <button class="active" data-page="skupno" onclick="showPage('skupno')">Skupno</button>
+    <button class="active" data-page="skupno" onclick="showPage('skupno')">Lestvice</button>
     <button data-page="doseg" onclick="showPage('doseg')">Doseg</button>
     <button data-page="posel" onclick="showPage('posel')">Posel</button>
     <button data-page="finance" onclick="showPage('finance')">Finance</button>
@@ -166,32 +172,14 @@
 
 <!-- ============================ SKUPNO ============================ -->
 <div id="page-skupno" class="page active">
-  <div class="section-title">SKUPNA LESTVICA</div>
-  <div class="section-sub">Trije stebri, vsak s svojo ligo: <b style="color:var(--blue)">Doseg</b> (sledilci), <b style="color:var(--green)">Posel</b> (projekti in stranke), <b style="color:var(--amber)">Finance</b> (AJPES). Skupni indeks je utežen seštevek deležev točk po stebrih, 100 = prvi v vseh treh.</div>
-  <div id="skupno-banner"></div>
+  <div class="section-title">LESTVICE</div>
+  <div class="section-sub">Vsaka metrika je lastna lestvica: absolutna vrednost in mesto od prvega do zadnjega. Brez uteži in brez skupnega indeksa. <b style="color:var(--blue)">Doseg</b> = zadnji snapshot, <b style="color:var(--green)">Posel</b> = register projektov, <b style="color:var(--amber)">Finance</b> = zadnje poslovno leto z objavljenimi podatki (AJPES). Agencija brez podatka je na dnu in ne dobi mesta.</div>
   <div id="skupno-stats" class="stat-grid four"></div>
   <div class="card table-wrap">
-    <table class="lestvica-table">
-      <thead><tr>
-        <th>#</th><th>Agencija</th>
-        <th class="num" title="Projekti skupaj (aktualni)">Projekti</th>
-        <th class="num" style="color:var(--blue)">Doseg</th>
-        <th class="num" style="color:var(--green)">Posel</th>
-        <th class="num" style="color:var(--amber)">Finance</th>
-        <th class="num">Indeks</th><th>Sestava</th>
-      </tr></thead>
-      <tbody id="skupno-body"></tbody>
-    </table>
+    <table class="lestvica-table matrika" id="matrika"></table>
   </div>
-  <div class="card">
-    <h3>UTEŽI STEBROV</h3>
-    <div class="form-grid three">
-      <div class="form-group"><label>Doseg (%)</label><input type="number" id="utez-doseg" min="0" max="100" step="5" onchange="setUtezStebra('doseg', this.value)"></div>
-      <div class="form-group"><label>Posel (%)</label><input type="number" id="utez-posel" min="0" max="100" step="5" onchange="setUtezStebra('posel', this.value)"></div>
-      <div class="form-group"><label>Finance (%)</label><input type="number" id="utez-finance" min="0" max="100" step="5" onchange="setUtezStebra('finance', this.value)"></div>
-    </div>
-    <p class="muted small" style="margin-top:10px">Uteži se normalizirajo na 100. Steber brez podatkov se preskoči in njegova utež se razdeli med ostale.</p>
-  </div>
+  <p class="muted small" style="margin:-6px 0 18px 4px">Vrstice matrike so urejene po povprečnem mestu na metrikah, kjer agencija ima podatek (v oklepaju število takih metrik). To je samo vrstni red prikaza, ne ocena.</p>
+  <div id="lestvice-grid" class="lestvice-grid"></div>
 </div>
 
 <!-- ============================ DOSEG ============================ -->
@@ -428,15 +416,20 @@
     </ul>
   </div>
   <div class="card">
-    <h3>SKUPNI INDEKS</h3>
+    <h3>LESTVICE (PRVA STRAN)</h3>
+    <p>Prva stran ne sešteva in ne uteži ničesar. Vsaka metrika je lastna lestvica z absolutno vrednostjo in mestom od prvega do zadnjega: štirje kanali dosega iz zadnjega snapshota, pet metrik registra projektov (skupaj, aktualni, novi v zadnjih 12 mesecih, prepoznavne znamke, točke nagrad) in šest finančnih metrik zadnjega poslovnega leta. Agencija brez podatka je na dnu brez mesta. Matrika je urejena po povprečnem mestu, kar je samo vrstni red prikaza.</p>
+  </div>
+  <div class="card">
+    <h3>LIGAŠKI ZAVIHKI (DOSEG, POSEL, FINANCE)</h3>
     <p>Za vsak steber se izračuna delež točk: točke agencije deljeno z največ točkami v stebru. Skupni indeks je utežena vsota deležev krat 100. Stebri brez podatkov se preskočijo, njihova utež se razdeli med ostale. Agencija, ki je prva v vseh treh stebrih, ima indeks 100.</p>
   </div>
   <div class="card">
     <h3>ZAKAJ TAKO</h3>
-    <p>Doseg meri promocijo agencije, ne posla, zato ima najmanjšo utež. Posel meri javno vidne stranke, ker agencije svojih pogodb ne objavljajo; register zajame tisto, kar same pokažejo, in to enako za vse. Za VVV so v registru tudi interni vnosi iz CRM, označeni kot "interno", ki jih filter <i>samo javno</i> izključi, da je primerjava poštena. Finance pridejo enkrat letno, zato skupno lestvico pretresejo spomladi.</p>
+    <p>Doseg meri promocijo agencije, ne posla. Posel meri javno vidne stranke, ker agencije svojih pogodb ne objavljajo; register zajame tisto, kar same pokažejo, in to enako za vse. Za VVV so v registru tudi interni vnosi iz CRM, označeni kot "interno", ki jih filter <i>samo javno</i> izključi, da je primerjava poštena. Finance pridejo enkrat letno, zato skupno lestvico pretresejo spomladi.</p>
   </div>
   <div class="card">
-    <h3>VIRI ZAČETNIH PODATKOV (5. 9. 2026)</h3>
+    <h3>VIRI PODATKOV (verzija 4, 22. 9. 2026)</h3>
+    <p>Vse vrednosti so iz <code>research/konkurenca-2026-09.json</code> (raziskava s primarnimi viri: AJPES JOLP in companywall, strani agencij, Wayback, Instagram/TikTok/LinkedIn neposredno, Google Maps, katalog SOF). Spodnji seznam je iz prve verzije (5. 9. 2026) in velja za ročno kurirane VVV vnose.</p>
     <ul>
       <li><b>Doseg:</b> spletno iskanje, približno. Instagram, TikTok in LinkedIn niso bili neposredno dostopni.</li>
       <li><b>Register VVV:</b> študije primerov na vvv-digital.com (E-Študentski servis, Red Eye Monkey, StadionShop, PAA Global, Svet Metraže), portfolio 2025 in interni CRM (pridobljeni posli, označeni "interno").</li>
@@ -1080,54 +1073,70 @@ function kolaFinance() {
 // ============================================================
 // RENDER: SKUPNO
 // ============================================================
+// ============================================================
+// LESTVICE: absolutne vrednosti, mesto od prvega do zadnjega, brez uteži
+// ============================================================
+function zadnjiSnapshot() { const m = meseci(); return m.length ? m[m.length - 1] : null; }
+function zadnjeLeto() { const l = leta(); return l.length ? l[l.length - 1] : null; }
+function noviProjekti12(agId, P) {
+  const d = new Date(); d.setMonth(d.getMonth() - 12); const od = d.toISOString().slice(0, 10);
+  return P.filter(p => p.agId === agId && p.datum >= od).length;
+}
+function metrikeLestvic() {
+  const snap = zadnjiSnapshot(), leto = zadnjeLeto(), P = projektiAktivni();
+  const M = [];
+  data.metrike.forEach(m => M.push({ id: 'd_' + m.id, grp: 'doseg', ime: m.ime, pod: snap ? fmtMesec(snap) : 'ni snapshota', fmt: fmtNum, val: id => snap ? vrednost(snap, id, m.id) : null }));
+  const proj = id => P.filter(p => p.agId === id);
+  M.push({ id: 'p_skupaj', grp: 'posel', ime: 'Projekti skupaj', pod: 'register', fmt: fmtNum, val: id => proj(id).length || null });
+  M.push({ id: 'p_aktualni', grp: 'posel', ime: 'Aktualni projekti', pod: 'brez znanega konca', fmt: fmtNum, val: id => proj(id).length ? proj(id).filter(p => jeAktualen(p, danes())).length : null });
+  M.push({ id: 'p_novi', grp: 'posel', ime: 'Novi projekti', pod: 'zadnjih 12 mesecev', fmt: fmtNum, val: id => proj(id).length ? noviProjekti12(id, P) : null });
+  M.push({ id: 'p_znamke', grp: 'posel', ime: 'Prepoznavne znamke', pod: 'v registru', fmt: fmtNum, val: id => proj(id).length ? proj(id).filter(p => p.znamka).length : null });
+  M.push({ id: 'p_nagrade', grp: 'posel', ime: 'Nagrade in omembe', pod: 'točke', fmt: fmtTocke, val: id => { const n = data.nagrade.filter(x => x.agId === id); return n.length ? n.reduce((s, x) => s + (Number(x.tocke) || 0), 0) : null; } });
+  FIN_MET.forEach(m => M.push({ id: 'f_' + m.id, grp: 'finance', ime: m.ime, pod: leto || 'ni podatkov', fmt: m.fmt, val: id => leto ? finMetrika(id, leto, m.id) : null }));
+  return M;
+}
+function lestvica(met) {
+  const list = data.agencije.map(a => ({ a, v: met.val(a.id) }));
+  const z = list.filter(x => x.v !== null && x.v !== undefined && !isNaN(x.v)).sort((x, y) => y.v - x.v || x.a.ime.localeCompare(y.a.ime, 'sl'));
+  z.forEach((x, i) => { x.rank = i > 0 && z[i - 1].v === x.v ? z[i - 1].rank : i + 1; });  // enake vrednosti delijo mesto
+  const brez = list.filter(x => !z.includes(x)).sort((x, y) => x.a.ime.localeCompare(y.a.ime, 'sl'));
+  return { z, brez };
+}
 function renderSkupno() {
-  const tD = tabela(kolaDoseg(), data.metrike.map(m => m.id));
-  const tP = tabela(kolaPosel(), POSEL_MET.map(m => m.id));
-  const tF = tabela(kolaFinance(), FIN_MET.map(m => m.id));
-  const stebri = [['doseg', tD], ['posel', tP], ['finance', tF]];
-  const aktivni = stebri.filter(([, t]) => t.some(r => r.maxTocke > 0));
-  const utezSum = aktivni.reduce((s, [k]) => s + (Number(data.uteziStebrov[k]) || 0), 0) || 1;
+  const M = metrikeLestvic(), L = {};
+  M.forEach(m => L[m.id] = lestvica(m));
+  const snap = zadnjiSnapshot(), leto = zadnjeLeto(), P = projektiAktivni();
 
-  ['doseg', 'posel', 'finance'].forEach(k => document.getElementById('utez-' + k).value = data.uteziStebrov[k]);
-
-  const rows = data.agencije.map(a => {
-    const r = { id: a.id, ime: a.ime, delezi: {}, indeks: 0, opomba: a.opomba, proj: stanjeProjektov(a.id) };
-    aktivni.forEach(([k, t]) => {
-      const max = Math.max(...t.map(x => x.tocke), 0);
-      const row = t.find(x => x.id === a.id);
-      const delez = max > 0 && row ? row.tocke / max : 0;
-      r.delezi[k] = { delez, tocke: row ? row.tocke : 0, igra: row && row.maxTocke > 0 };
-      r.indeks += delez * (Number(data.uteziStebrov[k]) || 0) / utezSum * 100;
-    });
-    return r;
-  }).sort((a, b) => b.indeks - a.indeks || a.ime.localeCompare(b.ime, 'sl'));
-
-  const banner = document.getElementById('skupno-banner');
-  const manjka = stebri.filter(([k]) => !aktivni.find(([kk]) => kk === k)).map(([k]) => k);
-  banner.innerHTML = aktivni.length === 0
-    ? `<div class="banner">Noben steber še nima odigranih kol. Doseg rabi dva meseca snapshotov, Posel vsaj dve agenciji v registru, Finance vsaj dve agenciji z letnimi podatki.</div>`
-    : manjka.length ? `<div class="banner blue">Brez podatkov: ${manjka.map(imeStebra).join(', ')}. Utež je razdeljena med ostale stebre.</div>` : '';
-
-  const mi = rows.find(r => r.id === MI), miPoz = rows.indexOf(mi) + 1;
-  const nProj = projektiAktivni().length;
   document.getElementById('skupno-stats').innerHTML = `
-    <div class="stat-box"><div class="big-stat">${aktivni.length ? miPoz + '.' : '-'}</div><div class="label">Mesto VVV</div></div>
-    <div class="stat-box"><div class="big-stat">${mi ? Math.round(mi.indeks) : 0}</div><div class="label">Indeks VVV</div></div>
-    <div class="stat-box"><div class="big-stat">${aktivni.length}/3</div><div class="label">Aktivni stebri</div></div>
-    <div class="stat-box"><div class="big-stat">${nProj}</div><div class="label">Projektov v registru</div></div>`;
+    <div class="stat-box"><div class="big-stat">${data.agencije.length}</div><div class="label">Agencij</div></div>
+    <div class="stat-box"><div class="big-stat">${M.length}</div><div class="label">Lestvic</div></div>
+    <div class="stat-box"><div class="big-stat">${P.length}</div><div class="label">Projektov v registru</div></div>
+    <div class="stat-box"><div class="big-stat" style="font-size:28px;padding-top:8px">${snap ? fmtMesec(snap) : '–'} / ${leto || '–'}</div><div class="label">Snapshot / finančno leto</div></div>`;
 
-  document.getElementById('skupno-body').innerHTML = rows.map((r, i) => {
-    const rank = !aktivni.length ? '' : i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
-    const cell = k => { const d = r.delezi[k]; if (!d) return `<td class="num muted">–</td>`; if (!d.igra) return `<td class="num muted" title="ni podatka">–</td>`; return `<td class="num">${Math.round(d.delez * 100)}<span class="muted small"> (${fmtTocke(d.tocke)})</span></td>`; };
-    const sestava = aktivni.map(([k]) => { const d = r.delezi[k]; const w = d ? d.delez * (Number(data.uteziStebrov[k]) || 0) / utezSum * 100 : 0; return `<div class="${k}" style="width:${w}%" title="${imeStebra(k)}"></div>`; }).join('');
-    return `<tr class="${r.id === MI ? 'mi' : ''}">
-      <td><span class="rank-badge ${rank}">${aktivni.length ? i + 1 : '–'}</span></td>
-      <td><div class="player-name">${esc(r.ime)}</div></td>
-      <td class="num">${r.proj.skupaj ? `${r.proj.skupaj} <span class="muted small">(${r.proj.aktualni})</span>` : '<span class="muted">–</span>'}</td>
-      ${cell('doseg')}${cell('posel')}${cell('finance')}
-      <td class="num" style="font-weight:600;font-size:16px">${Math.round(r.indeks)}</td>
-      <td style="min-width:140px"><div class="steber-bar">${sestava}</div></td>
-    </tr>`;
+  // matrika
+  const rows = data.agencije.map(a => {
+    const ranks = M.map(m => L[m.id].z.find(x => x.a.id === a.id)?.rank).filter(r => r !== undefined);
+    return { a, n: ranks.length, avg: ranks.length ? ranks.reduce((s, r) => s + r, 0) / ranks.length : Infinity };
+  }).sort((x, y) => x.avg - y.avg || y.n - x.n || x.a.ime.localeCompare(y.a.ime, 'sl'));
+  const grps = [['doseg', 'Doseg'], ['posel', 'Posel'], ['finance', 'Finance']];
+  const head1 = `<tr><th rowspan="2">#</th><th rowspan="2">Agencija</th>${grps.map(([g, n]) => `<th class="grp ${g}" colspan="${M.filter(m => m.grp === g).length}">${n}</th>`).join('')}<th rowspan="2" class="num" title="Povprečno mesto (št. metrik s podatkom)">Povp. mesto</th></tr>`;
+  const head2 = `<tr>${M.map(m => `<th class="num" title="${esc(m.pod)}">${esc(m.ime)}</th>`).join('')}</tr>`;
+  const body = rows.map((r, i) => {
+    const cells = M.map(m => {
+      const x = L[m.id].z.find(y => y.a.id === r.a.id);
+      if (!x) return `<td class="num muted" title="ni podatka">–</td>`;
+      return `<td class="num">${m.fmt(x.v)}<span class="r ${x.rank === 1 ? 'top' : ''}">#${x.rank}</span></td>`;
+    }).join('');
+    return `<tr class="${r.a.id === MI ? 'mi' : ''}"><td><span class="rank-badge">${r.n ? i + 1 : '–'}</span></td><td><div class="player-name">${esc(r.a.ime)}</div></td>${cells}<td class="num">${r.n ? `${r.avg.toFixed(1)} <span class="muted small">(${r.n})</span>` : '<span class="muted">–</span>'}</td></tr>`;
+  }).join('');
+  document.getElementById('matrika').innerHTML = `<thead>${head1}${head2}</thead><tbody>${body}</tbody>`;
+
+  // kartice po metrikah
+  document.getElementById('lestvice-grid').innerHTML = M.map(m => {
+    const { z, brez } = L[m.id];
+    const rowsHtml = z.map(x => `<div class="metric-row ${x.a.id === MI ? 'mi' : ''}"><span><span class="rank-badge ${x.rank === 1 ? 'gold' : x.rank === 2 ? 'silver' : x.rank === 3 ? 'bronze' : ''}" style="font-size:15px;width:24px">${x.rank}</span>${esc(kratkoIme(x.a.ime))}</span><span class="pts">${m.fmt(x.v)}</span></div>`).join('');
+    const brezHtml = brez.length ? `<div class="metric-row muted small" style="margin-top:6px"><span>ni podatka: ${brez.map(x => esc(kratkoIme(x.a.ime))).join(', ')}</span></div>` : '';
+    return `<div class="metric-card"><h4 style="color:var(--${m.grp === 'doseg' ? 'blue' : m.grp === 'posel' ? 'green' : 'amber'})">${esc(m.ime)}<span>${esc(m.pod)}</span></h4>${rowsHtml || '<div class="muted small">ni podatkov</div>'}${brezHtml}</div>`;
   }).join('');
 }
 function imeStebra(k) { return { doseg: 'Doseg', posel: 'Posel', finance: 'Finance' }[k]; }
