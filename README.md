@@ -141,7 +141,7 @@ Serpentinsko razporejanje po oceni:
 
 ## VVV Liga — konkurenčna lestvica (`konkurenca.html`)
 
-Ločena, samostojna stran v istem repozitoriju (isti dizajn, brez povezave z Ledina podatki). Nogometna lestvica za **VVV Digital** proti 12 konkurentom: TikTok SPACE, Vividista, Envision Collective, Tiktokerija, A.P. Marketing, Ziya Agency (ugasnila 2025), Createable, Katapult Media, Outpace (prej We Are TikTok / WATT), BuzzTik, 3A Media, XOD Agency.
+Ločena, samostojna stran v istem repozitoriju (isti dizajn, brez povezave z Ledina podatki). Nogometna lestvica za **VVV Digital** proti 13 konkurentom: TikTok SPACE, Vividista, Envision Collective, Tiktokerija, A.P. Marketing, Ziya Agency (ugasnila 2025), Createable, Katapult Media, Outpace (prej We Are TikTok / WATT), BuzzTik, 3A Media, XOD Agency, Primate (video produkcija, dodana 1. 10. 2026).
 
 **Trije stebri**, vsak lastna liga s točkovanjem 3/1/0 in dvoboji vsak proti vsakemu po metriki. Dvoboj se odigra le, če imata obe agenciji podatek (manjkajoč podatek ni poraz).
 
@@ -157,7 +157,7 @@ Ločena, samostojna stran v istem repozitoriju (isti dizajn, brez povezave z Led
 - **Shramba:** `localStorage` ključ `vvv_konkurenca_v1` (verzija 3, samodejna migracija iz v1/v2); izvoz/uvoz JSON.
 - **Deklarirano število strank** (npr. "100+" na LinkedInu) je pri agenciji zapisano informativno in ni v ligi, ker ga ni mogoče preveriti.
 - **Register VVV** vsebuje javne študije primerov, portfolio 2025 in interne posle iz CRM (označeni `javno: false`); filter "Samo javno vidni projekti" jih izključi za pošteno primerjavo.
-- **Začetni podatki (verzija 4, 22. 9. 2026)** so iz raziskave s primarnimi viri v `research/konkurenca-2026-09.json` (registri AJPES/companywall, strani agencij, Wayback, IG/TikTok/LinkedIn neposredno, Google Maps); `DEFAULT_DATA` v `konkurenca.html` generira `research/build-liga-data.py` — popravi JSON in ga ponovno zaženi, ne urejaj HTML ročno. Snapshot dosega `2026-09` je prvi neposredni odčitek za vseh 13 agencij; liga dosega začne teči z oktobrskim vnosom. Velikost strank v registru je presoja po prepoznavnosti znamke.
+- **Začetni podatki (verzija 5, 1. 10. 2026; v4 22. 9. 2026)** so iz raziskave s primarnimi viri v `research/konkurenca-2026-09.json` (registri AJPES/companywall, strani agencij, Wayback, IG/TikTok/LinkedIn neposredno, Google Maps); `DEFAULT_DATA` v `konkurenca.html` generira `research/build-liga-data.py` — popravi JSON in ga ponovno zaženi, ne urejaj HTML ročno. Snapshot dosega `2026-09` je prvi neposredni odčitek za vseh 13 agencij; liga dosega začne teči z oktobrskim vnosom. Velikost strank v registru je presoja po prepoznavnosti znamke.
 
 Struktura podatkov:
 ```js

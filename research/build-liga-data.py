@@ -51,11 +51,11 @@ def velikost(name):
 # ---------------------------------------------------------------- 1. agencije
 IME = {"vvv": "VVV Digital", "tiktokspace": "TikTok SPACE", "vividista": "Vividista", "envision": "Envision Collective",
        "tiktokerija": "Tiktokerija", "apmarketing": "A.P. Marketing", "ziya": "Ziya Agency", "createable": "Createable",
-       "katapult": "Katapult Media", "watt": "Outpace (prej We Are TikTok / WATT)", "buzztik": "BuzzTik", "3amedia": "3A Media", "xod": "XOD Agency"}
+       "katapult": "Katapult Media", "watt": "Outpace (prej We Are TikTok / WATT)", "buzztik": "BuzzTik", "3amedia": "3A Media", "xod": "XOD Agency", "primate": "Primate"}
 WEB = {"vvv": "vvv-digital.com", "tiktokspace": "tiktok-space.si", "vividista": "vividista.si", "envision": "envisioncollective.si",
        "tiktokerija": "tiktokerija.com", "apmarketing": "ap-marketing.si", "ziya": "ziya.agency (domena od 2025 v tujih rokah)",
        "createable": "createable.si", "katapult": "katapult.si/storitve/katapult-media", "watt": "outpaceagency.com",
-       "buzztik": "buzztik.com", "3amedia": "3a-media.com", "xod": "xodagency.com"}
+       "buzztik": "buzztik.com", "3amedia": "3a-media.com", "xod": "xodagency.com", "primate": "primate.si"}
 OPOMBA = {
     "vvv": "Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar. Ekipa 12 (LinkedIn).",
     "tiktokspace": "Butična SMM agencija (TikTok, IG, FB). Nosilec APPOLO PRO d.o.o. (reg. sedež Brežice, posl. Celovška 69C). Edina znana oseba Rimma Arshinova, zaposlitev po LinkedInu končana jun. 2026; IG/TT računa agencije ni.",
@@ -70,11 +70,12 @@ OPOMBA = {
     "buzztik": "Platforma mikro-ustvarjalcev + SMM (CLUEKIT d.o.o., Novo mesto, Irena Žagar). Finance = celo podjetje (3 produkti). TT 5,3k, a od jun. 2026 tiho.",
     "3amedia": "Lev Glumac s.p. (Domžale, vpis maj 2025), ekipa 3 (19 let). Brez agencijskih IG/TT računov in brez financ. Reference: Borut Pahor, Vitapur, AVP.",
     "xod": "Video in foto produkcija dogodkov (XOD Group d.o.o., vpis jul. 2025, prej skupina od 2023). Ekipa 14. 5 od 12 projektov podizvajalstvo za Herman & partnerji. Edina z živim LinkedInom.",
+    "primate": "Kreativna agencija za video in glasbeno produkcijo (TVC, VO lokalizacije, AR filtri, VFX, spoti; lastni studio od 2026). Od ~2015, d.o.o. od jul. 2024 (Miha in Tomaž Drnovšek). Produkcijska hiša agencij: SOF zlato 2023 (Cockta), 4× srebro, WEBSI 2022. Google 4,9 (11). Ni SMM agencija.",
 }
 STRANK = {"vvv": "100+ (LinkedIn, 4. obletnica, feb. 2026); 48 znamk (about-us)", "tiktokerija": "50+ znamk (tiktokerija.com), 30+ projektov (arhiv 2026)",
           "watt": "30+ aktivnih naročnikov, 15 FTE, 100k € MRR (LinkedIn oglas 2025)", "buzztik": "140+ znamk, 2.500+ ustvarjalcev (buzztik.com)",
           "createable": "80+ znamk, 50 mio ogledov (createable.si)", "envision": "35+ naročnikov, 10M+ ogledov (envisioncollective.si)",
-          "tiktokspace": "", "vividista": "", "apmarketing": "5 let+ ustvarjanja (ap-marketing.si)", "ziya": "", "katapult": "", "3amedia": "", "xod": ""}
+          "tiktokspace": "", "vividista": "", "apmarketing": "5 let+ ustvarjanja (ap-marketing.si)", "ziya": "", "katapult": "", "3amedia": "", "xod": "", "primate": "117 projektov v portfoliu (primate.si)"}
 
 EXCL = {("3amedia", "ig")}  # osebni profil direktorja (@leoglumac), ne agencije; v ligo dosega ne sodi
 
@@ -118,6 +119,8 @@ for k, a in A.items():
 # ---------------------------------------------------------------- 4. nagrade
 m_def = re.search(r"  nagrade: \[\n(.*?)\n  \],", html, re.S)
 old_nagrade = m_def.group(1)
+m6 = re.search(r"(.*?\{ id: 'n6'.*?\})", old_nagrade, re.S)  # ročno kurirane n1–n6; generirane (n7+) se zgradijo znova
+if m6: old_nagrade = m6.group(1)
 old_vir = set(re.findall(r"vir: '([^']+)'", old_nagrade))
 SKIP = ("LinkedIn zaposlitveni oglas", "Lastna navedba", "razpis za zaposlitev", "Pridružitev")
 nag_lines = []
@@ -127,7 +130,9 @@ for k, a in A.items():
         vir = (o.get("vir") or "").split(" (")[0].split(" ;")[0]
         if not vir or vir in old_vir or any(s in o["naziv"] for s in SKIP): continue
         old_vir.add(vir); n += 1
-        nag_lines.append(f"    {{ id: 'n{n}', agId: {js(k)}, datum: {js(o.get('datum') or DATUM)}, naziv: {js(o['naziv'][:220])}, tocke: 1, vir: {js(vir)} }}")
+        nz = o["naziv"].upper()
+        tocke = 3 if "ZLAT" in nz else 2 if "SREBR" in nz else 1  # nagrada: zlato 3, srebro 2, prijava/omemba 1
+        nag_lines.append(f"    {{ id: 'n{n}', agId: {js(k)}, datum: {js(o.get('datum') or DATUM)}, naziv: {js(o['naziv'][:220])}, tocke: {tocke}, vir: {js(vir)} }}")
 nagrade_js = old_nagrade + (",\n" + ",\n".join(nag_lines) if nag_lines else "")
 
 # ---------------------------------------------------------------- 5. projekti
@@ -136,6 +141,9 @@ seed_old = m_seed.group(1)
 i_tt = seed_old.index("  // --- Tiktokerija (javno)")
 vvv_block = seed_old[:i_tt]
 comp_block = seed_old[i_tt:]
+# idempotentnost: prejšnji generirani del odreži, da se ob ponovnem zagonu ne podvoji
+cut = comp_block.find("\n\n  // ===== Dopolnitev iz raziskave")
+if cut >= 0: comp_block = comp_block[:cut]
 
 def existing_names(block, ag=None):
     names = set()
@@ -206,7 +214,7 @@ def fmt_snapshot():
 
 metrike = re.search(r"  metrike: \[\n.*?\n  \],", html, re.S).group(0)
 new_default = f"""const DEFAULT_DATA = {{
-  verzija: 4,
+  verzija: 5,  // dvigni ob vsaki spremembi začetnih podatkov, da se localStorage uporabnikov migrira
   // Generirano s research/build-liga-data.py iz {VIR_R} ({DATUM}); ročno ne urejaj, popravi JSON in ponovno zaženi.
   agencije: [
 {fmt_agencije()}
@@ -237,10 +245,10 @@ end = html.index("DEFAULT_DATA.projekti = seedProjekti();")
 html = html[:start] + new_default + "\n" + html[end:]
 
 # ---------------------------------------------------------------- 7. migracija v4
-MIG = """  if (d.verzija < 4) {
-    // v4 (22. 9. 2026): raziskava s primarnimi viri; 13 agencij. Ročno vnesene projekte/nagrade (id z Date.now) ohrani,
-    // začetne (id p<št>/n<št>) zamenja; snapshot 2026-09 zamenja z neposrednim odčitkom; finance in agencije prevzame iz DEFAULT_DATA.
-    d.verzija = 4;
+MIG = """  if (d.verzija < DEFAULT_DATA.verzija) {
+    // v4 (22. 9. 2026): raziskava s primarnimi viri, 13 agencij; v5 (1. 10. 2026): + Primate. Ročno vnesene projekte/nagrade
+    // (id z Date.now) ohrani, začetne (id p<št>/n<št>) zamenja; snapshot 2026-09, finance in agencije prevzame iz DEFAULT_DATA.
+    d.verzija = DEFAULT_DATA.verzija;
     DEFAULT_DATA.agencije.forEach(def => { const i = d.agencije.findIndex(x => x.id === def.id); if (i >= 0) d.agencije[i] = klon(def); else d.agencije.push(klon(def)); });
     d.snapshoti['2026-09'] = klon(DEFAULT_DATA.snapshoti['2026-09']);
     d.projekti = klon(DEFAULT_DATA.projekti).concat((d.projekti || []).filter(p => !/^p\\d+$/.test(p.id)));
@@ -250,6 +258,7 @@ MIG = """  if (d.verzija < 4) {
 """
 anchor = "  d.projekti = d.projekti || []; d.nagrade = d.nagrade || []; d.finance = d.finance || {};"
 assert anchor in html
+html = re.sub(r"  if \(d\.verzija < (4|DEFAULT_DATA\.verzija)\) \{.*?\n  \}\n", "", html, count=1, flags=re.S)  # odstrani prejšnjo različico bloka
 html = html.replace(anchor, MIG + anchor, 1)
 
 HTML.write_text(html, encoding="utf-8", newline="\n")

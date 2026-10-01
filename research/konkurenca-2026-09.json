@@ -1,7 +1,7 @@
 {
   "datum": "2026-09-21",
   "dostop": "ok",
-  "opombe": "DOPOLNITEV 2026-09-22 (6. krog, TikTok prijavljen pogled prek Chroma uporabnika): mreže 5 profilov (48–72 videov), povp. ogledi zadnjih 10, stranke iz opisov; iskanje računov TikTok Space in 3A Media (ni). Polja 'zadnja_objava' in 'povp_ogledov_zadnjih_10' pri sledilci.tt/ig so kazalniki aktivnosti. || DOPOLNITEV 2026-09-22 (5. krog, Instagram prijavljen pogled prek Chroma uporabnika): do 20 odprtih objav na 8 profilih z datumi, opisi in oznakami; iskanje ročajev TikTok Space (ni) in 3A Media (@leoglumac). || DOPOLNITEV 2026-09-22 (4. krog, LinkedIn prijavljen pogled prek Chroma uporabnika): sledilci vseh 11 strani, povezani člani in imena, objave (le XOD 17 in Tiktokerija 1; ostalih 9 strani nima objav), profili nosilcev; Ziya = Tia Uršič (2023–2025). || DOPOLNITEV 2026-09-22 (3. krog, s prijavo uporabnika v Chromu): AJPES JOLP izkazi poslovnega izida 2022 (in 2021, kjer objavljeno) za VVV, Kaching, Katapult, BondBeyond, CLUEKIT; potrjeno, da A.P. Marketing s.p. nima porocil 2023-2024, 3A Media / Envision / Vividista s.p. pa nobenega. || DOPOLNITEV 2026-09-22 (2. krog): pregledanih zadnjih ~10-25 objav na TikToku (mreža + /embed + oEmbed, datum iz ID-ja videa) in Instagramu (mreža 12 objav brez prijave, do 3 odprte objave/profil) za vseh 11 agencij s profili; LinkedIn javne strani (Googlebot UA) – objave vidne le pri XOD (10) in Tiktokeriji (1); Wayback posnetki strani agencij za datume prve omembe strank (zapisani kot zgornje meje v polju 'datum' oz. 'wayback_prva'); osebni profili nosilcev (3A Media, A.P. Marketing); ekipe BuzzTik in 3A Media iz posrednih virov. Polje 'morda_stranke' = znamke iz objav brez jasnega dokaza naročniškega razmerja. Polje 'zadnja_omemba' = zadnji datum, ko je stranka omenjena v objavi/LinkedInu. OSTAJA NEDOSEGLJIVO: finance 2022 (AJPES CAPTCHA), finance 3A Media (s.p. 2025), LinkedIn objave 9 agencij (prijavna stena), IG/TT ročaji 3A Media in TikTok Space, TT XOD/A.P./Katapult (računov ni), LI sledilci Vividista, Ziya (mrtva). || DOPOLNITEV 2026-09-22: dodane tri agencije iz zipa VVV_Competitor_Research_Repo (BuzzTik = CLUEKIT d.o.o., 3A Media = Lev Glumac s.p., XOD = XOD Group d.o.o.) z istimi viri kot 21.9. (companywall/bizi/ebonitete, IG meta opis v brskalniku, TikTok JSON, LinkedIn javna stran, Google Maps, strani agencij, SOF/MM/Diggit/Websi/Effie). Baza 47 povezav konkurent-stranka iz zipa je v research/competitor-clients/ s fact-checkom v data/client_database_factcheck.csv in data/watt_outpace_factcheck.json. || DOPOLNITEV 2026-09-21 (lokalna seja, poln omrežni dostop; curl https://www.bizi.si/ = 200). NEPOSREDNO PREBRANO: noge, politike zasebnosti, reference in ekipe na straneh agencij (tiktok-space.si, vividista.si, envisioncollective.si, ap-marketing.si, katapult.si, vvv-digital.com vključno z WP REST API, createable.si prek JS svežnja, outpaceagency.com); registri companywall.si (finance 2023-2025, lastniki), bizi.si (samo registrski podatki, finance zaklenjene), ebonitete.si (zadnje leto), delno bilance.si in stop-neplacniki.si; Instagram (meta opis v brskalniku brez prijave), TikTok (followerCount v JSON strani), LinkedIn (javna stran podjetja), Google Maps/iskanje (ocene); katalog SOF 2019-2026, Marketing magazin, Diggit, Websi, Effie. IZ ARHIVA (web.archive.org), ker izvirnik ni več dosegljiv: tiktokerija.com (posnetek 2026-05-18), wearetiktok.agency /projekti in /ekipa (2025-01-24, 2024-06-14), slovenska ziya.agency (2025-05-20). OSTAJA IZ ISKALNIH IZVLEČKOV prve raziskave: LinkedIn/TikTok objave posameznikov s približnimi datumi, podcasti, nekatere omembe in števila ekip, kjer je ohranjena stara vrednost. NI DOSEGLJIVO: finance 2022 (companywall brezplačno kaže le zadnja 3 leta, AJPES zahteva prijavo), finance A.P. 2023-2024 (niso objavljene), datumi prve omembe strank razen pri VVV (tam so datumi objave WP zapisov, ne začetek sodelovanja), zadnjih ~20 objav na IG/TT/LI posamezne agencije ni bilo sistematično pregledanih (brez prijave so objave omejeno vidne), Diggit/Websi/Effie imajo le delne arhive. || PRVOTNA OPOMBA: Vsi podatki so iz izvlečkov spletnega iskanja (WebSearch); neposredni dostop do strani (curl/WebFetch) je bil blokiran s proxyjem (HTTP 403 na CONNECT). Številke sledilcev so iz indeksiranih meta opisov profilov in so lahko zastarele. Preverjeni gostitelji z 403: www.bizi.si, www.companywall.si, www.ajpes.si, vvv-digital.com, www.instagram.com, www.google.com. Playwright ni bil uporabljen, ker gre ves izhodni promet skozi isti proxy. Google ocene niso bile dosegljive za nobeno agencijo. Datumi objav na LinkedInu/TikToku so približki, izračunani iz ID-jev objav.",
+  "opombe": "DOPOLNITEV 2026-10-01: dodana 14. agencija primate (PRIMATE d.o.o., primate.si) z istimi viri in metodami. || DOPOLNITEV 2026-09-22 (6. krog, TikTok prijavljen pogled prek Chroma uporabnika): mreže 5 profilov (48–72 videov), povp. ogledi zadnjih 10, stranke iz opisov; iskanje računov TikTok Space in 3A Media (ni). Polja 'zadnja_objava' in 'povp_ogledov_zadnjih_10' pri sledilci.tt/ig so kazalniki aktivnosti. || DOPOLNITEV 2026-09-22 (5. krog, Instagram prijavljen pogled prek Chroma uporabnika): do 20 odprtih objav na 8 profilih z datumi, opisi in oznakami; iskanje ročajev TikTok Space (ni) in 3A Media (@leoglumac). || DOPOLNITEV 2026-09-22 (4. krog, LinkedIn prijavljen pogled prek Chroma uporabnika): sledilci vseh 11 strani, povezani člani in imena, objave (le XOD 17 in Tiktokerija 1; ostalih 9 strani nima objav), profili nosilcev; Ziya = Tia Uršič (2023–2025). || DOPOLNITEV 2026-09-22 (3. krog, s prijavo uporabnika v Chromu): AJPES JOLP izkazi poslovnega izida 2022 (in 2021, kjer objavljeno) za VVV, Kaching, Katapult, BondBeyond, CLUEKIT; potrjeno, da A.P. Marketing s.p. nima porocil 2023-2024, 3A Media / Envision / Vividista s.p. pa nobenega. || DOPOLNITEV 2026-09-22 (2. krog): pregledanih zadnjih ~10-25 objav na TikToku (mreža + /embed + oEmbed, datum iz ID-ja videa) in Instagramu (mreža 12 objav brez prijave, do 3 odprte objave/profil) za vseh 11 agencij s profili; LinkedIn javne strani (Googlebot UA) – objave vidne le pri XOD (10) in Tiktokeriji (1); Wayback posnetki strani agencij za datume prve omembe strank (zapisani kot zgornje meje v polju 'datum' oz. 'wayback_prva'); osebni profili nosilcev (3A Media, A.P. Marketing); ekipe BuzzTik in 3A Media iz posrednih virov. Polje 'morda_stranke' = znamke iz objav brez jasnega dokaza naročniškega razmerja. Polje 'zadnja_omemba' = zadnji datum, ko je stranka omenjena v objavi/LinkedInu. OSTAJA NEDOSEGLJIVO: finance 2022 (AJPES CAPTCHA), finance 3A Media (s.p. 2025), LinkedIn objave 9 agencij (prijavna stena), IG/TT ročaji 3A Media in TikTok Space, TT XOD/A.P./Katapult (računov ni), LI sledilci Vividista, Ziya (mrtva). || DOPOLNITEV 2026-09-22: dodane tri agencije iz zipa VVV_Competitor_Research_Repo (BuzzTik = CLUEKIT d.o.o., 3A Media = Lev Glumac s.p., XOD = XOD Group d.o.o.) z istimi viri kot 21.9. (companywall/bizi/ebonitete, IG meta opis v brskalniku, TikTok JSON, LinkedIn javna stran, Google Maps, strani agencij, SOF/MM/Diggit/Websi/Effie). Baza 47 povezav konkurent-stranka iz zipa je v research/competitor-clients/ s fact-checkom v data/client_database_factcheck.csv in data/watt_outpace_factcheck.json. || DOPOLNITEV 2026-09-21 (lokalna seja, poln omrežni dostop; curl https://www.bizi.si/ = 200). NEPOSREDNO PREBRANO: noge, politike zasebnosti, reference in ekipe na straneh agencij (tiktok-space.si, vividista.si, envisioncollective.si, ap-marketing.si, katapult.si, vvv-digital.com vključno z WP REST API, createable.si prek JS svežnja, outpaceagency.com); registri companywall.si (finance 2023-2025, lastniki), bizi.si (samo registrski podatki, finance zaklenjene), ebonitete.si (zadnje leto), delno bilance.si in stop-neplacniki.si; Instagram (meta opis v brskalniku brez prijave), TikTok (followerCount v JSON strani), LinkedIn (javna stran podjetja), Google Maps/iskanje (ocene); katalog SOF 2019-2026, Marketing magazin, Diggit, Websi, Effie. IZ ARHIVA (web.archive.org), ker izvirnik ni več dosegljiv: tiktokerija.com (posnetek 2026-05-18), wearetiktok.agency /projekti in /ekipa (2025-01-24, 2024-06-14), slovenska ziya.agency (2025-05-20). OSTAJA IZ ISKALNIH IZVLEČKOV prve raziskave: LinkedIn/TikTok objave posameznikov s približnimi datumi, podcasti, nekatere omembe in števila ekip, kjer je ohranjena stara vrednost. NI DOSEGLJIVO: finance 2022 (companywall brezplačno kaže le zadnja 3 leta, AJPES zahteva prijavo), finance A.P. 2023-2024 (niso objavljene), datumi prve omembe strank razen pri VVV (tam so datumi objave WP zapisov, ne začetek sodelovanja), zadnjih ~20 objav na IG/TT/LI posamezne agencije ni bilo sistematično pregledanih (brez prijave so objave omejeno vidne), Diggit/Websi/Effie imajo le delne arhive. || PRVOTNA OPOMBA: Vsi podatki so iz izvlečkov spletnega iskanja (WebSearch); neposredni dostop do strani (curl/WebFetch) je bil blokiran s proxyjem (HTTP 403 na CONNECT). Številke sledilcev so iz indeksiranih meta opisov profilov in so lahko zastarele. Preverjeni gostitelji z 403: www.bizi.si, www.companywall.si, www.ajpes.si, vvv-digital.com, www.instagram.com, www.google.com. Playwright ni bil uporabljen, ker gre ves izhodni promet skozi isti proxy. Google ocene niso bile dosegljive za nobeno agencijo. Datumi objav na LinkedInu/TikToku so približki, izračunani iz ID-jev objav.",
   "agencije": {
     "vvv": {
       "pravna": {
@@ -2995,6 +2995,605 @@
           "kanal": "ig"
         }
       ]
+    },
+    "primate": {
+      "pravna": {
+        "ime": "PRIMATE, video produkcija, d.o.o.",
+        "naslov": "Podsvetija 22, 1351 Brezovica pri Ljubljani",
+        "maticna": "9690891000",
+        "davcna": "42357861",
+        "ustanovitev": "2024-07-01",
+        "vodstvo": "Miha Drnovšek (direktor); Tomaž Drnovšek (prokurist); lastnika Tomaž Drnovšek 50 %, Miha Drnovšek 50 %",
+        "skd": "59.110 Produkcija filmov, videofilmov, televizijskih oddaj",
+        "vir": "https://primate.si/kontakt/ (PRIMATE d.o.o.) ; https://www.companywall.si/podjetje/primate-doo/MMCkHRwR ; https://www.bizi.si/PRIMATE-D-O-O/ ; https://www.ebonitete.si/primate-doo/"
+      },
+      "finance": {
+        "2024": {
+          "prihodki": 284585,
+          "dobicek": 24227,
+          "zaposleni": 1,
+          "vir": "https://www.companywall.si/podjetje/primate-doo/MMCkHRwR (companywall/AJPES; zaposleni 1,00)"
+        },
+        "2025": {
+          "prihodki": 316083,
+          "dobicek": 24752,
+          "zaposleni": 1,
+          "vir": "https://www.companywall.si/podjetje/primate-doo/MMCkHRwR (companywall/AJPES; zaposleni 1,01)"
+        }
+      },
+      "sledilci": {
+        "ig": {
+          "handle": "primate.si",
+          "n": 1625,
+          "datum": "2026-10-01",
+          "vir": "https://www.instagram.com/primate.si/",
+          "objav_skupaj": 123,
+          "zadnja_objava": "2026-09-17"
+        },
+        "tt": {
+          "handle": "primate.si",
+          "n": 25,
+          "datum": "2026-10-01",
+          "vir": "https://www.tiktok.com/@primate.si",
+          "opomba": "prazen račun, 0 videov"
+        },
+        "li": {
+          "handle": "company/primatesi",
+          "n": 224,
+          "datum": "2026-10-01",
+          "vir": "https://www.linkedin.com/company/primatesi/"
+        },
+        "fb": {
+          "handle": "Primate.si",
+          "n": 1194,
+          "datum": "2026-10-01",
+          "vir": "https://www.facebook.com/Primate.si"
+        },
+        "google": {
+          "n": 11,
+          "ocena": 4.9,
+          "datum": "2026-10-01",
+          "vir": "Google Maps 'PRIMATE - Kreativna video produkcija', Podsvetija 22, Brezovica"
+        }
+      },
+      "stranke": [
+        {
+          "ime": "Pleo",
+          "opis": "digital: digital (video za SaaS/fintech znamko Pleo) | digital + AI dubbing | digital + AI dubbing | digital + AI dubbing | digital | digital",
+          "datum": "2025-04-29",
+          "vir": "https://primate.si/portfolio/pleo-product-presentation/ ; https://primate.si/portfolio/pleo-employees-pov/ ; https://primate.si/portfolio/pleo-this-is-how/ ; https://primate.si/portfolio/pleo-before-after/ ; https://primate.si/portfolio/pleo-elevator-pitch/ ; https://primate.si/portfolio/pleo-office-conversations/"
+        },
+        {
+          "ime": "A1 Slovenija",
+          "opis": "digital: digital – Moj A1 | OcenjevA1nica – A1 Ultra (social video) | OcenjevA1nica – iPhone 14 | OcenjevA1nica | OcenjevA1nica | OcenjevA1nica | OcenjevA1nica | OcenjevA1nica – OnePlus 9; agencija: Drom.agency | OcenjevA1nica – iPhone 12; agencija: Drom.agency",
+          "datum": "2019-01-01",
+          "vir": "https://primate.si/portfolio/a1-moj-a1/ ; https://primate.si/portfolio/ocenjeva1nica-a1-ultra/ ; https://primate.si/portfolio/ocenjeva1nica-iphone-14/ ; https://primate.si/portfolio/ocenjeva1nica-realme-8/ ; https://primate.si/portfolio/ocenjeva1nica-xiaomi-redmi-note-11-pro/ ; https://primate.si/portfolio/ocenjeva1nica-samsung-galaxy-s22/ ; https://primate.si/portfolio/ocenjeva1nica-iphone-13/ ; https://primate.si/portfolio/ocenjeva1nica-oneplus-9/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf"
+        },
+        {
+          "ime": "Tola",
+          "opis": "digital: digital",
+          "datum": "2025-04-29",
+          "vir": "https://primate.si/portfolio/tola/"
+        },
+        {
+          "ime": "Forgebit (Carnilove)",
+          "opis": "voice-over lokalizacija: voice-over lokalizacija",
+          "datum": "2025-03-15",
+          "vir": "https://primate.si/portfolio/forgebit-carnilove/"
+        },
+        {
+          "ime": "NIL",
+          "opis": "korporativni video: korporativni video – Learning | korporativni storitveni videi | HR video",
+          "datum": "2022-07-04",
+          "vir": "https://primate.si/portfolio/nil-learning/ ; https://primate.si/portfolio/nil-service-videos/ ; https://primate.si/portfolio/nil-hr-video/"
+        },
+        {
+          "ime": "Gemini",
+          "opis": "korporativni video: korporativni video – We Know Logistics",
+          "datum": "2025-03-15",
+          "vir": "https://primate.si/portfolio/gemini-we-know-logistics/"
+        },
+        {
+          "ime": "Synthesia",
+          "opis": "digital: digital | digital | digital – spletni oglas/kratki video za AI-video platformo Synthesia (UK) | digital – spletni oglas/kratki video za AI-video platformo Synthesia (UK) | digital – spletni oglas/kratki video za AI-video platformo Synthesia (UK)",
+          "datum": "2023-09-21",
+          "vir": "https://primate.si/portfolio/synthesia-product-tour/ ; https://primate.si/portfolio/synthesia-academy/ ; https://primate.si/portfolio/synthesia-went-from-this/ ; https://primate.si/portfolio/synthesia-workplace-insights/ ; https://primate.si/portfolio/synthesia-unboxing-video/ ; https://primate.si/portfolio/synthesia-security-cam/ ; https://primate.si/portfolio/synthesia-printed-ppts/ ; https://primate.si/portfolio/synthesia-podcast/"
+        },
+        {
+          "ime": "Renault",
+          "opis": "voice-over lokalizacija: voice-over lokalizacija – R//tour | voice-over lokalizacija – Captur E-tech | voice-over lokalizacija | voice-over lokalizacija | portfolio stran /portfolio/renault-multisense/ na stari različici primate.si (Re",
+          "datum": "2017-08-18",
+          "vir": "https://primate.si/portfolio/renault-r-tour/ ; https://primate.si/portfolio/renault-captur/ ; https://primate.si/portfolio/renault-megane-conquest/ ; https://primate.si/portfolio/renault-clio-e-tech/ ; http://web.archive.org/web/20170818/http://www.primate.si/portfolio/renault-multisense/ (CDX) ; http://web.archive.org/web/20180315/http://www.primate.si/portfolio/renault-wings-life-2017/ (CDX) ; http://web.archive.org/web/20190716/http://www.primate.si/portfolio/renault-clio-r-s-trophy/ (CDX)"
+        },
+        {
+          "ime": "Telekom Slovenije",
+          "opis": "vfx: VFX – Odmrznimo Slovenijo",
+          "datum": "2025-03-15",
+          "vir": "https://primate.si/portfolio/telekom-odmrznimo-slovenijo-vfx/"
+        },
+        {
+          "ime": "Raiven, RTV Slovenija",
+          "opis": "digital; glasbeni videospot: Eurovision 2024 – Veronika (digital/glasbeni video)",
+          "datum": "2024-09-10",
+          "vir": "https://primate.si/portfolio/eurovision-2024-raiven-veronika/"
+        },
+        {
+          "ime": "Dacia",
+          "opis": "voice-over lokalizacija: voice-over lokalizacija | voice-over lokalizacija | voice-over lokalizacija",
+          "datum": "2023-09-30",
+          "vir": "https://primate.si/portfolio/dacia-ponudba-vozil/ ; https://primate.si/portfolio/dacia-duster-extreme/ ; https://primate.si/portfolio/dacia-sandero-stepway/"
+        },
+        {
+          "ime": "Merkur Slovenija",
+          "opis": "oglaševanje; vfx: TVC program zvestobe MERKUR Zate (oglaševanje + VFX)",
+          "datum": "2024-09-10",
+          "vir": "https://primate.si/portfolio/merkur-zate-tvc/"
+        },
+        {
+          "ime": "Podravka",
+          "opis": "ar-filter: Fini Mini Noodles TikTok Igra – Podravka; agencija: We Are TikTok Agency",
+          "datum": "2024-08-06",
+          "vir": "https://primate.si/portfolio/fini-mini-noodles-tiktok-igra-podravka/"
+        },
+        {
+          "ime": "M Soseska (TikTok Dance Akademija)",
+          "opis": "digital: dokumentarne oddaje žirantov (digital)",
+          "datum": "2024-04-22",
+          "vir": "https://primate.si/portfolio/m-soseska-tiktok-dance-akademija/"
+        },
+        {
+          "ime": "Tim",
+          "opis": "glasbeni videospot; vfx: glasbeni videospot + VFX – Zapalićemo našu ljubav",
+          "datum": "2024-02-26",
+          "vir": "https://primate.si/portfolio/tim-zapalicemo-nasu-ljubav/"
+        },
+        {
+          "ime": "Samsung Slovenija",
+          "opis": "ar-filter: Samsung S23 ULTRA Tiktok Filter; agencija: Drom Agency | Samsung ZFLIP 4 Tiktok Filter; agencija: Drom Agency | Samsung Slovenija IG/FB Filter; agencija: .raw",
+          "datum": "2022-09-28",
+          "vir": "https://primate.si/portfolio/samsung-s23-ultra-tiktok-filter/ ; https://primate.si/portfolio/samsung-zflip-4-tiktok-filter/ ; https://primate.si/portfolio/samsung-slovenija-ar-effect/"
+        },
+        {
+          "ime": "Iskraemeco",
+          "opis": "korporativni video: korporativni video",
+          "datum": "2023-09-30",
+          "vir": "https://primate.si/portfolio/iskraemeco-corporate-video/"
+        },
+        {
+          "ime": "Jameson",
+          "opis": "ar-filter: Jameson IG/FB Filter; agencija: Drom.agency",
+          "datum": "2023-09-30",
+          "vir": "https://primate.si/portfolio/jameson-ig-fb-filter/"
+        },
+        {
+          "ime": "Lidl Slovenija",
+          "opis": "ar-filter: Lidl x Harry Potter IG/FB Filter; agencija: Drom Agency | Lidlova Vitalica TVC; agencija: Drom.agency | Lidlova Vitalica 2021; agencija: Drom.agency | Lidl – Tokrat Zmoremo; agencija: Drom.agency | Lidl – Slavni po domače; agencija: Drom.agency",
+          "datum": "2019-01-01",
+          "vir": "https://primate.si/portfolio/lidl-x-harry-potter-ig-fb-filter/ ; https://primate.si/portfolio/lidlova-vitalica-tvc/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf ; https://primate.si/portfolio/lidlova-vitalica-2021/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf ; https://primate.si/portfolio/lidl-tokrat-zmoremo/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf"
+        },
+        {
+          "ime": "SPIRIT Slovenija (javna agencija); agencija POINT OUT",
+          "opis": "korporativni video: nacionalna kampanja I feel Slovenia. Green. Creative. Smart. – 12 krovnih + 40 korporativnih videov ambasadorjev (Alpina, Lumar, Planica, Marles, JUB, Ljubljanske mlekarne, Elan, A",
+          "datum": "2023-09-30",
+          "vir": "https://primate.si/portfolio/spirit-slovenija-zelena-ustvarjalna-pametna/ ; https://www.marketingmagazin.si/aktualno/ambasadorji-slovenskega-gospodarstva-na-televizijskih-zaslonih-po-vsem-svetu ; https://websi.si/news/znan-so-websi-prvaki/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf"
+        },
+        {
+          "ime": "Alina Sharovchenko",
+          "opis": "digital: digital – Živeti s Srcem",
+          "datum": "2023-09-30",
+          "vir": "https://primate.si/portfolio/alina-sharovchenko-ziveti-s-srcem/"
+        },
+        {
+          "ime": "MihaMih & Diinzo",
+          "opis": "glasbeni videospot; vfx: glasbeni videospot + VFX",
+          "datum": "2023-09-30",
+          "vir": "https://primate.si/portfolio/mihamih-diinzo-ne-do-bog/"
+        },
+        {
+          "ime": "Gaja",
+          "opis": "glasbeni videospot: glasbeni videospot – Sledi",
+          "datum": "2022-12-01",
+          "vir": "https://primate.si/portfolio/gaja-sledi/"
+        },
+        {
+          "ime": "MihaMih x Diinzo",
+          "opis": "glasbeni videospot: glasbeni videospot – TDR | glasbeni videospot – Keve Ti",
+          "datum": "2022-07-04",
+          "vir": "https://primate.si/portfolio/mihamih-x-diinzo-tdr/ ; https://primate.si/portfolio/mihamih-x-diinzo-keve-ti/"
+        },
+        {
+          "ime": "3FS d.o.o. (IryoMoshi)",
+          "opis": "korporativni video: korporativni video",
+          "datum": "2023-03-21",
+          "vir": "https://primate.si/portfolio/iryomoshi/"
+        },
+        {
+          "ime": "Nina Pušlar (agencija Luna/TBWA)",
+          "opis": "glasbeni videospot: glasbeni videospot – Prste stran; režija Žiga Radulj; agencija: Luna/TBWA",
+          "datum": "2022-09-28",
+          "vir": "https://primate.si/portfolio/nina-puslar-prste-stran/"
+        },
+        {
+          "ime": "Cockta (Atlantic Grupa) x Senidah",
+          "opis": "digital; glasbeni videospot: Jungle Session | glasbeni videospot Druga strana; režija & DOP Igor Zečević, producenta Miha Drno",
+          "datum": "2022-07-04",
+          "vir": "https://primate.si/portfolio/cockta-x-senidah-jungle-session/ ; https://primate.si/portfolio/cockta-x-senidah-druga-strana/ ; https://sof.si/katalog-del/E6007S23-cockta-blondie-druga-strana"
+        },
+        {
+          "ime": "Jamieson (Carso Pharm); agencija POINT OUT",
+          "opis": "digital; oglaševanje: oglas OMg – 30 s + 6 cutdownov; producentka Anja Vizjak, režija Miha Drnovšek & Matija Ocepek (pitch deck: leto 2022)",
+          "datum": "2022-07-04",
+          "vir": "https://primate.si/portfolio/jamieson-omg/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf"
+        },
+        {
+          "ime": "Butan plin",
+          "opis": "oglaševanje; voice-over lokalizacija: oglas + voice-over lokalizacija",
+          "datum": "2022-07-04",
+          "vir": "https://primate.si/portfolio/butan-plin/"
+        },
+        {
+          "ime": "Mič Styling",
+          "opis": "oglaševanje: YoungMičStyling – Zareži v rutino; agencija: Yin + Young",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/youngmicstyling-zarezi-v-rutino/ ; https://sof.si/katalog-del/K1015S19-zarezi-v-rutino ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf"
+        },
+        {
+          "ime": "VipMobile",
+          "opis": "oglaševanje; vfx: VipMobile – Nema da nema; agencija: Bruketa&Žinić&Grey",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/vipmobile-nema-da-nema/"
+        },
+        {
+          "ime": "Car Target Group",
+          "opis": "oglaševanje: Vehicle Rent – Control your time; agencija: Primate (lastna kreativa); casting Avdicija.com",
+          "datum": "2019-07-16",
+          "vir": "https://primate.si/portfolio/vehicle-rent/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf"
+        },
+        {
+          "ime": "Trille",
+          "opis": "glasbeni videospot: glasbeni videospot",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/trille-ludi-snovi/"
+        },
+        {
+          "ime": "Triestri",
+          "opis": "glasbeni videospot: glasbeni videospot",
+          "datum": "2018-03-15",
+          "vir": "https://primate.si/portfolio/triestri-udari/"
+        },
+        {
+          "ime": "Sheby",
+          "opis": "glasbeni videospot: glasbeni videospot | glasbeni videospot | glasbeni videospot",
+          "datum": "2018-03-15",
+          "vir": "https://primate.si/portfolio/sheby-se-prepoznas/ ; https://primate.si/portfolio/sheby-nikol-prej/ ; https://primate.si/portfolio/sheby-furanje-nikamor/"
+        },
+        {
+          "ime": "Senidah",
+          "opis": "glasbeni videospot: glasbeni videospot Slađana; režija Žiga Radulj | glasbeni videospot Belo; režija Žiga Radulj | glasbeni videospot Balkanka; režija Dylan Bénet & Žiga Radulj, DOP Kristijan Str",
+          "datum": "2019-07-16",
+          "vir": "https://primate.si/portfolio/senidah-sladana/ ; https://primate.si/portfolio/senidah-belo/ ; https://primate.si/portfolio/senidah-balkanka/"
+        },
+        {
+          "ime": "Renault Adria",
+          "opis": "digital/social: Renault – Formula Strasti; agencija: FABulatorij & Publicis",
+          "datum": "2017-08-18",
+          "vir": "https://primate.si/portfolio/renault-formula-strasti/"
+        },
+        {
+          "ime": "OrtoMG",
+          "opis": "korporativni video: OrtoMG",
+          "datum": "2022-09-26",
+          "vir": "https://primate.si/portfolio/ortomg/"
+        },
+        {
+          "ime": "Nestor",
+          "opis": "glasbeni videospot; vfx: glasbeni videospot Oči + VFX",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/nestor-oci/"
+        },
+        {
+          "ime": "Muff",
+          "opis": "glasbeni videospot: glasbeni videospot LV",
+          "datum": "2019-07-16",
+          "vir": "https://primate.si/portfolio/muff-lv/"
+        },
+        {
+          "ime": "Mastercard",
+          "opis": "digital: Mastercard – Chefov vajenec; agencija: Mayer McCann",
+          "datum": "2019-07-16",
+          "vir": "https://primate.si/portfolio/mastercard-chefov-vajenec/"
+        },
+        {
+          "ime": "Atlantic Grupa",
+          "opis": "digital: Jimmy Fantastic OOH; agencija: Drom.agency | Jimmy Fantastic IG/FB Filter; agencija: Drom Agency",
+          "datum": "2021-07-27",
+          "vir": "https://primate.si/portfolio/jimmy-fantastic-ooh/ ; https://primate.si/portfolio/jimmy-fantastic-ar-effect/"
+        },
+        {
+          "ime": "Jana",
+          "opis": "oglaševanje: Jana Vitamin; agencija: Saatchi&Saatchi Zagreb",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/jana-vitamin/ ; https://primate.si/wp-content/uploads/2023/06/PRIMATE_Agency_Pitch_deck.pdf"
+        },
+        {
+          "ime": "High5",
+          "opis": "glasbeni videospot; vfx: glasbeni videospot | glasbeni videospot | portfolio stran /portfolio/high5-mame/ na stari različici primate.si (High5 – Ma",
+          "datum": "2017-08-19",
+          "vir": "https://primate.si/portfolio/high5-mama-napokon-sam-uspio/ ; https://primate.si/portfolio/high5-dices-ti-s-tim/ ; http://web.archive.org/web/20170819/http://www.primate.si/portfolio/high5-mame/ (CDX)"
+        },
+        {
+          "ime": "Guapo Gang",
+          "opis": "glasbeni videospot: glasbeni videospot | glasbeni videospot",
+          "datum": "2019-07-16",
+          "vir": "https://primate.si/portfolio/guapo-gang-palim-dimno/ ; https://primate.si/portfolio/guapo-gang-cypher/"
+        },
+        {
+          "ime": "Gaja Prestor",
+          "opis": "glasbeni videospot: glasbeni videospot | glasbeni videospot",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/gaja-prestor-verjamem-vase/ ; https://primate.si/portfolio/gaja-prestor-najino-nebo/"
+        },
+        {
+          "ime": "Connect",
+          "opis": "glasbeni videospot: glasbeni videospot",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/connect-sportska-roba/"
+        },
+        {
+          "ime": "Bianca",
+          "opis": "glasbeni videospot: glasbeni videospot ¿Kaj Pol?",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/bianca-kaj-pol/"
+        },
+        {
+          "ime": "Atlas Erotika",
+          "opis": "glasbeni videospot; vfx: glasbeni videospot + VFX | glasbeni videospot | glasbeni videospot + VFX",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/atlas-erotika-lollipop/ ; https://primate.si/portfolio/atlas-erotika-frankfurt-panama/ ; https://primate.si/portfolio/atlas-erotika-200-300/"
+        },
+        {
+          "ime": "Argeta",
+          "opis": "digital: Argeta & Slo Ski; agencija: Luna TBWA",
+          "datum": "2021-05-12",
+          "vir": "https://primate.si/portfolio/argeta-slo-ski/"
+        },
+        {
+          "ime": "AMN",
+          "opis": "glasbeni videospot: glasbeni videospot | glasbeni videospot | glasbeni videospot",
+          "datum": "2018-03-27",
+          "vir": "https://primate.si/portfolio/amn-puko/ ; https://primate.si/portfolio/amn-hck/ ; https://primate.si/portfolio/amn-cke-po-ljubljani/"
+        },
+        {
+          "ime": "Jeruzalem Ormož",
+          "opis": "ar-filter: Jeruzalem Ormož IG/FB Filter; agencija: Drom Agency",
+          "datum": "2021-07-27",
+          "vir": "https://primate.si/portfolio/jeruzalem-ormoz-ar-effect/"
+        },
+        {
+          "ime": "Golden Drum (festival); agencija Luna/TBWA",
+          "opis": "oglaševanje: promocijski video; agencija: Luna/TBWA",
+          "datum": "2019-07-16",
+          "vir": "https://primate.si/portfolio/golden-drum/"
+        },
+        {
+          "ime": "Adria Airways",
+          "opis": "digital: Adria Airways – Čez komot ga ni; agencija: Drom.agency",
+          "datum": "2018-03-15",
+          "vir": "https://primate.si/portfolio/adria-airways-cez-komot-ga-ni/"
+        },
+        {
+          "ime": "AMN ft. Mili Khumara",
+          "opis": "glasbeni videospot; vfx: glasbeni videospot + VFX",
+          "datum": "2019-07-16",
+          "vir": "https://primate.si/portfolio/amn-afterica-ft-mili-khumara/"
+        },
+        {
+          "ime": "BMX (retuša)",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/bmx/ na stari različici primate.si (BMX (retuša)); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2017-08-18",
+          "vir": "http://web.archive.org/web/20170818/http://www.primate.si/portfolio/bmx/ (CDX)"
+        },
+        {
+          "ime": "Ta teden",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/ta-teden/ na stari različici primate.si (Ta teden); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2017-08-18",
+          "vir": "http://web.archive.org/web/20170818/http://www.primate.si/portfolio/ta-teden/ (CDX)"
+        },
+        {
+          "ime": "Peter Prevc / FIS skakalec 2016 (promo)",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/peter-prevc/ na stari različici primate.si (Peter Prevc / FIS skakalec 2016 (promo)); vsebina ni bila prebrana (Wayback sn",
+          "datum": "2017-08-18",
+          "vir": "http://web.archive.org/web/20170818/http://www.primate.si/portfolio/peter-prevc/ (CDX)"
+        },
+        {
+          "ime": "Hocoma",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hocoma/ na stari različici primate.si (Hocoma); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hocoma/ (CDX)"
+        },
+        {
+          "ime": "Suzy Baboo",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/suzy-baboo-nor-model/ na stari različici primate.si (Suzy Baboo – Nor model); vsebina ni bila prebrana (Wayback snapshoti ",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/suzy-baboo-nor-model/ (CDX)"
+        },
+        {
+          "ime": "Ena žlahtna storija",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/ena-zlahtna-storija/ na stari različici primate.si (Ena žlahtna storija); vsebina ni bila prebrana (Wayback snapshoti vrač",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/ena-zlahtna-storija/ (CDX)"
+        },
+        {
+          "ime": "Lidl",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/lidl-jogurteka/ na stari različici primate.si (Lidl – Jogurteka); vsebina ni bila prebrana (Wayback snapshoti vračajo 429) | portfolio stran /portfolio/lidl-paralympic-committee/ na stari različici primate",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/lidl-jogurteka/ (CDX) ; http://web.archive.org/web/20170819/http://www.primate.si/portfolio/lidl-paralympic-committee/ (CDX)"
+        },
+        {
+          "ime": "Hlvdni Kizo",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hlvdni-kizo-ima-manjacu/ na stari različici primate.si (Hlvdni Kizo – Ima manjaču); vsebina ni bila prebrana (Wayback snap",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hlvdni-kizo-ima-manjacu/ (CDX)"
+        },
+        {
+          "ime": "Hiša na travniku",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hisa-na-travniku/ na stari različici primate.si (Hiša na travniku); vsebina ni bila prebrana (Wayback snapshoti vračajo 42",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hisa-na-travniku/ (CDX)"
+        },
+        {
+          "ime": "Hustlin with basketball",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hustlin-with-basketball/ na stari različici primate.si (Hustlin with basketball); vsebina ni bila prebrana (Wayback snapsh",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hustlin-with-basketball/ (CDX)"
+        },
+        {
+          "ime": "Mystic Lake",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/mystic-lake/ na stari različici primate.si (Mystic Lake); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/mystic-lake/ (CDX)"
+        },
+        {
+          "ime": "Planeta singli",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/planeta-singli/ na stari različici primate.si (Planeta singli); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/planeta-singli/ (CDX)"
+        },
+        {
+          "ime": "Crknu televizor",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/crknu-televizor/ na stari različici primate.si (Crknu televizor); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/crknu-televizor/ (CDX)"
+        },
+        {
+          "ime": "Zuum",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/zuum-virtual-roulette/ na stari različici primate.si (Zuum – Virtual roulette); vsebina ni bila prebrana (Wayback snapshot",
+          "datum": "2017-08-19",
+          "vir": "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/zuum-virtual-roulette/ (CDX)"
+        },
+        {
+          "ime": "Dragi sosedje",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/dragi-sosedje/ na stari različici primate.si (Dragi sosedje); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2018-03-15",
+          "vir": "http://web.archive.org/web/20180315/http://www.primate.si/portfolio/dragi-sosedje/ (CDX)"
+        },
+        {
+          "ime": "Vipnet",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/vipnet-nema-da-nema/ na stari različici primate.si (Vipnet – Nema da nema); vsebina ni bila prebrana (Wayback snapshoti vr",
+          "datum": "2018-03-15",
+          "vir": "http://web.archive.org/web/20180315/http://www.primate.si/portfolio/vipnet-nema-da-nema/ (CDX)"
+        },
+        {
+          "ime": "Gorske sanje",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/gorske-sanje/ na stari različici primate.si (Gorske sanje); vsebina ni bila prebrana (Wayback snapshoti vračajo 429)",
+          "datum": "2019-07-16",
+          "vir": "http://web.archive.org/web/20190716/http://www.primate.si/portfolio/gorske-sanje/ (CDX)"
+        },
+        {
+          "ime": "Oneway",
+          "opis": "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/oneway-air-max-day/ na stari različici primate.si (Oneway – Air Max Day); vsebina ni bila prebrana (Wayback snapshoti vrač",
+          "datum": "2019-07-16",
+          "vir": "http://web.archive.org/web/20190716/http://www.primate.si/portfolio/oneway-air-max-day/ (CDX)"
+        },
+        {
+          "ime": "IKEA",
+          "opis": "logotip na domači strani (brez projektne strani)",
+          "datum": null,
+          "vir": "https://primate.si/"
+        },
+        {
+          "ime": "Mercator",
+          "opis": "logotip na domači strani (brez projektne strani)",
+          "datum": null,
+          "vir": "https://primate.si/"
+        },
+        {
+          "ime": "Qlub",
+          "opis": "logotip na domači strani (brez projektne strani)",
+          "datum": null,
+          "vir": "https://primate.si/"
+        },
+        {
+          "ime": "Sava",
+          "opis": "logotip na domači strani (brez projektne strani)",
+          "datum": null,
+          "vir": "https://primate.si/"
+        },
+        {
+          "ime": "SkyShowtime",
+          "opis": "logotip na domači strani (brez projektne strani)",
+          "datum": null,
+          "vir": "https://primate.si/"
+        },
+        {
+          "ime": "Zavarovalnica Sava (agencija Luna \\TBWA)",
+          "opis": "oglaševanje – SOF prijava, kjer je Primate produkcijska hiša: digital/družbeno dobro – »Klic osamljenosti«, Primate naveden med partnerji (produkcijska hiša); 2x srebrna nagrada SOF 2021 (K5.2, Z6.1)",
+          "datum": "2021-01-01",
+          "vir": "https://sof.si/katalog-del/K5.2006S21-klic-osamljenosti"
+        }
+      ],
+      "omembe": [
+        {
+          "naziv": "SOF 2019 (28. SOF) – SREBRNA NAGRADA, K1 Film: »Zareži v rutino« (Young Mič Styling / Yin + Young); Produkcijska hiša: Primate in Erik Margan",
+          "datum": "2019-01-01",
+          "vir": "https://sof.si/katalog-del/K1015S19-zarezi-v-rutino"
+        },
+        {
+          "naziv": "SOF 2019 – SREBRNA NAGRADA, K2 Tisk & publikacije: »Zareži v rutino – Andreja« (Yin + Young); Produkcijska hiša: Primate in Erik Margan",
+          "datum": "2019-01-01",
+          "vir": "https://sof.si/katalog-del/K2.1005S19-zarezi-v-rutino-andreja"
+        },
+        {
+          "naziv": "SOF 2019 – prijave brez nagrade: Zareži v rutino – Miha/Lara (K3), Jaša (K2); Lidlovih 300.000 (MEDIODROM, 3x); Digitalno dirkaško doživetje [reys] (MEDIODROM/A1, 3x); Dan, ko smo spremenili pravila (MEDIODROM/A1) – vse ",
+          "datum": "2019-01-01",
+          "vir": "https://sof.si/katalog-del/K3.1013S19-zarezi-v-rutino-miha"
+        },
+        {
+          "naziv": "SOF 2021 – 2x SREBRNA NAGRADA (K5.2 Posamezne digitalne rešitve; Z6.1 Oznamčeno družbeno dobro): »Klic osamljenosti« (Zavarovalnica Sava / Luna \\TBWA); »produkcijska hiša Primate« med partnerji; + prijava K7.3 brez nagra",
+          "datum": "2021-01-01",
+          "vir": "https://sof.si/katalog-del/K5.2006S21-klic-osamljenosti"
+        },
+        {
+          "naziv": "SOF 2021 – prijava brez nagrade: »S prijateljem je vse še boljše« (A1 Slovenija / DROM agency), produkcijska hiša Primate",
+          "datum": "2021-01-01",
+          "vir": "https://sof.si/katalog-del/Z5.1001S21-s-prijateljem-je-vse-se-boljse"
+        },
+        {
+          "naziv": "SOF 2023 – ZLATA NAGRADA, E6 Oznamčene vsebine: »Cockta Blondie – Druga strana« (Atlantic Grupa / DROM agency); Produkcijska hiša: Primate; režija Igor Zečević; partnerji Miha Drnovšek, Matija Ocepek, Črt Ceglar",
+          "datum": "2023-01-01",
+          "vir": "https://sof.si/katalog-del/E6007S23-cockta-blondie-druga-strana"
+        },
+        {
+          "naziv": "SOF 2023 – SREBRNA NAGRADA, O6 Avtorska glasba: »Cockta Blondie – Druga strana« (DROM agency); Produkcijska hiša: Primate",
+          "datum": "2023-01-01",
+          "vir": "https://sof.si/katalog-del/O6001S23-cockta-blondie-druga-strana"
+        },
+        {
+          "naziv": "SOF 2023 – prijava brez nagrade: »Podpiramo žensko moč« (Lidl Slovenija / DROM agency, Luna TBWA), produkcijska hiša Primate",
+          "datum": "2023-01-01",
+          "vir": "https://sof.si/katalog-del/V5.1005S23-podpiramo-zensko-moc"
+        },
+        {
+          "naziv": "WEBSI 2022 (Spletni prvaki) – 3. MESTO, kategorija Javne in nevladne organizacije (NVO-ji): »I feel Slovenia. Green. Creative. Smart. // Ambasadorji slovenskega gospodarstva« (SPIRIT Slovenija, POINT OUT d.o.o., PRIMATE)",
+          "datum": "2022-09-16",
+          "vir": "https://websi.si/news/znan-so-websi-prvaki/"
+        },
+        {
+          "naziv": "Marketing Magazin (ProMMocija): »Ambasadorji slovenskega gospodarstva na televizijskih zaslonih po vsem svetu« – SPIRIT + POINT OUT + produkcijska hiša PRIMATE; 52 videov, 27 objavljenih; CNN International; citat Mihe Dr",
+          "datum": "2022-02-11",
+          "vir": "https://www.marketingmagazin.si/aktualno/ambasadorji-slovenskega-gospodarstva-na-televizijskih-zaslonih-po-vsem-svetu"
+        },
+        {
+          "naziv": "Baza slovenskih filmov (bsf.si): Miha Drnovšek – pridruženi producent, serija »Poklicani« (2025, 8 epizod); asistent kamere »Ondine« (2017)",
+          "datum": "2025-01-01",
+          "vir": "https://bsf.si/sl/ime/miha-drnovsek/"
+        }
+      ],
+      "ekipa": {
+        "n": 6,
+        "vir": "krediti na projektnih straneh primate.si (jedro 5–6 oseb): Miha Drnovšek; Matija Ocepek; Žiga Radulj; Tilen Bačar; Nejc Miljak; Anja Vizjak; Filip Đurić; Nace; LinkedIn 2–10 zaposlenih, 2 prikazana; ebonitete 1 zaposlen (d.o.o. od 2024)"
+      },
+      "opombe": "DODANO 2026-10-01 na Jakovo željo. Kreativna agencija za video in glasbeno produkcijo (TVC, VO lokalizacije, AR filtri, VFX, glasbeni spoti, lastni studio PRIMATE Studios od 2026), ne SMM agencija – v ligi je primerljiva po financah, dosegu in nagradah, register pa šteje produkcijske projekte. Deluje od ~2015 (LinkedIn), do 2024 pod Lanser d.o.o. (lastna navedba v pitch decku), d.o.o. vpisan 2024-07-01 – finance 2024 so prvo leto d.o.o. Pravna oseba potrjena neposredno na primate.si/kontakt/ (PRIMATE d.o.o., Podsvetija 22, 1351 Brezovica pri Ljubljani; hello@primate.si; +386 31 327 828 Matija). Spletna stran nima politike zasebnosti ali pogojev (preverjeni /politika-zasebnosti/, /privacy-policy/, /pogoji-uporabe/, /piskotki/ -> 404) in nikjer ne navaja matične ali davčne številke. Registrski podatki so skladni v vseh treh registr || Sledilci: Datum odčitka 2026-10-01. PRIMATE je kreativna agencija za video in glasbeno produkcijo (title primate.si: 'Kreativna agencija za video in glasbeno produkcijo l PRIMATE'), 2–10 zaposlenih, od 2015, Ljubljana. Trenutni fokus komunikacije: gradnja lastnega studia 'PRIMATE Studios' (avg–sep 2026). Edin || Stranke: Vir strank: WP REST (117 portfolio objav, kategorije) + HTML vsake projektne strani (EKIPA/CREW bloki). Datum WP objave 2021-10-11 je datum migracije ~70 starih projektov, ne datum projekta – za te je merodajna prva pojavitev v Waybacku in datum nalaganja slik. Novejše projektne strani (Synthesia, Pleo, Renault/Dacia VO, NIL, Gemini, Tola, Telekom) imajo samo naslov + ime naročnika, brez opisa in brez ekipe. Glavni partnerski agenciji: DROM agency (Lidl, A1, Atlantic Grupa/Cockta/Jimmy Fantastic || Nagrade: SOF 2019 2× srebro, SOF 2021 2× srebro (kot partner), SOF 2023 zlato + srebro (Cockta Blondie), WEBSI 2022 3. mesto (SPIRIT) – vedno kot produkcijska hiša agencij (YMS, Luna TBWA, DROM, Point Out). Wayback: stran živa od 2016-10; stari projekti 2017–2019 (Renault, Peter Prevc, Lidl Jogurteka, Adria, Vipnet, Senidah, Mastercard)."
     }
   }
 }

@@ -456,7 +456,7 @@ const VELIKOST_IME = { micro: 'Micro', mini: 'Mini', mid: 'Mid', big: 'Big', '':
 // ZAČETNI PODATKI  (vir: spletno iskanje in interni viri VVV, 5. 9. 2026)
 // ============================================================
 const DEFAULT_DATA = {
-  verzija: 4,
+  verzija: 5,  // dvigni ob vsaki spremembi začetnih podatkov, da se localStorage uporabnikov migrira
   // Generirano s research/build-liga-data.py iz research/konkurenca-2026-09.json (2026-09-22); ročno ne urejaj, popravi JSON in ponovno zaženi.
   agencije: [
     { id: "vvv", ime: "VVV Digital", pravna: "VVV DIGITAL, agencija za marketing, d.o.o. (Ljubljana; ust. 2022-02-23)", opomba: "Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar. Ekipa 12 (LinkedIn).", ig: "vvv_digital", tt: "vvv_digital", li: "vvv-digital", web: "vvv-digital.com", strank: "100+ (LinkedIn, 4. obletnica, feb. 2026); 48 znamk (about-us)" },
@@ -471,7 +471,8 @@ const DEFAULT_DATA = {
     { id: "watt", ime: "Outpace (prej We Are TikTok / WATT)", pravna: "Kaching storitve, d.o.o. (Ljubljana; ust. 2017-10-18)", opomba: "Preimenovan v Outpace (performance/UGC oglasi za tuje trge, Kaching d.o.o.). Slovenske korpo stranke iz 2023–25 niso več potrjene. Prihodki 2025 (3,7 mio €) so večinoma pretočni oglasni proračuni; 2022 podjetje praktično neaktivno.", ig: "watt_agencija", tt: "outpace.agency", li: "outpace-growth-engine", web: "outpaceagency.com", strank: "30+ aktivnih naročnikov, 15 FTE, 100k € MRR (LinkedIn oglas 2025)" },
     { id: "buzztik", ime: "BuzzTik", pravna: "CLUEKIT, digitalni marketing, d.o.o. (Novo mesto; ust. 2022-03-10)", opomba: "Platforma mikro-ustvarjalcev + SMM (CLUEKIT d.o.o., Novo mesto, Irena Žagar). Finance = celo podjetje (3 produkti). TT 5,3k, a od jun. 2026 tiho.", ig: "buzztik_official", tt: "buzztik_slovenija", li: "buzztik-content-creator-management", web: "buzztik.com", strank: "140+ znamk, 2.500+ ustvarjalcev (buzztik.com)" },
     { id: "3amedia", ime: "3A Media", pravna: "3A MEDIA digitalni marketing, Lev Glumac s.p. (Domžale; ust. 2025-05-22)", opomba: "Lev Glumac s.p. (Domžale, vpis maj 2025), ekipa 3 (19 let). Brez agencijskih IG/TT računov in brez financ. Reference: Borut Pahor, Vitapur, AVP.", ig: "", tt: "", li: "3a-media", web: "3a-media.com", strank: "" },
-    { id: "xod", ime: "XOD Agency", pravna: "XOD Group, medijska produkcija in marketing, d.o.o. (Ljubljana; ust. 2025-07-01)", opomba: "Video in foto produkcija dogodkov (XOD Group d.o.o., vpis jul. 2025, prej skupina od 2023). Ekipa 14. 5 od 12 projektov podizvajalstvo za Herman & partnerji. Edina z živim LinkedInom.", ig: "xod.agency", tt: "", li: "xodagency", web: "xodagency.com", strank: "" }
+    { id: "xod", ime: "XOD Agency", pravna: "XOD Group, medijska produkcija in marketing, d.o.o. (Ljubljana; ust. 2025-07-01)", opomba: "Video in foto produkcija dogodkov (XOD Group d.o.o., vpis jul. 2025, prej skupina od 2023). Ekipa 14. 5 od 12 projektov podizvajalstvo za Herman & partnerji. Edina z živim LinkedInom.", ig: "xod.agency", tt: "", li: "xodagency", web: "xodagency.com", strank: "" },
+    { id: "primate", ime: "Primate", pravna: "PRIMATE, video produkcija, d.o.o. (Brezovica pri Ljubljani; ust. 2024-07-01)", opomba: "Kreativna agencija za video in glasbeno produkcijo (TVC, VO lokalizacije, AR filtri, VFX, spoti; lastni studio od 2026). Od ~2015, d.o.o. od jul. 2024 (Miha in Tomaž Drnovšek). Produkcijska hiša agencij: SOF zlato 2023 (Cockta), 4× srebro, WEBSI 2022. Google 4,9 (11). Ni SMM agencija.", ig: "primate.si", tt: "primate.si", li: "primatesi", web: "primate.si", strank: "117 projektov v portfoliu (primate.si)" }
   ],
   metrike: [
     { id: 'ig', ime: 'Instagram sledilci', utez: 1 },
@@ -495,7 +496,8 @@ const DEFAULT_DATA = {
         "watt": {"ig": 77, "tt": 6, "li": 611},
         "buzztik": {"ig": 641, "tt": 5297, "li": 144, "gr": 0},
         "3amedia": {"li": 10},
-        "xod": {"ig": 511, "li": 521, "gr": 2}
+        "xod": {"ig": 511, "li": 521, "gr": 2},
+        "primate": {"ig": 1625, "tt": 25, "li": 224, "gr": 11}
       }
     }
   },
@@ -527,7 +529,18 @@ const DEFAULT_DATA = {
     { id: 'n24', agId: "xod", datum: "2026-01-01", naziv: "SOF 2026 katalog del: 'Direkt Drive-In', šifra MK020S26, agencija XOD, skupina MK, avtorji Andraž Dimc, Marko Pleterski (prijavljeno delo; nagrada/ožji izbor ni označen)", tocke: 1, vir: "https://sof.si/katalog-del/MK020S26-direkt-drive-in" },
     { id: 'n25', agId: "xod", datum: "2026-09-01", naziv: "MUVIT 6x60: film 'Rad bi ti povedal' uvrščen med 'Top 12', na voljo tudi na VOYO (LinkedIn objava ~3 tedne pred 2026-09-22)", tocke: 1, vir: "https://www.linkedin.com/company/xodagency" },
     { id: 'n26', agId: "xod", datum: "2026-01-27", naziv: "Novica: XOD Agency se je pridružila GZS", tocke: 1, vir: "https://www.xodagency.com/news/xod-agency-joins-gzs" },
-    { id: 'n27', agId: "xod", datum: "2026-01-04", naziv: "Novica: XOD Agency se je pridružila SBC Mladi", tocke: 1, vir: "https://www.xodagency.com/news/xod-agency-joins-sbc-mladi" }
+    { id: 'n27', agId: "xod", datum: "2026-01-04", naziv: "Novica: XOD Agency se je pridružila SBC Mladi", tocke: 1, vir: "https://www.xodagency.com/news/xod-agency-joins-sbc-mladi" },
+    { id: 'n28', agId: "primate", datum: "2019-01-01", naziv: "SOF 2019 (28. SOF) – SREBRNA NAGRADA, K1 Film: »Zareži v rutino« (Young Mič Styling / Yin + Young); Produkcijska hiša: Primate in Erik Margan", tocke: 2, vir: "https://sof.si/katalog-del/K1015S19-zarezi-v-rutino" },
+    { id: 'n29', agId: "primate", datum: "2019-01-01", naziv: "SOF 2019 – SREBRNA NAGRADA, K2 Tisk & publikacije: »Zareži v rutino – Andreja« (Yin + Young); Produkcijska hiša: Primate in Erik Margan", tocke: 2, vir: "https://sof.si/katalog-del/K2.1005S19-zarezi-v-rutino-andreja" },
+    { id: 'n30', agId: "primate", datum: "2019-01-01", naziv: "SOF 2019 – prijave brez nagrade: Zareži v rutino – Miha/Lara (K3), Jaša (K2); Lidlovih 300.000 (MEDIODROM, 3x); Digitalno dirkaško doživetje [reys] (MEDIODROM/A1, 3x); Dan, ko smo spremenili pravila (MEDIODROM/A1) – vse ", tocke: 1, vir: "https://sof.si/katalog-del/K3.1013S19-zarezi-v-rutino-miha" },
+    { id: 'n31', agId: "primate", datum: "2021-01-01", naziv: "SOF 2021 – 2x SREBRNA NAGRADA (K5.2 Posamezne digitalne rešitve; Z6.1 Oznamčeno družbeno dobro): »Klic osamljenosti« (Zavarovalnica Sava / Luna \\TBWA); »produkcijska hiša Primate« med partnerji; + prijava K7.3 brez nagra", tocke: 2, vir: "https://sof.si/katalog-del/K5.2006S21-klic-osamljenosti" },
+    { id: 'n32', agId: "primate", datum: "2021-01-01", naziv: "SOF 2021 – prijava brez nagrade: »S prijateljem je vse še boljše« (A1 Slovenija / DROM agency), produkcijska hiša Primate", tocke: 1, vir: "https://sof.si/katalog-del/Z5.1001S21-s-prijateljem-je-vse-se-boljse" },
+    { id: 'n33', agId: "primate", datum: "2023-01-01", naziv: "SOF 2023 – ZLATA NAGRADA, E6 Oznamčene vsebine: »Cockta Blondie – Druga strana« (Atlantic Grupa / DROM agency); Produkcijska hiša: Primate; režija Igor Zečević; partnerji Miha Drnovšek, Matija Ocepek, Črt Ceglar", tocke: 3, vir: "https://sof.si/katalog-del/E6007S23-cockta-blondie-druga-strana" },
+    { id: 'n34', agId: "primate", datum: "2023-01-01", naziv: "SOF 2023 – SREBRNA NAGRADA, O6 Avtorska glasba: »Cockta Blondie – Druga strana« (DROM agency); Produkcijska hiša: Primate", tocke: 2, vir: "https://sof.si/katalog-del/O6001S23-cockta-blondie-druga-strana" },
+    { id: 'n35', agId: "primate", datum: "2023-01-01", naziv: "SOF 2023 – prijava brez nagrade: »Podpiramo žensko moč« (Lidl Slovenija / DROM agency, Luna TBWA), produkcijska hiša Primate", tocke: 1, vir: "https://sof.si/katalog-del/V5.1005S23-podpiramo-zensko-moc" },
+    { id: 'n36', agId: "primate", datum: "2022-09-16", naziv: "WEBSI 2022 (Spletni prvaki) – 3. MESTO, kategorija Javne in nevladne organizacije (NVO-ji): »I feel Slovenia. Green. Creative. Smart. // Ambasadorji slovenskega gospodarstva« (SPIRIT Slovenija, POINT OUT d.o.o., PRIMATE)", tocke: 1, vir: "https://websi.si/news/znan-so-websi-prvaki/" },
+    { id: 'n37', agId: "primate", datum: "2022-02-11", naziv: "Marketing Magazin (ProMMocija): »Ambasadorji slovenskega gospodarstva na televizijskih zaslonih po vsem svetu« – SPIRIT + POINT OUT + produkcijska hiša PRIMATE; 52 videov, 27 objavljenih; CNN International; citat Mihe Dr", tocke: 1, vir: "https://www.marketingmagazin.si/aktualno/ambasadorji-slovenskega-gospodarstva-na-televizijskih-zaslonih-po-vsem-svetu" },
+    { id: 'n38', agId: "primate", datum: "2025-01-01", naziv: "Baza slovenskih filmov (bsf.si): Miha Drnovšek – pridruženi producent, serija »Poklicani« (2025, 8 epizod); asistent kamere »Ondine« (2017)", tocke: 1, vir: "https://bsf.si/sl/ime/miha-drnovsek/" }
   ],
   finance: {
     "vvv": {
@@ -577,6 +590,10 @@ const DEFAULT_DATA = {
     },
     "xod": {
       2025: { prihodki: 42866, dobicek: 10580, zaposleni: 0, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "primate": {
+      2024: { prihodki: 284585, dobicek: 24227, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 316083, dobicek: 24752, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
     }
   },
   uteziStebrov: { doseg: 20, posel: 45, finance: 35 },
@@ -863,6 +880,86 @@ function seedProjekti() {
   add("xod", "SKOJ – Slovenska konferenca za odnose z javnostmi", "2026-06-19", { v: "micro", opis: "IG objava (prijavljen pogled): 'kot partnerji dogodka, kjer smo poskrbeli za fotografiranje' [zadnja omemba 2026-06-19]", vir: "https://www.instagram.com/p/DZxFpBqjZrV/" });
   add("xod", "Fejmiči podcast", "2026-09-14", { v: "micro", opis: "IG objava (prijavljen pogled): 'Z @zanpapi snemamo novo serijo videov za @fejmici.podcast' (2026-04-23), priprava seta (2026-09-14) [zadnja omemba 2026-09-14]", vir: "https://www.instagram.com/reel/DdRdlrZtCuM/" });
   add("xod", "Kdo je Oskar? / projekt 'Kdo, če ne mi?'", "2026-02-16", { v: "micro", opis: "IG objava (prijavljen pogled): 'Za projekt Kdo, če ne mi? smo posneli podcast serijo z 12 epizodami' + highlight 'Oskar' [zadnja omemba 2026-02-16]", vir: "https://www.instagram.com/reel/DU1CRNIDU3m/" });
+  // --- Primate (research/konkurenca-2026-09.json, 2026-09-22)
+  add("primate", "Pleo", "2025-04-29", { v: "micro", opis: "digital: digital (video za SaaS/fintech znamko Pleo) | digital + AI dubbing | digital + AI dubbing | digital + AI dubbing | digital | digital", vir: "https://primate.si/portfolio/pleo-product-presentation/" });
+  add("primate", "A1 Slovenija", "2019-01-01", { v: "mid", opis: "digital: digital – Moj A1 | OcenjevA1nica – A1 Ultra (social video) | OcenjevA1nica – iPhone 14 | OcenjevA1nica | OcenjevA1nica | OcenjevA1nica | OcenjevA1nica", vir: "https://primate.si/portfolio/a1-moj-a1/" });
+  add("primate", "Tola", "2025-04-29", { v: "micro", opis: "digital: digital", vir: "https://primate.si/portfolio/tola/" });
+  add("primate", "Forgebit (Carnilove)", "2025-03-15", { v: "micro", opis: "voice-over lokalizacija: voice-over lokalizacija", vir: "https://primate.si/portfolio/forgebit-carnilove/" });
+  add("primate", "NIL", "2022-07-04", { v: "micro", opis: "korporativni video: korporativni video – Learning | korporativni storitveni videi | HR video", vir: "https://primate.si/portfolio/nil-learning/" });
+  add("primate", "Gemini", "2025-03-15", { v: "micro", opis: "korporativni video: korporativni video – We Know Logistics", vir: "https://primate.si/portfolio/gemini-we-know-logistics/" });
+  add("primate", "Synthesia", "2023-09-21", { v: "micro", opis: "digital: digital | digital | digital – spletni oglas/kratki video za AI-video platformo Synthesia (UK) | digital – spletni oglas/kratki video za AI-video platfo", vir: "https://primate.si/portfolio/synthesia-product-tour/" });
+  add("primate", "Renault", "2017-08-18", { v: "micro", opis: "voice-over lokalizacija: voice-over lokalizacija – R//tour | voice-over lokalizacija – Captur E-tech | voice-over lokalizacija | voice-over lokalizacija | portf", vir: "https://primate.si/portfolio/renault-r-tour/" });
+  add("primate", "Telekom Slovenije", "2025-03-15", { v: "big", z: true, opis: "vfx: VFX – Odmrznimo Slovenijo", vir: "https://primate.si/portfolio/telekom-odmrznimo-slovenijo-vfx/" });
+  add("primate", "Raiven, RTV Slovenija", "2024-09-10", { v: "micro", opis: "digital; glasbeni videospot: Eurovision 2024 – Veronika (digital/glasbeni video)", vir: "https://primate.si/portfolio/eurovision-2024-raiven-veronika/" });
+  add("primate", "Dacia", "2023-09-30", { v: "micro", opis: "voice-over lokalizacija: voice-over lokalizacija | voice-over lokalizacija | voice-over lokalizacija", vir: "https://primate.si/portfolio/dacia-ponudba-vozil/" });
+  add("primate", "Merkur Slovenija", "2024-09-10", { v: "big", z: true, opis: "oglaševanje; vfx: TVC program zvestobe MERKUR Zate (oglaševanje + VFX)", vir: "https://primate.si/portfolio/merkur-zate-tvc/" });
+  add("primate", "Podravka", "2024-08-06", { v: "big", z: true, opis: "ar-filter: Fini Mini Noodles TikTok Igra – Podravka; agencija: We Are TikTok Agency", vir: "https://primate.si/portfolio/fini-mini-noodles-tiktok-igra-podravka/" });
+  add("primate", "M Soseska (TikTok Dance Akademija)", "2024-04-22", { v: "micro", opis: "digital: dokumentarne oddaje žirantov (digital)", vir: "https://primate.si/portfolio/m-soseska-tiktok-dance-akademija/" });
+  add("primate", "Tim", "2024-02-26", { v: "micro", opis: "glasbeni videospot; vfx: glasbeni videospot + VFX – Zapalićemo našu ljubav", vir: "https://primate.si/portfolio/tim-zapalicemo-nasu-ljubav/" });
+  add("primate", "Samsung Slovenija", "2022-09-28", { v: "big", z: true, opis: "ar-filter: Samsung S23 ULTRA Tiktok Filter; agencija: Drom Agency | Samsung ZFLIP 4 Tiktok Filter; agencija: Drom Agency | Samsung Slovenija IG/FB Filter; agenc", vir: "https://primate.si/portfolio/samsung-s23-ultra-tiktok-filter/" });
+  add("primate", "Iskraemeco", "2023-09-30", { v: "micro", opis: "korporativni video: korporativni video", vir: "https://primate.si/portfolio/iskraemeco-corporate-video/" });
+  add("primate", "Jameson", "2023-09-30", { v: "micro", opis: "ar-filter: Jameson IG/FB Filter; agencija: Drom.agency", vir: "https://primate.si/portfolio/jameson-ig-fb-filter/" });
+  add("primate", "Lidl Slovenija", "2019-01-01", { v: "big", z: true, opis: "ar-filter: Lidl x Harry Potter IG/FB Filter; agencija: Drom Agency | Lidlova Vitalica TVC; agencija: Drom.agency | Lidlova Vitalica 2021; agencija: Drom.agency", vir: "https://primate.si/portfolio/lidl-x-harry-potter-ig-fb-filter/" });
+  add("primate", "SPIRIT Slovenija (javna agencija); agencija POINT OUT", "2023-09-30", { v: "micro", opis: "korporativni video: nacionalna kampanja I feel Slovenia. Green. Creative. Smart. – 12 krovnih + 40 korporativnih videov ambasadorjev (Alpina, Lumar, Planica, Ma", vir: "https://primate.si/portfolio/spirit-slovenija-zelena-ustvarjalna-pametna/" });
+  add("primate", "Alina Sharovchenko", "2023-09-30", { v: "micro", opis: "digital: digital – Živeti s Srcem", vir: "https://primate.si/portfolio/alina-sharovchenko-ziveti-s-srcem/" });
+  add("primate", "MihaMih & Diinzo", "2023-09-30", { v: "micro", opis: "glasbeni videospot; vfx: glasbeni videospot + VFX", vir: "https://primate.si/portfolio/mihamih-diinzo-ne-do-bog/" });
+  add("primate", "Gaja", "2022-12-01", { v: "micro", opis: "glasbeni videospot: glasbeni videospot – Sledi", vir: "https://primate.si/portfolio/gaja-sledi/" });
+  add("primate", "MihaMih x Diinzo", "2022-07-04", { v: "micro", opis: "glasbeni videospot: glasbeni videospot – TDR | glasbeni videospot – Keve Ti", vir: "https://primate.si/portfolio/mihamih-x-diinzo-tdr/" });
+  add("primate", "3FS d.o.o. (IryoMoshi)", "2023-03-21", { v: "micro", opis: "korporativni video: korporativni video", vir: "https://primate.si/portfolio/iryomoshi/" });
+  add("primate", "Nina Pušlar (agencija Luna/TBWA)", "2022-09-28", { v: "micro", opis: "glasbeni videospot: glasbeni videospot – Prste stran; režija Žiga Radulj; agencija: Luna/TBWA", vir: "https://primate.si/portfolio/nina-puslar-prste-stran/" });
+  add("primate", "Cockta (Atlantic Grupa) x Senidah", "2022-07-04", { v: "micro", opis: "digital; glasbeni videospot: Jungle Session | glasbeni videospot Druga strana; režija & DOP Igor Zečević, producenta Miha Drno", vir: "https://primate.si/portfolio/cockta-x-senidah-jungle-session/" });
+  add("primate", "Jamieson (Carso Pharm); agencija POINT OUT", "2022-07-04", { v: "micro", opis: "digital; oglaševanje: oglas OMg – 30 s + 6 cutdownov; producentka Anja Vizjak, režija Miha Drnovšek & Matija Ocepek (pitch deck: leto 2022)", vir: "https://primate.si/portfolio/jamieson-omg/" });
+  add("primate", "Butan plin", "2022-07-04", { v: "micro", opis: "oglaševanje; voice-over lokalizacija: oglas + voice-over lokalizacija", vir: "https://primate.si/portfolio/butan-plin/" });
+  add("primate", "Mič Styling", "2021-05-12", { v: "micro", opis: "oglaševanje: YoungMičStyling – Zareži v rutino; agencija: Yin + Young", vir: "https://primate.si/portfolio/youngmicstyling-zarezi-v-rutino/" });
+  add("primate", "VipMobile", "2021-05-12", { v: "micro", opis: "oglaševanje; vfx: VipMobile – Nema da nema; agencija: Bruketa&Žinić&Grey", vir: "https://primate.si/portfolio/vipmobile-nema-da-nema/" });
+  add("primate", "Car Target Group", "2019-07-16", { v: "micro", opis: "oglaševanje: Vehicle Rent – Control your time; agencija: Primate (lastna kreativa); casting Avdicija.com", vir: "https://primate.si/portfolio/vehicle-rent/" });
+  add("primate", "Trille", "2021-05-12", { v: "micro", opis: "glasbeni videospot: glasbeni videospot", vir: "https://primate.si/portfolio/trille-ludi-snovi/" });
+  add("primate", "Triestri", "2018-03-15", { v: "micro", opis: "glasbeni videospot: glasbeni videospot", vir: "https://primate.si/portfolio/triestri-udari/" });
+  add("primate", "Sheby", "2018-03-15", { v: "micro", opis: "glasbeni videospot: glasbeni videospot | glasbeni videospot | glasbeni videospot", vir: "https://primate.si/portfolio/sheby-se-prepoznas/" });
+  add("primate", "Senidah", "2019-07-16", { v: "micro", opis: "glasbeni videospot: glasbeni videospot Slađana; režija Žiga Radulj | glasbeni videospot Belo; režija Žiga Radulj | glasbeni videospot Balkanka; režija Dylan Bén", vir: "https://primate.si/portfolio/senidah-sladana/" });
+  add("primate", "Renault Adria", "2017-08-18", { v: "big", z: true, opis: "digital/social: Renault – Formula Strasti; agencija: FABulatorij & Publicis", vir: "https://primate.si/portfolio/renault-formula-strasti/" });
+  add("primate", "OrtoMG", "2022-09-26", { v: "micro", opis: "korporativni video: OrtoMG", vir: "https://primate.si/portfolio/ortomg/" });
+  add("primate", "Nestor", "2021-05-12", { v: "mid", opis: "glasbeni videospot; vfx: glasbeni videospot Oči + VFX", vir: "https://primate.si/portfolio/nestor-oci/" });
+  add("primate", "Muff", "2019-07-16", { v: "micro", opis: "glasbeni videospot: glasbeni videospot LV", vir: "https://primate.si/portfolio/muff-lv/" });
+  add("primate", "Mastercard", "2019-07-16", { v: "micro", opis: "digital: Mastercard – Chefov vajenec; agencija: Mayer McCann", vir: "https://primate.si/portfolio/mastercard-chefov-vajenec/" });
+  add("primate", "Atlantic Grupa", "2021-07-27", { v: "micro", opis: "digital: Jimmy Fantastic OOH; agencija: Drom.agency | Jimmy Fantastic IG/FB Filter; agencija: Drom Agency", vir: "https://primate.si/portfolio/jimmy-fantastic-ooh/" });
+  add("primate", "Jana", "2021-05-12", { v: "micro", opis: "oglaševanje: Jana Vitamin; agencija: Saatchi&Saatchi Zagreb", vir: "https://primate.si/portfolio/jana-vitamin/" });
+  add("primate", "High5", "2017-08-19", { v: "micro", opis: "glasbeni videospot; vfx: glasbeni videospot | glasbeni videospot | portfolio stran /portfolio/high5-mame/ na stari različici primate.si (High5 – Ma", vir: "https://primate.si/portfolio/high5-mama-napokon-sam-uspio/" });
+  add("primate", "Guapo Gang", "2019-07-16", { v: "micro", opis: "glasbeni videospot: glasbeni videospot | glasbeni videospot", vir: "https://primate.si/portfolio/guapo-gang-palim-dimno/" });
+  add("primate", "Gaja Prestor", "2021-05-12", { v: "micro", opis: "glasbeni videospot: glasbeni videospot | glasbeni videospot", vir: "https://primate.si/portfolio/gaja-prestor-verjamem-vase/" });
+  add("primate", "Connect", "2021-05-12", { v: "micro", opis: "glasbeni videospot: glasbeni videospot", vir: "https://primate.si/portfolio/connect-sportska-roba/" });
+  add("primate", "Bianca", "2021-05-12", { v: "micro", opis: "glasbeni videospot: glasbeni videospot ¿Kaj Pol?", vir: "https://primate.si/portfolio/bianca-kaj-pol/" });
+  add("primate", "Atlas Erotika", "2021-05-12", { v: "micro", opis: "glasbeni videospot; vfx: glasbeni videospot + VFX | glasbeni videospot | glasbeni videospot + VFX", vir: "https://primate.si/portfolio/atlas-erotika-lollipop/" });
+  add("primate", "Argeta", "2021-05-12", { v: "big", z: true, opis: "digital: Argeta & Slo Ski; agencija: Luna TBWA", vir: "https://primate.si/portfolio/argeta-slo-ski/" });
+  add("primate", "AMN", "2018-03-27", { v: "micro", opis: "glasbeni videospot: glasbeni videospot | glasbeni videospot | glasbeni videospot", vir: "https://primate.si/portfolio/amn-puko/" });
+  add("primate", "Jeruzalem Ormož", "2021-07-27", { v: "micro", opis: "ar-filter: Jeruzalem Ormož IG/FB Filter; agencija: Drom Agency", vir: "https://primate.si/portfolio/jeruzalem-ormoz-ar-effect/" });
+  add("primate", "Golden Drum (festival); agencija Luna/TBWA", "2019-07-16", { v: "micro", opis: "oglaševanje: promocijski video; agencija: Luna/TBWA", vir: "https://primate.si/portfolio/golden-drum/" });
+  add("primate", "Adria Airways", "2018-03-15", { v: "big", z: true, opis: "digital: Adria Airways – Čez komot ga ni; agencija: Drom.agency", vir: "https://primate.si/portfolio/adria-airways-cez-komot-ga-ni/" });
+  add("primate", "AMN ft. Mili Khumara", "2019-07-16", { v: "micro", opis: "glasbeni videospot; vfx: glasbeni videospot + VFX", vir: "https://primate.si/portfolio/amn-afterica-ft-mili-khumara/" });
+  add("primate", "BMX (retuša)", "2017-08-18", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/bmx/ na stari različici primate.si (BMX (retuša)); vsebina ni bila prebrana (Wayba", vir: "http://web.archive.org/web/20170818/http://www.primate.si/portfolio/bmx/ (CDX)" });
+  add("primate", "Ta teden", "2017-08-18", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/ta-teden/ na stari različici primate.si (Ta teden); vsebina ni bila prebrana (Wayb", vir: "http://web.archive.org/web/20170818/http://www.primate.si/portfolio/ta-teden/ (CDX)" });
+  add("primate", "Peter Prevc / FIS skakalec 2016 (promo)", "2017-08-18", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/peter-prevc/ na stari različici primate.si (Peter Prevc / FIS skakalec 2016 (promo", vir: "http://web.archive.org/web/20170818/http://www.primate.si/portfolio/peter-prevc/ (CDX)" });
+  add("primate", "Hocoma", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hocoma/ na stari različici primate.si (Hocoma); vsebina ni bila prebrana (Wayback", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hocoma/ (CDX)" });
+  add("primate", "Suzy Baboo", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/suzy-baboo-nor-model/ na stari različici primate.si (Suzy Baboo – Nor model); vseb", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/suzy-baboo-nor-model/ (CDX)" });
+  add("primate", "Ena žlahtna storija", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/ena-zlahtna-storija/ na stari različici primate.si (Ena žlahtna storija); vsebina", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/ena-zlahtna-storija/ (CDX)" });
+  add("primate", "Lidl", "2017-08-19", { v: "big", z: true, opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/lidl-jogurteka/ na stari različici primate.si (Lidl – Jogurteka); vsebina ni bila", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/lidl-jogurteka/ (CDX)" });
+  add("primate", "Hlvdni Kizo", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hlvdni-kizo-ima-manjacu/ na stari različici primate.si (Hlvdni Kizo – Ima manjaču)", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hlvdni-kizo-ima-manjacu/ (CDX)" });
+  add("primate", "Hiša na travniku", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hisa-na-travniku/ na stari različici primate.si (Hiša na travniku); vsebina ni bil", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hisa-na-travniku/ (CDX)" });
+  add("primate", "Hustlin with basketball", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/hustlin-with-basketball/ na stari različici primate.si (Hustlin with basketball);", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/hustlin-with-basketball/ (CDX)" });
+  add("primate", "Mystic Lake", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/mystic-lake/ na stari različici primate.si (Mystic Lake); vsebina ni bila prebrana", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/mystic-lake/ (CDX)" });
+  add("primate", "Planeta singli", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/planeta-singli/ na stari različici primate.si (Planeta singli); vsebina ni bila pr", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/planeta-singli/ (CDX)" });
+  add("primate", "Crknu televizor", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/crknu-televizor/ na stari različici primate.si (Crknu televizor); vsebina ni bila", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/crknu-televizor/ (CDX)" });
+  add("primate", "Zuum", "2017-08-19", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/zuum-virtual-roulette/ na stari različici primate.si (Zuum – Virtual roulette); vs", vir: "http://web.archive.org/web/20170819/http://www.primate.si/portfolio/zuum-virtual-roulette/ (CDX)" });
+  add("primate", "Dragi sosedje", "2018-03-15", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/dragi-sosedje/ na stari različici primate.si (Dragi sosedje); vsebina ni bila preb", vir: "http://web.archive.org/web/20180315/http://www.primate.si/portfolio/dragi-sosedje/ (CDX)" });
+  add("primate", "Vipnet", "2018-03-15", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/vipnet-nema-da-nema/ na stari različici primate.si (Vipnet – Nema da nema); vsebin", vir: "http://web.archive.org/web/20180315/http://www.primate.si/portfolio/vipnet-nema-da-nema/ (CDX)" });
+  add("primate", "Gorske sanje", "2019-07-16", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/gorske-sanje/ na stari različici primate.si (Gorske sanje); vsebina ni bila prebra", vir: "http://web.archive.org/web/20190716/http://www.primate.si/portfolio/gorske-sanje/ (CDX)" });
+  add("primate", "Oneway", "2019-07-16", { v: "micro", opis: "starejši projekt (samo Wayback, ni več na strani): portfolio stran /portfolio/oneway-air-max-day/ na stari različici primate.si (Oneway – Air Max Day); vsebina", vir: "http://web.archive.org/web/20190716/http://www.primate.si/portfolio/oneway-air-max-day/ (CDX)" });
+  add("primate", "IKEA", "2026-09-22", { v: "micro", opis: "logotip na domači strani (brez projektne strani)", vir: "https://primate.si/" });
+  add("primate", "Mercator", "2026-09-22", { v: "big", z: true, opis: "logotip na domači strani (brez projektne strani)", vir: "https://primate.si/" });
+  add("primate", "Qlub", "2026-09-22", { v: "micro", opis: "logotip na domači strani (brez projektne strani)", vir: "https://primate.si/" });
+  add("primate", "Sava", "2026-09-22", { v: "micro", opis: "logotip na domači strani (brez projektne strani)", vir: "https://primate.si/" });
+  add("primate", "SkyShowtime", "2026-09-22", { v: "micro", opis: "logotip na domači strani (brez projektne strani)", vir: "https://primate.si/" });
+  add("primate", "Zavarovalnica Sava (agencija Luna \\TBWA)", "2021-01-01", { v: "big", z: true, opis: "oglaševanje – SOF prijava, kjer je Primate produkcijska hiša: digital/družbeno dobro – »Klic osamljenosti«, Primate naveden med partnerji (produkcijska hiša); 2", vir: "https://sof.si/katalog-del/K5.2006S21-klic-osamljenosti" });
 
   return P;
 }
@@ -894,10 +991,10 @@ function naloziPodatke() {
     d.verzija = 3;
     d.agencije.forEach(a => { const def = DEFAULT_DATA.agencije.find(x => x.id === a.id); if (a.strank === undefined) a.strank = def ? def.strank || '' : ''; });
   }
-  if (d.verzija < 4) {
-    // v4 (22. 9. 2026): raziskava s primarnimi viri; 13 agencij. Ročno vnesene projekte/nagrade (id z Date.now) ohrani,
-    // začetne (id p<št>/n<št>) zamenja; snapshot 2026-09 zamenja z neposrednim odčitkom; finance in agencije prevzame iz DEFAULT_DATA.
-    d.verzija = 4;
+  if (d.verzija < DEFAULT_DATA.verzija) {
+    // v4 (22. 9. 2026): raziskava s primarnimi viri, 13 agencij; v5 (1. 10. 2026): + Primate. Ročno vnesene projekte/nagrade
+    // (id z Date.now) ohrani, začetne (id p<št>/n<št>) zamenja; snapshot 2026-09, finance in agencije prevzame iz DEFAULT_DATA.
+    d.verzija = DEFAULT_DATA.verzija;
     DEFAULT_DATA.agencije.forEach(def => { const i = d.agencije.findIndex(x => x.id === def.id); if (i >= 0) d.agencije[i] = klon(def); else d.agencije.push(klon(def)); });
     d.snapshoti['2026-09'] = klon(DEFAULT_DATA.snapshoti['2026-09']);
     d.projekti = klon(DEFAULT_DATA.projekti).concat((d.projekti || []).filter(p => !/^p\d+$/.test(p.id)));
