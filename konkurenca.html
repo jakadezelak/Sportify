@@ -456,7 +456,7 @@ const VELIKOST_IME = { micro: 'Micro', mini: 'Mini', mid: 'Mid', big: 'Big', '':
 // ZAČETNI PODATKI  (vir: spletno iskanje in interni viri VVV, 5. 9. 2026)
 // ============================================================
 const DEFAULT_DATA = {
-  verzija: 5,  // dvigni ob vsaki spremembi začetnih podatkov, da se localStorage uporabnikov migrira
+  verzija: 6,  // dvigni ob vsaki spremembi začetnih podatkov, da se localStorage uporabnikov migrira
   // Generirano s research/build-liga-data.py iz research/konkurenca-2026-09.json (2026-09-22); ročno ne urejaj, popravi JSON in ponovno zaženi.
   agencije: [
     { id: "vvv", ime: "VVV Digital", pravna: "VVV DIGITAL, agencija za marketing, d.o.o. (Ljubljana; ust. 2022-02-23)", opomba: "Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar. Ekipa 12 (LinkedIn).", ig: "vvv_digital", tt: "vvv_digital", li: "vvv-digital", web: "vvv-digital.com", strank: "100+ (LinkedIn, 4. obletnica, feb. 2026); 48 znamk (about-us)" },
@@ -472,7 +472,8 @@ const DEFAULT_DATA = {
     { id: "buzztik", ime: "BuzzTik", pravna: "CLUEKIT, digitalni marketing, d.o.o. (Novo mesto; ust. 2022-03-10)", opomba: "Platforma mikro-ustvarjalcev + SMM (CLUEKIT d.o.o., Novo mesto, Irena Žagar). Finance = celo podjetje (3 produkti). TT 5,3k, a od jun. 2026 tiho.", ig: "buzztik_official", tt: "buzztik_slovenija", li: "buzztik-content-creator-management", web: "buzztik.com", strank: "140+ znamk, 2.500+ ustvarjalcev (buzztik.com)" },
     { id: "3amedia", ime: "3A Media", pravna: "3A MEDIA digitalni marketing, Lev Glumac s.p. (Domžale; ust. 2025-05-22)", opomba: "Lev Glumac s.p. (Domžale, vpis maj 2025), ekipa 3 (19 let). Brez agencijskih IG/TT računov in brez financ. Reference: Borut Pahor, Vitapur, AVP.", ig: "", tt: "", li: "3a-media", web: "3a-media.com", strank: "" },
     { id: "xod", ime: "XOD Agency", pravna: "XOD Group, medijska produkcija in marketing, d.o.o. (Ljubljana; ust. 2025-07-01)", opomba: "Video in foto produkcija dogodkov (XOD Group d.o.o., vpis jul. 2025, prej skupina od 2023). Ekipa 14. 5 od 12 projektov podizvajalstvo za Herman & partnerji. Edina z živim LinkedInom.", ig: "xod.agency", tt: "", li: "xodagency", web: "xodagency.com", strank: "" },
-    { id: "primate", ime: "Primate", pravna: "PRIMATE, video produkcija, d.o.o. (Brezovica pri Ljubljani; ust. 2024-07-01)", opomba: "Kreativna agencija za video in glasbeno produkcijo (TVC, VO lokalizacije, AR filtri, VFX, spoti; lastni studio od 2026). Od ~2015, d.o.o. od jul. 2024 (Miha in Tomaž Drnovšek). Produkcijska hiša agencij: SOF zlato 2023 (Cockta), 4× srebro, WEBSI 2022. Google 4,9 (11). Ni SMM agencija.", ig: "primate.si", tt: "primate.si", li: "primatesi", web: "primate.si", strank: "117 projektov v portfoliu (primate.si)" }
+    { id: "primate", ime: "Primate", pravna: "PRIMATE, video produkcija, d.o.o. (Brezovica pri Ljubljani; ust. 2024-07-01)", opomba: "Kreativna agencija za video in glasbeno produkcijo (TVC, VO lokalizacije, AR filtri, VFX, spoti; lastni studio od 2026). Od ~2015, d.o.o. od jul. 2024 (Miha in Tomaž Drnovšek). Produkcijska hiša agencij: SOF zlato 2023 (Cockta), 4× srebro, WEBSI 2022. Google 4,9 (11). Ni SMM agencija.", ig: "primate.si", tt: "primate.si", li: "primatesi", web: "primate.si", strank: "117 projektov v portfoliu (primate.si)" },
+    { id: "dinetix", ime: "Dinetix", pravna: "DINETIX, Agencija za digitalni marketing d.o.o. (Žalec; ust. 2017-05-31)", opomba: "Performance/PPC agencija (Google, Meta, LinkedIn Ads, e-mail), Žalec; od 2007, d.o.o. 2017 (Peter Šelekar prek holdinga INFINISKY). Ekipa 6–7. EPMA 2024 zmagovalec, Google Premier Partner 2016–22. Lastne mreže opuščene (IG zadnja objava nov. 2023). Google 4,7 (15). Ni SMM agencija.", ig: "dinetix", tt: "dinetix", li: "dinetix", web: "dinetix.com", strank: "137 trgov, 25 M € proračuna, 86 M € prometa strank (ppc.dinetix.com)" }
   ],
   metrike: [
     { id: 'ig', ime: 'Instagram sledilci', utez: 1 },
@@ -497,7 +498,8 @@ const DEFAULT_DATA = {
         "buzztik": {"ig": 641, "tt": 5297, "li": 144, "gr": 0},
         "3amedia": {"li": 10},
         "xod": {"ig": 511, "li": 521, "gr": 2},
-        "primate": {"ig": 1625, "tt": 25, "li": 224, "gr": 11}
+        "primate": {"ig": 1625, "tt": 25, "li": 224, "gr": 11},
+        "dinetix": {"ig": 371, "tt": 44, "li": 370, "gr": 15}
       }
     }
   },
@@ -540,7 +542,16 @@ const DEFAULT_DATA = {
     { id: 'n35', agId: "primate", datum: "2023-01-01", naziv: "SOF 2023 – prijava brez nagrade: »Podpiramo žensko moč« (Lidl Slovenija / DROM agency, Luna TBWA), produkcijska hiša Primate", tocke: 1, vir: "https://sof.si/katalog-del/V5.1005S23-podpiramo-zensko-moc" },
     { id: 'n36', agId: "primate", datum: "2022-09-16", naziv: "WEBSI 2022 (Spletni prvaki) – 3. MESTO, kategorija Javne in nevladne organizacije (NVO-ji): »I feel Slovenia. Green. Creative. Smart. // Ambasadorji slovenskega gospodarstva« (SPIRIT Slovenija, POINT OUT d.o.o., PRIMATE)", tocke: 1, vir: "https://websi.si/news/znan-so-websi-prvaki/" },
     { id: 'n37', agId: "primate", datum: "2022-02-11", naziv: "Marketing Magazin (ProMMocija): »Ambasadorji slovenskega gospodarstva na televizijskih zaslonih po vsem svetu« – SPIRIT + POINT OUT + produkcijska hiša PRIMATE; 52 videov, 27 objavljenih; CNN International; citat Mihe Dr", tocke: 1, vir: "https://www.marketingmagazin.si/aktualno/ambasadorji-slovenskega-gospodarstva-na-televizijskih-zaslonih-po-vsem-svetu" },
-    { id: 'n38', agId: "primate", datum: "2025-01-01", naziv: "Baza slovenskih filmov (bsf.si): Miha Drnovšek – pridruženi producent, serija »Poklicani« (2025, 8 epizod); asistent kamere »Ondine« (2017)", tocke: 1, vir: "https://bsf.si/sl/ime/miha-drnovsek/" }
+    { id: 'n38', agId: "primate", datum: "2025-01-01", naziv: "Baza slovenskih filmov (bsf.si): Miha Drnovšek – pridruženi producent, serija »Poklicani« (2025, 8 epizod); asistent kamere »Ondine« (2017)", tocke: 1, vir: "https://bsf.si/sl/ime/miha-drnovsek/" },
+    { id: 'n39', agId: "dinetix", datum: "2024-10-18", naziv: "European Paid Media Awards 2024 – ZMAGOVALEC, Local Campaign of the Year: 'Dinetix & Panda Parken – How we grew a client with less than 4% marketing budget to 7-figure revenue in a single month with Google Ads'", tocke: 3, vir: "https://europeanpaidmediaawards.com/2024-winners/" },
+    { id: 'n40', agId: "dinetix", datum: "2023-07-19", naziv: "European Paid Media Awards 2023 – finalist, Best Travel/Leisure Campaign of the Year (PMax + Meta za termalno stranko z bazeni/spa, mar–maj 2023, ROAS 924 %, CTR PMax 12,03 %)", tocke: 1, vir: "https://europeanpaidmediaawards.com/2023/07/19/dinetix-as-a-finalist-for-best-travel-leisure-campaign-of-the-year/" },
+    { id: 'n41', agId: "dinetix", datum: "2022-09-06", naziv: "European Paid Media Awards 2022 – finalist, Small Paid Media Agency of the Year (5 finalistov; edina slovenska agencija)", tocke: 1, vir: "https://europeanpaidmediaawards.com/2022-shortlist/" },
+    { id: 'n42', agId: "dinetix", datum: "2016-01-01", naziv: "Google Premier Partner – prvič 2016, 'sedmo leto zapored' 2022 (ena od 3 slovenskih agencij 2022); Google Partners agency ID 8109852045 (povezava s strani 2020). Trenutni status 2025/26 na strani NI izkazan – trenutna zn", tocke: 1, vir: "https://dinetix.si/dinetix-z-nazivom-google-premier-partner/" },
+    { id: 'n43', agId: "dinetix", datum: "2021-01-01", naziv: "Google Digital Champions 2022 – Luka Uvodić, Lidija Lesjak, Denis Žele; 2021 štirje specialisti Google Champions (Performance Excellence, Retail, Privacy-Safe Growth)", tocke: 1, vir: "https://dinetix.si/dinetix-ekipa-v-letu-2022/" },
+    { id: 'n44', agId: "dinetix", datum: "2025-05-01", naziv: "Microsoft Advertising Partner 2025 (značka na domači strani)", tocke: 1, vir: "https://www.dinetix.com/" },
+    { id: 'n45', agId: "dinetix", datum: "2022-11-01", naziv: "Zlati certifikat bonitetne odličnosti AAA (Dun & Bradstreet), prejet nov. 2022; logo 'AAA 2024' / 'Platinum AAA' v nogi strani", tocke: 1, vir: "https://dinetix.si/prejeli-smo-zlati-certifikat-bonitetne-odlicnosti-aaa/" },
+    { id: 'n46', agId: "dinetix", datum: "2022-10-01", naziv: "Marketing magazin #495 (sept. 2022): intervju s Petrom Šelekarjem »Načrtujemo, izvedemo, pospešimo rast in ponovimo proces!« (avtorica Kaja Kovič) – zgodovina, stranke, 3x3 proces, CEEDA članstvo", tocke: 1, vir: "https://www.marketingmagazin.si/aktualno/nacrtujemo-izvedemo-pospesimo-rast-ponovimo-proces" },
+    { id: 'n47', agId: "dinetix", datum: "2007-01-01", naziv: "Nacionalno prvenstvo v direktnem marketingu 2007 – 3. mesto Peter Šelekar (od 150+ tekmovalcev)", tocke: 1, vir: "https://www.dinetix.com/about-us/" }
   ],
   finance: {
     "vvv": {
@@ -594,6 +605,11 @@ const DEFAULT_DATA = {
     "primate": {
       2024: { prihodki: 284585, dobicek: 24227, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
       2025: { prihodki: 316083, dobicek: 24752, zaposleni: 1, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
+    },
+    "dinetix": {
+      2023: { prihodki: 661592, dobicek: 10836, zaposleni: 7, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2024: { prihodki: 682014, dobicek: 10925, zaposleni: 7, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" },
+      2025: { prihodki: 775042, dobicek: 11847, zaposleni: 5, vir: "companywall.si / ebonitete.si (AJPES), 2026-09-22" }
     }
   },
   uteziStebrov: { doseg: 20, posel: 45, finance: 35 },
@@ -960,6 +976,68 @@ function seedProjekti() {
   add("primate", "Sava", "2026-09-22", { v: "micro", opis: "logotip na domači strani (brez projektne strani)", vir: "https://primate.si/" });
   add("primate", "SkyShowtime", "2026-09-22", { v: "micro", opis: "logotip na domači strani (brez projektne strani)", vir: "https://primate.si/" });
   add("primate", "Zavarovalnica Sava (agencija Luna \\TBWA)", "2021-01-01", { v: "big", z: true, opis: "oglaševanje – SOF prijava, kjer je Primate produkcijska hiša: digital/družbeno dobro – »Klic osamljenosti«, Primate naveden med partnerji (produkcijska hiša); 2", vir: "https://sof.si/katalog-del/K5.2006S21-klic-osamljenosti" });
+  // --- Dinetix (research/konkurenca-2026-09.json, 2026-09-22)
+  add("dinetix", "Kozmetika Afrodita", "2024-05-01", { v: "big", z: true, opis: "case study + mnenje: Google Ads: avdit in prestrukturiranje iskalnih kampanj; 1. mesec +51 % prihodkov ob -8 % proračuna, -9,5 % CPC, +39 % konverzija; 2. mesec", vir: "https://www.dinetix.com/results/" });
+  add("dinetix", "Mindvalley", "2018-10-22", { v: "micro", opis: "case study + mnenje: Lead gen prek Google Search/Display/Remarketing/YouTube; +169 % novih leadov v 2019. Mnenje Wayne Liew, (former) Head of Advertising. Prva", vir: "https://www.dinetix.com/results/" });
+  add("dinetix", "Panda Parken", "2024-05-01", { v: "micro", opis: "case study + nagrada: Google Ads: iskalne kampanje, globalna širitev, lokalizirani oglasi, PMax; +62 % povprečnega dnevnega prihodka, 1M+ EUR prihodka, ROAS 270", vir: "https://www.dinetix.com/results/" });
+  add("dinetix", "The Desai Companies", "2020-08-14", { v: "micro", opis: "case study + mnenje: Lead gen: nova pristajalna stran, CPL -40 % ob enakem proračunu (45-dnevno obdobje). Mnenje Chris Warden, COO. Logo 'Panache Desai' že na r", vir: "https://www.dinetix.com/results/" });
+  add("dinetix", "neimenovana blagovna znamka", "2024-05-01", { v: "micro", opis: "case study: Meta oglasi + zunanje orodje za viralno rast + SMM + e-mail: CTR 2,5 % (+100 %), 7k+ leadov, CPL 0,25 EUR, FB doseg +137 %, FB sledilci +458 %, IG d", vir: "https://www.dinetix.com/results/" });
+  add("dinetix", "PowUnity", "2024-05-01", { v: "micro", opis: "case study + mnenje: Google Shopping kampanja, ROAS +24 %; Meta/IG/YouTube oglasi; delavnica v Innsbrucku. Mnenje Stefan Sinnegger, Founder & CEO.", vir: "https://www.dinetix.com/results/" });
+  add("dinetix", "Terme Olimia & Terme Tuhelj", "2016-03-18", { v: "micro", opis: "mnenje + logo: Online oglaševanje; mnenje Vasja Čretnik, vodja prodaje in marketinga. Logotip Terme Olimia in Terme Tuhelj že 2016. | logotip na dinetix.com (Wa", vir: "https://www.dinetix.com/" });
+  add("dinetix", "Vitapur / AD VITA d.o.o.", "2016-03-18", { v: "mid", opis: "case study + mnenje + logo: Google Ads (iskalno+prikazno): -46 % CPC, +314 % klikov, +197 % prihodkov v 3 mesecih (LP). 2019 case: Google+FB+IG+Criteo, Black Fr", vir: "http://web.archive.org/web/20190721/http://dinetix.com/cases/case-study-vitapur" });
+  add("dinetix", "CargoX", "2018-10-22", { v: "micro", opis: "case study + mnenje + logo: B2B lead gen ob lansiranju (LinkedIn, Facebook, Google, native); znižanje CPL jun–sep 2018. Mnenje Igor Dragar, CMO. | logotip na di", vir: "http://web.archive.org/web/20190721/http://dinetix.com/cases/case-study-cargo-x" });
+  add("dinetix", "Sberbank d.d.", "2018-10-22", { v: "micro", opis: "case study (zgodovinski): Google Search/Display/Remarketing/YouTube za online banking: +34 % novih uporabnikov, +19 % povpraševanj (2017/2018). Mnenje Digital B", vir: "http://web.archive.org/web/20190721/http://dinetix.com/cases/case-study-sberbank" });
+  add("dinetix", "SOMA Breath", "2020-08-14", { v: "micro", opis: "mnenje: Online marketing/lijaki; mnenje Gary Torrens, COO (na .si: izvršni direktor in soustanovitelj).", vir: "https://www.dinetix.com/" });
+  add("dinetix", "Leemeta", "2018-02-05", { v: "micro", opis: "mnenje + logo: Mnenje Samo Seničar, direktor. | logotip na dinetix.com (Wayback 2018-10-22)", vir: "https://www.dinetix.com/" });
+  add("dinetix", "Turistična agencija Sonček", "2019-07-21", { v: "micro", opis: "logo: Logotip v karuseli pristajalne strani in na /cases 2019; omenjena v MM intervjuju 2022 kot zgodnja velika stranka. Mnenje Nataše Jeza Kotnik na pregledani", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Carnium Botanicals", "2025-10-01", { v: "micro", opis: "logo: Logotip v karuseli 'zgodbe uspeha' na LP.", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Telemach", "2025-10-01", { v: "mid", opis: "logo: Logotip v karuseli LP.", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Zlatarna Celje", "2025-10-01", { v: "micro", opis: "logo: Logotip v karuseli LP.", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Jelovica", "2025-10-01", { v: "micro", opis: "logo: Logotip v karuseli LP.", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Nogavice Polzela", "2025-10-01", { v: "micro", opis: "logo: Logotip v karuseli LP.", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Prohit d.o.o.", "2018-02-06", { v: "micro", opis: "logo + mnenje (2018): Mnenje Igor Stražišnik, direktor (2018: 'sodelujemo že veliko let'). Logotip na LP 2025.", vir: "http://web.archive.org/web/20180213/http://www.dinetix.si/mnenja-strank" });
+  add("dinetix", "Schwarzmann konstrukcije", "2018-10-22", { v: "micro", opis: "logo: Logotip na LP; že na dinetix.com 2018. | logotip na dinetix.com (Wayback 2018-10-22)", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Sparkasse", "2025-10-01", { v: "big", z: true, opis: "logo: Logotip v karuseli LP.", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Tuš drogerija", "2025-10-01", { v: "micro", opis: "logo: Logotip v karuseli LP.", vir: "https://ppc.dinetix.com/dinetix-ecomm-si-kvs-v7-1" });
+  add("dinetix", "Studio Moderna", "2016-03-18", { v: "micro", opis: "logo (zgodovinski): Logotip na /clients 2016; MM intervju 2022 jo navaja med zgodnjimi velikimi strankami. | logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160425/http://dinetix.com/clients/" });
+  add("dinetix", "GoOpti", "2016-03-18", { v: "micro", opis: "logo (zgodovinski): Logotip 2016–2019; MM intervju 2022. | logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160425/http://dinetix.com/clients/" });
+  add("dinetix", "iPROM", "2005-01-01", { v: "micro", opis: "omemba: Peter kot freelancer od 2005 pri agenciji Iprom (Coca-Cola, Goodyear, Sony, Honda, Ford); MM: izvajali Google oglaševanje za agencijo iPROM.", vir: "https://www.dinetix.com/about-us/" });
+  add("dinetix", "Lux Factor d.o.o.", "2018-02-13", { v: "micro", opis: "mnenje (2018): Mnenje Marko Glinšek, direktor. | logotip na dinetix.com (Wayback 2018-10-22)", vir: "http://web.archive.org/web/20180213/http://www.dinetix.si/mnenja-strank" });
+  add("dinetix", "Pitbike", "2018-02-13", { v: "micro", opis: "mnenje (2018): Google+FB oglaševanje; mnenje Boštjan Šalej, direktor. | logotip na dinetix.com (Wayback 2018-10-22)", vir: "http://web.archive.org/web/20180213/http://www.dinetix.si/mnenja-strank" });
+  add("dinetix", "Steril-o-sept, Conrad Electronics", "2016-03-17", { v: "micro", opis: "mnenja (2016, samo začetnice): Kratka mnenja z začetnicami priimkov (John D., Marko P., Jasmina S., Jurij K., Mario V.). | logotip na dinetix.com (Wayback 2016-", vir: "http://web.archive.org/web/20160317/http://dinetix.com/testimonials/" });
+  add("dinetix", "Vehicle Rent", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "KD Group", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "MIB", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Neckermann", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Barclays", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18) | podizvajalsko delo (Marketing magazin 2022)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Weishaupt", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Hitex", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Vitapur", "2016-03-18", { v: "mid", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Conrad", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "HRS", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "PS4", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "AliExpress", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18) | podizvajalsko delo (Marketing magazin 2022)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Terme Tuhelj", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "G1 avtoplin", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Peugeot", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "Honda", "2016-03-18", { v: "micro", opis: "logotip na dinetix.com (Wayback 2016-03-18) | podizvajalsko delo (Marketing magazin 2022)", vir: "http://web.archive.org/web/20160318/http://dinetix.com/clients/" });
+  add("dinetix", "24alife", "2018-10-22", { v: "micro", opis: "logotip na dinetix.com (Wayback 2018-10-22)", vir: "http://web.archive.org/web/20181022/http://dinetix.com/clients/" });
+  add("dinetix", "Prohit", "2018-10-22", { v: "micro", opis: "logotip na dinetix.com (Wayback 2018-10-22)", vir: "http://web.archive.org/web/20181022/http://dinetix.com/clients/" });
+  add("dinetix", "Agilcon", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Dollar", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Izberem", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "M-Sport", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "MIK Celje", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "OIM", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Relax", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Stadionshop", "2019-07-21", { v: "mid", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Svilanit", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Tartarini", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Tišlerija", "2019-07-21", { v: "micro", opis: "logotip na dinetix.com (Wayback 2019-07-21)", vir: "http://web.archive.org/web/20190721/http://dinetix.com/clients/" });
+  add("dinetix", "Sony PlayStation 4", "2022-10-01", { v: "micro", opis: "podizvajalsko delo (Marketing magazin 2022)", vir: "https://www.marketingmagazin.si/aktualno/nacrtujemo-izvedemo-pospesimo-rast-ponovimo-proces" });
+  add("dinetix", "Vodafone", "2022-10-01", { v: "micro", opis: "podizvajalsko delo (Marketing magazin 2022)", vir: "https://www.marketingmagazin.si/aktualno/nacrtujemo-izvedemo-pospesimo-rast-ponovimo-proces" });
+  add("dinetix", "Three Mobile", "2022-10-01", { v: "micro", opis: "podizvajalsko delo (Marketing magazin 2022)", vir: "https://www.marketingmagazin.si/aktualno/nacrtujemo-izvedemo-pospesimo-rast-ponovimo-proces" });
+  add("dinetix", "Citroën", "2022-10-01", { v: "micro", opis: "podizvajalsko delo (Marketing magazin 2022)", vir: "https://www.marketingmagazin.si/aktualno/nacrtujemo-izvedemo-pospesimo-rast-ponovimo-proces" });
 
   return P;
 }
@@ -992,7 +1070,7 @@ function naloziPodatke() {
     d.agencije.forEach(a => { const def = DEFAULT_DATA.agencije.find(x => x.id === a.id); if (a.strank === undefined) a.strank = def ? def.strank || '' : ''; });
   }
   if (d.verzija < DEFAULT_DATA.verzija) {
-    // v4 (22. 9. 2026): raziskava s primarnimi viri, 13 agencij; v5 (1. 10. 2026): + Primate. Ročno vnesene projekte/nagrade
+    // v4 (22. 9. 2026): raziskava s primarnimi viri, 13 agencij; v5 (1. 10. 2026): + Primate; v6 (6. 10. 2026): + Dinetix. Ročno vnesene projekte/nagrade
     // (id z Date.now) ohrani, začetne (id p<št>/n<št>) zamenja; snapshot 2026-09, finance in agencije prevzame iz DEFAULT_DATA.
     d.verzija = DEFAULT_DATA.verzija;
     DEFAULT_DATA.agencije.forEach(def => { const i = d.agencije.findIndex(x => x.id === def.id); if (i >= 0) d.agencije[i] = klon(def); else d.agencije.push(klon(def)); });

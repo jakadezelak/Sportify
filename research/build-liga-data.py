@@ -51,11 +51,11 @@ def velikost(name):
 # ---------------------------------------------------------------- 1. agencije
 IME = {"vvv": "VVV Digital", "tiktokspace": "TikTok SPACE", "vividista": "Vividista", "envision": "Envision Collective",
        "tiktokerija": "Tiktokerija", "apmarketing": "A.P. Marketing", "ziya": "Ziya Agency", "createable": "Createable",
-       "katapult": "Katapult Media", "watt": "Outpace (prej We Are TikTok / WATT)", "buzztik": "BuzzTik", "3amedia": "3A Media", "xod": "XOD Agency", "primate": "Primate"}
+       "katapult": "Katapult Media", "watt": "Outpace (prej We Are TikTok / WATT)", "buzztik": "BuzzTik", "3amedia": "3A Media", "xod": "XOD Agency", "primate": "Primate", "dinetix": "Dinetix"}
 WEB = {"vvv": "vvv-digital.com", "tiktokspace": "tiktok-space.si", "vividista": "vividista.si", "envision": "envisioncollective.si",
        "tiktokerija": "tiktokerija.com", "apmarketing": "ap-marketing.si", "ziya": "ziya.agency (domena od 2025 v tujih rokah)",
        "createable": "createable.si", "katapult": "katapult.si/storitve/katapult-media", "watt": "outpaceagency.com",
-       "buzztik": "buzztik.com", "3amedia": "3a-media.com", "xod": "xodagency.com", "primate": "primate.si"}
+       "buzztik": "buzztik.com", "3amedia": "3a-media.com", "xod": "xodagency.com", "primate": "primate.si", "dinetix": "dinetix.com"}
 OPOMBA = {
     "vvv": "Kratki videi, vodenje profilov, paid, splet. Dir. Andraž Mrzlikar. Ekipa 12 (LinkedIn).",
     "tiktokspace": "Butična SMM agencija (TikTok, IG, FB). Nosilec APPOLO PRO d.o.o. (reg. sedež Brežice, posl. Celovška 69C). Edina znana oseba Rimma Arshinova, zaposlitev po LinkedInu končana jun. 2026; IG/TT računa agencije ni.",
@@ -71,11 +71,12 @@ OPOMBA = {
     "3amedia": "Lev Glumac s.p. (Domžale, vpis maj 2025), ekipa 3 (19 let). Brez agencijskih IG/TT računov in brez financ. Reference: Borut Pahor, Vitapur, AVP.",
     "xod": "Video in foto produkcija dogodkov (XOD Group d.o.o., vpis jul. 2025, prej skupina od 2023). Ekipa 14. 5 od 12 projektov podizvajalstvo za Herman & partnerji. Edina z živim LinkedInom.",
     "primate": "Kreativna agencija za video in glasbeno produkcijo (TVC, VO lokalizacije, AR filtri, VFX, spoti; lastni studio od 2026). Od ~2015, d.o.o. od jul. 2024 (Miha in Tomaž Drnovšek). Produkcijska hiša agencij: SOF zlato 2023 (Cockta), 4× srebro, WEBSI 2022. Google 4,9 (11). Ni SMM agencija.",
+    "dinetix": "Performance/PPC agencija (Google, Meta, LinkedIn Ads, e-mail), Žalec; od 2007, d.o.o. 2017 (Peter Šelekar prek holdinga INFINISKY). Ekipa 6–7. EPMA 2024 zmagovalec, Google Premier Partner 2016–22. Lastne mreže opuščene (IG zadnja objava nov. 2023). Google 4,7 (15). Ni SMM agencija.",
 }
 STRANK = {"vvv": "100+ (LinkedIn, 4. obletnica, feb. 2026); 48 znamk (about-us)", "tiktokerija": "50+ znamk (tiktokerija.com), 30+ projektov (arhiv 2026)",
           "watt": "30+ aktivnih naročnikov, 15 FTE, 100k € MRR (LinkedIn oglas 2025)", "buzztik": "140+ znamk, 2.500+ ustvarjalcev (buzztik.com)",
           "createable": "80+ znamk, 50 mio ogledov (createable.si)", "envision": "35+ naročnikov, 10M+ ogledov (envisioncollective.si)",
-          "tiktokspace": "", "vividista": "", "apmarketing": "5 let+ ustvarjanja (ap-marketing.si)", "ziya": "", "katapult": "", "3amedia": "", "xod": "", "primate": "117 projektov v portfoliu (primate.si)"}
+          "tiktokspace": "", "vividista": "", "apmarketing": "5 let+ ustvarjanja (ap-marketing.si)", "ziya": "", "katapult": "", "3amedia": "", "xod": "", "primate": "117 projektov v portfoliu (primate.si)", "dinetix": "137 trgov, 25 M € proračuna, 86 M € prometa strank (ppc.dinetix.com)"}
 
 EXCL = {("3amedia", "ig")}  # osebni profil direktorja (@leoglumac), ne agencije; v ligo dosega ne sodi
 
@@ -131,7 +132,10 @@ for k, a in A.items():
         if not vir or vir in old_vir or any(s in o["naziv"] for s in SKIP): continue
         old_vir.add(vir); n += 1
         nz = o["naziv"].upper()
-        tocke = 3 if "ZLAT" in nz else 2 if "SREBR" in nz else 1  # nagrada: zlato 3, srebro 2, prijava/omemba 1
+        # nagrada: zlato/zmagovalec 3, srebro 2, prijava/finalist/omemba 1; velja le za nagrade (SOF, Diggit, Websi, Effie, EPMA ...),
+        # ne za bonitetne certifikate ("zlati certifikat AAA") ali partnerske značke
+        je_nagrada = any(w in nz for w in ("SOF", "NAGRAD", "AWARD", "DIGGIT", "WEBSI", "EFFIE")) and "BONITET" not in nz and "CERTIFIKAT" not in nz
+        tocke = 3 if je_nagrada and ("ZLAT" in nz or "ZMAGOVAL" in nz or "WINNER" in nz) else 2 if je_nagrada and "SREBR" in nz else 1
         nag_lines.append(f"    {{ id: 'n{n}', agId: {js(k)}, datum: {js(o.get('datum') or DATUM)}, naziv: {js(o['naziv'][:220])}, tocke: {tocke}, vir: {js(vir)} }}")
 nagrade_js = old_nagrade + (",\n" + ",\n".join(nag_lines) if nag_lines else "")
 
@@ -214,7 +218,7 @@ def fmt_snapshot():
 
 metrike = re.search(r"  metrike: \[\n.*?\n  \],", html, re.S).group(0)
 new_default = f"""const DEFAULT_DATA = {{
-  verzija: 5,  // dvigni ob vsaki spremembi začetnih podatkov, da se localStorage uporabnikov migrira
+  verzija: 6,  // dvigni ob vsaki spremembi začetnih podatkov, da se localStorage uporabnikov migrira
   // Generirano s research/build-liga-data.py iz {VIR_R} ({DATUM}); ročno ne urejaj, popravi JSON in ponovno zaženi.
   agencije: [
 {fmt_agencije()}
@@ -246,7 +250,7 @@ html = html[:start] + new_default + "\n" + html[end:]
 
 # ---------------------------------------------------------------- 7. migracija v4
 MIG = """  if (d.verzija < DEFAULT_DATA.verzija) {
-    // v4 (22. 9. 2026): raziskava s primarnimi viri, 13 agencij; v5 (1. 10. 2026): + Primate. Ročno vnesene projekte/nagrade
+    // v4 (22. 9. 2026): raziskava s primarnimi viri, 13 agencij; v5 (1. 10. 2026): + Primate; v6 (6. 10. 2026): + Dinetix. Ročno vnesene projekte/nagrade
     // (id z Date.now) ohrani, začetne (id p<št>/n<št>) zamenja; snapshot 2026-09, finance in agencije prevzame iz DEFAULT_DATA.
     d.verzija = DEFAULT_DATA.verzija;
     DEFAULT_DATA.agencije.forEach(def => { const i = d.agencije.findIndex(x => x.id === def.id); if (i >= 0) d.agencije[i] = klon(def); else d.agencije.push(klon(def)); });
